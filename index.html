@@ -552,6 +552,14 @@ ul{list-style:none}
     <span class="material-icons-round empty-icon">search_off</span>
     <p>No products found.</p>
   </div>
+  <div class="video-ads-section" id="videoAdsSection" style="display:none; margin-top:20px;">
+  <div class="video-ads-heading" style="padding:10px 16px; font-weight:800; display:flex; align-items:center; gap:8px;">
+    <span class="material-icons-round" style="color:var(--pr)">play_circle</span>
+    <span>Featured Videos</span>
+  </div>
+  <div class="video-ads-scroll" id="videoAdsScroll" style="display:flex; gap:12px; padding:0 14px 12px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling: touch;">
+  </div>
+  </div>
 </section>
 
 <!-- PUBLISH -->
@@ -908,7 +916,8 @@ ul{list-style:none}
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 <!-- Razorpay -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  
 <script>
 'use strict';
 // ================================================================
@@ -1199,52 +1208,105 @@ $('logoutBtn')?.addEventListener('click',handleLogout);
 // ================================================================
 //  PRODUCTS
 // ================================================================
-async function loadProducts(cat='all'){
-  $('productGrid').innerHTML=Array(6).fill('<div class="product-skeleton"></div>').join('');
-  $('noProductsState').style.display='none';
-  allProducts=await fetchProducts(cat);
-  renderProducts(allProducts);
+async function loadProducts(cat = 'all') {
+  const grid = $('productGrid');
+  grid.innerHTML = Array(4).fill('<div class="product-skeleton"></div>').join('');
+  $('noProductsState').style.display = 'none';
+  
+  try {
+    let query = _db.collection('products').where('inStock', '==', true);
+    
+    // ক্যাটাগরি ফিল্টার লজিক
+    if (cat !== 'all') {
+      query = query.where('category', '==', cat);
+    }
+    
+    const snap = await query.orderBy('createdAt', 'desc').get();
+    allProducts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    renderProducts(allProducts);
+    
+    // ভিডিও লোড করার ফাংশন কল (যা আপনি আগে অ্যাড করেছেন)
+    if (typeof loadVideoAds === "function") loadVideoAds(); 
+    
+  } catch (e) {
+    console.error("Filter Error:", e);
+  }
 }
 
-function renderProducts(products){
-  $('productGrid').innerHTML='';
-  if(!products.length){$('noProductsState').style.display='flex';return;}
-  $('noProductsState').style.display='none';
-  products.forEach(p=>{
-    const disc=p.originalPrice>p.price?Math.round((1-p.price/p.originalPrice)*100):0;
-    const card=document.createElement('div');
-    card.className='product-card';
-    card.innerHTML=`
+// ... ১২৩৪ নম্বর লাইন পর্যন্ত আগের কোড ...
+
+// ১২৩৬ নম্বর লাইন থেকে আপনার নতুন কোড শুরু হবে
+function renderProducts(products) {
+  $('productGrid').innerHTML = '';
+  if (!products.length) { $('noProductsState').style.display = 'flex'; return; }
+  $('noProductsState').style.display = 'none';
+
+  products.forEach(p => {
+    const disc = p.originalPrice > p.price ? Math.round((1 - p.price / p.originalPrice) * 100) : 0;
+    
+    // ই-বুক অ্যাক্সেস চেক
+    const hasAccess = userProfile?.purchasedItems?.includes(p.id);
+    const isDigital = p.category === 'ebook' || p.category === 'books';
+
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    
+    // বাটন কন্ট্রোল logic
+    let actionButtons = '';
+    if (isDigital && hasAccess) {
+      actionButtons = `<button class="btn-primary" style="grid-column: span 2; background:#16a34a;" onclick="openSecureReader('${p.fileUrl}', '${esc(p.title)}')"><span class="material-icons-round">menu_book</span> Read Now</button>`;
+    } else {
+      actionButtons = `
+        <button class="btn-add-cart"><span class="material-icons-round">add_shopping_cart</span> Add</button>
+        <button class="btn-buy-now"><span class="material-icons-round">flash_on</span> Buy</button>`;
+    }
+
+    card.innerHTML = `
       <div class="product-card-img-wrap">
-        <img src="${p.image||'https://placehold.co/300x300?text=No+Image'}" alt="${esc(p.title)}" loading="lazy" onerror="this.src='https://placehold.co/300x300?text=Error'"/>
-        ${disc?`<span class="discount-badge">${disc}% OFF</span>`:''}
+        <img src="${p.image || 'https://placehold.co/300x300?text=No+Image'}" alt="${esc(p.title)}" loading="lazy" onerror="this.src='https://placehold.co/300x300?text=Error'"/>
+        ${disc ? `<span class="discount-badge">${disc}% OFF</span>` : ''}
       </div>
       <div class="product-card-body">
         <p class="product-card-title">${esc(p.title)}</p>
         <div class="product-card-prices">
-          <span class="product-price">₹${fmt(p.price)}</span>
-          ${p.originalPrice>p.price?`<span class="product-original-price">₹${fmt(p.originalPrice)}</span>`:''}
+          <span class="product-price">${hasAccess ? '<span style="color:#16a34a">Unlocked</span>' : `₹${fmt(p.price)}`}</span>
+          ${(!hasAccess && p.originalPrice > p.price) ? `<span class="product-original-price">₹${fmt(p.originalPrice)}</span>` : ''}
         </div>
       </div>
-      <div class="product-card-actions">
-        <button class="btn-add-cart"><span class="material-icons-round">add_shopping_cart</span> Add</button>
-        <button class="btn-buy-now"><span class="material-icons-round">flash_on</span> Buy</button>
+      <div class="product-card-actions" style="display:grid; grid-template-columns: ${hasAccess ? '1fr' : '1fr 1fr'}; gap:6px;">
+        ${actionButtons}
       </div>`;
-    card.querySelector('.product-card-body')?.addEventListener('click',()=>openProductModal(p));
-    card.querySelector('.product-card-img-wrap')?.addEventListener('click',()=>openProductModal(p));
-    card.querySelector('.btn-add-cart')?.addEventListener('click',e=>{e.stopPropagation();addToCart(p);});
-    card.querySelector('.btn-buy-now')?.addEventListener('click',e=>{e.stopPropagation();handleBuyNow(p);});
+
+    // ইভেন্ট লিসেনার
+    card.querySelector('.product-card-body')?.addEventListener('click', () => openProductModal(p));
+    if (!hasAccess) {
+      card.querySelector('.btn-add-cart')?.addEventListener('click', e => { e.stopPropagation(); addToCart(p); });
+      card.querySelector('.btn-buy-now')?.addEventListener('click', e => { e.stopPropagation(); handleBuyNow(p); });
+    }
+    
     $('productGrid').appendChild(card);
   });
 }
 
-$('categoryStrip')?.addEventListener('click',e=>{
-  const chip=e.target.closest('.category-chip');
-  if(!chip)return;
-  document.querySelectorAll('.category-chip').forEach(c=>c.classList.remove('active'));
+// এরপর ১২৫৮ নম্বর লাইন থেকে ক্যাটাগরি ক্লিকের কোড শুরু হবে
+
+
+$('categoryStrip')?.addEventListener('click', async (e) => {
+  const chip = e.target.closest('.category-chip');
+  if (!chip) return;
+  
+  // বাটনের ডিজাইন পরিবর্তন
+  document.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
   chip.classList.add('active');
-  loadProducts(chip.dataset.cat);
+  
+  const selectedCat = chip.dataset.cat;
+  
+  // প্রোডাক্ট ফিল্টার করে লোড করা
+  showLoading('Loading ' + selectedCat + '...');
+  await loadProducts(selectedCat); 
+  hideLoading();
 });
+
 
 // Product modal
 function openProductModal(p){
@@ -1390,24 +1452,62 @@ async function startRazorpay(addr){
   }catch(e){showToast('Cannot open payment. Check Razorpay key.','error');console.error(e);}
 }
 
-async function onPaySuccess(res,addr,total){
-  showLoading('Saving order…');
-  const cb=Math.round(total*5/100);
-  const orderData={userId:currentUser.uid,items:cart.map(i=>({productId:i.id,title:i.title,price:i.price,image:i.image})),total,cashbackEarned:cb,deliveryAddress:addr,paymentId:res.razorpay_payment_id,razorpayOrderId:res.razorpay_order_id||null};
-  try{
-    const r=await saveOrder(orderData);
-    if(r.success){
-      await updateUserEarnings(currentUser.uid,cb);
-      $('successPaymentId').textContent=res.razorpay_payment_id;
-      $('successCashbackAmt').textContent=`₹${fmt(cb)}`;
-      $('successOverlay').style.display='flex';
-      cart=[];saveCart();renderCart();
+async function onPaySuccess(res, addr, total) {
+  showLoading('Processing Order & Access...');
+  try {
+    const cb = Math.round(total * 5 / 100);
+    
+    // ১. অর্ডারের ডাটা তৈরি (এখানে ভুল ছিল)
+    const orderData = {
+      userId: currentUser.uid,
+      items: cart.map(i => ({ 
+        productId: i.id, 
+        title: i.title, 
+        price: i.price,
+        category: i.category || 'physical'
+      })),
+      total,
+      cashbackEarned: cb,
+      deliveryAddress: addr,
+      paymentId: res.razorpay_payment_id,
+      status: 'confirmed',
+      createdAt: _serverTS()
+    }; // 👈 এই ব্র্যাকেটটি আপনার স্ক্রিনশটে ভুল জায়গায় ছিল
+    
+    const r = await saveOrder(orderData);
+    
+    if (r.success) {
+      // ২. ই-বুক অ্যাক্সেস দেওয়া
+      for (const item of cart) {
+        if (item.category === 'ebook' || item.category === 'books') {
+          await _db.collection('users').doc(currentUser.uid).update({
+            purchasedItems: firebase.firestore.FieldValue.arrayUnion(item.id)
+          });
+        }
+      }
+      
+      // ৩. ইউজার ইন্টারফেস ও ডাটা আপডেট (সঠিক জায়গা)
+      $('successPaymentId').textContent = res.razorpay_payment_id;
+      $('successCashbackAmt').textContent = `₹${fmt(cb)}`;
+      $('successOverlay').style.display = 'flex';
+      
+      await updateUserEarnings(currentUser.uid, cb);
+      
+      cart = []; saveCart(); renderCart();
+      
+      // 🟢 প্রোফাইল আপডেট - এখন এটি সঠিক জায়গায় আছে
+      userProfile = await getUserProfile(currentUser.uid); 
+      
       loadUserEarnings(currentUser.uid);
-    }else showToast('Payment ok but order save failed.','warning');
-  }catch{showToast('Order save error. Payment ID: '+res.razorpay_payment_id,'warning');}
-  finally{hideLoading();}
+      loadProfileOrders(currentUser.uid);
+      showToast('Order Placed Successfully!', 'success');
+    }
+  } catch (e) {
+    showToast('Error processing order.', 'error');
+    console.error(e);
+  } finally { hideLoading(); }
 }
-
+    
 function handleBuyNow(p){
   if(!currentUser){showToast('⚠️ Login করুন to buy!','error');return;}
   cart=[{id:p.id,title:p.title,price:p.price,originalPrice:p.originalPrice||p.price,image:p.image||''}];
@@ -1607,6 +1707,55 @@ $('publishForm')?.addEventListener('submit',e=>{
     $('customSizeGroup').style.display='none';
   },600);
 });
+// ভিডিও লোড করার ফাংশন
+async function loadVideoAds() {
+  const scroll = $('videoAdsScroll');
+  if(!scroll) return;
+  try {
+    const snap = await _db.collection('videos').get();
+    const videos = snap.docs.map(d => ({id: d.id, ...d.data()}));
+    if(videos.length > 0) {
+      $('videoAdsSection').style.display = 'block';
+      scroll.innerHTML = '';
+      videos.forEach(v => {
+        const card = document.createElement('div');
+        card.style.cssText = "flex-shrink:0; width:260px; border-radius:12px; overflow:hidden; background:#000; position:relative; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.2);";
+        card.innerHTML = `
+          <video src="${v.videoUrl}" muted playsinline loop style="width:100%; height:160px; object-fit:cover;"></video>
+          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.15);">
+            <span class="material-icons-round" style="color:#fff; font-size:48px; opacity:0.9;">play_circle</span>
+          </div>
+        `;
+        const vid = card.querySelector('video');
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting) vid.play().catch(() => {});
+            else vid.pause();
+          });
+        }, { threshold: 0.5 });
+        obs.observe(card);
+        card.onclick = () => openVideoFullscreen(v.videoUrl, v.title);
+        scroll.appendChild(card);
+      });
+    }
+  } catch(e) { console.log("Video Load Error:", e); }
+}
+
+// ফুলস্ক্রিন প্লেয়ার ফাংশন
+function openVideoFullscreen(url, title) {
+  const player = document.createElement('div');
+  player.style.cssText = "position:fixed; inset:0; background:#000; z-index:9999; display:flex; flex-direction:column;";
+  player.innerHTML = `
+    <div style="padding:15px; background:rgba(0,0,0,0.7); color:#fff; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center;">
+        <button onclick="this.parentElement.parentElement.parentElement.remove()" style="color:#fff; border:none; background:none; cursor:pointer;"><span class="material-icons-round">close</span></button>
+        <span style="margin-left:15px; font-weight:700;">${title || 'Playing Video'}</span>
+      </div>
+    </div>
+    <video src="${url}" controls autoplay style="flex:1; width:100%; height:calc(100% - 60px);"></video>
+  `;
+  document.body.appendChild(player);
+}
 
 // ================================================================
 //  UTILITY
@@ -1623,4 +1772,29 @@ loadProducts('all');
 console.log('%c🛒 SayatKart Ready','color:#f97316;font-weight:700;font-size:14px');
 </script>
 </body>
-</html>
+  // ই-বুক পড়ার জন্য নিরাপদ রিডার ফাংশন
+function openSecureReader(fileUrl, title) {
+  if(!fileUrl) { showToast('File link not found.', 'error'); return; }
+  
+  const reader = document.createElement('div');
+  reader.id = "secureReader";
+  reader.style.cssText = "position:fixed; inset:0; background:#000; z-index:10001; display:flex; flex-direction:column;";
+  
+  reader.innerHTML = `
+    <div style="padding:15px; background:#1a1f3a; color:#fff; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #333;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button onclick="document.getElementById('secureReader').remove()" style="color:#fff; background:none; border:none; cursor:pointer;"><span class="material-icons-round">arrow_back</span></button>
+        <span style="font-weight:700;">${title}</span>
+      </div>
+      <span style="font-size:12px; color:#aaa;">🔒 Secure Mode</span>
+    </div>
+    <div style="flex:1; overflow:hidden; -webkit-overflow-scrolling: touch;">
+      <iframe src="${fileUrl}#toolbar=0&navpanes=0" style="width:100%; height:100%; border:none;" oncontextmenu="return false;"></iframe>
+    </div>
+  `;
+  
+  document.body.appendChild(reader);
+  // সিকিউরিটি: রাইট ক্লিক ডিসেবল করা
+  reader.addEventListener('contextmenu', e => e.preventDefault());
+}
+  </html>
