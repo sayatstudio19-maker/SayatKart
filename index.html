@@ -53,13 +53,6 @@
 [data-theme="dark"] .order-full-header{background:#12152a}
 [data-theme="dark"] .success-payment-id{background:#12152a}
 [data-theme="dark"] .theme-card{background:#1a1d2e;border-color:#2d3258}
-/* NEW DARK MODE */
-[data-theme="dark"] .video-ads-section{background:#0f1117}
-[data-theme="dark"] .pkg-card{background:#1a1d2e;border-color:#2d3258}
-[data-theme="dark"] .pkg-card.featured{background:linear-gradient(135deg,#1a1f3a,#2d1a3a)}
-[data-theme="dark"] .pdf-reader-wrap{background:#0d0d0d}
-[data-theme="dark"] .author-dashboard{background:#1a1d2e}
-[data-theme="dark"] .dash-stat-card{background:#12152a;border-color:#2d3258}
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -438,125 +431,6 @@ ul{list-style:none}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:4px}
 :focus-visible{outline:2.5px solid var(--pr);outline-offset:2px;border-radius:4px}
-
-/* ════════════════════════════════════════════════════
-   ★ NEW FEATURE CSS – নতুন ফিচার স্টাইল
-════════════════════════════════════════════════════ */
-
-/* ── VIDEO ADS ── */
-.video-ads-section{background:var(--bg);padding:10px 0 4px}
-.video-ads-heading{display:flex;align-items:center;gap:8px;padding:6px 16px 10px;font-size:1rem;font-weight:800;color:var(--th)}
-.video-ads-heading .material-icons-round{color:var(--pr)}
-.video-ads-scroll{display:flex;gap:12px;padding:0 14px 12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.video-ads-scroll::-webkit-scrollbar{display:none}
-.video-ad-card{flex-shrink:0;width:260px;border-radius:var(--r2);overflow:hidden;background:#000;position:relative;box-shadow:var(--s3);cursor:pointer}
-.video-ad-card video{width:100%;height:160px;object-fit:cover;display:block}
-.video-ad-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);transition:background var(--tf)}
-.video-ad-overlay .material-icons-round{font-size:48px;color:#fff;opacity:.9}
-.video-ad-card:hover .video-ad-overlay{background:rgba(0,0,0,.15)}
-.video-ad-mute-btn{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);border:none;border-radius:var(--rf);width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;z-index:2}
-.video-ad-mute-btn .material-icons-round{font-size:18px}
-
-/* ── PACKAGE / UPGRADE CARDS ── */
-.pkg-section{padding:14px}
-.pkg-section-title{font-size:1.1rem;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.pkg-section-title .material-icons-round{color:var(--pr)}
-.pkg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
-.pkg-card{background:var(--card);border:2px solid var(--bdr);border-radius:var(--r3);padding:20px;position:relative;transition:all var(--tn);box-shadow:var(--s2)}
-.pkg-card:hover{transform:translateY(-3px);box-shadow:var(--s4)}
-.pkg-card.featured{border-color:var(--pr);background:linear-gradient(135deg,#fff9f5,#fff3e8)}
-.pkg-popular-badge{position:absolute;top:-1px;right:16px;background:var(--pr);color:#fff;font-size:.72rem;font-weight:800;padding:4px 12px;border-radius:0 0 var(--r1) var(--r1)}
-.pkg-icon{font-size:36px;margin-bottom:8px}
-.pkg-name{font-size:1rem;font-weight:800;margin-bottom:4px}
-.pkg-price{font-family:'Baloo 2',cursive;font-size:1.8rem;font-weight:800;color:var(--pr);margin-bottom:2px}
-.pkg-cycle{font-size:.76rem;color:var(--tm);margin-bottom:12px}
-.pkg-features{list-style:none;margin-bottom:16px;display:flex;flex-direction:column;gap:6px}
-.pkg-features li{display:flex;align-items:flex-start;gap:6px;font-size:.82rem;color:var(--tb)}
-.pkg-features li .material-icons-round{font-size:16px;color:var(--ok);flex-shrink:0;margin-top:1px}
-.pkg-btn{width:100%;padding:11px;font-size:.9rem;font-weight:700;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;gap:6px;transition:all var(--tf)}
-.pkg-btn-primary{background:var(--pr);color:#fff;border:none;box-shadow:0 3px 12px rgba(249,115,22,.3)}
-.pkg-btn-primary:hover{background:var(--pr-d)}
-.pkg-btn-outline{background:transparent;color:var(--pr);border:2px solid var(--pr)}
-.pkg-btn-outline:hover{background:var(--pr-g)}
-.pkg-btn-weekly{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;box-shadow:0 3px 12px rgba(124,58,237,.3)}
-.pkg-btn-weekly:hover{background:linear-gradient(135deg,#6d28d9,#9333ea)}
-.pkg-current-badge{display:inline-flex;align-items:center;gap:4px;background:var(--ok-b);color:var(--ok);font-size:.76rem;font-weight:700;padding:6px 12px;border-radius:var(--rf);width:100%;justify-content:center}
-
-/* ── PDF READER ── */
-.pdf-reader-overlay{position:fixed;inset:0;background:#1a1a2e;z-index:calc(var(--z5) + 20);display:flex;flex-direction:column}
-.pdf-reader-header{background:#12122a;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}
-.pdf-reader-title{flex:1;color:#fff;font-weight:700;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pdf-reader-close{color:rgba(255,255,255,.7);width:36px;height:36px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;transition:background var(--tf)}
-.pdf-reader-close:hover{background:rgba(255,255,255,.1);color:#fff}
-.pdf-reader-wrap{flex:1;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:10px;user-select:none;-webkit-user-select:none}
-.pdf-reader-wrap canvas{max-width:100%;max-height:100%;box-shadow:0 8px 32px rgba(0,0,0,.5);border-radius:var(--r1)}
-.pdf-reader-footer{background:#12122a;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);flex-shrink:0}
-.pdf-reader-footer button{color:rgba(255,255,255,.8);width:38px;height:38px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;transition:background var(--tf)}
-.pdf-reader-footer button:hover:not(:disabled){background:rgba(255,255,255,.1);color:#fff}
-.pdf-reader-footer button:disabled{opacity:.3;cursor:not-allowed}
-.pdf-page-info{color:rgba(255,255,255,.7);font-size:.85rem;font-weight:600}
-.pdf-security-notice{background:rgba(220,38,38,.15);color:#fca5a5;font-size:.72rem;padding:6px 16px;text-align:center;font-weight:600;border-top:1px solid rgba(220,38,38,.2)}
-
-/* ── PAYMENT MODE MODAL ── */
-.pay-mode-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
-.pay-mode-card{border:2px solid var(--bdr);border-radius:var(--r2);padding:16px;text-align:center;cursor:pointer;transition:all var(--tf)}
-.pay-mode-card:hover,.pay-mode-card.selected{border-color:var(--pr);background:rgba(249,115,22,.06)}
-.pay-mode-icon{font-size:28px;margin-bottom:6px}
-.pay-mode-name{font-weight:700;font-size:.9rem;color:var(--th);margin-bottom:2px}
-.pay-mode-desc{font-size:.74rem;color:var(--tm)}
-
-/* ── BUY OPTIONS (₹29 weekly or direct) ── */
-.buy-options-wrap{display:flex;flex-direction:column;gap:10px;margin:14px 0}
-.buy-option-card{border:2px solid var(--bdr);border-radius:var(--r2);padding:14px 16px;cursor:pointer;transition:all var(--tf);display:flex;align-items:center;gap:12px}
-.buy-option-card:hover,.buy-option-card.selected{border-color:var(--pr);background:rgba(249,115,22,.06)}
-.buy-option-icon{width:42px;height:42px;border-radius:var(--rf);background:rgba(249,115,22,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.buy-option-icon .material-icons-round{color:var(--pr);font-size:22px}
-.buy-option-info{flex:1}
-.buy-option-name{font-weight:700;font-size:.9rem;color:var(--th)}
-.buy-option-desc{font-size:.76rem;color:var(--tm);margin-top:1px}
-.buy-option-price{font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;color:var(--pr);flex-shrink:0}
-
-/* ── AUTHOR DASHBOARD ── */
-.author-dashboard{padding:14px;display:flex;flex-direction:column;gap:14px}
-.dash-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.dash-stat-card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r2);padding:14px;text-align:center;box-shadow:var(--s1)}
-.dash-stat-icon{font-size:24px;margin-bottom:4px}
-.dash-stat-val{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;color:var(--pr)}
-.dash-stat-lbl{font-size:.72rem;color:var(--tm);font-weight:600;margin-top:2px}
-.dash-books-list{display:flex;flex-direction:column;gap:10px}
-.dash-book-item{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r2);padding:12px;display:flex;gap:12px;align-items:center;box-shadow:var(--s1)}
-.dash-book-cover{width:48px;height:60px;border-radius:6px;object-fit:cover;background:#f3f4f6;flex-shrink:0}
-.dash-book-info{flex:1;min-width:0}
-.dash-book-title{font-weight:700;font-size:.88rem;color:var(--th);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dash-book-sales{font-size:.75rem;color:var(--tm);margin-top:2px}
-.dash-book-earn{font-family:'Baloo 2',cursive;font-weight:800;color:var(--ok);font-size:.95rem}
-
-/* ── UPGRADE BADGE on profile ── */
-.upgrade-badge{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#7c3aed,#f97316);color:#fff;font-size:.72rem;font-weight:800;padding:3px 10px;border-radius:var(--rf)}
-.profile-pkg-card{background:linear-gradient(135deg,#1a1f3a,#2d1a3a);border-radius:var(--r3);padding:16px;box-shadow:var(--s3)}
-.profile-pkg-title{color:rgba(255,255,255,.7);font-size:.8rem;font-weight:600;margin-bottom:4px}
-.profile-pkg-name{color:#fff;font-size:1.1rem;font-weight:800;display:flex;align-items:center;gap:8px}
-.profile-pkg-action{margin-top:12px}
-
-/* ── DIGITAL ACCESS BUTTONS ── */
-.btn-read-now{padding:8px 4px;background:#7c3aed;border-radius:var(--r1);color:#fff;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:3px;transition:all var(--tf)}
-.btn-read-now:hover{background:#6d28d9}
-.btn-watch-now{padding:8px 4px;background:#dc2626;border-radius:var(--r1);color:#fff;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:3px;transition:all var(--tf)}
-.btn-watch-now:hover{background:#b91c1c}
-.btn-read-now .material-icons-round,.btn-watch-now .material-icons-round{font-size:15px}
-
-/* ── PUBLISH PKG PICKER ── */
-.publish-pkg-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
-.pub-pkg-card{border:2px solid var(--bdr);border-radius:var(--r2);padding:12px 8px;text-align:center;cursor:pointer;transition:all var(--tf)}
-.pub-pkg-card.selected,.pub-pkg-card:hover{border-color:var(--pr);background:rgba(249,115,22,.06)}
-.pub-pkg-price{font-family:'Baloo 2',cursive;font-size:1.2rem;font-weight:800;color:var(--pr)}
-.pub-pkg-name{font-size:.75rem;font-weight:700;color:var(--th);margin-top:2px}
-.pub-pkg-desc{font-size:.68rem;color:var(--tm);margin-top:3px;line-height:1.4}
-
-/* ── COVER IMAGE UPLOAD ── */
-.cover-preview{width:80px;height:100px;border-radius:var(--r1);object-fit:cover;background:#f3f4f6;border:2px solid var(--bdr);margin-top:8px;display:none}
-.cover-preview.show{display:block}
-
 /* ── RESPONSIVE ── */
 @media(min-width:540px){
   .product-grid{grid-template-columns:repeat(3,1fr);gap:12px;padding:0 14px 14px}
@@ -577,9 +451,6 @@ ul{list-style:none}
   .header-search-toggle{display:flex}
   .otp-box{width:38px;height:42px;font-size:1rem}
   .product-grid{grid-template-columns:repeat(2,1fr);gap:8px;padding:0 8px 8px}
-  .pkg-grid{grid-template-columns:1fr}
-  .dash-stat-row{grid-template-columns:1fr 1fr}
-  .publish-pkg-row{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -608,8 +479,6 @@ ul{list-style:none}
     <a class="drawer-link active" data-section="home" href="#"><span class="material-icons-round">home</span> Home</a>
     <a class="drawer-link" data-section="publish" href="#"><span class="material-icons-round">menu_book</span> Publish Book</a>
     <a class="drawer-link" data-section="orders" href="#"><span class="material-icons-round">shopping_bag</span> My Orders</a>
-    <a class="drawer-link" data-section="dashboard" href="#"><span class="material-icons-round">bar_chart</span> Author Dashboard</a>
-    <a class="drawer-link" data-section="upgrade" href="#"><span class="material-icons-round">workspace_premium</span> Upgrade Plan</a>
     <a class="drawer-link" data-section="profile" href="#"><span class="material-icons-round">person</span> Profile</a>
   </nav>
   <div class="drawer-footer">
@@ -665,9 +534,7 @@ ul{list-style:none}
   </div>
   <div class="category-strip" id="categoryStrip">
     <button class="category-chip active" data-cat="all">All</button>
-    <button class="category-chip" data-cat="ebook">E-Book</button>
-    <button class="category-chip" data-cat="video">Video</button>
-    <button class="category-chip" data-cat="paperback">Paperback</button>
+    <button class="category-chip" data-cat="books">Books</button>
     <button class="category-chip" data-cat="electronics">Electronics</button>
     <button class="category-chip" data-cat="fashion">Fashion</button>
     <button class="category-chip" data-cat="stationery">Stationery</button>
@@ -685,115 +552,13 @@ ul{list-style:none}
     <span class="material-icons-round empty-icon">search_off</span>
     <p>No products found.</p>
   </div>
-  <!-- VIDEO ADS SECTION -->
-  <div class="video-ads-section" id="videoAdsSection" style="display:none">
-    <div class="video-ads-heading">
-      <span class="material-icons-round">play_circle</span>
-      <span>Featured Videos</span>
-    </div>
-    <div class="video-ads-scroll" id="videoAdsScroll"></div>
-  </div>
-</section>
-
-<!-- UPGRADE PLANS -->
-<section class="section" id="section-upgrade">
-  <div class="page-hero">
-    <h2 class="page-hero-title"><span class="material-icons-round">workspace_premium</span> Upgrade Your Plan</h2>
-    <p class="page-hero-sub">একবার আপগ্রেড করুন, সব ডিজিটাল কন্টেন্ট ফ্রি উপভোগ করুন!</p>
-  </div>
-  <div class="pkg-section">
-    <div class="pkg-grid" id="pkgGrid">
-      <!-- ₹29 Weekly -->
-      <div class="pkg-card">
-        <div class="pkg-icon">⚡</div>
-        <div class="pkg-name">Weekly Pass</div>
-        <div class="pkg-price">₹29</div>
-        <div class="pkg-cycle">প্রতি সপ্তাহে অটো-ডেবিট</div>
-        <ul class="pkg-features">
-          <li><span class="material-icons-round">check</span> সব E-Book পড়ুন ফ্রি</li>
-          <li><span class="material-icons-round">check</span> সব Premium Video দেখুন</li>
-          <li><span class="material-icons-round">check</span> Razorpay Auto-Pay</li>
-          <li><span class="material-icons-round">check</span> যেকোনো সময় বাতিল করুন</li>
-        </ul>
-        <button class="pkg-btn pkg-btn-weekly" id="pkgBtn29" data-pkg="weekly" data-amount="29">
-          <span class="material-icons-round">bolt</span> Subscribe ₹29/week
-        </button>
-      </div>
-      <!-- ₹149 Basic -->
-      <div class="pkg-card featured">
-        <div class="pkg-popular-badge">⭐ Popular</div>
-        <div class="pkg-icon">📚</div>
-        <div class="pkg-name">Author Basic</div>
-        <div class="pkg-price">₹149</div>
-        <div class="pkg-cycle">এককালীন পেমেন্ট</div>
-        <ul class="pkg-features">
-          <li><span class="material-icons-round">check</span> Book Publish করুন</li>
-          <li><span class="material-icons-round">check</span> 60% Royalty পাবেন</li>
-          <li><span class="material-icons-round">check</span> সব Digital Content ফ্রি</li>
-          <li><span class="material-icons-round">check</span> Author Profile</li>
-        </ul>
-        <button class="pkg-btn pkg-btn-primary" id="pkgBtn149" data-pkg="basic" data-amount="149">
-          <span class="material-icons-round">rocket_launch</span> Get Basic ₹149
-        </button>
-      </div>
-      <!-- ₹199 Premium -->
-      <div class="pkg-card">
-        <div class="pkg-icon">👑</div>
-        <div class="pkg-name">Author Premium</div>
-        <div class="pkg-price">₹199</div>
-        <div class="pkg-cycle">এককালীন পেমেন্ট</div>
-        <ul class="pkg-features">
-          <li><span class="material-icons-round">check</span> Basic-এর সব সুবিধা</li>
-          <li><span class="material-icons-round">check</span> ISBN নম্বর পাবেন</li>
-          <li><span class="material-icons-round">check</span> Govt Author Registration</li>
-          <li><span class="material-icons-round">check</span> Premium Video Access</li>
-          <li><span class="material-icons-round">check</span> সব E-Book ফ্রি</li>
-        </ul>
-        <button class="pkg-btn pkg-btn-primary" id="pkgBtn199" data-pkg="premium" data-amount="199">
-          <span class="material-icons-round">crown</span> Get Premium ₹199
-        </button>
-      </div>
-    </div>
-    <div id="currentPkgInfo" style="margin-top:16px;display:none">
-      <div class="pkg-current-badge">
-        <span class="material-icons-round" style="font-size:16px">verified</span>
-        আপনি বর্তমানে <strong id="currentPkgName">—</strong> প্ল্যানে আছেন
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AUTHOR DASHBOARD -->
-<section class="section" id="section-dashboard">
-  <div class="page-hero">
-    <h2 class="page-hero-title"><span class="material-icons-round">bar_chart</span> Author Dashboard</h2>
-    <p class="page-hero-sub">আপনার প্রকাশিত বই ও আয়ের বিবরণ</p>
-  </div>
-  <div class="auth-warning" id="dashAuthWarning" style="display:none">
-    <span class="material-icons-round">warning</span>
-    <div><strong>Login Required!</strong><p>Dashboard দেখতে login করুন।</p></div>
-    <button class="warn-login-btn" data-section="profile">Login →</button>
-  </div>
-  <div class="author-dashboard" id="authorDashboard" style="display:none">
-    <div class="dash-stat-row">
-      <div class="dash-stat-card"><div class="dash-stat-icon">📚</div><div class="dash-stat-val" id="dashTotalBooks">0</div><div class="dash-stat-lbl">Books Published</div></div>
-      <div class="dash-stat-card"><div class="dash-stat-icon">🛒</div><div class="dash-stat-val" id="dashTotalSales">0</div><div class="dash-stat-lbl">Total Sales</div></div>
-      <div class="dash-stat-card"><div class="dash-stat-icon">💰</div><div class="dash-stat-val" id="dashTotalEarnings">₹0</div><div class="dash-stat-lbl">Total Earnings</div></div>
-    </div>
-    <div class="section-heading" style="padding:0 0 10px">
-      <h3 class="section-title" style="font-size:.95rem">My Published Books</h3>
-    </div>
-    <div class="dash-books-list" id="dashBooksList">
-      <div class="loading-spinner"><div class="spinner"></div><p>Loading...</p></div>
-    </div>
-  </div>
 </section>
 
 <!-- PUBLISH -->
 <section class="section" id="section-publish">
   <div class="page-hero">
     <h2 class="page-hero-title"><span class="material-icons-round">auto_stories</span> Publish Your Book</h2>
-    <p class="page-hero-sub">পেমেন্টের পরে ফাইল আপলোড হবে এবং Firestore-এ সেভ হবে।</p>
+    <p class="page-hero-sub">Fill in the details and we'll connect you via WhatsApp.</p>
   </div>
   <div class="auth-warning" id="publishAuthWarning" style="display:none">
     <span class="material-icons-round">warning</span>
@@ -802,28 +567,6 @@ ul{list-style:none}
   </div>
   <div class="publish-form-wrap" id="publishFormWrap">
     <form class="publish-form" id="publishForm" novalidate>
-      <!-- Package Selection -->
-      <div class="form-group">
-        <label class="form-label"><span class="material-icons-round">workspace_premium</span> Publishing Package *</label>
-        <div class="publish-pkg-row" id="publishPkgRow">
-          <div class="pub-pkg-card" data-pkg-val="weekly29">
-            <div class="pub-pkg-price">₹29</div>
-            <div class="pub-pkg-name">Weekly</div>
-            <div class="pub-pkg-desc">সাপ্তাহিক সাবস্ক্রিপশন</div>
-          </div>
-          <div class="pub-pkg-card selected" data-pkg-val="basic149">
-            <div class="pub-pkg-price">₹149</div>
-            <div class="pub-pkg-name">Basic</div>
-            <div class="pub-pkg-desc">60% Royalty</div>
-          </div>
-          <div class="pub-pkg-card" data-pkg-val="premium199">
-            <div class="pub-pkg-price">₹199</div>
-            <div class="pub-pkg-name">Premium</div>
-            <div class="pub-pkg-desc">ISBN + Govt Registration</div>
-          </div>
-        </div>
-        <input type="hidden" id="selectedPublishPkg" value="basic149"/>
-      </div>
       <div class="form-group">
         <label class="form-label" for="bookTitle"><span class="material-icons-round">title</span> Book Title *</label>
         <input type="text" id="bookTitle" class="form-input" placeholder="e.g., The Art of Coding" required/>
@@ -864,27 +607,9 @@ ul{list-style:none}
         <input type="text" id="bookAuthor" class="form-input" placeholder="Your full name" required/>
       </div>
       <div class="form-group">
-        <label class="form-label" for="bookPrice"><span class="material-icons-round">currency_rupee</span> Book Price (₹) *</label>
-        <input type="number" id="bookPrice" class="form-input" placeholder="e.g., 299" min="1" required/>
-      </div>
-      <div class="form-group">
         <label class="form-label" for="bookDesc"><span class="material-icons-round">description</span> Description</label>
         <textarea id="bookDesc" class="form-input form-textarea" rows="4" placeholder="Brief synopsis..."></textarea>
       </div>
-      <!-- Cover Image Upload -->
-      <div class="form-group">
-        <label class="form-label" for="bookCover"><span class="material-icons-round">image</span> Cover Image *</label>
-        <div class="file-upload-zone" id="coverUploadZone" style="padding:14px">
-          <input type="file" id="bookCover" class="file-input" accept="image/*"/>
-          <div id="coverUploadContent">
-            <span class="material-icons-round file-upload-icon" style="font-size:28px">add_photo_alternate</span>
-            <p class="file-upload-text" style="font-size:.85rem">Click to upload cover image</p>
-            <p class="file-upload-hint">JPG, PNG – Max 5MB</p>
-          </div>
-          <img id="coverPreview" class="cover-preview" src="" alt="Cover Preview"/>
-        </div>
-      </div>
-      <!-- PDF Upload -->
       <div class="form-group">
         <label class="form-label" for="bookPDF"><span class="material-icons-round">upload_file</span> Upload Book PDF *</label>
         <div class="file-upload-zone" id="fileUploadZone">
@@ -901,8 +626,8 @@ ul{list-style:none}
           </div>
         </div>
       </div>
-      <button type="submit" class="btn-primary" id="publishSubmitBtn" style="width:100%;padding:14px;font-size:1rem;margin-top:8px">
-        <span class="material-icons-round">payment</span> Pay & Publish
+      <button type="submit" class="btn-primary publish-submit-btn" id="publishSubmitBtn">
+        <span class="material-icons-round">whatsapp</span> Send via WhatsApp
       </button>
     </form>
   </div>
@@ -968,24 +693,8 @@ ul{list-style:none}
       <div class="profile-info">
         <h3 class="profile-name" id="profileName">User</h3>
         <p class="profile-email" id="profileEmail"></p>
-        <div id="profileUpgradeBadge" style="margin-top:4px;display:none">
-          <span class="upgrade-badge"><span class="material-icons-round" style="font-size:13px">workspace_premium</span> <span id="profileUpgradeName">—</span></span>
-        </div>
       </div>
       <button class="btn-logout" id="logoutBtn"><span class="material-icons-round">logout</span> Logout</button>
-    </div>
-    <!-- Current Package Card -->
-    <div class="profile-pkg-card" id="profilePkgCard" style="display:none">
-      <div class="profile-pkg-title">Current Plan</div>
-      <div class="profile-pkg-name">
-        <span class="material-icons-round" style="color:var(--pr);font-size:20px">workspace_premium</span>
-        <span id="profilePkgName">Free</span>
-      </div>
-      <div class="profile-pkg-action">
-        <button class="btn-primary" style="font-size:.82rem;padding:8px 14px" data-section="upgrade">
-          <span class="material-icons-round">upgrade</span> Upgrade Plan
-        </button>
-      </div>
     </div>
     <!-- Earnings -->
     <div class="earnings-card">
@@ -1052,7 +761,6 @@ ul{list-style:none}
 <nav class="bottom-nav">
   <button class="bottom-nav-btn active" data-section="home"><span class="material-icons-round">home</span><span>Home</span></button>
   <button class="bottom-nav-btn" data-section="publish"><span class="material-icons-round">menu_book</span><span>Publish</span></button>
-  <button class="bottom-nav-btn" data-section="upgrade"><span class="material-icons-round">workspace_premium</span><span>Plans</span></button>
   <button class="bottom-nav-btn" data-section="profile"><span class="material-icons-round">person</span><span>Profile</span></button>
 </nav>
 
@@ -1117,49 +825,6 @@ ul{list-style:none}
   </div>
 </div>
 
-<!-- PAYMENT MODE MODAL -->
-<div class="modal" id="payModeModal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h3><span class="material-icons-round">payment</span> Payment Method</h3>
-      <button class="modal-close" id="payModeModalClose"><span class="material-icons-round">close</span></button>
-    </div>
-    <div class="modal-body">
-      <p class="modal-subtitle">কিভাবে পেমেন্ট করতে চান?</p>
-      <div class="pay-mode-options">
-        <div class="pay-mode-card selected" id="payModeOnline" data-mode="online">
-          <div class="pay-mode-icon">💳</div>
-          <div class="pay-mode-name">Online Pay</div>
-          <div class="pay-mode-desc">Razorpay – Card, UPI, Net Banking</div>
-        </div>
-        <div class="pay-mode-card" id="payModeCod" data-mode="cod">
-          <div class="pay-mode-icon">🚚</div>
-          <div class="pay-mode-name">Cash on Delivery</div>
-          <div class="pay-mode-desc">পৌঁছে দেওয়ার সময় টাকা দিন</div>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn-outline" id="payModeCancel">Cancel</button>
-      <button class="btn-primary" id="payModeConfirm"><span class="material-icons-round">check</span> Confirm</button>
-    </div>
-  </div>
-</div>
-
-<!-- BUY OPTIONS MODAL (₹29 sub or direct price) -->
-<div class="modal" id="buyOptionsModal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h3><span class="material-icons-round">shopping_bag</span> Purchase Options</h3>
-      <button class="modal-close" id="buyOptionsModalClose"><span class="material-icons-round">close</span></button>
-    </div>
-    <div class="modal-body">
-      <p class="modal-subtitle" id="buyOptionsSubtitle">কিভাবে কিনতে চান?</p>
-      <div class="buy-options-wrap" id="buyOptionsWrap"></div>
-    </div>
-  </div>
-</div>
-
 <!-- ORDER STATUS MODAL -->
 <div class="modal" id="orderStatusModal">
   <div class="modal-content">
@@ -1198,29 +863,12 @@ ul{list-style:none}
           <span class="modal-discount-badge" id="productModalDisc" style="display:none"></span>
         </div>
         <p class="product-modal-desc" id="productModalDesc"></p>
-        <div class="product-modal-actions" id="productModalActions">
+        <div class="product-modal-actions">
           <button class="btn-outline" id="productModalAddCart"><span class="material-icons-round">add_shopping_cart</span> Add to Cart</button>
           <button class="btn-primary" id="productModalBuyNow"><span class="material-icons-round">flash_on</span> Buy Now</button>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- PDF READER OVERLAY -->
-<div class="pdf-reader-overlay" id="pdfReaderOverlay" style="display:none">
-  <div class="pdf-reader-header">
-    <button class="pdf-reader-close" id="pdfReaderClose"><span class="material-icons-round">close</span></button>
-    <div class="pdf-reader-title" id="pdfReaderTitle">Book Title</div>
-  </div>
-  <div class="pdf-reader-wrap" id="pdfReaderWrap">
-    <canvas id="pdfCanvas"></canvas>
-  </div>
-  <div class="pdf-security-notice">🔒 This content is protected. Downloading, copying and printing are disabled.</div>
-  <div class="pdf-reader-footer">
-    <button id="pdfPrevBtn" disabled><span class="material-icons-round">chevron_left</span></button>
-    <span class="pdf-page-info" id="pdfPageInfo">Page 1 / 1</span>
-    <button id="pdfNextBtn"><span class="material-icons-round">chevron_right</span></button>
   </div>
 </div>
 
@@ -1241,7 +889,7 @@ ul{list-style:none}
       </div>
     </div>
     <h2 class="success-title">Order Placed! 🎉</h2>
-    <p class="success-msg" id="successMsg">Payment successful. Thank you for shopping with SayatKart!</p>
+    <p class="success-msg">Payment successful. Thank you for shopping with SayatKart!</p>
     <div class="success-payment-id"><span class="material-icons-round">receipt</span> Payment ID: <span id="successPaymentId">—</span></div>
     <div class="success-cashback-earned"><span class="material-icons-round">stars</span> You earned <strong id="successCashbackAmt">₹0</strong> cashback!</div>
     <button class="btn-primary" id="successDoneBtn" style="width:100%"><span class="material-icons-round">home</span> Continue Shopping</button>
@@ -1260,13 +908,11 @@ ul{list-style:none}
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 <!-- Razorpay -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<!-- PDF.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <script>
 'use strict';
 // ================================================================
-//  ★ FIREBASE CONFIG
+//  ★ FIREBASE CONFIG – তোমার actual values
 // ================================================================
 const firebaseConfig = {
   apiKey:            "AIzaSyDgJGxWxWGxszN4mz261wWKoB8kK_gxCIU",
@@ -1278,19 +924,17 @@ const firebaseConfig = {
   measurementId:     "G-FKZZJBMK81"
 };
 // ================================================================
-//  ★ RAZORPAY KEY
+//  ★ RAZORPAY KEY – তোমার key দাও
 // ================================================================
-const RAZORPAY_KEY_ID = "rzp_live_SkOEXpqOtkBrwk";
-// PKG NAME MAP (global)
-const PKG_LABELS = {
-  free:    'Free Plan',
-  weekly:  '⚡ Weekly Pass (₹29/week)',
-  basic:   '📚 Author Basic (₹149)',
-  premium: '👑 Author Premium (₹199)'
+const RAZORPAY_KEY_ID = "rzp_test_XXXXXXXXXXXXXXXX"; // 🔴 Replace
+
+const APP_CONFIG = {
+  appName:"SayatKart", currencySymbol:"₹", cashbackPercent:5,
+  whatsappNumber:"919734398907", // hardcoded admin
+  razorpay:{ keyId:RAZORPAY_KEY_ID, name:"SayatKart", description:"Order Payment", image:"", theme:{color:"#f97316"} }
 };
 
-
-// ── Firebase Init ─────────────────────────────────────────────
+// ── Firebase Init ────────────────────────────────────────────────
 let _auth, _db, _storage;
 try {
   firebase.initializeApp(firebaseConfig);
@@ -1301,240 +945,53 @@ try {
   console.log('%c✅ Firebase Ready','color:#16a34a;font-weight:700');
 } catch(e) {
   console.error('Firebase init error:',e);
-  alert('Firebase init error: '+e.message);
+  alert('Firebase error: '+e.message);
 }
 
-const _serverTS   = ()  => firebase.firestore.FieldValue.serverTimestamp();
-const _increment  = n   => firebase.firestore.FieldValue.increment(n);
-const _arrayUnion = (...v) => firebase.firestore.FieldValue.arrayUnion(...v);
+const _serverTS  = ()=>firebase.firestore.FieldValue.serverTimestamp();
+const _increment = n =>firebase.firestore.FieldValue.increment(n);
 
-// ================================================================
-//  ★ FIRESTORE / STORAGE HELPERS
-// ================================================================
-
-/* ── User Profile ── */
+// ── Firestore Helpers ────────────────────────────────────────────
 async function saveUserProfile(user){
-  if(!user) return;
+  if(!user)return;
   try{
-    const ref  = _db.collection('users').doc(user.uid);
-    const snap = await ref.get();
-    const base = {
-      uid:user.uid, displayName:user.displayName||'',
-      email:user.email||'', phone:user.phoneNumber||'',
-      photoURL:user.photoURL||'', updatedAt:_serverTS()
-    };
-    if(!snap.exists){
-      // FIX: initialise purchasedItems array so arrayUnion never fails
-      await ref.set({...base, totalEarnings:0, pkg:'free',
-        purchasedItems:[], pkgUpdatedAt:_serverTS(), createdAt:_serverTS()});
-    } else {
-      await ref.update(base);
-      // ensure purchasedItems field exists on old docs
-      if(!snap.data().purchasedItems){
-        await ref.update({purchasedItems:[]});
-      }
-    }
-  }catch(e){ console.error('saveUserProfile:',e); }
+    const ref=_db.collection('users').doc(user.uid);
+    const snap=await ref.get();
+    const f={uid:user.uid,displayName:user.displayName||'',email:user.email||'',phone:user.phoneNumber||'',photoURL:user.photoURL||'',updatedAt:_serverTS()};
+    if(!snap.exists) await ref.set({...f,totalEarnings:0,createdAt:_serverTS()});
+    else await ref.update(f);
+  }catch(e){console.error(e)}
 }
-
 async function getUserProfile(uid){
-  try{
-    const s = await _db.collection('users').doc(uid).get();
-    return s.exists ? s.data() : null;
-  }catch(e){ console.error('getUserProfile:',e); return null; }
+  try{const s=await _db.collection('users').doc(uid).get();return s.exists?s.data():null;}catch(e){return null;}
 }
-
-async function updateUserPkg(uid, pkg, extra={}){
-  try{
-    await _db.collection('users').doc(uid).update({
-      pkg, pkgUpdatedAt:_serverTS(), ...extra
-    });
-    return{success:true};
-  }catch(e){ console.error('updateUserPkg:',e); return{success:false}; }
-}
-
-// FIX: use set+merge so it works even if purchasedItems field is missing
-async function addPurchasedItem(uid, productId){
-  try{
-    await _db.collection('users').doc(uid).set(
-      { purchasedItems: _arrayUnion(productId) },
-      { merge:true }
-    );
-    return{success:true};
-  }catch(e){ console.error('addPurchasedItem:',e); return{success:false}; }
-}
-
-async function updateUserEarnings(uid, amt){
-  try{
-    await _db.collection('users').doc(uid).update({
-      totalEarnings:_increment(amt), updatedAt:_serverTS()
-    });
-    return{success:true};
-  }catch(e){ return{success:false}; }
-}
-
-/* ── Address ── */
-async function saveDeliveryAddress(uid, address){
-  try{
-    await _db.collection('users').doc(uid).update({savedAddress:address, updatedAt:_serverTS()});
-    return{success:true};
-  }catch(e){ return{success:false}; }
+async function saveDeliveryAddress(uid,address){
+  try{await _db.collection('users').doc(uid).update({savedAddress:address,updatedAt:_serverTS()});return{success:true};}catch(e){return{success:false,error:e};}
 }
 async function getSavedAddress(uid){
-  try{ const p=await getUserProfile(uid); return p?.savedAddress??null; }
-  catch{ return null; }
+  try{const p=await getUserProfile(uid);return p?.savedAddress??null;}catch(e){return null;}
 }
-
-/* ── Orders – FIX: robust save + fallback query (no index required) ── */
 async function saveOrder(data){
-  try{
-    // Build a clean object – remove undefined values that Firestore rejects
-    const clean = Object.fromEntries(
-      Object.entries({...data, status:'confirmed', createdAt:_serverTS()})
-        .filter(([,v]) => v !== undefined)
-    );
-    console.log('💾 Saving order to Firestore…', clean);
-    const ref = await _db.collection('orders').add(clean);
-    console.log('✅ Order saved:', ref.id);
-    return{success:true, orderId:ref.id};
-  }catch(e){
-    console.error('❌ saveOrder FAILED:', e.code, e.message);
-    return{success:false, error:e.message, code:e.code};
-  }
+  try{const r=await _db.collection('orders').add({...data,status:'confirmed',createdAt:_serverTS()});return{success:true,orderId:r.id};}catch(e){return{success:false,error:e};}
 }
-
-// FIX: fallback sort in JS so no composite index needed
 async function getUserOrders(uid){
-  try{
-    // try with orderBy first (needs Firestore index)
-    const s = await _db.collection('orders')
-      .where('userId','==',uid)
-      .orderBy('createdAt','desc')
-      .limit(30).get();
-    return s.docs.map(d=>({id:d.id,...d.data()}));
-  }catch(e){
-    console.warn('getUserOrders index missing, using fallback:', e.message);
-    try{
-      const s2 = await _db.collection('orders')
-        .where('userId','==',uid).limit(30).get();
-      const orders = s2.docs.map(d=>({id:d.id,...d.data()}));
-      // sort client-side
-      return orders.sort((a,b)=>{
-        const ta = a.createdAt?.toDate?.()?.getTime() || 0;
-        const tb = b.createdAt?.toDate?.()?.getTime() || 0;
-        return tb - ta;
-      });
-    }catch(e2){ console.error('getUserOrders fallback failed:', e2); return []; }
-  }
+  try{const s=await _db.collection('orders').where('userId','==',uid).orderBy('createdAt','desc').limit(20).get();return s.docs.map(d=>({id:d.id,...d.data()}));}catch(e){return[];}
 }
-
-/* ── Products ── */
+async function getOrderById(id){
+  try{const s=await _db.collection('orders').doc(id).get();return s.exists?{id:s.id,...s.data()}:null;}catch(e){return null;}
+}
+async function updateUserEarnings(uid,amt){
+  try{await _db.collection('users').doc(uid).update({totalEarnings:_increment(amt),updatedAt:_serverTS()});return{success:true};}catch(e){return{success:false};}
+}
+async function saveWithdrawalRequest(uid,upiId,amount,userInfo){
+  try{await _db.collection('withdrawals').add({userId:uid,upiId,amount:parseFloat(amount),userInfo,status:'pending',createdAt:_serverTS()});return{success:true};}catch(e){return{success:false};}
+}
 async function fetchProducts(cat='all'){
   try{
-    const base = _db.collection('products');
-    let q = cat==='all'
-      ? base.where('inStock','==',true).orderBy('createdAt','desc')
-      : base.where('category','==',cat).where('inStock','==',true).orderBy('createdAt','desc');
-    const s = await q.get();
-    return s.docs.map(d=>({id:d.id,...d.data()}));
-  }catch(e){ console.error('fetchProducts:',e); return []; }
-}
-
-/* ── Videos ── */
-async function fetchVideos(){
-  try{
-    const s = await _db.collection('videos')
-      .where('active','==',true).orderBy('createdAt','desc').get();
-    return s.docs.map(d=>({id:d.id,...d.data()}));
-  }catch{ return []; }
-}
-
-/* ── Author Books ── */
-async function fetchAuthorBooks(uid){
-  try{
-    const s = await _db.collection('products')
-      .where('authorId','==',uid).orderBy('createdAt','desc').get();
-    return s.docs.map(d=>({id:d.id,...d.data()}));
-  }catch(e){
-    // fallback without orderBy
-    try{
-      const s2 = await _db.collection('products').where('authorId','==',uid).get();
-      return s2.docs.map(d=>({id:d.id,...d.data()}))
-        .sort((a,b)=>(b.createdAt?.toDate?.()?.getTime()||0)-(a.createdAt?.toDate?.()?.getTime()||0));
-    }catch{ return []; }
-  }
-}
-
-/* ── Publish ── */
-async function savePublishedBook(data){
-  try{
-    const r = await _db.collection('products').add({
-      ...data, inStock:true, createdAt:_serverTS()
-    });
-    return{success:true, id:r.id};
-  }catch(e){ console.error('savePublishedBook:',e); return{success:false, error:e.message}; }
-}
-
-/* ── Firebase Storage upload ── */
-async function uploadToStorage(file, path, onProgress){
-  return new Promise((resolve)=>{
-    try{
-      const ref      = _storage.ref(path);
-      const uploadTask = ref.put(file);
-      uploadTask.on('state_changed',
-        snap=>{
-          const pct = Math.round(snap.bytesTransferred/snap.totalBytes*100);
-          if(onProgress) onProgress(pct);
-        },
-        err=>{ console.error('Upload error:',err); resolve({success:false,error:err.message}); },
-        async()=>{
-          const url = await uploadTask.snapshot.ref.getDownloadURL();
-          resolve({success:true, url});
-        }
-      );
-    }catch(e){ resolve({success:false,error:e.message}); }
-  });
-}
-
-/* ── Withdrawal ── */
-async function saveWithdrawalRequest(uid, upiId, amount, userInfo){
-  try{
-    await _db.collection('withdrawals').add({
-      userId:uid, upiId, amount:parseFloat(amount),
-      userInfo, status:'pending', createdAt:_serverTS()
-    });
-    return{success:true};
-  }catch(e){ return{success:false}; }
-}
-
-/* ── Weekly Subscription Firestore record ── */
-async function saveWeeklySubRecord(uid, paymentId){
-  const nextBill = new Date();
-  nextBill.setDate(nextBill.getDate()+7);
-  try{
-    await _db.collection('subscriptions').doc(uid).set({
-      userId:uid, pkg:'weekly', paymentId,
-      startedAt:_serverTS(),
-      nextBillAt: firebase.firestore.Timestamp.fromDate(nextBill),
-      active:true, failCount:0, updatedAt:_serverTS()
-    }, {merge:true});
-    return{success:true};
-  }catch(e){ return{success:false}; }
-}
-
-async function getWeeklySubRecord(uid){
-  try{
-    const s = await _db.collection('subscriptions').doc(uid).get();
-    return s.exists ? s.data() : null;
-  }catch{ return null; }
-}
-
-// ================================================================
-//  ★ PDF.js Worker
-// ================================================================
-if(typeof pdfjsLib !== 'undefined'){
-  pdfjsLib.GlobalWorkerOptions.workerSrc =
-    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    const base=_db.collection('products');
+    let q=cat==='all'?base.where('inStock','==',true).orderBy('createdAt','desc'):base.where('category','==',cat).where('inStock','==',true).orderBy('createdAt','desc');
+    const s=await q.get();return s.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){console.error(e);return[];}
 }
 
 // ================================================================
@@ -1543,12 +1000,8 @@ if(typeof pdfjsLib !== 'undefined'){
 let currentUser=null, allProducts=[], cart=[], currentModalProduct=null;
 let recaptchaVerifier=null, confirmationResult=null;
 let isDarkMode=localStorage.getItem('sayatkart_theme')==='dark';
-let userProfile=null;
-let pendingAddr=null;
-let currentPdfDoc=null, currentPdfPage=1;
-let weeklyTimer=null;
 
-// ── DOM shortcuts ─────────────────────────────────────────────
+// ── DOM shortcuts ────────────────────────────────────────────────
 const $=id=>document.getElementById(id);
 
 // ================================================================
@@ -1579,8 +1032,6 @@ function switchSection(name){
   closeDrawer();
   window.scrollTo({top:0,behavior:'smooth'});
   if(name==='orders') loadOrdersPage();
-  if(name==='dashboard') loadAuthorDashboard();
-  if(name==='upgrade') renderUpgradePage();
 }
 window.switchSection=switchSection;
 
@@ -1646,258 +1097,99 @@ $('addressModalCancel')?.addEventListener('click',()=>closeModal($('addressModal
 $('orderStatusModalClose')?.addEventListener('click',()=>closeModal($('orderStatusModal')));
 $('orderStatusClose2')?.addEventListener('click',()=>closeModal($('orderStatusModal')));
 $('productModalClose')?.addEventListener('click',()=>closeModal($('productModal')));
-$('payModeModalClose')?.addEventListener('click',()=>closeModal($('payModeModal')));
-$('payModeCancel')?.addEventListener('click',()=>closeModal($('payModeModal')));
-$('buyOptionsModalClose')?.addEventListener('click',()=>closeModal($('buyOptionsModal')));
 
 // ================================================================
 //  AUTH
 // ================================================================
-_auth.onAuthStateChanged(async user=>{
-  currentUser = user;
-  if(user){
-    await saveUserProfile(user);
-    userProfile = await getUserProfile(user.uid);
-    loadUserEarnings(user.uid);
-    loadProfileOrders(user.uid);
-    // FIX: start weekly subscription checker on every login
-    startWeeklySubChecker(user.uid);
-  } else {
-    stopWeeklySubChecker();
-    userProfile = null;
-  }
+_auth.onAuthStateChanged(user=>{
+  currentUser=user;
   updateAuthUI(user);
-  // update publish form visibility
-  if($('publishAuthWarning')) $('publishAuthWarning').style.display = user?'none':'flex';
-  if($('publishFormWrap'))    $('publishFormWrap').style.display    = user?'block':'none';
+  if(user){saveUserProfile(user);loadUserEarnings(user.uid);loadProfileOrders(user.uid);}
 });
 
-// ================================================================
-//  ★ WEEKLY AUTO-PAY SYSTEM
-//  – Checks on login + every hour while app is open
-//  – If nextBillAt passed → auto-open Razorpay for ₹29 renewal
-// ================================================================
-function startWeeklySubChecker(uid){
-  stopWeeklySubChecker();
-  checkAndRenewWeekly(uid);
-  weeklyTimer = setInterval(()=>checkAndRenewWeekly(uid), 60*60*1000);
-}
-function stopWeeklySubChecker(){
-  if(weeklyTimer){ clearInterval(weeklyTimer); weeklyTimer=null; }
-}
-
-async function checkAndRenewWeekly(uid){
-  try{
-    if(!uid) return;
-    const sub = await getWeeklySubRecord(uid);
-    if(!sub || !sub.active || sub.pkg!=='weekly') return;
-    const now      = new Date();
-    const nextBill = sub.nextBillAt?.toDate?.();
-    if(!nextBill || now < nextBill) return; // not due yet
-    console.log('⚡ Weekly renewal due. Opening Razorpay…');
-    showToast('⚡ সাপ্তাহিক সাবস্ক্রিপশন রিনিউ হচ্ছে…','info',5000);
-    await triggerWeeklyRenewal(uid);
-  }catch(e){ console.error('weeklyCheck error:',e); }
-}
-
-async function triggerWeeklyRenewal(uid){
-  const options={
-    key:RAZORPAY_KEY_ID, amount:2900, currency:'INR',
-    name:'SayatKart', description:'⚡ Weekly Pass Renewal – ₹29',
-    prefill:{
-      name:   currentUser?.displayName||'',
-      email:  currentUser?.email||'',
-      contact:currentUser?.phoneNumber?.replace('+91','')||''
-    },
-    theme:{color:'#7c3aed'},
-    handler: async res=>{
-      const nextBill = new Date();
-      nextBill.setDate(nextBill.getDate()+7);
-      await _db.collection('subscriptions').doc(uid).update({
-        nextBillAt: firebase.firestore.Timestamp.fromDate(nextBill),
-        lastPaymentId: res.razorpay_payment_id,
-        failCount:0, updatedAt:_serverTS()
-      });
-      await updateUserPkg(uid,'weekly');
-      // log in orders for transparency
-      await _db.collection('orders').add({
-        userId:uid, type:'subscription_renewal', pkg:'weekly',
-        total:29, paymentId:res.razorpay_payment_id,
-        status:'confirmed', createdAt:_serverTS()
-      });
-      userProfile = await getUserProfile(uid);
-      updateAuthUI(currentUser);
-      showToast(`✅ Weekly Pass রিনিউ হয়েছে! পরের বিল: ${fmtDate(nextBill)}`,'success',6000);
-    },
-    modal:{
-      ondismiss: async()=>{
-        await _db.collection('subscriptions').doc(uid).update({
-          failCount:_increment(1), updatedAt:_serverTS()
-        });
-        const sub2 = await getWeeklySubRecord(uid);
-        if((sub2?.failCount||0)>=2){
-          await updateUserPkg(uid,'free');
-          await _db.collection('subscriptions').doc(uid).update({active:false});
-          userProfile = await getUserProfile(uid);
-          updateAuthUI(currentUser);
-          showToast('⚠️ Renewal ব্যর্থ ২ বার। PKG Free-তে ফিরে গেছে।','error',7000);
-          loadProducts('all');
-        } else {
-          showToast('⚠️ Weekly renewal বাতিল। আবার চেষ্টা করুন।','warning');
-        }
-      }
-    }
-  };
-  try{
-    const rzp = new window.Razorpay(options);
-    rzp.on('payment.failed', err=>{
-      showToast('Renewal failed: '+(err?.error?.description||'Error'),'error');
-    });
-    rzp.open();
-  }catch(e){ console.error('Renewal Razorpay error:',e); }
-}
-
-// ── PKG helpers ──
-function isUpgradedUser(){
-  return !!(userProfile && ['weekly','basic','premium'].includes(userProfile.pkg));
-}
-function hasPurchased(pid){
-  return userProfile?.purchasedItems?.includes(pid)||false;
-}
-function canAccessFree(p){
-  const isDigital = p.category==='ebook'||p.category==='video';
-  if(!isDigital) return false;
-  return (p.accessType==='upgrade' && isUpgradedUser()) || hasPurchased(p.id);
-}
-
-// ── updateAuthUI – FIX: always show pkg card with correct plan ──
 function updateAuthUI(user){
-  const ok    = !!user;
-  const name  = user?.displayName||user?.phoneNumber||'User';
-  const email = user?.email||user?.phoneNumber||'';
-  const init  = (name[0]||'U').toUpperCase();
-
-  // Drawer
-  $('drawerUser').style.display     = ok?'flex':'none';
-  $('drawerLogout').style.display   = ok?'flex':'none';
-  $('drawerLoginBtn').style.display = ok?'none':'flex';
-  $('drawerAvatar').textContent     = init;
-  $('drawerUserName').textContent   = name;
-  $('drawerUserEmail').textContent  = email;
-
-  // Profile section
-  $('profileLoginPrompt').style.display = ok?'none':'block';
-  $('profileLoggedIn').style.display    = ok?'flex':'none';
-  $('profileAvatar').textContent        = init;
-  $('profileName').textContent          = name;
-  $('profileEmail').textContent         = email;
-
+  const ok=!!user;
+  const name=user?.displayName||user?.phoneNumber||'User';
+  const email=user?.email||user?.phoneNumber||'';
+  const init=(name[0]||'U').toUpperCase();
+  // drawer
+  $('drawerUser').style.display=ok?'flex':'none';
+  $('drawerLogout').style.display=ok?'flex':'none';
+  $('drawerLoginBtn').style.display=ok?'none':'flex';
+  $('drawerAvatar').textContent=init;
+  $('drawerUserName').textContent=name;
+  $('drawerUserEmail').textContent=email;
+  // profile
+  $('profileLoginPrompt').style.display=ok?'none':'block';
+  $('profileLoggedIn').style.display=ok?'flex':'none';
+  $('profileAvatar').textContent=init;
+  $('profileName').textContent=name;
+  $('profileEmail').textContent=email;
   if(user?.photoURL){
-    [$('drawerAvatar'),$('profileAvatar')].forEach(el=>{
-      if(el) el.innerHTML=`<img src="${user.photoURL}" alt="${name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
-    });
-  }
-
-  // FIX: PKG badge & card – always visible for logged-in users
-  if(ok){
-    const pkg     = userProfile?.pkg||'free';
-    const pkgName = PKG_LABELS[pkg]||'Free Plan';
-    // Badge (only for paid plans)
-    if(pkg!=='free'){
-      $('profileUpgradeBadge').style.display = 'block';
-      $('profileUpgradeName').textContent    = pkgName;
-    } else {
-      $('profileUpgradeBadge').style.display = 'none';
-    }
-    // PKG card always shown
-    $('profilePkgCard').style.display   = 'block';
-    $('profilePkgName').textContent     = pkgName;
-    // Weekly next billing
-    if(pkg==='weekly') renderWeeklyExpiryInfo();
+    [$('drawerAvatar'),$('profileAvatar')].forEach(el=>{if(el) el.innerHTML=`<img src="${user.photoURL}" alt="${name}"/>`;});
   }
 }
 
-async function renderWeeklyExpiryInfo(){
-  if(!currentUser || userProfile?.pkg!=='weekly') return;
-  try{
-    const sub      = await getWeeklySubRecord(currentUser.uid);
-    const pkgCard  = $('profilePkgCard');
-    if(!sub||!pkgCard) return;
-    pkgCard.querySelector('.pkg-expiry-line')?.remove();
-    if(sub.nextBillAt){
-      const line = document.createElement('p');
-      line.className  = 'pkg-expiry-line';
-      line.style.cssText='font-size:.76rem;color:rgba(255,255,255,.6);margin-top:6px';
-      line.textContent= `⏰ পরের billing: ${fmtDate(sub.nextBillAt.toDate())}`;
-      pkgCard.appendChild(line);
-    }
-  }catch(e){}
-}
-
-// ── Google Login ──
+// Google Login
 $('googleLoginBtn')?.addEventListener('click',async()=>{
-  showLoading('Google দিয়ে Sign in হচ্ছে…');
+  showLoading('Signing in with Google…');
   try{
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider=new firebase.auth.GoogleAuthProvider();
     await _auth.signInWithPopup(provider);
-    showToast('✅ Google Login সফল!','success');
+    showToast('✅ Logged in with Google!','success');
     switchSection('profile');
   }catch(err){
     showToast('Google login failed: '+(err.message||err.code),'error');
-  }finally{ hideLoading(); }
+  }finally{hideLoading();}
 });
 
-// ── Phone OTP ──
+// Phone OTP
 async function sendOtp(){
-  const phone = $('loginPhoneInput')?.value.trim();
-  if(!/^\d{10}$/.test(phone)){ showToast('Valid 10-digit number required.','error'); return; }
-  showLoading('OTP পাঠানো হচ্ছে…');
+  const phone=$('loginPhoneInput')?.value.trim();
+  if(!/^\d{10}$/.test(phone)){showToast('Valid 10-digit number required.','error');return;}
+  showLoading('Sending OTP…');
   try{
     if(!recaptchaVerifier){
-      recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container',
-        {size:'invisible', callback:()=>{}});
+      recaptchaVerifier=new firebase.auth.RecaptchaVerifier('recaptcha-container',{size:'invisible',callback:()=>{}});
     }
-    confirmationResult = await _auth.signInWithPhoneNumber('+91'+phone, recaptchaVerifier);
+    confirmationResult=await _auth.signInWithPhoneNumber('+91'+phone,recaptchaVerifier);
     $('otpVerifyWrap').style.display='block';
     $('otpInputGroup')?.querySelectorAll('.otp-box')[0]?.focus();
-    showToast('OTP পাঠানো হয়েছে!','success');
+    showToast('OTP sent!','success');
   }catch(err){
     showToast('OTP failed: '+(err.message||err.code),'error');
-    if(recaptchaVerifier){ recaptchaVerifier.clear(); recaptchaVerifier=null; }
-  }finally{ hideLoading(); }
+    if(recaptchaVerifier){recaptchaVerifier.clear();recaptchaVerifier=null;}
+  }finally{hideLoading();}
 }
 $('sendOtpBtn')?.addEventListener('click',sendOtp);
 $('resendOtpBtn')?.addEventListener('click',sendOtp);
 
 $('verifyOtpBtn')?.addEventListener('click',async()=>{
-  const boxes = $('otpInputGroup')?.querySelectorAll('.otp-box');
-  const otp   = Array.from(boxes||[]).map(b=>b.value).join('');
-  if(otp.length!==6){ showToast('সম্পূর্ণ 6-digit OTP দিন।','error'); return; }
-  showLoading('OTP verify হচ্ছে…');
+  const boxes=$('otpInputGroup')?.querySelectorAll('.otp-box');
+  const otp=Array.from(boxes||[]).map(b=>b.value).join('');
+  if(otp.length!==6){showToast('Enter complete 6-digit OTP.','error');return;}
+  showLoading('Verifying…');
   try{
     await confirmationResult.confirm(otp);
     showToast('✅ Phone verified!','success');
     switchSection('profile');
-  }catch{ showToast('Invalid OTP। আবার চেষ্টা করুন।','error'); }
-  finally{ hideLoading(); }
+  }catch{showToast('Invalid OTP. Try again.','error');}
+  finally{hideLoading();}
 });
 
+// OTP box auto-advance
 document.querySelectorAll('.otp-box').forEach((box,i,arr)=>{
   box.addEventListener('input',e=>{
-    e.target.value = e.target.value.slice(-1);
+    e.target.value=e.target.value.slice(-1);
     e.target.classList.toggle('filled',!!e.target.value);
-    if(e.target.value && arr[i+1]) arr[i+1].focus();
+    if(e.target.value&&arr[i+1]) arr[i+1].focus();
   });
-  box.addEventListener('keydown',e=>{
-    if(e.key==='Backspace'&&!e.target.value&&arr[i-1]) arr[i-1].focus();
-  });
+  box.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!e.target.value&&arr[i-1]) arr[i-1].focus();});
 });
 
 async function handleLogout(){
   showLoading('Logging out…');
-  stopWeeklySubChecker();
   await _auth.signOut();
-  userProfile=null; cart=[]; saveCart();
   showToast('Logged out.','info');
   switchSection('home');
   hideLoading();
@@ -1912,15 +1204,6 @@ async function loadProducts(cat='all'){
   $('noProductsState').style.display='none';
   allProducts=await fetchProducts(cat);
   renderProducts(allProducts);
-  // load videos after products
-  loadVideoAds();
-}
-
-function isUpgradedUser(){
-  return userProfile && ['weekly','basic','premium'].includes(userProfile.pkg);
-}
-function hasPurchased(productId){
-  return userProfile?.purchasedItems?.includes(productId)||false;
 }
 
 function renderProducts(products){
@@ -1929,52 +1212,28 @@ function renderProducts(products){
   $('noProductsState').style.display='none';
   products.forEach(p=>{
     const disc=p.originalPrice>p.price?Math.round((1-p.price/p.originalPrice)*100):0;
-    const isDigital=p.category==='ebook'||p.category==='video';
-    const upgraded=isUpgradedUser();
-    const purchased=hasPurchased(p.id);
-    // digital access: upgraded user gets free if product is 'upgrade' type OR if user purchased it
-    const hasFreeAccess=isDigital&&((p.accessType==='upgrade'&&upgraded)||purchased);
-
     const card=document.createElement('div');
     card.className='product-card';
-    let actionBtns='';
-    if(isDigital&&hasFreeAccess){
-      const icon=p.category==='ebook'?'menu_book':'play_circle';
-      const label=p.category==='ebook'?'Read Now':'Watch Now';
-      const cls=p.category==='ebook'?'btn-read-now':'btn-watch-now';
-      actionBtns=`<button class="${cls} digital-access-btn" data-id="${p.id}" data-type="${p.category}" data-url="${p.fileUrl||''}" data-title="${esc(p.title)}" style="grid-column:span 2"><span class="material-icons-round">${icon}</span> ${label}</button>`;
-    } else {
-      actionBtns=`<button class="btn-add-cart"><span class="material-icons-round">add_shopping_cart</span> Add</button>
-        <button class="btn-buy-now"><span class="material-icons-round">flash_on</span> Buy</button>`;
-    }
     card.innerHTML=`
       <div class="product-card-img-wrap">
         <img src="${p.image||'https://placehold.co/300x300?text=No+Image'}" alt="${esc(p.title)}" loading="lazy" onerror="this.src='https://placehold.co/300x300?text=Error'"/>
-        ${disc?`<span class="discount-badge">${disc}% OFF`:''}
-        ${isDigital?`<span class="discount-badge" style="left:auto;right:8px;background:#7c3aed">${p.category==='ebook'?'📖 E-Book':'🎬 Video'}</span>`:''}
+        ${disc?`<span class="discount-badge">${disc}% OFF</span>`:''}
       </div>
       <div class="product-card-body">
         <p class="product-card-title">${esc(p.title)}</p>
         <div class="product-card-prices">
-          <span class="product-price">${hasFreeAccess?'<span style="color:var(--ok);font-size:.75rem">✅ Purchased</span>':`₹${fmt(p.price)}`}</span>
-          ${(!hasFreeAccess&&p.originalPrice>p.price)?`<span class="product-original-price">₹${fmt(p.originalPrice)}</span>`:''}
+          <span class="product-price">₹${fmt(p.price)}</span>
+          ${p.originalPrice>p.price?`<span class="product-original-price">₹${fmt(p.originalPrice)}</span>`:''}
         </div>
       </div>
-      <div class="product-card-actions" style="display:grid;grid-template-columns:${isDigital&&hasFreeAccess?'1fr':'1fr 1fr'}">
-        ${actionBtns}
+      <div class="product-card-actions">
+        <button class="btn-add-cart"><span class="material-icons-round">add_shopping_cart</span> Add</button>
+        <button class="btn-buy-now"><span class="material-icons-round">flash_on</span> Buy</button>
       </div>`;
     card.querySelector('.product-card-body')?.addEventListener('click',()=>openProductModal(p));
     card.querySelector('.product-card-img-wrap')?.addEventListener('click',()=>openProductModal(p));
-    if(!isDigital||!hasFreeAccess){
-      card.querySelector('.btn-add-cart')?.addEventListener('click',e=>{e.stopPropagation();addToCart(p);});
-      card.querySelector('.btn-buy-now')?.addEventListener('click',e=>{e.stopPropagation();handleBuyNow(p);});
-    }
-    card.querySelector('.digital-access-btn')?.addEventListener('click',e=>{
-      e.stopPropagation();
-      const btn=e.currentTarget;
-      if(btn.dataset.type==='ebook') openPdfReader(btn.dataset.url,btn.dataset.title);
-      else openVideoFullscreen(btn.dataset.url,btn.dataset.title);
-    });
+    card.querySelector('.btn-add-cart')?.addEventListener('click',e=>{e.stopPropagation();addToCart(p);});
+    card.querySelector('.btn-buy-now')?.addEventListener('click',e=>{e.stopPropagation();handleBuyNow(p);});
     $('productGrid').appendChild(card);
   });
 }
@@ -1991,37 +1250,20 @@ $('categoryStrip')?.addEventListener('click',e=>{
 function openProductModal(p){
   currentModalProduct=p;
   const disc=p.originalPrice>p.price?Math.round((1-p.price/p.originalPrice)*100):0;
-  const isDigital=p.category==='ebook'||p.category==='video';
-  const hasFreeAccess=isDigital&&((p.accessType==='upgrade'&&isUpgradedUser())||hasPurchased(p.id));
   $('productModalTitle').textContent=p.title;
   $('productModalImg').src=p.image||'';
   $('productModalImg').alt=p.title;
-  $('productModalName').textContent=p.title;
-  $('productModalPrice').textContent=hasFreeAccess?'✅ Purchased':`₹${fmt(p.price)}`;
+  $('productModalName').textContent=p.title;  // Fixed: was productModalName
+  // wait — the span IDs need to match what's in HTML
+  $('productModalPrice').textContent=`₹${fmt(p.price)}`;
   $('productModalOrig').textContent=p.originalPrice>p.price?`₹${fmt(p.originalPrice)}`:'';
   $('productModalDisc').textContent=disc?`${disc}% OFF`:'';
   $('productModalDisc').style.display=disc?'inline-flex':'none';
   $('productModalDesc').textContent=p.description||'No description available.';
-  // Update action buttons
-  const actionsEl=$('productModalActions');
-  if(isDigital&&hasFreeAccess){
-    const icon=p.category==='ebook'?'menu_book':'play_circle';
-    const label=p.category==='ebook'?'Read Now':'Watch Now';
-    const cls=p.category==='ebook'?'btn-read-now':'btn-watch-now';
-    actionsEl.innerHTML=`<button class="${cls}" id="pmAccessBtn" style="grid-column:span 2"><span class="material-icons-round">${icon}</span> ${label}</button>`;
-    $('pmAccessBtn')?.addEventListener('click',()=>{
-      closeModal($('productModal'));
-      if(p.category==='ebook') openPdfReader(p.fileUrl||'',p.title);
-      else openVideoFullscreen(p.fileUrl||'',p.title);
-    });
-  } else {
-    actionsEl.innerHTML=`<button class="btn-outline" id="productModalAddCart"><span class="material-icons-round">add_shopping_cart</span> Add to Cart</button>
-      <button class="btn-primary" id="productModalBuyNow"><span class="material-icons-round">flash_on</span> Buy Now</button>`;
-    $('productModalAddCart')?.addEventListener('click',()=>{if(currentModalProduct){addToCart(currentModalProduct);closeModal($('productModal'));}});
-    $('productModalBuyNow')?.addEventListener('click',()=>{if(currentModalProduct){closeModal($('productModal'));handleBuyNow(currentModalProduct);}});
-  }
   openModal($('productModal'));
 }
+$('productModalAddCart')?.addEventListener('click',()=>{if(currentModalProduct){addToCart(currentModalProduct);closeModal($('productModal'));}});
+$('productModalBuyNow')?.addEventListener('click',()=>{if(currentModalProduct){closeModal($('productModal'));handleBuyNow(currentModalProduct);}});
 
 document.querySelector('.hero-cta')?.addEventListener('click',()=>window.scrollTo({top:400,behavior:'smooth'}));
 
@@ -2040,7 +1282,7 @@ function updateCartBadge(){
   $('cartCountText').textContent=`(${c} item${c!==1?'s':''})`;
 }
 function addToCart(p){
-  cart.push({id:p.id,title:p.title,price:p.price,originalPrice:p.originalPrice||p.price,image:p.image||'',category:p.category||'',paymentMethod:p.paymentMethod||'online',accessType:p.accessType||'non'});
+  cart.push({id:p.id,title:p.title,price:p.price,originalPrice:p.originalPrice||p.price,image:p.image||''});
   saveCart();renderCart();
   showToast(`"${p.title}" added!`,'success');
 }
@@ -2081,7 +1323,7 @@ $('cartBtn')?.addEventListener('click',openCart);
 $('cartCloseBtn')?.addEventListener('click',closeCart);
 
 // ================================================================
-//  CHECKOUT with Payment Mode (COD / Online)
+//  CHECKOUT
 // ================================================================
 $('checkoutBtn')?.addEventListener('click',()=>{
   if(!currentUser){showToast('⚠️ Login করুন!','error');$('cartAuthWarning').style.display='flex';return;}
@@ -2095,13 +1337,7 @@ async function initiateCheckout(){
   hideLoading();
   if(saved){fillAddr(saved);$('addressModalSubtitle').textContent='Delivering to saved address. Edit if needed.';}
   else{clearAddr();$('addressModalSubtitle').textContent='Please enter your delivery address.';}
-  // Check if any item supports COD
-  const hasCod=cart.some(i=>i.paymentMethod==='both');
-  if(hasCod){
-    openModal($('addressModal'));
-  } else {
-    openModal($('addressModal'));
-  }
+  openModal($('addressModal'));
 }
 
 function fillAddr(a){
@@ -2116,17 +1352,7 @@ $('addressConfirmBtn')?.addEventListener('click',async()=>{
   const addr=collectAddr();if(!addr)return;
   if($('saveAddressCheck')?.checked) try{await saveDeliveryAddress(currentUser.uid,addr);}catch{}
   closeModal($('addressModal'));
-  pendingAddr=addr;
-  // check if COD available
-  const hasCod=cart.some(i=>i.paymentMethod==='both');
-  if(hasCod){
-    // reset selection
-    $('payModeOnline').classList.add('selected');
-    $('payModeCod').classList.remove('selected');
-    openModal($('payModeModal'));
-  } else {
-    startRazorpay(addr);
-  }
+  startRazorpay(addr);
 });
 
 function collectAddr(){
@@ -2141,56 +1367,6 @@ function collectAddr(){
   ];
   for(const f of fs){const v=f.el?.value.trim()||'';if(!v||(f.pat&&!f.pat.test(v))){showToast(f.msg,'error');f.el?.focus();return null;}}
   return{name:$('addrName').value.trim(),phone:$('addrPhone').value.trim(),street:$('addrStreet').value.trim(),area:$('addrArea').value.trim(),city:$('addrCity').value.trim(),state:$('addrState').value.trim(),pin:$('addrPin').value.trim(),landmark:$('addrLandmark').value.trim()};
-}
-
-// Payment Mode selection
-[$('payModeOnline'),$('payModeCod')].forEach(card=>{
-  card?.addEventListener('click',()=>{
-    [$('payModeOnline'),$('payModeCod')].forEach(c=>c?.classList.remove('selected'));
-    card.classList.add('selected');
-    pendingPayMode=card.dataset.mode;
-  });
-});
-pendingPayMode='online';
-$('payModeConfirm')?.addEventListener('click',async()=>{
-  const mode=document.querySelector('.pay-mode-card.selected')?.dataset.mode||'online';
-  closeModal($('payModeModal'));
-  if(mode==='cod'){
-    await handleCodOrder(pendingAddr);
-  } else {
-    startRazorpay(pendingAddr);
-  }
-});
-
-async function handleCodOrder(addr){
-  showLoading('COD Order place হচ্ছে…');
-  const total = cart.reduce((s,i)=>s+i.price,0);
-  const cb    = Math.round(total*5/100);
-  const orderData = {
-    userId:          currentUser.uid,
-    items:           cart.map(i=>({
-      productId:i.id||'', title:i.title||'',
-      price:i.price||0, image:i.image||'', category:i.category||''
-    })),
-    total, cashbackEarned:cb,
-    deliveryAddress: addr,
-    paymentMode:     'cod',
-    paymentId:       'COD-'+Date.now()
-  };
-  const r = await saveOrder(orderData);
-  hideLoading();
-  if(r.success){
-    await updateUserEarnings(currentUser.uid, cb);
-    $('successPaymentId').textContent   = 'COD Order';
-    $('successCashbackAmt').textContent = `₹${fmt(cb)}`;
-    $('successMsg').textContent         = '✅ COD Order নিশ্চিত! পৌঁছে দেওয়ার সময় টাকা দিন।';
-    $('successOverlay').style.display   = 'flex';
-    cart=[]; saveCart(); renderCart();
-    loadUserEarnings(currentUser.uid);
-    loadProfileOrders(currentUser.uid);
-  } else {
-    showToast(`❌ Order save failed: ${r.error||'Unknown error'}`,'error',8000);
-  }
 }
 
 // ================================================================
@@ -2215,95 +1391,27 @@ async function startRazorpay(addr){
 }
 
 async function onPaySuccess(res,addr,total){
-  showLoading('Order Firestore-এ save হচ্ছে…');
-  const cb           = Math.round(total*5/100);
-  const digitalItems = cart.filter(i=>i.category==='ebook'||i.category==='video');
-  // FIX: build order object carefully – no undefined values
-  const orderData = {
-    userId:       currentUser.uid,
-    items:        cart.map(i=>({
-      productId: i.id||'', title:i.title||'',
-      price:     i.price||0, image:i.image||'',
-      category:  i.category||''
-    })),
-    total:           total,
-    cashbackEarned:  cb,
-    deliveryAddress: addr,
-    paymentId:       res.razorpay_payment_id||'',
-    razorpayOrderId: res.razorpay_order_id||'',
-    paymentMode:     'online'
-  };
+  showLoading('Saving order…');
+  const cb=Math.round(total*5/100);
+  const orderData={userId:currentUser.uid,items:cart.map(i=>({productId:i.id,title:i.title,price:i.price,image:i.image})),total,cashbackEarned:cb,deliveryAddress:addr,paymentId:res.razorpay_payment_id,razorpayOrderId:res.razorpay_order_id||null};
   try{
-    const r = await saveOrder(orderData);
+    const r=await saveOrder(orderData);
     if(r.success){
-      await updateUserEarnings(currentUser.uid, cb);
-      // grant digital access
-      for(const item of digitalItems){
-        await addPurchasedItem(currentUser.uid, item.id);
-      }
-      userProfile = await getUserProfile(currentUser.uid);
-      $('successPaymentId').textContent   = res.razorpay_payment_id;
-      $('successCashbackAmt').textContent = `₹${fmt(cb)}`;
-      $('successMsg').textContent         = '🎉 Payment সফল! SayatKart-এ কেনার জন্য ধন্যবাদ।';
-      $('successOverlay').style.display   = 'flex';
-      cart=[]; saveCart(); renderCart();
+      await updateUserEarnings(currentUser.uid,cb);
+      $('successPaymentId').textContent=res.razorpay_payment_id;
+      $('successCashbackAmt').textContent=`₹${fmt(cb)}`;
+      $('successOverlay').style.display='flex';
+      cart=[];saveCart();renderCart();
       loadUserEarnings(currentUser.uid);
-      loadProfileOrders(currentUser.uid);
-      loadProducts('all');
-    } else {
-      // FIX: show exact error so user knows what happened
-      showToast(`❌ Order save failed: ${r.error||'Unknown'}. Payment ID: ${res.razorpay_payment_id}`,'error',10000);
-      console.error('Order save failed details:', r);
-    }
-  }catch(err){
-    showToast('Order error: '+err.message+'. Payment ID: '+res.razorpay_payment_id,'warning',10000);
-    console.error('onPaySuccess error:',err);
-  }finally{ hideLoading(); }
+    }else showToast('Payment ok but order save failed.','warning');
+  }catch{showToast('Order save error. Payment ID: '+res.razorpay_payment_id,'warning');}
+  finally{hideLoading();}
 }
 
-// handleBuyNow – shows buy options for digital products
 function handleBuyNow(p){
   if(!currentUser){showToast('⚠️ Login করুন to buy!','error');return;}
-  const isDigital=p.category==='ebook'||p.category==='video';
-  if(isDigital){
-    showDigitalBuyOptions(p);
-  } else {
-    cart=[{id:p.id,title:p.title,price:p.price,originalPrice:p.originalPrice||p.price,image:p.image||'',category:p.category||'',paymentMethod:p.paymentMethod||'online',accessType:p.accessType||'non'}];
-    saveCart();initiateCheckout();
-  }
-}
-
-function showDigitalBuyOptions(p){
-  $('buyOptionsSubtitle').textContent=`"${p.title}" কিনতে চাই`;
-  const upgraded=isUpgradedUser();
-  $('buyOptionsWrap').innerHTML=`
-    ${!upgraded?`<div class="buy-option-card" id="buyOpt29">
-      <div class="buy-option-icon"><span class="material-icons-round">bolt</span></div>
-      <div class="buy-option-info">
-        <div class="buy-option-name">Weekly Subscription</div>
-        <div class="buy-option-desc">₹29/week – সব Digital Content আনলক হবে, Auto-pay</div>
-      </div>
-      <div class="buy-option-price">₹29</div>
-    </div>`:''}
-    <div class="buy-option-card" id="buyOptDirect">
-      <div class="buy-option-icon"><span class="material-icons-round">shopping_bag</span></div>
-      <div class="buy-option-info">
-        <div class="buy-option-name">Direct Purchase</div>
-        <div class="buy-option-desc">শুধু এই ${p.category==='ebook'?'E-Book':'Video'} কিনুন</div>
-      </div>
-      <div class="buy-option-price">₹${fmt(p.price)}</div>
-    </div>
-  `;
-  $('buyOpt29')?.addEventListener('click',()=>{
-    closeModal($('buyOptionsModal'));
-    startPkgPayment('weekly',29);
-  });
-  $('buyOptDirect')?.addEventListener('click',()=>{
-    closeModal($('buyOptionsModal'));
-    cart=[{id:p.id,title:p.title,price:p.price,originalPrice:p.originalPrice||p.price,image:p.image||'',category:p.category||'',paymentMethod:'online',accessType:p.accessType||'non'}];
-    saveCart();initiateCheckout();
-  });
-  openModal($('buyOptionsModal'));
+  cart=[{id:p.id,title:p.title,price:p.price,originalPrice:p.originalPrice||p.price,image:p.image||''}];
+  saveCart();initiateCheckout();
 }
 
 $('successDoneBtn')?.addEventListener('click',()=>{$('successOverlay').style.display='none';switchSection('home');});
@@ -2365,9 +1473,8 @@ function buildOrderFullCard(order){
   const date=order.createdAt?.toDate?order.createdAt.toDate():new Date();
   const stMap={confirmed:'confirmed',shipped:'shipped',out_for_delivery:'out',delivered:'delivered'};
   const stLabel={confirmed:'✅ Confirmed',shipped:'🚚 Shipped',out_for_delivery:'🛵 Out for Delivery',delivered:'🏠 Delivered'};
-  const payBadge=order.paymentMode==='cod'?'<span style="font-size:.72rem;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:9999px;font-weight:700;margin-left:6px">COD</span>':'';
   const items=(order.items||[]).map(i=>`<div class="order-item-row"><img src="${i.image||'https://placehold.co/38'}" alt="${esc(i.title)}" onerror="this.src='https://placehold.co/38'"/><span class="order-item-name">${esc(i.title)}</span><span class="order-item-price">₹${fmt(i.price)}</span></div>`).join('');
-  el.innerHTML=`<div class="order-full-header"><span class="order-full-id" style="font-size:.76rem;color:var(--tm);font-weight:600">Order #${order.id.slice(0,8).toUpperCase()}${payBadge}</span><span class="order-status-pill status-${stMap[order.status]||'confirmed'}">${stLabel[order.status]||order.status}</span></div>
+  el.innerHTML=`<div class="order-full-header"><span class="order-full-id" style="font-size:.76rem;color:var(--tm);font-weight:600">Order #${order.id.slice(0,8).toUpperCase()}</span><span class="order-status-pill status-${stMap[order.status]||'confirmed'}">${stLabel[order.status]||order.status}</span></div>
   <div class="order-full-body"><p class="order-full-date">Placed on ${fmtDate(date)}</p><div class="order-full-items">${items}</div></div>
   <div class="order-full-footer"><span class="order-full-amount">₹${fmt(order.total)}</span><button class="btn-track-order" data-id="${order.id}"><span class="material-icons-round">local_shipping</span> Track</button></div>`;
   el.querySelector('.btn-track-order')?.addEventListener('click',()=>openOrderStatusModal(order));
@@ -2413,489 +1520,107 @@ $('withdrawBtn')?.addEventListener('click',async()=>{
 });
 
 // ================================================================
-//  ★ NEW: VIDEO ADS – Intersection Observer Auto-play
+//  PUBLISH → WHATSAPP (hardcoded admin: 919734398907)
 // ================================================================
-async function loadVideoAds(){
-  const videos=await fetchVideos();
-  if(!videos.length){$('videoAdsSection').style.display='none';return;}
-  $('videoAdsSection').style.display='block';
-  const scroll=$('videoAdsScroll');
-  scroll.innerHTML='';
-  videos.forEach(v=>{
-    const card=document.createElement('div');
-    card.className='video-ad-card';
-    card.innerHTML=`
-      <video src="${v.videoUrl}" muted playsinline preload="none" data-vid-id="${v.id}"></video>
-      <div class="video-ad-overlay"><span class="material-icons-round">play_circle</span></div>
-      <button class="video-ad-mute-btn" title="Toggle mute"><span class="material-icons-round">volume_off</span></button>`;
-    const vid=card.querySelector('video');
-    const overlay=card.querySelector('.video-ad-overlay');
-    const muteBtn=card.querySelector('.video-ad-mute-btn');
-    // Intersection Observer for auto-play
-    const obs=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          vid.play().catch(()=>{});
-          overlay.style.display='none';
-        } else {
-          vid.pause();
-          overlay.style.display='flex';
-        }
-      });
-    },{threshold:0.5});
-    obs.observe(card);
-    // Click = fullscreen with sound
-    card.addEventListener('click',e=>{
-      if(e.target.closest('.video-ad-mute-btn')) return;
-      openVideoFullscreen(v.videoUrl,v.title||'Video');
-    });
-    // Mute toggle
-    muteBtn.addEventListener('click',e=>{
-      e.stopPropagation();
-      vid.muted=!vid.muted;
-      muteBtn.querySelector('.material-icons-round').textContent=vid.muted?'volume_off':'volume_up';
-    });
-    scroll.appendChild(card);
-  });
-}
-
-function openVideoFullscreen(url,title){
-  if(!url){showToast('Video URL not found.','error');return;}
-  // Create a fullscreen video player
-  const overlay=document.createElement('div');
-  overlay.style.cssText='position:fixed;inset:0;background:#000;z-index:9999;display:flex;flex-direction:column';
-  overlay.innerHTML=`
-    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(0,0,0,.7)">
-      <button id="vidFsClose" style="color:#fff;display:flex;background:none;border:none;cursor:pointer"><span class="material-icons-round">close</span></button>
-      <span style="color:#fff;font-weight:700;font-size:.95rem;flex:1">${esc(title)}</span>
-    </div>
-    <video src="${url}" controls autoplay style="flex:1;width:100%;background:#000;outline:none"></video>`;
-  document.body.appendChild(overlay);
-  overlay.querySelector('#vidFsClose').addEventListener('click',()=>overlay.remove());
-  // Prevent right click on video
-  overlay.querySelector('video').addEventListener('contextmenu',e=>e.preventDefault());
-}
-
-// ================================================================
-//  ★ NEW: PDF READER (PDF.js) – Secure
-// ================================================================
-if(typeof pdfjsLib!=='undefined'){
-  pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-}
-
-async function openPdfReader(url,title){
-  if(!url){showToast('PDF URL not found.','error');return;}
-  $('pdfReaderTitle').textContent=title||'Book';
-  $('pdfReaderOverlay').style.display='flex';
-  document.body.style.overflow='hidden';
-  // Security: prevent right-click, copy, print
-  const wrap=$('pdfReaderWrap');
-  wrap.addEventListener('contextmenu',e=>e.preventDefault());
-  document.addEventListener('keydown',blockPdfKeys,true);
-  showLoading('Loading PDF…');
-  try{
-    currentPdfDoc=await pdfjsLib.getDocument(url).promise;
-    currentPdfPage=1;
-    await renderPdfPage(currentPdfPage);
-    updatePdfNav();
-  }catch(e){
-    showToast('PDF load failed. Check URL.','error');
-    closePdfReader();
-  }finally{hideLoading();}
-}
-
-function blockPdfKeys(e){
-  if($('pdfReaderOverlay')?.style.display==='none') return;
-  if((e.ctrlKey||e.metaKey)&&['p','s','c','a','u'].includes(e.key.toLowerCase())){
-    e.preventDefault();e.stopPropagation();
-    showToast('🔒 This action is disabled for security.','warning');
-  }
-}
-
-async function renderPdfPage(num){
-  if(!currentPdfDoc)return;
-  const page=await currentPdfDoc.getPage(num);
-  const canvas=$('pdfCanvas');
-  const wrap=$('pdfReaderWrap');
-  const maxW=wrap.clientWidth-20;
-  const viewport=page.getViewport({scale:1});
-  const scale=Math.min(maxW/viewport.width,1.8);
-  const vp=page.getViewport({scale});
-  canvas.width=vp.width;
-  canvas.height=vp.height;
-  const ctx=canvas.getContext('2d');
-  await page.render({canvasContext:ctx,viewport:vp}).promise;
-}
-
-function updatePdfNav(){
-  $('pdfPageInfo').textContent=`Page ${currentPdfPage} / ${currentPdfDoc?.numPages||1}`;
-  $('pdfPrevBtn').disabled=currentPdfPage<=1;
-  $('pdfNextBtn').disabled=currentPdfPage>=(currentPdfDoc?.numPages||1);
-}
-
-$('pdfPrevBtn')?.addEventListener('click',async()=>{
-  if(currentPdfPage>1){currentPdfPage--;await renderPdfPage(currentPdfPage);updatePdfNav();}
+// Auth watch for publish
+_auth.onAuthStateChanged(user=>{
+  if($('publishAuthWarning')) $('publishAuthWarning').style.display=user?'none':'flex';
+  if($('publishFormWrap'))    $('publishFormWrap').style.display=user?'block':'none';
 });
-$('pdfNextBtn')?.addEventListener('click',async()=>{
-  if(currentPdfDoc&&currentPdfPage<currentPdfDoc.numPages){currentPdfPage++;await renderPdfPage(currentPdfPage);updatePdfNav();}
-});
-$('pdfReaderClose')?.addEventListener('click',closePdfReader);
-
-function closePdfReader(){
-  $('pdfReaderOverlay').style.display='none';
-  document.body.style.overflow='';
-  document.removeEventListener('keydown',blockPdfKeys,true);
-  currentPdfDoc=null;currentPdfPage=1;
-  const canvas=$('pdfCanvas');
-  if(canvas){const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);}
-}
-
-// ================================================================
-//  ★ UPGRADE PAGE + PKG PAYMENT
-// ================================================================
-function renderUpgradePage(){
-  const pkg = userProfile?.pkg||'free';
-  const info = $('currentPkgInfo');
-  if(info){
-    if(pkg!=='free'){
-      info.style.display='block';
-      $('currentPkgName').textContent = PKG_LABELS[pkg]||pkg;
-    } else {
-      info.style.display='none';
-    }
-  }
-  // Mark current plan button as active, disable it
-  document.querySelectorAll('[data-pkg]').forEach(btn=>{
-    const btnPkg = btn.dataset.pkg;
-    if(btnPkg===pkg){
-      btn.innerHTML = `<span class="material-icons-round">verified</span> আপনার Current Plan`;
-      btn.disabled  = true;
-      btn.style.opacity='0.65'; btn.style.cursor='not-allowed';
-    }
-  });
-}
-
-async function startPkgPayment(pkgType, amount){
-  if(!currentUser){ showToast('Login করুন first.','error'); switchSection('profile'); return; }
-  const isWeekly = pkgType==='weekly';
-  const options={
-    key:RAZORPAY_KEY_ID, amount:Math.round(amount*100), currency:'INR',
-    name:'SayatKart',
-    description: isWeekly?'⚡ Weekly Pass ₹29/week Auto-renew':PKG_LABELS[pkgType]||pkgType,
-    prefill:{
-      name:   currentUser.displayName||'',
-      email:  currentUser.email||'',
-      contact:currentUser.phoneNumber?.replace('+91','')||''
-    },
-    theme:{color: isWeekly?'#7c3aed':'#f97316'},
-    handler: async res=>{
-      showLoading('Plan activate করা হচ্ছে…');
-      try{
-        await updateUserPkg(currentUser.uid, pkgType);
-        if(isWeekly) await saveWeeklySubRecord(currentUser.uid, res.razorpay_payment_id);
-        userProfile = await getUserProfile(currentUser.uid);
-        updateAuthUI(currentUser);
-        renderUpgradePage();
-        loadProducts('all');
-        $('successPaymentId').textContent   = res.razorpay_payment_id;
-        $('successCashbackAmt').textContent = isWeekly?'প্রতি সপ্তাহে Auto-renew!':'Lifetime Access!';
-        $('successMsg').textContent = `✅ ${PKG_LABELS[pkgType]} সক্রিয়! সব ডিজিটাল কন্টেন্ট এখন ফ্রি।`;
-        $('successOverlay').style.display='flex';
-        if(isWeekly) startWeeklySubChecker(currentUser.uid);
-      }catch(e){
-        showToast('Plan save error: '+e.message,'error');
-      }finally{ hideLoading(); }
-    },
-    modal:{ondismiss:()=>showToast('Payment বাতিল।','warning')}
-  };
-  try{
-    const rzp = new window.Razorpay(options);
-    rzp.on('payment.failed',err=>showToast('Payment failed: '+(err?.error?.description||''),'error'));
-    rzp.open();
-  }catch(e){ showToast('Razorpay খুলতে পারছে না।','error'); console.error(e); }
-}
-
-// Bind upgrade plan buttons
-document.querySelectorAll('[data-pkg]').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    if(!currentUser){ showToast('Login করুন first.','error'); switchSection('profile'); return; }
-    startPkgPayment(btn.dataset.pkg, parseInt(btn.dataset.amount));
-  });
-});
-
-// ================================================================
-//  ★ NEW: AUTHOR DASHBOARD
-// ================================================================
-async function loadAuthorDashboard(){
-  if(!currentUser){
-    $('dashAuthWarning').style.display='flex';
-    $('authorDashboard').style.display='none';
-    return;
-  }
-  $('dashAuthWarning').style.display='none';
-  $('authorDashboard').style.display='flex';
-  const books=await fetchAuthorBooks(currentUser.uid);
-  $('dashTotalBooks').textContent=books.length;
-  let totalSales=0,totalEarnings=0;
-  books.forEach(b=>{totalSales+=b.salesCount||0;totalEarnings+=(b.earnings||0);});
-  $('dashTotalSales').textContent=totalSales;
-  $('dashTotalEarnings').textContent=`₹${fmt(totalEarnings)}`;
-  const list=$('dashBooksList');
-  if(!books.length){list.innerHTML='<div class="empty-state" style="padding:24px"><span class="material-icons-round empty-icon">menu_book</span><p>কোনো বই এখনো প্রকাশিত হয়নি।</p></div>';return;}
-  list.innerHTML='';
-  books.forEach(b=>{
-    const div=document.createElement('div');
-    div.className='dash-book-item';
-    div.innerHTML=`<img class="dash-book-cover" src="${b.image||'https://placehold.co/48x60?text=Book'}" alt="${esc(b.title)}" onerror="this.src='https://placehold.co/48x60?text=Book'"/>
-      <div class="dash-book-info">
-        <div class="dash-book-title">${esc(b.title)}</div>
-        <div class="dash-book-sales">Sales: ${b.salesCount||0} | Category: ${b.category||'—'}</div>
-      </div>
-      <div class="dash-book-earn">₹${fmt(b.earnings||0)}</div>`;
-    list.appendChild(div);
-  });
-}
-
-// ================================================================
-//  ★ PUBLISH with Firebase Storage + Razorpay
-//  FIX: If user already upgraded → skip PKG payment, publish directly
-// ================================================================
 
 $('bookSize')?.addEventListener('change',()=>{
   $('customSizeGroup').style.display=$('bookSize').value==='Custom'?'block':'none';
 });
 
-// Publish package picker
-document.querySelectorAll('.pub-pkg-card').forEach(card=>{
-  card.addEventListener('click',()=>{
-    // FIX: if already upgraded don't change selection, just inform
-    if(isUpgradedUser()){
-      showToast(`✅ আপনি ইতিমধ্যে ${PKG_LABELS[userProfile.pkg]} প্ল্যানে আছেন। পেমেন্টের দরকার নেই।`,'info');
-      return;
-    }
-    document.querySelectorAll('.pub-pkg-card').forEach(c=>c.classList.remove('selected'));
-    card.classList.add('selected');
-    $('selectedPublishPkg').value=card.dataset.pkgVal;
-  });
-});
-
-// Hide PKG row if already upgraded
-function updatePublishPkgUI(){
-  const row = $('publishPkgRow');
-  if(!row) return;
-  if(isUpgradedUser()){
-    row.style.display='none';
-    // show info banner
-    let banner = document.getElementById('publishPkgBanner');
-    if(!banner){
-      banner = document.createElement('div');
-      banner.id='publishPkgBanner';
-      banner.style.cssText='background:linear-gradient(135deg,rgba(22,163,74,.12),rgba(22,163,74,.06));border:2px solid #86efac;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;margin-bottom:14px';
-      banner.innerHTML=`<span class="material-icons-round" style="color:#16a34a">verified</span>
-        <div>
-          <strong style="color:#15803d;font-size:.9rem">আপনি ইতিমধ্যে ${PKG_LABELS[userProfile?.pkg]||''} প্ল্যানে আছেন!</strong>
-          <p style="font-size:.78rem;color:#166534;margin-top:2px">কোনো PKG payment লাগবে না। সরাসরি বই Publish করুন।</p>
-        </div>`;
-      row.parentNode.insertBefore(banner, row);
-    }
-  } else {
-    row.style.display='';
-    document.getElementById('publishPkgBanner')?.remove();
-  }
-}
-
 $('bookPDF')?.addEventListener('change',e=>{
-  const f=e.target.files?.[0]; if(!f) return;
-  if(f.type!=='application/pdf'){ showToast('Only PDF files accepted.','error'); return; }
-  if(f.size>50*1024*1024){ showToast('File must be under 50 MB.','error'); return; }
+  const f=e.target.files?.[0];
+  if(!f)return;
+  if(f.type!=='application/pdf'){showToast('Only PDF files accepted.','error');return;}
+  if(f.size>50*1024*1024){showToast('File must be under 50 MB.','error');return;}
   $('fileUploadContent').style.display='none';
   $('fileSelectedInfo').style.display='flex';
   $('fileSelectedName').textContent=f.name;
 });
+
 $('fileRemoveBtn')?.addEventListener('click',()=>{
   $('bookPDF').value='';
   $('fileUploadContent').style.display='block';
   $('fileSelectedInfo').style.display='none';
 });
 
-$('bookCover')?.addEventListener('change',e=>{
-  const f=e.target.files?.[0]; if(!f) return;
-  if(!f.type.startsWith('image/')){ showToast('Only image files accepted.','error'); return; }
-  if(f.size>5*1024*1024){ showToast('Cover image must be under 5MB.','error'); return; }
-  const reader=new FileReader();
-  reader.onload=ev=>{
-    $('coverPreview').src=ev.target.result;
-    $('coverPreview').classList.add('show');
-    $('coverUploadContent').style.display='none';
-  };
-  reader.readAsDataURL(f);
-});
-
+// Drag & Drop
 $('fileUploadZone')?.addEventListener('dragover',e=>{e.preventDefault();$('fileUploadZone').classList.add('dragover');});
 $('fileUploadZone')?.addEventListener('dragleave',()=>$('fileUploadZone').classList.remove('dragover'));
 $('fileUploadZone')?.addEventListener('drop',e=>{
   e.preventDefault();$('fileUploadZone').classList.remove('dragover');
   const f=e.dataTransfer?.files?.[0];
-  if(f&&f.type==='application/pdf'){
-    $('fileUploadContent').style.display='none';
-    $('fileSelectedInfo').style.display='flex';
-    $('fileSelectedName').textContent=f.name;
-  }
+  if(f&&f.type==='application/pdf'){$('fileUploadContent').style.display='none';$('fileSelectedInfo').style.display='flex';$('fileSelectedName').textContent=f.name;}
 });
 
-$('publishForm')?.addEventListener('submit',async e=>{
+$('publishForm')?.addEventListener('submit',e=>{
   e.preventDefault();
-  if(!currentUser){ $('publishAuthWarning').style.display='flex'; showToast('⚠️ Login করুন!','error'); return; }
-
-  const title     = $('bookTitle').value.trim();
-  const subtitle  = $('bookSubtitle').value.trim();
-  const format    = document.querySelector('input[name="bookFormat"]:checked')?.value||'Paperback';
-  const sizeRaw   = $('bookSize').value;
-  const size      = sizeRaw==='Custom'?($('bookCustomSize').value.trim()||'Custom'):sizeRaw;
-  const pages     = $('bookPages').value.trim();
-  const author    = $('bookAuthor').value.trim();
-  const desc      = $('bookDesc').value.trim();
-  const priceVal  = parseFloat($('bookPrice')?.value||0);
-  const pdfFile   = $('bookPDF').files?.[0];
-  const coverFile = $('bookCover').files?.[0];
-  const selPkg    = $('selectedPublishPkg')?.value||'basic149';
-
-  if(!title)                    { showToast('Book title required.','error'); $('bookTitle').focus(); return; }
-  if(!size)                     { showToast('Please select a size.','error'); $('bookSize').focus(); return; }
-  if(!pages)                    { showToast('Number of pages required.','error'); $('bookPages').focus(); return; }
-  if(!author)                   { showToast('Author name required.','error'); $('bookAuthor').focus(); return; }
-  if(!pdfFile)                  { showToast('Please upload the PDF.','error'); return; }
-  if(!coverFile)                { showToast('Please upload the cover image.','error'); return; }
-  if(!priceVal||priceVal<1)     { showToast('Valid book price required.','error'); return; }
-
-  // ── FIX: if user is already upgraded, skip PKG payment ──
-  if(isUpgradedUser()){
-    await doPublishUpload(null, title, subtitle, format, size, pages, author, desc, priceVal, pdfFile, coverFile, selPkg);
-    return;
-  }
-
-  // Not upgraded – collect PKG payment first
-  const pkgAmountMap = {weekly29:29, basic149:149, premium199:199};
-  const pkgLabelMap  = {weekly29:'Weekly', basic149:'Author Basic', premium199:'Author Premium'};
-  const pkgAmount    = pkgAmountMap[selPkg]||149;
-  const pkgLabel     = pkgLabelMap[selPkg]||'Basic';
-
-  const rzpOptions = {
-    key:RAZORPAY_KEY_ID, amount:pkgAmount*100, currency:'INR',
-    name:'SayatKart Publishing',
-    description:`${pkgLabel} Package – "${title}"`,
-    prefill:{name:currentUser.displayName||author, email:currentUser.email||''},
-    theme:{color:'#f97316'},
-    handler: async res=>{
-      await doPublishUpload(res.razorpay_payment_id, title, subtitle, format, size, pages, author, desc, priceVal, pdfFile, coverFile, selPkg);
-    },
-    modal:{ondismiss:()=>showToast('Payment বাতিল। Book publish হয়নি।','warning')}
-  };
-  try{
-    const rzp = new window.Razorpay(rzpOptions);
-    rzp.on('payment.failed',err=>showToast('Payment failed: '+(err?.error?.description||''),'error'));
-    rzp.open();
-  }catch(e){ showToast('Razorpay খুলতে পারছে না।','error'); console.error(e); }
-});
-
-// ── Core publish logic (called after payment OR directly if already upgraded) ──
-async function doPublishUpload(paymentId, title, subtitle, format, size, pages, author, desc, priceVal, pdfFile, coverFile, selPkg){
-  showLoading('Cover image আপলোড হচ্ছে… (0%)');
-  try{
-    const uid = currentUser.uid;
-    const ts  = Date.now();
-
-    // Upload cover image
-    const coverPath = `covers/${uid}/${ts}_${coverFile.name}`;
-    const coverRes  = await uploadToStorage(coverFile, coverPath, pct=>{
-      showLoading(`Cover আপলোড হচ্ছে… (${pct}%)`);
-    });
-    if(!coverRes.success){
-      showToast('Cover upload failed: '+coverRes.error,'error'); hideLoading(); return;
-    }
-
-    // Upload PDF
-    showLoading('PDF আপলোড হচ্ছে… (0%)');
-    const pdfPath = `books/${uid}/${ts}_${pdfFile.name}`;
-    const pdfRes  = await uploadToStorage(pdfFile, pdfPath, pct=>{
-      showLoading(`PDF আপলোড হচ্ছে… (${pct}%)`);
-    });
-    if(!pdfRes.success){
-      showToast('PDF upload failed: '+pdfRes.error,'error'); hideLoading(); return;
-    }
-
-    showLoading('Firestore-এ সেভ হচ্ছে…');
-    // Determine accessType
-    const pkgMap3 = {basic149:'basic', premium199:'premium', weekly29:'weekly'};
-    const newPkg  = isUpgradedUser() ? userProfile.pkg : (pkgMap3[selPkg]||'basic');
-
-    const bookData = {
-      title, subtitle, format, size, pages:parseInt(pages),
-      author, description:desc,
-      price:priceVal, originalPrice:priceVal,
-      category:   format==='E-book'?'ebook':'paperback',
-      // 'upgrade' means upgraded users get it free
-      accessType: ['weekly','basic','premium'].includes(newPkg)?'upgrade':'non',
-      fileUrl:    pdfRes.url,
-      image:      coverRes.url,
-      authorId:   uid,
-      authorName: author,
-      publishPkg: selPkg,
-      publishPaymentId: paymentId||'free-with-upgrade',
-      salesCount: 0,
-      earnings:   0,
-      inStock:    true
-    };
-
-    const saved = await savePublishedBook(bookData);
-    if(!saved.success){
-      showToast('Firestore save failed: '+saved.error,'error'); hideLoading(); return;
-    }
-
-    // Upgrade user PKG only if not already upgraded
-    if(!isUpgradedUser()){
-      await updateUserPkg(uid, newPkg);
-      if(newPkg==='weekly' && paymentId) await saveWeeklySubRecord(uid, paymentId);
-    }
-    userProfile = await getUserProfile(uid);
-    updateAuthUI(currentUser);
-    renderUpgradePage();
-    updatePublishPkgUI();
-
-    showToast('✅ বই সফলভাবে প্রকাশিত হয়েছে!','success');
-    // Reset form
+  if(!currentUser){$('publishAuthWarning').style.display='flex';showToast('⚠️ Login করুন to publish!','error');return;}
+  const title=$('bookTitle').value.trim();
+  const subtitle=$('bookSubtitle').value.trim();
+  const format=document.querySelector('input[name="bookFormat"]:checked')?.value||'Paperback';
+  const sizeRaw=$('bookSize').value;
+  const size=sizeRaw==='Custom'?($('bookCustomSize').value.trim()||'Custom'):sizeRaw;
+  const pages=$('bookPages').value.trim();
+  const author=$('bookAuthor').value.trim();
+  const desc=$('bookDesc').value.trim();
+  const pdfFile=$('bookPDF').files?.[0];
+  const pdfInfo=pdfFile?`${pdfFile.name} (${(pdfFile.size/1024/1024).toFixed(2)} MB)`:'No file uploaded';
+  if(!title){showToast('Book title required.','error');$('bookTitle').focus();return;}
+  if(!size){showToast('Please select a size.','error');$('bookSize').focus();return;}
+  if(!pages){showToast('Number of pages required.','error');$('bookPages').focus();return;}
+  if(!author){showToast('Author name required.','error');$('bookAuthor').focus();return;}
+  if(!pdfFile){showToast('Please upload the PDF.','error');return;}
+  const userName=currentUser.displayName||currentUser.phoneNumber||'User';
+  const lines=[
+    '📚 *New Book Publishing Request*',
+    '━━━━━━━━━━━━━━━━━━━━',
+    `👤 *Publisher:* ${userName}`,
+    `📧 *Email:* ${currentUser.email||'N/A'}`,
+    '',
+    `📖 *Title:* ${title}`,
+    subtitle?`📝 *Subtitle:* ${subtitle}`:'',
+    `🗂️ *Format:* ${format}`,
+    `📐 *Size:* ${size}`,
+    `📄 *Pages:* ${pages}`,
+    `✍️ *Author:* ${author}`,
+    desc?`🔖 *Desc:* ${desc}`:'',
+    '',
+    `📁 *PDF:* ${pdfInfo}`,
+    '⚠️ _PDF must be sent separately._',
+    '━━━━━━━━━━━━━━━━━━━━',
+    `🕐 ${new Date().toLocaleString('en-IN')}`,
+  ].filter(Boolean).join('\n');
+  showLoading('Opening WhatsApp…');
+  setTimeout(()=>{
+    hideLoading();
+    // CRITICAL: Always hardcoded admin number — NEVER from form
+    window.open(`https://wa.me/919734398907?text=${encodeURIComponent(lines)}`,'_blank');
+    showToast('✅ WhatsApp opened! Please send the message.','success');
     $('publishForm').reset();
     $('fileUploadContent').style.display='block';
     $('fileSelectedInfo').style.display='none';
     $('customSizeGroup').style.display='none';
-    $('coverPreview').src=''; $('coverPreview').classList.remove('show');
-    $('coverUploadContent').style.display='block';
-    document.querySelectorAll('.pub-pkg-card').forEach((c,i)=>c.classList.toggle('selected',i===1));
-    $('selectedPublishPkg').value='basic149';
-    loadProducts('all');
-  }catch(err){
-    showToast('Upload error: '+err.message,'error');
-    console.error('doPublishUpload error:',err);
-  }finally{ hideLoading(); }
-}
+  },600);
+});
 
 // ================================================================
 //  UTILITY
 // ================================================================
-function fmt(n){ return Number(n||0).toLocaleString('en-IN',{minimumFractionDigits:0,maximumFractionDigits:2}); }
-function fmtDate(d){ return new Date(d).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}); }
-function esc(str){ const d=document.createElement('div'); d.appendChild(document.createTextNode(str||'')); return d.innerHTML; }
+function fmt(n){return Number(n||0).toLocaleString('en-IN',{minimumFractionDigits:0,maximumFractionDigits:2});}
+function fmtDate(d){return new Date(d).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});}
+function esc(str){const d=document.createElement('div');d.appendChild(document.createTextNode(str||''));return d.innerHTML;}
 
 // ================================================================
 //  INIT
 // ================================================================
 loadCart();
 loadProducts('all');
-// After auth resolves, refresh publish UI
-_auth.onAuthStateChanged(user=>{
-  updatePublishPkgUI();
-});
-console.log('%c🛒 SayatKart v3 – All bugs fixed!','color:#f97316;font-weight:700;font-size:14px');
+console.log('%c🛒 SayatKart Ready','color:#f97316;font-weight:700;font-size:14px');
 </script>
 </body>
 </html>
