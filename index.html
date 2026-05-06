@@ -53,6 +53,7 @@
 [data-theme="dark"] .order-full-header{background:#12152a}
 [data-theme="dark"] .success-payment-id{background:#12152a}
 [data-theme="dark"] .theme-card{background:#1a1d2e;border-color:#2d3258}
+/* NEW DARK MODE */
 [data-theme="dark"] .video-ads-section{background:#0f1117}
 [data-theme="dark"] .pkg-card{background:#1a1d2e;border-color:#2d3258}
 [data-theme="dark"] .pkg-card.featured{background:linear-gradient(135deg,#1a1f3a,#2d1a3a)}
@@ -221,6 +222,8 @@ ul{list-style:none}
 .file-selected-info .material-icons-round{color:var(--er);font-size:24px}
 .file-selected-info span{flex:1;font-weight:600;font-size:.85rem;text-align:left;word-break:break-all}
 .file-remove-btn{color:var(--tm);display:flex;position:relative;z-index:2}
+.publish-submit-btn{margin-top:8px;width:100%;padding:14px;font-size:1rem;background:#25d366;box-shadow:0 4px 18px rgba(37,211,102,.35)}
+.publish-submit-btn:hover{background:#1ebe5a}
 /* ── PROFILE ── */
 .profile-login-prompt{padding:16px}
 .login-prompt-card{background:var(--card);border-radius:var(--r4);padding:28px 20px;box-shadow:var(--s3);text-align:center;max-width:420px;margin:0 auto}
@@ -256,11 +259,13 @@ ul{list-style:none}
 .earnings-label{color:rgba(255,255,255,.65);font-size:.8rem;font-weight:600}
 .earnings-amount{font-family:'Baloo 2',cursive;font-size:2rem;font-weight:800;color:var(--pr);line-height:1.1;margin:2px 0}
 .earnings-sub{color:rgba(255,255,255,.5);font-size:.75rem}
+/* theme card */
 .theme-card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r3);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--s2)}
 .theme-card-info{display:flex;align-items:center;gap:12px}
 .theme-toggle-btn{width:54px;height:30px;border-radius:var(--rf);background:var(--pr);position:relative;transition:background var(--tf);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff}
 .theme-toggle-btn .material-icons-round{font-size:18px}
 .theme-toggle-btn:hover{background:var(--pr-d)}
+/* orders */
 .orders-section{background:var(--card);border-radius:var(--r3);padding:16px;box-shadow:var(--s2);border:1px solid var(--bdr)}
 .orders-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .orders-section-header h3{display:flex;align-items:center;gap:8px;font-size:1rem;font-weight:800}
@@ -427,7 +432,18 @@ ul{list-style:none}
 .btn-track-order{display:flex;align-items:center;gap:4px;padding:7px 14px;background:rgba(249,115,22,.08);border:2px solid var(--pr);border-radius:var(--r1);color:var(--pr);font-size:.8rem;font-weight:700;transition:all var(--tf)}
 .btn-track-order:hover{background:var(--pr);color:#fff}
 .btn-track-order .material-icons-round{font-size:16px}
-/* ── NEW FEATURE CSS ── */
+/* ── MISC ── */
+#recaptcha-container{display:flex;justify-content:center;margin-top:10px}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:4px}
+:focus-visible{outline:2.5px solid var(--pr);outline-offset:2px;border-radius:4px}
+
+/* ════════════════════════════════════════════════════
+   ★ NEW FEATURE CSS – নতুন ফিচার স্টাইল
+════════════════════════════════════════════════════ */
+
+/* ── VIDEO ADS ── */
 .video-ads-section{background:var(--bg);padding:10px 0 4px}
 .video-ads-heading{display:flex;align-items:center;gap:8px;padding:6px 16px 10px;font-size:1rem;font-weight:800;color:var(--th)}
 .video-ads-heading .material-icons-round{color:var(--pr)}
@@ -440,6 +456,8 @@ ul{list-style:none}
 .video-ad-card:hover .video-ad-overlay{background:rgba(0,0,0,.15)}
 .video-ad-mute-btn{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);border:none;border-radius:var(--rf);width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;z-index:2}
 .video-ad-mute-btn .material-icons-round{font-size:18px}
+
+/* ── PACKAGE / UPGRADE CARDS ── */
 .pkg-section{padding:14px}
 .pkg-section-title{font-size:1.1rem;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .pkg-section-title .material-icons-round{color:var(--pr)}
@@ -463,6 +481,8 @@ ul{list-style:none}
 .pkg-btn-weekly{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;box-shadow:0 3px 12px rgba(124,58,237,.3)}
 .pkg-btn-weekly:hover{background:linear-gradient(135deg,#6d28d9,#9333ea)}
 .pkg-current-badge{display:inline-flex;align-items:center;gap:4px;background:var(--ok-b);color:var(--ok);font-size:.76rem;font-weight:700;padding:6px 12px;border-radius:var(--rf);width:100%;justify-content:center}
+
+/* ── PDF READER ── */
 .pdf-reader-overlay{position:fixed;inset:0;background:#1a1a2e;z-index:calc(var(--z5) + 20);display:flex;flex-direction:column}
 .pdf-reader-header{background:#12122a;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}
 .pdf-reader-title{flex:1;color:#fff;font-weight:700;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -476,12 +496,16 @@ ul{list-style:none}
 .pdf-reader-footer button:disabled{opacity:.3;cursor:not-allowed}
 .pdf-page-info{color:rgba(255,255,255,.7);font-size:.85rem;font-weight:600}
 .pdf-security-notice{background:rgba(220,38,38,.15);color:#fca5a5;font-size:.72rem;padding:6px 16px;text-align:center;font-weight:600;border-top:1px solid rgba(220,38,38,.2)}
+
+/* ── PAYMENT MODE MODAL ── */
 .pay-mode-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
 .pay-mode-card{border:2px solid var(--bdr);border-radius:var(--r2);padding:16px;text-align:center;cursor:pointer;transition:all var(--tf)}
 .pay-mode-card:hover,.pay-mode-card.selected{border-color:var(--pr);background:rgba(249,115,22,.06)}
 .pay-mode-icon{font-size:28px;margin-bottom:6px}
 .pay-mode-name{font-weight:700;font-size:.9rem;color:var(--th);margin-bottom:2px}
 .pay-mode-desc{font-size:.74rem;color:var(--tm)}
+
+/* ── BUY OPTIONS (₹29 weekly or direct) ── */
 .buy-options-wrap{display:flex;flex-direction:column;gap:10px;margin:14px 0}
 .buy-option-card{border:2px solid var(--bdr);border-radius:var(--r2);padding:14px 16px;cursor:pointer;transition:all var(--tf);display:flex;align-items:center;gap:12px}
 .buy-option-card:hover,.buy-option-card.selected{border-color:var(--pr);background:rgba(249,115,22,.06)}
@@ -491,6 +515,8 @@ ul{list-style:none}
 .buy-option-name{font-weight:700;font-size:.9rem;color:var(--th)}
 .buy-option-desc{font-size:.76rem;color:var(--tm);margin-top:1px}
 .buy-option-price{font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;color:var(--pr);flex-shrink:0}
+
+/* ── AUTHOR DASHBOARD ── */
 .author-dashboard{padding:14px;display:flex;flex-direction:column;gap:14px}
 .dash-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .dash-stat-card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r2);padding:14px;text-align:center;box-shadow:var(--s1)}
@@ -504,30 +530,33 @@ ul{list-style:none}
 .dash-book-title{font-weight:700;font-size:.88rem;color:var(--th);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dash-book-sales{font-size:.75rem;color:var(--tm);margin-top:2px}
 .dash-book-earn{font-family:'Baloo 2',cursive;font-weight:800;color:var(--ok);font-size:.95rem}
+
+/* ── UPGRADE BADGE on profile ── */
 .upgrade-badge{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#7c3aed,#f97316);color:#fff;font-size:.72rem;font-weight:800;padding:3px 10px;border-radius:var(--rf)}
 .profile-pkg-card{background:linear-gradient(135deg,#1a1f3a,#2d1a3a);border-radius:var(--r3);padding:16px;box-shadow:var(--s3)}
 .profile-pkg-title{color:rgba(255,255,255,.7);font-size:.8rem;font-weight:600;margin-bottom:4px}
 .profile-pkg-name{color:#fff;font-size:1.1rem;font-weight:800;display:flex;align-items:center;gap:8px}
 .profile-pkg-action{margin-top:12px}
+
+/* ── DIGITAL ACCESS BUTTONS ── */
 .btn-read-now{padding:8px 4px;background:#7c3aed;border-radius:var(--r1);color:#fff;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:3px;transition:all var(--tf)}
 .btn-read-now:hover{background:#6d28d9}
 .btn-watch-now{padding:8px 4px;background:#dc2626;border-radius:var(--r1);color:#fff;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:3px;transition:all var(--tf)}
 .btn-watch-now:hover{background:#b91c1c}
 .btn-read-now .material-icons-round,.btn-watch-now .material-icons-round{font-size:15px}
+
+/* ── PUBLISH PKG PICKER ── */
 .publish-pkg-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
 .pub-pkg-card{border:2px solid var(--bdr);border-radius:var(--r2);padding:12px 8px;text-align:center;cursor:pointer;transition:all var(--tf)}
 .pub-pkg-card.selected,.pub-pkg-card:hover{border-color:var(--pr);background:rgba(249,115,22,.06)}
 .pub-pkg-price{font-family:'Baloo 2',cursive;font-size:1.2rem;font-weight:800;color:var(--pr)}
 .pub-pkg-name{font-size:.75rem;font-weight:700;color:var(--th);margin-top:2px}
 .pub-pkg-desc{font-size:.68rem;color:var(--tm);margin-top:3px;line-height:1.4}
+
+/* ── COVER IMAGE UPLOAD ── */
 .cover-preview{width:80px;height:100px;border-radius:var(--r1);object-fit:cover;background:#f3f4f6;border:2px solid var(--bdr);margin-top:8px;display:none}
 .cover-preview.show{display:block}
-/* ── MISC ── */
-#recaptcha-container{display:flex;justify-content:center;margin-top:10px}
-::-webkit-scrollbar{width:5px;height:5px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:4px}
-:focus-visible{outline:2.5px solid var(--pr);outline-offset:2px;border-radius:4px}
+
 /* ── RESPONSIVE ── */
 @media(min-width:540px){
   .product-grid{grid-template-columns:repeat(3,1fr);gap:12px;padding:0 14px 14px}
@@ -562,12 +591,18 @@ ul{list-style:none}
 <!-- DRAWER -->
 <aside class="drawer" id="drawer">
   <div class="drawer-header">
-    <div class="drawer-brand"><span style="font-size:26px">🛒</span><span class="brand-name">SayatKart</span></div>
+    <div class="drawer-brand">
+      <span style="font-size:26px">🛒</span>
+      <span class="brand-name">SayatKart</span>
+    </div>
     <button class="drawer-close" id="drawerClose"><span class="material-icons-round">close</span></button>
   </div>
   <div class="drawer-user" id="drawerUser" style="display:none">
     <div class="drawer-avatar" id="drawerAvatar">U</div>
-    <div><p class="drawer-user-name" id="drawerUserName">User</p><p class="drawer-user-email" id="drawerUserEmail"></p></div>
+    <div>
+      <p class="drawer-user-name" id="drawerUserName">User</p>
+      <p class="drawer-user-email" id="drawerUserEmail"></p>
+    </div>
   </div>
   <nav class="drawer-nav">
     <a class="drawer-link active" data-section="home" href="#"><span class="material-icons-round">home</span> Home</a>
@@ -587,7 +622,9 @@ ul{list-style:none}
 <header class="app-header" id="appHeader">
   <div class="header-inner">
     <button class="header-menu-btn" id="menuBtn"><span class="material-icons-round">menu</span></button>
-    <a class="header-brand" data-section="home" href="#"><span class="header-brand-text">Sayat<span>Kart</span></span></a>
+    <a class="header-brand" data-section="home" href="#">
+      <span class="header-brand-text">Sayat<span>Kart</span></span>
+    </a>
     <div class="header-search-wrap" id="headerSearchWrap">
       <span class="material-icons-round search-icon">search</span>
       <input type="text" id="searchInput" class="header-search-input" placeholder="Search products, books..." autocomplete="off"/>
@@ -613,8 +650,19 @@ ul{list-style:none}
 
 <!-- HOME -->
 <section class="section active" id="section-home">
-  <div class="cashback-banner"><span class="material-icons-round">local_offer</span><span>Order Now and Earn <strong>5% Cashback</strong> on every purchase!</span></div>
-  <div class="hero-carousel"><div class="hero-slide"><div class="hero-text"><h2>Best Deals on Books & More</h2><p>Thousands of products at unbeatable prices</p><button class="hero-cta">Shop Now</button></div></div></div>
+  <div class="cashback-banner">
+    <span class="material-icons-round">local_offer</span>
+    <span>Order Now and Earn <strong>5% Cashback</strong> on every purchase!</span>
+  </div>
+  <div class="hero-carousel">
+    <div class="hero-slide">
+      <div class="hero-text">
+        <h2>Best Deals on Books & More</h2>
+        <p>Thousands of products at unbeatable prices</p>
+        <button class="hero-cta">Shop Now</button>
+      </div>
+    </div>
+  </div>
   <div class="category-strip" id="categoryStrip">
     <button class="category-chip active" data-cat="all">All</button>
     <button class="category-chip" data-cat="ebook">E-Book</button>
@@ -624,77 +672,166 @@ ul{list-style:none}
     <button class="category-chip" data-cat="fashion">Fashion</button>
     <button class="category-chip" data-cat="stationery">Stationery</button>
   </div>
-  <div class="section-heading"><h3 class="section-title">Featured Products</h3><span class="section-subtitle">Updated daily</span></div>
+  <div class="section-heading">
+    <h3 class="section-title">Featured Products</h3>
+    <span class="section-subtitle">Updated daily</span>
+  </div>
   <div class="product-grid" id="productGrid">
     <div class="product-skeleton"></div><div class="product-skeleton"></div>
     <div class="product-skeleton"></div><div class="product-skeleton"></div>
     <div class="product-skeleton"></div><div class="product-skeleton"></div>
   </div>
-  <div class="empty-state" id="noProductsState" style="display:none"><span class="material-icons-round empty-icon">search_off</span><p>No products found.</p></div>
+  <div class="empty-state" id="noProductsState" style="display:none">
+    <span class="material-icons-round empty-icon">search_off</span>
+    <p>No products found.</p>
+  </div>
+  <!-- VIDEO ADS SECTION -->
   <div class="video-ads-section" id="videoAdsSection" style="display:none">
-    <div class="video-ads-heading"><span class="material-icons-round">play_circle</span><span>Featured Videos</span></div>
+    <div class="video-ads-heading">
+      <span class="material-icons-round">play_circle</span>
+      <span>Featured Videos</span>
+    </div>
     <div class="video-ads-scroll" id="videoAdsScroll"></div>
   </div>
 </section>
 
 <!-- UPGRADE PLANS -->
 <section class="section" id="section-upgrade">
-  <div class="page-hero"><h2 class="page-hero-title"><span class="material-icons-round">workspace_premium</span> Upgrade Your Plan</h2><p class="page-hero-sub">Upgrade once, enjoy all digital content for free!</p></div>
+  <div class="page-hero">
+    <h2 class="page-hero-title"><span class="material-icons-round">workspace_premium</span> Upgrade Your Plan</h2>
+    <p class="page-hero-sub">একবার আপগ্রেড করুন, সব ডিজিটাল কন্টেন্ট ফ্রি উপভোগ করুন!</p>
+  </div>
   <div class="pkg-section">
     <div class="pkg-grid" id="pkgGrid">
+      <!-- ₹29 Weekly -->
       <div class="pkg-card">
-        <div class="pkg-icon">⚡</div><div class="pkg-name">Weekly Pass</div><div class="pkg-price">₹29</div><div class="pkg-cycle">weekly auto-debit</div>
-        <ul class="pkg-features"><li><span class="material-icons-round">check</span> all E-Book reading free </li><li><span class="material-icons-round">check</span> all Premium Video see </li><li><span class="material-icons-round">check</span> Razorpay Auto-Pay</li><li><span class="material-icons-round">check</span> Cancel anytime</li></ul>
-        <button class="pkg-btn pkg-btn-weekly" data-pkg="weekly" data-amount="29"><span class="material-icons-round">bolt</span> Subscribe ₹29/week</button>
+        <div class="pkg-icon">⚡</div>
+        <div class="pkg-name">Weekly Pass</div>
+        <div class="pkg-price">₹29</div>
+        <div class="pkg-cycle">প্রতি সপ্তাহে অটো-ডেবিট</div>
+        <ul class="pkg-features">
+          <li><span class="material-icons-round">check</span> সব E-Book পড়ুন ফ্রি</li>
+          <li><span class="material-icons-round">check</span> সব Premium Video দেখুন</li>
+          <li><span class="material-icons-round">check</span> Razorpay Auto-Pay</li>
+          <li><span class="material-icons-round">check</span> যেকোনো সময় বাতিল করুন</li>
+        </ul>
+        <button class="pkg-btn pkg-btn-weekly" id="pkgBtn29" data-pkg="weekly" data-amount="29">
+          <span class="material-icons-round">bolt</span> Subscribe ₹29/week
+        </button>
       </div>
+      <!-- ₹149 Basic -->
       <div class="pkg-card featured">
         <div class="pkg-popular-badge">⭐ Popular</div>
-        <div class="pkg-icon">📚</div><div class="pkg-name">Author Basic</div><div class="pkg-price">₹149</div><div class="pkg-cycle">one-time payment</div>
-        <ul class="pkg-features"><li><span class="material-icons-round">check</span> Book Publish Apply</li><li><span class="material-icons-round">check</span> 60% Royalty receive</li><li><span class="material-icons-round">check</span>  All Digital Content free</li><li><span class="material-icons-round">check</span> Author Profile</li></ul>
-        <button class="pkg-btn pkg-btn-primary" data-pkg="basic" data-amount="149"><span class="material-icons-round">rocket_launch</span> Get Basic ₹149</button>
+        <div class="pkg-icon">📚</div>
+        <div class="pkg-name">Author Basic</div>
+        <div class="pkg-price">₹149</div>
+        <div class="pkg-cycle">এককালীন পেমেন্ট</div>
+        <ul class="pkg-features">
+          <li><span class="material-icons-round">check</span> Book Publish করুন</li>
+          <li><span class="material-icons-round">check</span> 60% Royalty পাবেন</li>
+          <li><span class="material-icons-round">check</span> সব Digital Content ফ্রি</li>
+          <li><span class="material-icons-round">check</span> Author Profile</li>
+        </ul>
+        <button class="pkg-btn pkg-btn-primary" id="pkgBtn149" data-pkg="basic" data-amount="149">
+          <span class="material-icons-round">rocket_launch</span> Get Basic ₹149
+        </button>
       </div>
+      <!-- ₹199 Premium -->
       <div class="pkg-card">
-        <div class="pkg-icon">👑</div><div class="pkg-name">Author Premium</div><div class="pkg-price">₹199</div><div class="pkg-cycle">One-time payment</div>
-        <ul class="pkg-features"><li><span class="material-icons-round">check</span> Basic-All the features</li><li><span class="material-icons-round">check</span> ISBN You will get the number</li><li><span class="material-icons-round">check</span> Govt Author Registration</li><li><span class="material-icons-round">check</span> Premium Video Access</li><li><span class="material-icons-round">check</span> any E-Book free </li></ul>
-        <button class="pkg-btn pkg-btn-primary" data-pkg="premium" data-amount="199"><span class="material-icons-round">crown</span> Get Premium ₹199</button>
+        <div class="pkg-icon">👑</div>
+        <div class="pkg-name">Author Premium</div>
+        <div class="pkg-price">₹199</div>
+        <div class="pkg-cycle">এককালীন পেমেন্ট</div>
+        <ul class="pkg-features">
+          <li><span class="material-icons-round">check</span> Basic-এর সব সুবিধা</li>
+          <li><span class="material-icons-round">check</span> ISBN নম্বর পাবেন</li>
+          <li><span class="material-icons-round">check</span> Govt Author Registration</li>
+          <li><span class="material-icons-round">check</span> Premium Video Access</li>
+          <li><span class="material-icons-round">check</span> সব E-Book ফ্রি</li>
+        </ul>
+        <button class="pkg-btn pkg-btn-primary" id="pkgBtn199" data-pkg="premium" data-amount="199">
+          <span class="material-icons-round">crown</span> Get Premium ₹199
+        </button>
       </div>
     </div>
-    <div id="currentPkgInfo" style="margin-top:16px;display:none"><div class="pkg-current-badge"><span class="material-icons-round" style="font-size:16px">verified</span> You are currently <strong id="currentPkgName">—</strong> You are on a plan</div></div>
+    <div id="currentPkgInfo" style="margin-top:16px;display:none">
+      <div class="pkg-current-badge">
+        <span class="material-icons-round" style="font-size:16px">verified</span>
+        আপনি বর্তমানে <strong id="currentPkgName">—</strong> প্ল্যানে আছেন
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- AUTHOR DASHBOARD -->
 <section class="section" id="section-dashboard">
-  <div class="page-hero"><h2 class="page-hero-title"><span class="material-icons-round">bar_chart</span> Author Dashboard</h2><p class="page-hero-sub">Book Publications & Earnings Report.</p></div>
-  <div class="auth-warning" id="dashAuthWarning" style="display:none"><span class="material-icons-round">warning</span><div><strong>Login Required!</strong><p>Login required to view dashboard.</p></div><button class="warn-login-btn" data-section="profile">Login →</button></div>
+  <div class="page-hero">
+    <h2 class="page-hero-title"><span class="material-icons-round">bar_chart</span> Author Dashboard</h2>
+    <p class="page-hero-sub">আপনার প্রকাশিত বই ও আয়ের বিবরণ</p>
+  </div>
+  <div class="auth-warning" id="dashAuthWarning" style="display:none">
+    <span class="material-icons-round">warning</span>
+    <div><strong>Login Required!</strong><p>Dashboard দেখতে login করুন।</p></div>
+    <button class="warn-login-btn" data-section="profile">Login →</button>
+  </div>
   <div class="author-dashboard" id="authorDashboard" style="display:none">
     <div class="dash-stat-row">
       <div class="dash-stat-card"><div class="dash-stat-icon">📚</div><div class="dash-stat-val" id="dashTotalBooks">0</div><div class="dash-stat-lbl">Books Published</div></div>
       <div class="dash-stat-card"><div class="dash-stat-icon">🛒</div><div class="dash-stat-val" id="dashTotalSales">0</div><div class="dash-stat-lbl">Total Sales</div></div>
       <div class="dash-stat-card"><div class="dash-stat-icon">💰</div><div class="dash-stat-val" id="dashTotalEarnings">₹0</div><div class="dash-stat-lbl">Total Earnings</div></div>
     </div>
-    <div class="section-heading" style="padding:0 0 10px"><h3 class="section-title" style="font-size:.95rem">My Published Books</h3></div>
-    <div class="dash-books-list" id="dashBooksList"><div class="loading-spinner"><div class="spinner"></div><p>Loading...</p></div></div>
+    <div class="section-heading" style="padding:0 0 10px">
+      <h3 class="section-title" style="font-size:.95rem">My Published Books</h3>
+    </div>
+    <div class="dash-books-list" id="dashBooksList">
+      <div class="loading-spinner"><div class="spinner"></div><p>Loading...</p></div>
+    </div>
   </div>
 </section>
 
 <!-- PUBLISH -->
 <section class="section" id="section-publish">
-  <div class="page-hero"><h2 class="page-hero-title"><span class="material-icons-round">auto_stories</span> Publish Your Book</h2><p class="page-hero-sub">The file will be uploaded after payment.</p></div>
-  <div class="auth-warning" id="publishAuthWarning" style="display:none"><span class="material-icons-round">warning</span><div><strong>Login Required!</strong><p>Please login first to publish a book.</p></div><button class="warn-login-btn" data-section="profile">Login →</button></div>
+  <div class="page-hero">
+    <h2 class="page-hero-title"><span class="material-icons-round">auto_stories</span> Publish Your Book</h2>
+    <p class="page-hero-sub">পেমেন্টের পরে ফাইল আপলোড হবে এবং Firestore-এ সেভ হবে।</p>
+  </div>
+  <div class="auth-warning" id="publishAuthWarning" style="display:none">
+    <span class="material-icons-round">warning</span>
+    <div><strong>Login Required!</strong><p>Please login first to publish a book.</p></div>
+    <button class="warn-login-btn" data-section="profile">Login →</button>
+  </div>
   <div class="publish-form-wrap" id="publishFormWrap">
     <form class="publish-form" id="publishForm" novalidate>
+      <!-- Package Selection -->
       <div class="form-group">
         <label class="form-label"><span class="material-icons-round">workspace_premium</span> Publishing Package *</label>
         <div class="publish-pkg-row" id="publishPkgRow">
-          <div class="pub-pkg-card" data-pkg-val="weekly29"><div class="pub-pkg-price">₹29</div><div class="pub-pkg-name">Weekly</div><div class="pub-pkg-desc">weekly subscription</div></div>
-          <div class="pub-pkg-card selected" data-pkg-val="basic149"><div class="pub-pkg-price">₹149</div><div class="pub-pkg-name">Basic</div><div class="pub-pkg-desc">60% Royalty</div></div>
-          <div class="pub-pkg-card" data-pkg-val="premium199"><div class="pub-pkg-price">₹199</div><div class="pub-pkg-name">Premium</div><div class="pub-pkg-desc">ISBN + Govt Registration</div></div>
+          <div class="pub-pkg-card" data-pkg-val="weekly29">
+            <div class="pub-pkg-price">₹29</div>
+            <div class="pub-pkg-name">Weekly</div>
+            <div class="pub-pkg-desc">সাপ্তাহিক সাবস্ক্রিপশন</div>
+          </div>
+          <div class="pub-pkg-card selected" data-pkg-val="basic149">
+            <div class="pub-pkg-price">₹149</div>
+            <div class="pub-pkg-name">Basic</div>
+            <div class="pub-pkg-desc">60% Royalty</div>
+          </div>
+          <div class="pub-pkg-card" data-pkg-val="premium199">
+            <div class="pub-pkg-price">₹199</div>
+            <div class="pub-pkg-name">Premium</div>
+            <div class="pub-pkg-desc">ISBN + Govt Registration</div>
+          </div>
         </div>
         <input type="hidden" id="selectedPublishPkg" value="basic149"/>
       </div>
-      <div class="form-group"><label class="form-label" for="bookTitle"><span class="material-icons-round">title</span> Book Title *</label><input type="text" id="bookTitle" class="form-input" placeholder="e.g., The Art of Coding" required/></div>
-      <div class="form-group"><label class="form-label" for="bookSubtitle"><span class="material-icons-round">subtitles</span> Subtitle</label><input type="text" id="bookSubtitle" class="form-input" placeholder="Optional subtitle"/></div>
+      <div class="form-group">
+        <label class="form-label" for="bookTitle"><span class="material-icons-round">title</span> Book Title *</label>
+        <input type="text" id="bookTitle" class="form-input" placeholder="e.g., The Art of Coding" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="bookSubtitle"><span class="material-icons-round">subtitles</span> Subtitle</label>
+        <input type="text" id="bookSubtitle" class="form-input" placeholder="Optional subtitle"/>
+      </div>
       <div class="form-group">
         <label class="form-label"><span class="material-icons-round">category</span> Format *</label>
         <div class="radio-group">
@@ -702,7 +839,8 @@ ul{list-style:none}
           <label class="radio-card"><input type="radio" name="bookFormat" value="E-book"/><span class="radio-label"><span class="material-icons-round">tablet_android</span> E-book</span></label>
         </div>
       </div>
-      <div class="form-group"><label class="form-label" for="bookSize"><span class="material-icons-round">straighten</span> Book Size *</label>
+      <div class="form-group">
+        <label class="form-label" for="bookSize"><span class="material-icons-round">straighten</span> Book Size *</label>
         <select id="bookSize" class="form-input form-select" required>
           <option value="">— Select Size —</option>
           <option value="A4 (210×297mm)">A4 (210×297mm)</option>
@@ -713,28 +851,59 @@ ul{list-style:none}
           <option value="Custom">Custom</option>
         </select>
       </div>
-      <div class="form-group" id="customSizeGroup" style="display:none"><label class="form-label" for="bookCustomSize">Custom Size</label><input type="text" id="bookCustomSize" class="form-input" placeholder="e.g., 7×10 inches"/></div>
-      <div class="form-group"><label class="form-label" for="bookPages"><span class="material-icons-round">pages</span> Number of Pages *</label><input type="number" id="bookPages" class="form-input" placeholder="e.g., 250" min="1" required/></div>
-      <div class="form-group"><label class="form-label" for="bookAuthor"><span class="material-icons-round">person</span> Author Name *</label><input type="text" id="bookAuthor" class="form-input" placeholder="Your full name" required/></div>
-      <div class="form-group"><label class="form-label" for="bookPrice"><span class="material-icons-round">currency_rupee</span> Book Price (₹) *</label><input type="number" id="bookPrice" class="form-input" placeholder="e.g., 299" min="1" required/></div>
-      <div class="form-group"><label class="form-label" for="bookDesc"><span class="material-icons-round">description</span> Description</label><textarea id="bookDesc" class="form-input form-textarea" rows="4" placeholder="Brief synopsis..."></textarea></div>
+      <div class="form-group" id="customSizeGroup" style="display:none">
+        <label class="form-label" for="bookCustomSize">Custom Size</label>
+        <input type="text" id="bookCustomSize" class="form-input" placeholder="e.g., 7×10 inches"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="bookPages"><span class="material-icons-round">pages</span> Number of Pages *</label>
+        <input type="number" id="bookPages" class="form-input" placeholder="e.g., 250" min="1" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="bookAuthor"><span class="material-icons-round">person</span> Author Name *</label>
+        <input type="text" id="bookAuthor" class="form-input" placeholder="Your full name" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="bookPrice"><span class="material-icons-round">currency_rupee</span> Book Price (₹) *</label>
+        <input type="number" id="bookPrice" class="form-input" placeholder="e.g., 299" min="1" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="bookDesc"><span class="material-icons-round">description</span> Description</label>
+        <textarea id="bookDesc" class="form-input form-textarea" rows="4" placeholder="Brief synopsis..."></textarea>
+      </div>
+      <!-- Cover Image Upload -->
       <div class="form-group">
         <label class="form-label" for="bookCover"><span class="material-icons-round">image</span> Cover Image *</label>
         <div class="file-upload-zone" id="coverUploadZone" style="padding:14px">
           <input type="file" id="bookCover" class="file-input" accept="image/*"/>
-          <div id="coverUploadContent"><span class="material-icons-round file-upload-icon" style="font-size:28px">add_photo_alternate</span><p class="file-upload-text" style="font-size:.85rem">Click to upload cover image</p><p class="file-upload-hint">JPG, PNG – Max 5MB</p></div>
+          <div id="coverUploadContent">
+            <span class="material-icons-round file-upload-icon" style="font-size:28px">add_photo_alternate</span>
+            <p class="file-upload-text" style="font-size:.85rem">Click to upload cover image</p>
+            <p class="file-upload-hint">JPG, PNG – Max 5MB</p>
+          </div>
           <img id="coverPreview" class="cover-preview" src="" alt="Cover Preview"/>
         </div>
       </div>
+      <!-- PDF Upload -->
       <div class="form-group">
         <label class="form-label" for="bookPDF"><span class="material-icons-round">upload_file</span> Upload Book PDF *</label>
         <div class="file-upload-zone" id="fileUploadZone">
           <input type="file" id="bookPDF" class="file-input" accept=".pdf"/>
-          <div class="file-upload-content" id="fileUploadContent"><span class="material-icons-round file-upload-icon">cloud_upload</span><p class="file-upload-text">Click or drag & drop your PDF</p><p class="file-upload-hint">Max 50 MB</p></div>
-          <div class="file-selected-info" id="fileSelectedInfo" style="display:none"><span class="material-icons-round">picture_as_pdf</span><span id="fileSelectedName">file.pdf</span><button type="button" class="file-remove-btn" id="fileRemoveBtn"><span class="material-icons-round">close</span></button></div>
+          <div class="file-upload-content" id="fileUploadContent">
+            <span class="material-icons-round file-upload-icon">cloud_upload</span>
+            <p class="file-upload-text">Click or drag & drop your PDF</p>
+            <p class="file-upload-hint">Max 50 MB</p>
+          </div>
+          <div class="file-selected-info" id="fileSelectedInfo" style="display:none">
+            <span class="material-icons-round">picture_as_pdf</span>
+            <span id="fileSelectedName">file.pdf</span>
+            <button type="button" class="file-remove-btn" id="fileRemoveBtn"><span class="material-icons-round">close</span></button>
+          </div>
         </div>
       </div>
-      <button type="submit" class="btn-primary" id="publishSubmitBtn" style="width:100%;padding:14px;font-size:1rem;margin-top:8px"><span class="material-icons-round">payment</span> Pay & Publish</button>
+      <button type="submit" class="btn-primary" id="publishSubmitBtn" style="width:100%;padding:14px;font-size:1rem;margin-top:8px">
+        <span class="material-icons-round">payment</span> Pay & Publish
+      </button>
     </form>
   </div>
 </section>
@@ -742,14 +911,23 @@ ul{list-style:none}
 <!-- PROFILE -->
 <section class="section" id="section-profile">
   <div class="cashback-banner"><span class="material-icons-round">stars</span><span>Order Now and Earn <strong>5% Cashback!</strong></span></div>
+  <!-- Not logged in -->
   <div class="profile-login-prompt" id="profileLoginPrompt">
     <div class="login-prompt-card">
-      <div class="login-prompt-icon">🔐</div><h3>Welcome to SayatKart</h3><p>Login to access your profile, orders, and earnings.</p>
+      <div class="login-prompt-icon">🔐</div>
+      <h3>Welcome to SayatKart</h3>
+      <p>Login to access your profile, orders, and earnings.</p>
       <div class="login-methods">
-        <button class="btn-google-login" id="googleLoginBtn"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20"/> Continue with Google</button>
+        <button class="btn-google-login" id="googleLoginBtn">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20"/>
+          Continue with Google
+        </button>
         <div class="login-divider"><span>or</span></div>
         <div>
-          <div class="phone-input-wrap"><span class="phone-prefix">+91</span><input type="tel" id="loginPhoneInput" class="form-input phone-input" placeholder="Mobile Number" maxlength="10"/></div>
+          <div class="phone-input-wrap">
+            <span class="phone-prefix">+91</span>
+            <input type="tel" id="loginPhoneInput" class="form-input phone-input" placeholder="Mobile Number" maxlength="10"/>
+          </div>
           <button class="btn-primary" id="sendOtpBtn" style="width:100%;margin-top:10px"><span class="material-icons-round">sms</span> Send OTP</button>
         </div>
         <div id="otpVerifyWrap" style="display:none">
@@ -769,41 +947,103 @@ ul{list-style:none}
     </div>
     <div id="recaptcha-container"></div>
   </div>
+  <!-- Logged in -->
   <div class="profile-logged-in" id="profileLoggedIn" style="display:none">
-    <div class="theme-card"><div class="theme-card-info"><span class="material-icons-round" style="color:var(--pr)">brightness_6</span><div><p style="font-weight:700;font-size:.9rem;color:var(--th)">Appearance</p><p style="font-size:.78rem;color:var(--tm)">Switch Dark / Light mode</p></div></div><button class="theme-toggle-btn" id="themeToggleBtn"><span class="material-icons-round">dark_mode</span></button></div>
+    <!-- Dark/Light toggle -->
+    <div class="theme-card">
+      <div class="theme-card-info">
+        <span class="material-icons-round" style="color:var(--pr)">brightness_6</span>
+        <div>
+          <p style="font-weight:700;font-size:.9rem;color:var(--th)">Appearance</p>
+          <p style="font-size:.78rem;color:var(--tm)">Switch Dark / Light mode</p>
+        </div>
+      </div>
+      <button class="theme-toggle-btn" id="themeToggleBtn" title="Switch theme">
+        <span class="material-icons-round">dark_mode</span>
+      </button>
+    </div>
+    <!-- Profile card -->
     <div class="profile-card">
       <div class="profile-avatar" id="profileAvatar">U</div>
-      <div class="profile-info"><h3 class="profile-name" id="profileName">User</h3><p class="profile-email" id="profileEmail"></p><div id="profileUpgradeBadge" style="margin-top:4px;display:none"><span class="upgrade-badge"><span class="material-icons-round" style="font-size:13px">workspace_premium</span> <span id="profileUpgradeName">—</span></span></div></div>
+      <div class="profile-info">
+        <h3 class="profile-name" id="profileName">User</h3>
+        <p class="profile-email" id="profileEmail"></p>
+        <div id="profileUpgradeBadge" style="margin-top:4px;display:none">
+          <span class="upgrade-badge"><span class="material-icons-round" style="font-size:13px">workspace_premium</span> <span id="profileUpgradeName">—</span></span>
+        </div>
+      </div>
       <button class="btn-logout" id="logoutBtn"><span class="material-icons-round">logout</span> Logout</button>
     </div>
+    <!-- Current Package Card -->
     <div class="profile-pkg-card" id="profilePkgCard" style="display:none">
       <div class="profile-pkg-title">Current Plan</div>
-      <div class="profile-pkg-name"><span class="material-icons-round" style="color:var(--pr);font-size:20px">workspace_premium</span><span id="profilePkgName">Free</span></div>
-      <div class="profile-pkg-action"><button class="btn-primary" style="font-size:.82rem;padding:8px 14px" data-section="upgrade"><span class="material-icons-round">upgrade</span> Upgrade Plan</button></div>
+      <div class="profile-pkg-name">
+        <span class="material-icons-round" style="color:var(--pr);font-size:20px">workspace_premium</span>
+        <span id="profilePkgName">Free</span>
+      </div>
+      <div class="profile-pkg-action">
+        <button class="btn-primary" style="font-size:.82rem;padding:8px 14px" data-section="upgrade">
+          <span class="material-icons-round">upgrade</span> Upgrade Plan
+        </button>
+      </div>
     </div>
-    <div class="earnings-card"><div class="earnings-icon">💰</div><div class="earnings-info"><p class="earnings-label">Total Cashback Earned</p><h2 class="earnings-amount" id="earningsAmount">₹0</h2><p class="earnings-sub">5% on every successful order</p></div></div>
+    <!-- Earnings -->
+    <div class="earnings-card">
+      <div class="earnings-icon">💰</div>
+      <div class="earnings-info">
+        <p class="earnings-label">Total Cashback Earned</p>
+        <h2 class="earnings-amount" id="earningsAmount">₹0</h2>
+        <p class="earnings-sub">5% on every successful order</p>
+      </div>
+    </div>
+    <!-- Orders -->
     <div class="orders-section">
-      <div class="orders-section-header"><h3><span class="material-icons-round">local_shipping</span> My Orders</h3><button class="btn-outline" id="viewOrdersBtn"><span class="material-icons-round">visibility</span> View All</button></div>
-      <div class="orders-list" id="profileOrdersList"><div class="empty-orders"><span class="material-icons-round">shopping_bag</span><p>No orders yet.</p></div></div>
+      <div class="orders-section-header">
+        <h3><span class="material-icons-round">local_shipping</span> My Orders</h3>
+        <button class="btn-outline" id="viewOrdersBtn"><span class="material-icons-round">visibility</span> View All</button>
+      </div>
+      <div class="orders-list" id="profileOrdersList">
+        <div class="empty-orders"><span class="material-icons-round">shopping_bag</span><p>No orders yet.</p></div>
+      </div>
     </div>
+    <!-- Withdrawal -->
     <div class="withdrawal-card">
       <h3 class="withdrawal-title"><span class="material-icons-round">account_balance_wallet</span> Withdraw Cashback</h3>
       <p class="withdrawal-sub">Enter your UPI ID to request a withdrawal. Processed in 2–3 business days.</p>
       <div id="withdrawalForm">
-        <div class="form-group"><label class="form-label" for="upiId">UPI ID</label><input type="text" id="upiId" class="form-input" placeholder="yourname@upi"/></div>
-        <div class="form-group"><label class="form-label" for="withdrawAmount">Amount (₹)</label><input type="number" id="withdrawAmount" class="form-input" placeholder="Enter amount" min="10"/></div>
+        <div class="form-group">
+          <label class="form-label" for="upiId">UPI ID</label>
+          <input type="text" id="upiId" class="form-input" placeholder="yourname@upi"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="withdrawAmount">Amount (₹)</label>
+          <input type="number" id="withdrawAmount" class="form-input" placeholder="Enter amount" min="10"/>
+        </div>
         <button class="btn-primary" id="withdrawBtn" style="width:100%"><span class="material-icons-round">send</span> Request Withdrawal</button>
       </div>
-      <div class="withdrawal-success" id="withdrawalSuccess" style="display:none"><span class="material-icons-round">check_circle</span><p>Request submitted! We'll process it soon.</p></div>
+      <div class="withdrawal-success" id="withdrawalSuccess" style="display:none">
+        <span class="material-icons-round">check_circle</span>
+        <p>Request submitted! We'll process it soon.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ORDERS -->
 <section class="section" id="section-orders">
-  <div class="page-hero"><h2 class="page-hero-title"><span class="material-icons-round">shopping_bag</span> My Orders</h2></div>
-  <div class="auth-warning" id="ordersAuthWarning" style="display:none"><span class="material-icons-round">warning</span><div><strong>Login Required!</strong><p>Please login to view orders.</p></div><button class="warn-login-btn" data-section="profile">Login →</button></div>
-  <div class="orders-container" id="ordersContainer" style="display:none"><div class="orders-full-list" id="ordersFullList"><div class="loading-spinner"><div class="spinner"></div><p>Loading orders...</p></div></div></div>
+  <div class="page-hero">
+    <h2 class="page-hero-title"><span class="material-icons-round">shopping_bag</span> My Orders</h2>
+  </div>
+  <div class="auth-warning" id="ordersAuthWarning" style="display:none">
+    <span class="material-icons-round">warning</span>
+    <div><strong>Login Required!</strong><p>Please login to view orders.</p></div>
+    <button class="warn-login-btn" data-section="profile">Login →</button>
+  </div>
+  <div class="orders-container" id="ordersContainer" style="display:none">
+    <div class="orders-full-list" id="ordersFullList">
+      <div class="loading-spinner"><div class="spinner"></div><p>Loading orders...</p></div>
+    </div>
+  </div>
 </section>
 
 </main>
@@ -818,8 +1058,17 @@ ul{list-style:none}
 
 <!-- CART SIDEBAR -->
 <div class="cart-sidebar" id="cartSidebar">
-  <div class="cart-header"><h3><span class="material-icons-round">shopping_cart</span> My Cart <span class="cart-count-text" id="cartCountText">(0)</span></h3><button class="cart-close-btn" id="cartCloseBtn"><span class="material-icons-round">close</span></button></div>
-  <div class="cart-body" id="cartBody"><div class="empty-cart" id="emptyCartMsg"><span class="material-icons-round">remove_shopping_cart</span><p>Your cart is empty!</p><button class="btn-primary" onclick="switchSection('home');closeCart()">Start Shopping</button></div></div>
+  <div class="cart-header">
+    <h3><span class="material-icons-round">shopping_cart</span> My Cart <span class="cart-count-text" id="cartCountText">(0)</span></h3>
+    <button class="cart-close-btn" id="cartCloseBtn"><span class="material-icons-round">close</span></button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="empty-cart" id="emptyCartMsg">
+      <span class="material-icons-round">remove_shopping_cart</span>
+      <p>Your cart is empty!</p>
+      <button class="btn-primary" onclick="switchSection('home');closeCart()">Start Shopping</button>
+    </div>
+  </div>
   <div class="cart-footer" id="cartFooter" style="display:none">
     <div class="cart-summary">
       <div class="cart-summary-row"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
@@ -827,7 +1076,11 @@ ul{list-style:none}
       <div class="cart-summary-row total-row"><span>Total</span><span id="cartTotal">₹0</span></div>
       <div class="cart-summary-row"><span style="font-size:.78rem">Cashback (5%)</span><span class="cashback-text" id="cartCashback">+₹0</span></div>
     </div>
-    <div class="auth-warning cart-auth-warning" id="cartAuthWarning" style="display:none"><span class="material-icons-round">warning</span><div><strong>Login to Checkout!</strong><p>Go to Profile and login.</p></div><button class="warn-login-btn" data-section="profile" onclick="closeCart()">Login →</button></div>
+    <div class="auth-warning cart-auth-warning" id="cartAuthWarning" style="display:none">
+      <span class="material-icons-round">warning</span>
+      <div><strong>Login to Checkout!</strong><p>Go to Profile and login.</p></div>
+      <button class="warn-login-btn" data-section="profile" onclick="closeCart()">Login →</button>
+    </div>
     <button class="btn-primary" id="checkoutBtn" style="width:100%;padding:13px;font-size:.95rem"><span class="material-icons-round">payment</span> Proceed to Checkout</button>
   </div>
 </div>
@@ -835,7 +1088,10 @@ ul{list-style:none}
 <!-- ADDRESS MODAL -->
 <div class="modal" id="addressModal">
   <div class="modal-content">
-    <div class="modal-header"><h3><span class="material-icons-round">location_on</span> Delivery Address</h3><button class="modal-close" id="addressModalClose"><span class="material-icons-round">close</span></button></div>
+    <div class="modal-header">
+      <h3><span class="material-icons-round">location_on</span> Delivery Address</h3>
+      <button class="modal-close" id="addressModalClose"><span class="material-icons-round">close</span></button>
+    </div>
     <div class="modal-body">
       <p class="modal-subtitle" id="addressModalSubtitle">Enter your delivery address</p>
       <form id="addressForm" novalidate>
@@ -843,42 +1099,74 @@ ul{list-style:none}
         <div class="form-group"><label class="form-label">Mobile *</label><input type="tel" id="addrPhone" class="form-input" placeholder="10-digit mobile" maxlength="10" required/></div>
         <div class="form-group"><label class="form-label">House No., Street *</label><input type="text" id="addrStreet" class="form-input" required/></div>
         <div class="form-group"><label class="form-label">Area / Locality *</label><input type="text" id="addrArea" class="form-input" required/></div>
-        <div class="form-row"><div class="form-group"><label class="form-label">City *</label><input type="text" id="addrCity" class="form-input" required/></div><div class="form-group"><label class="form-label">State *</label><input type="text" id="addrState" class="form-input" required/></div></div>
-        <div class="form-row"><div class="form-group"><label class="form-label">PIN *</label><input type="text" id="addrPin" class="form-input" maxlength="6" required/></div><div class="form-group"><label class="form-label">Landmark</label><input type="text" id="addrLandmark" class="form-input"/></div></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">City *</label><input type="text" id="addrCity" class="form-input" required/></div>
+          <div class="form-group"><label class="form-label">State *</label><input type="text" id="addrState" class="form-input" required/></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">PIN *</label><input type="text" id="addrPin" class="form-input" maxlength="6" required/></div>
+          <div class="form-group"><label class="form-label">Landmark</label><input type="text" id="addrLandmark" class="form-input"/></div>
+        </div>
         <label class="checkbox-label"><input type="checkbox" id="saveAddressCheck" checked/><span>Save address for future orders</span></label>
       </form>
     </div>
-    <div class="modal-footer"><button class="btn-outline" id="addressModalCancel">Cancel</button><button class="btn-primary" id="addressConfirmBtn"><span class="material-icons-round">payment</span> Pay Now</button></div>
+    <div class="modal-footer">
+      <button class="btn-outline" id="addressModalCancel">Cancel</button>
+      <button class="btn-primary" id="addressConfirmBtn"><span class="material-icons-round">payment</span> Pay Now</button>
+    </div>
   </div>
 </div>
 
 <!-- PAYMENT MODE MODAL -->
 <div class="modal" id="payModeModal">
   <div class="modal-content">
-    <div class="modal-header"><h3><span class="material-icons-round">payment</span> Payment Method</h3><button class="modal-close" id="payModeModalClose"><span class="material-icons-round">close</span></button></div>
+    <div class="modal-header">
+      <h3><span class="material-icons-round">payment</span> Payment Method</h3>
+      <button class="modal-close" id="payModeModalClose"><span class="material-icons-round">close</span></button>
+    </div>
     <div class="modal-body">
-      <p class="modal-subtitle">Select your preferred payment method?</p>
+      <p class="modal-subtitle">কিভাবে পেমেন্ট করতে চান?</p>
       <div class="pay-mode-options">
-        <div class="pay-mode-card selected" id="payModeOnline" data-mode="online"><div class="pay-mode-icon">💳</div><div class="pay-mode-name">Online Pay</div><div class="pay-mode-desc">Razorpay – Card, UPI, Net Banking</div></div>
-        <div class="pay-mode-card" id="payModeCod" data-mode="cod"><div class="pay-mode-icon">🚚</div><div class="pay-mode-name">Cash on Delivery</div><div class="pay-mode-desc">Cash on Delivery</div></div>
+        <div class="pay-mode-card selected" id="payModeOnline" data-mode="online">
+          <div class="pay-mode-icon">💳</div>
+          <div class="pay-mode-name">Online Pay</div>
+          <div class="pay-mode-desc">Razorpay – Card, UPI, Net Banking</div>
+        </div>
+        <div class="pay-mode-card" id="payModeCod" data-mode="cod">
+          <div class="pay-mode-icon">🚚</div>
+          <div class="pay-mode-name">Cash on Delivery</div>
+          <div class="pay-mode-desc">পৌঁছে দেওয়ার সময় টাকা দিন</div>
+        </div>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn-outline" id="payModeCancel">Cancel</button><button class="btn-primary" id="payModeConfirm"><span class="material-icons-round">check</span> Confirm</button></div>
+    <div class="modal-footer">
+      <button class="btn-outline" id="payModeCancel">Cancel</button>
+      <button class="btn-primary" id="payModeConfirm"><span class="material-icons-round">check</span> Confirm</button>
+    </div>
   </div>
 </div>
 
-<!-- BUY OPTIONS MODAL -->
+<!-- BUY OPTIONS MODAL (₹29 sub or direct price) -->
 <div class="modal" id="buyOptionsModal">
   <div class="modal-content">
-    <div class="modal-header"><h3><span class="material-icons-round">shopping_bag</span> Purchase Options</h3><button class="modal-close" id="buyOptionsModalClose"><span class="material-icons-round">close</span></button></div>
-    <div class="modal-body"><p class="modal-subtitle" id="buyOptionsSubtitle">How do you want to buy?</p><div class="buy-options-wrap" id="buyOptionsWrap"></div></div>
+    <div class="modal-header">
+      <h3><span class="material-icons-round">shopping_bag</span> Purchase Options</h3>
+      <button class="modal-close" id="buyOptionsModalClose"><span class="material-icons-round">close</span></button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-subtitle" id="buyOptionsSubtitle">কিভাবে কিনতে চান?</p>
+      <div class="buy-options-wrap" id="buyOptionsWrap"></div>
+    </div>
   </div>
 </div>
 
 <!-- ORDER STATUS MODAL -->
 <div class="modal" id="orderStatusModal">
   <div class="modal-content">
-    <div class="modal-header"><h3><span class="material-icons-round">local_shipping</span> Order Status</h3><button class="modal-close" id="orderStatusModalClose"><span class="material-icons-round">close</span></button></div>
+    <div class="modal-header">
+      <h3><span class="material-icons-round">local_shipping</span> Order Status</h3>
+      <button class="modal-close" id="orderStatusModalClose"><span class="material-icons-round">close</span></button>
+    </div>
     <div class="modal-body">
       <p class="order-id-label">Order ID: <span id="statusOrderId" class="order-id-value">—</span></p>
       <div class="order-tracker">
@@ -896,14 +1184,24 @@ ul{list-style:none}
 <!-- PRODUCT MODAL -->
 <div class="modal" id="productModal">
   <div class="modal-content">
-    <div class="modal-header"><h3 id="productModalTitle">Product Details</h3><button class="modal-close" id="productModalClose"><span class="material-icons-round">close</span></button></div>
+    <div class="modal-header">
+      <h3 id="productModalTitle">Product Details</h3>
+      <button class="modal-close" id="productModalClose"><span class="material-icons-round">close</span></button>
+    </div>
     <div class="modal-body product-modal-body">
       <div class="product-modal-img-wrap"><img id="productModalImg" src="" alt="" class="product-modal-img"/></div>
       <div class="product-modal-info">
         <h2 id="productModalName"></h2>
-        <div class="product-modal-prices"><span class="modal-price" id="productModalPrice"></span><span class="modal-original-price" id="productModalOrig"></span><span class="modal-discount-badge" id="productModalDisc" style="display:none"></span></div>
+        <div class="product-modal-prices">
+          <span class="modal-price" id="productModalPrice"></span>
+          <span class="modal-original-price" id="productModalOrig"></span>
+          <span class="modal-discount-badge" id="productModalDisc" style="display:none"></span>
+        </div>
         <p class="product-modal-desc" id="productModalDesc"></p>
-        <div class="product-modal-actions" id="productModalActions"><button class="btn-outline" id="productModalAddCart"><span class="material-icons-round">add_shopping_cart</span> Add to Cart</button><button class="btn-primary" id="productModalBuyNow"><span class="material-icons-round">flash_on</span> Buy Now</button></div>
+        <div class="product-modal-actions" id="productModalActions">
+          <button class="btn-outline" id="productModalAddCart"><span class="material-icons-round">add_shopping_cart</span> Add to Cart</button>
+          <button class="btn-primary" id="productModalBuyNow"><span class="material-icons-round">flash_on</span> Buy Now</button>
+        </div>
       </div>
     </div>
   </div>
@@ -911,8 +1209,13 @@ ul{list-style:none}
 
 <!-- PDF READER OVERLAY -->
 <div class="pdf-reader-overlay" id="pdfReaderOverlay" style="display:none">
-  <div class="pdf-reader-header"><button class="pdf-reader-close" id="pdfReaderClose"><span class="material-icons-round">close</span></button><div class="pdf-reader-title" id="pdfReaderTitle">Book Title</div></div>
-  <div class="pdf-reader-wrap" id="pdfReaderWrap"><canvas id="pdfCanvas"></canvas></div>
+  <div class="pdf-reader-header">
+    <button class="pdf-reader-close" id="pdfReaderClose"><span class="material-icons-round">close</span></button>
+    <div class="pdf-reader-title" id="pdfReaderTitle">Book Title</div>
+  </div>
+  <div class="pdf-reader-wrap" id="pdfReaderWrap">
+    <canvas id="pdfCanvas"></canvas>
+  </div>
   <div class="pdf-security-notice">🔒 This content is protected. Downloading, copying and printing are disabled.</div>
   <div class="pdf-reader-footer">
     <button id="pdfPrevBtn" disabled><span class="material-icons-round">chevron_left</span></button>
@@ -927,7 +1230,16 @@ ul{list-style:none}
 <!-- SUCCESS OVERLAY -->
 <div class="success-overlay" id="successOverlay" style="display:none">
   <div class="success-card">
-    <div class="success-animation"><div class="success-checkmark"><div class="check-icon"><span class="icon-line line-tip"></span><span class="icon-line line-long"></span><div class="icon-circle"></div><div class="icon-fix"></div></div></div></div>
+    <div class="success-animation">
+      <div class="success-checkmark">
+        <div class="check-icon">
+          <span class="icon-line line-tip"></span>
+          <span class="icon-line line-long"></span>
+          <div class="icon-circle"></div>
+          <div class="icon-fix"></div>
+        </div>
+      </div>
+    </div>
     <h2 class="success-title">Order Placed! 🎉</h2>
     <p class="success-msg" id="successMsg">Payment successful. Thank you for shopping with SayatKart!</p>
     <div class="success-payment-id"><span class="material-icons-round">receipt</span> Payment ID: <span id="successPaymentId">—</span></div>
@@ -941,21 +1253,18 @@ ul{list-style:none}
   <div class="loading-content"><div class="spinner"></div><p id="loadingMsg">Processing...</p></div>
 </div>
 
-<!-- ══════════════════════════════════════
-     ★ এখানে Part 2 (JavaScript) বসাবেন
-     ══════════════════════════════════════ -->
-     <!-- Firebase CDN -->
 <!-- Firebase CDN -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+<!-- Razorpay -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!-- PDF.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <script>
 'use strict';
-
 // ================================================================
 //  ★ FIREBASE CONFIG
 // ================================================================
@@ -968,1011 +1277,850 @@ const firebaseConfig = {
   appId:             "1:721186261827:web:6aac4357fcadf05f703df6",
   measurementId:     "G-FKZZJBMK81"
 };
+// ================================================================
+//  ★ RAZORPAY KEY
+// ================================================================
 const RAZORPAY_KEY_ID = "rzp_live_SkOEXpqOtkBrwk";
+// PKG NAME MAP (global)
+const PKG_LABELS = {
+  free:    'Free Plan',
+  weekly:  '⚡ Weekly Pass (₹29/week)',
+  basic:   '📚 Author Basic (₹149)',
+  premium: '👑 Author Premium (₹199)'
+};
 
-// ── Firebase Init ──────────────────────────────────────────────
+
+// ── Firebase Init ─────────────────────────────────────────────
 let _auth, _db, _storage;
 try {
   firebase.initializeApp(firebaseConfig);
   _auth    = firebase.auth();
   _db      = firebase.firestore();
   _storage = firebase.storage();
-  _db.enablePersistence({ synchronizeTabs: true }).catch(() => {});
-  console.log('%c✅ Firebase Ready', 'color:#16a34a;font-weight:700');
-} catch (e) {
-  console.error('Firebase init error:', e);
-  alert('Firebase error: ' + e.message);
+  _db.enablePersistence({synchronizeTabs:true}).catch(()=>{});
+  console.log('%c✅ Firebase Ready','color:#16a34a;font-weight:700');
+} catch(e) {
+  console.error('Firebase init error:',e);
+  alert('Firebase init error: '+e.message);
 }
 
-const _serverTS  = () => firebase.firestore.FieldValue.serverTimestamp();
-const _increment = n  => firebase.firestore.FieldValue.increment(n);
-const _arrayUnion = v => firebase.firestore.FieldValue.arrayUnion(v);
+const _serverTS   = ()  => firebase.firestore.FieldValue.serverTimestamp();
+const _increment  = n   => firebase.firestore.FieldValue.increment(n);
+const _arrayUnion = (...v) => firebase.firestore.FieldValue.arrayUnion(...v);
 
 // ================================================================
-//  ★ PDF.js worker
+//  ★ FIRESTORE / STORAGE HELPERS
 // ================================================================
-if (typeof pdfjsLib !== 'undefined') {
+
+/* ── User Profile ── */
+async function saveUserProfile(user){
+  if(!user) return;
+  try{
+    const ref  = _db.collection('users').doc(user.uid);
+    const snap = await ref.get();
+    const base = {
+      uid:user.uid, displayName:user.displayName||'',
+      email:user.email||'', phone:user.phoneNumber||'',
+      photoURL:user.photoURL||'', updatedAt:_serverTS()
+    };
+    if(!snap.exists){
+      // FIX: initialise purchasedItems array so arrayUnion never fails
+      await ref.set({...base, totalEarnings:0, pkg:'free',
+        purchasedItems:[], pkgUpdatedAt:_serverTS(), createdAt:_serverTS()});
+    } else {
+      await ref.update(base);
+      // ensure purchasedItems field exists on old docs
+      if(!snap.data().purchasedItems){
+        await ref.update({purchasedItems:[]});
+      }
+    }
+  }catch(e){ console.error('saveUserProfile:',e); }
+}
+
+async function getUserProfile(uid){
+  try{
+    const s = await _db.collection('users').doc(uid).get();
+    return s.exists ? s.data() : null;
+  }catch(e){ console.error('getUserProfile:',e); return null; }
+}
+
+async function updateUserPkg(uid, pkg, extra={}){
+  try{
+    await _db.collection('users').doc(uid).update({
+      pkg, pkgUpdatedAt:_serverTS(), ...extra
+    });
+    return{success:true};
+  }catch(e){ console.error('updateUserPkg:',e); return{success:false}; }
+}
+
+// FIX: use set+merge so it works even if purchasedItems field is missing
+async function addPurchasedItem(uid, productId){
+  try{
+    await _db.collection('users').doc(uid).set(
+      { purchasedItems: _arrayUnion(productId) },
+      { merge:true }
+    );
+    return{success:true};
+  }catch(e){ console.error('addPurchasedItem:',e); return{success:false}; }
+}
+
+async function updateUserEarnings(uid, amt){
+  try{
+    await _db.collection('users').doc(uid).update({
+      totalEarnings:_increment(amt), updatedAt:_serverTS()
+    });
+    return{success:true};
+  }catch(e){ return{success:false}; }
+}
+
+/* ── Address ── */
+async function saveDeliveryAddress(uid, address){
+  try{
+    await _db.collection('users').doc(uid).update({savedAddress:address, updatedAt:_serverTS()});
+    return{success:true};
+  }catch(e){ return{success:false}; }
+}
+async function getSavedAddress(uid){
+  try{ const p=await getUserProfile(uid); return p?.savedAddress??null; }
+  catch{ return null; }
+}
+
+/* ── Orders – FIX: robust save + fallback query (no index required) ── */
+async function saveOrder(data){
+  try{
+    // Build a clean object – remove undefined values that Firestore rejects
+    const clean = Object.fromEntries(
+      Object.entries({...data, status:'confirmed', createdAt:_serverTS()})
+        .filter(([,v]) => v !== undefined)
+    );
+    console.log('💾 Saving order to Firestore…', clean);
+    const ref = await _db.collection('orders').add(clean);
+    console.log('✅ Order saved:', ref.id);
+    return{success:true, orderId:ref.id};
+  }catch(e){
+    console.error('❌ saveOrder FAILED:', e.code, e.message);
+    return{success:false, error:e.message, code:e.code};
+  }
+}
+
+// FIX: fallback sort in JS so no composite index needed
+async function getUserOrders(uid){
+  try{
+    // try with orderBy first (needs Firestore index)
+    const s = await _db.collection('orders')
+      .where('userId','==',uid)
+      .orderBy('createdAt','desc')
+      .limit(30).get();
+    return s.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){
+    console.warn('getUserOrders index missing, using fallback:', e.message);
+    try{
+      const s2 = await _db.collection('orders')
+        .where('userId','==',uid).limit(30).get();
+      const orders = s2.docs.map(d=>({id:d.id,...d.data()}));
+      // sort client-side
+      return orders.sort((a,b)=>{
+        const ta = a.createdAt?.toDate?.()?.getTime() || 0;
+        const tb = b.createdAt?.toDate?.()?.getTime() || 0;
+        return tb - ta;
+      });
+    }catch(e2){ console.error('getUserOrders fallback failed:', e2); return []; }
+  }
+}
+
+/* ── Products ── */
+async function fetchProducts(cat='all'){
+  try{
+    const base = _db.collection('products');
+    let q = cat==='all'
+      ? base.where('inStock','==',true).orderBy('createdAt','desc')
+      : base.where('category','==',cat).where('inStock','==',true).orderBy('createdAt','desc');
+    const s = await q.get();
+    return s.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){ console.error('fetchProducts:',e); return []; }
+}
+
+/* ── Videos ── */
+async function fetchVideos(){
+  try{
+    const s = await _db.collection('videos')
+      .where('active','==',true).orderBy('createdAt','desc').get();
+    return s.docs.map(d=>({id:d.id,...d.data()}));
+  }catch{ return []; }
+}
+
+/* ── Author Books ── */
+async function fetchAuthorBooks(uid){
+  try{
+    const s = await _db.collection('products')
+      .where('authorId','==',uid).orderBy('createdAt','desc').get();
+    return s.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){
+    // fallback without orderBy
+    try{
+      const s2 = await _db.collection('products').where('authorId','==',uid).get();
+      return s2.docs.map(d=>({id:d.id,...d.data()}))
+        .sort((a,b)=>(b.createdAt?.toDate?.()?.getTime()||0)-(a.createdAt?.toDate?.()?.getTime()||0));
+    }catch{ return []; }
+  }
+}
+
+/* ── Publish ── */
+async function savePublishedBook(data){
+  try{
+    const r = await _db.collection('products').add({
+      ...data, inStock:true, createdAt:_serverTS()
+    });
+    return{success:true, id:r.id};
+  }catch(e){ console.error('savePublishedBook:',e); return{success:false, error:e.message}; }
+}
+
+/* ── Firebase Storage upload ── */
+async function uploadToStorage(file, path, onProgress){
+  return new Promise((resolve)=>{
+    try{
+      const ref      = _storage.ref(path);
+      const uploadTask = ref.put(file);
+      uploadTask.on('state_changed',
+        snap=>{
+          const pct = Math.round(snap.bytesTransferred/snap.totalBytes*100);
+          if(onProgress) onProgress(pct);
+        },
+        err=>{ console.error('Upload error:',err); resolve({success:false,error:err.message}); },
+        async()=>{
+          const url = await uploadTask.snapshot.ref.getDownloadURL();
+          resolve({success:true, url});
+        }
+      );
+    }catch(e){ resolve({success:false,error:e.message}); }
+  });
+}
+
+/* ── Withdrawal ── */
+async function saveWithdrawalRequest(uid, upiId, amount, userInfo){
+  try{
+    await _db.collection('withdrawals').add({
+      userId:uid, upiId, amount:parseFloat(amount),
+      userInfo, status:'pending', createdAt:_serverTS()
+    });
+    return{success:true};
+  }catch(e){ return{success:false}; }
+}
+
+/* ── Weekly Subscription Firestore record ── */
+async function saveWeeklySubRecord(uid, paymentId){
+  const nextBill = new Date();
+  nextBill.setDate(nextBill.getDate()+7);
+  try{
+    await _db.collection('subscriptions').doc(uid).set({
+      userId:uid, pkg:'weekly', paymentId,
+      startedAt:_serverTS(),
+      nextBillAt: firebase.firestore.Timestamp.fromDate(nextBill),
+      active:true, failCount:0, updatedAt:_serverTS()
+    }, {merge:true});
+    return{success:true};
+  }catch(e){ return{success:false}; }
+}
+
+async function getWeeklySubRecord(uid){
+  try{
+    const s = await _db.collection('subscriptions').doc(uid).get();
+    return s.exists ? s.data() : null;
+  }catch{ return null; }
+}
+
+// ================================================================
+//  ★ PDF.js Worker
+// ================================================================
+if(typeof pdfjsLib !== 'undefined'){
   pdfjsLib.GlobalWorkerOptions.workerSrc =
     'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 }
 
 // ================================================================
-//  ★ APP STATE
+//  APP STATE
 // ================================================================
-let currentUser   = null;
-let userProfile   = null;
-let allProducts   = [];
-let cart          = [];
-let currentModalProduct = null;
-let recaptchaVerifier   = null;
-let confirmationResult  = null;
-let isDarkMode    = localStorage.getItem('sayatkart_theme') === 'dark';
-let pendingAddr   = null;
-let currentPdfDoc = null;
-let currentPdfPage = 1;
-let weeklySubCheckTimer = null; // weekly subscription checker
+let currentUser=null, allProducts=[], cart=[], currentModalProduct=null;
+let recaptchaVerifier=null, confirmationResult=null;
+let isDarkMode=localStorage.getItem('sayatkart_theme')==='dark';
+let userProfile=null;
+let pendingAddr=null;
+let currentPdfDoc=null, currentPdfPage=1;
+let weeklyTimer=null;
 
-const $ = id => document.getElementById(id);
+// ── DOM shortcuts ─────────────────────────────────────────────
+const $=id=>document.getElementById(id);
 
 // ================================================================
-//  ★ FIRESTORE HELPERS
+//  THEME
 // ================================================================
-
-// ── User ──
-async function saveUserProfile(user) {
-  if (!user) return;
-  try {
-    const ref  = _db.collection('users').doc(user.uid);
-    const snap = await ref.get();
-    const base = {
-      uid: user.uid,
-      displayName: user.displayName || '',
-      email:       user.email       || '',
-      phone:       user.phoneNumber || '',
-      photoURL:    user.photoURL    || '',
-      updatedAt:   _serverTS()
-    };
-    if (!snap.exists) {
-      await ref.set({
-        ...base,
-        totalEarnings: 0,
-        pkg:           'free',
-        pkgExpiry:     null,
-        pkgSubId:      null,
-        purchasedItems: [],
-        createdAt:     _serverTS()
-      });
-    } else {
-      await ref.update(base);
-    }
-  } catch (e) { console.error(e); }
-}
-
-async function getUserProfile(uid) {
-  try {
-    const s = await _db.collection('users').doc(uid).get();
-    return s.exists ? s.data() : null;
-  } catch { return null; }
-}
-
-async function updateUserPkg(uid, pkg, extra = {}) {
-  try {
-    await _db.collection('users').doc(uid).update({
-      pkg,
-      pkgUpdatedAt: _serverTS(),
-      ...extra
-    });
-    return { success: true };
-  } catch (e) { return { success: false }; }
-}
-
-async function addPurchasedItem(uid, productId) {
-  try {
-    await _db.collection('users').doc(uid).update({
-      purchasedItems: _arrayUnion(productId)
-    });
-    return { success: true };
-  } catch { return { success: false }; }
-}
-
-async function updateUserEarnings(uid, amt) {
-  try {
-    await _db.collection('users').doc(uid).update({
-      totalEarnings: _increment(amt),
-      updatedAt:     _serverTS()
-    });
-    return { success: true };
-  } catch { return { success: false }; }
-}
-
-// ── Address ──
-async function saveDeliveryAddress(uid, address) {
-  try {
-    await _db.collection('users').doc(uid).update({
-      savedAddress: address,
-      updatedAt:    _serverTS()
-    });
-    return { success: true };
-  } catch (e) { return { success: false }; }
-}
-async function getSavedAddress(uid) {
-  try { const p = await getUserProfile(uid); return p?.savedAddress ?? null; }
-  catch { return null; }
-}
-
-// ── Orders ──
-async function saveOrder(data) {
-  try {
-    const r = await _db.collection('orders').add({
-      ...data, status: 'confirmed', createdAt: _serverTS()
-    });
-    return { success: true, orderId: r.id };
-  } catch (e) { return { success: false, error: e }; }
-}
-async function getUserOrders(uid) {
-  try {
-    const s = await _db.collection('orders')
-      .where('userId', '==', uid)
-      .orderBy('createdAt', 'desc')
-      .limit(30).get();
-    return s.docs.map(d => ({ id: d.id, ...d.data() }));
-  } catch { return []; }
-}
-
-// ── Products ──
-async function fetchProducts(cat = 'all') {
-  try {
-    const base = _db.collection('products');
-    const q = cat === 'all'
-      ? base.where('inStock', '==', true).orderBy('createdAt', 'desc')
-      : base.where('category', '==', cat).where('inStock', '==', true).orderBy('createdAt', 'desc');
-    const s = await q.get();
-    return s.docs.map(d => ({ id: d.id, ...d.data() }));
-  } catch (e) { console.error(e); return []; }
-}
-
-// ── Videos ──
-async function fetchVideos() {
-  try {
-    const s = await _db.collection('videos')
-      .where('active', '==', true)
-      .orderBy('createdAt', 'desc').get();
-    return s.docs.map(d => ({ id: d.id, ...d.data() }));
-  } catch { return []; }
-}
-
-// ── Author books ──
-async function fetchAuthorBooks(uid) {
-  try {
-    const s = await _db.collection('products')
-      .where('authorId', '==', uid)
-      .orderBy('createdAt', 'desc').get();
-    return s.docs.map(d => ({ id: d.id, ...d.data() }));
-  } catch { return []; }
-}
-
-// ── Publish ──
-async function savePublishedBook(data) {
-  try {
-    const r = await _db.collection('products').add({
-      ...data, inStock: true, createdAt: _serverTS()
-    });
-    return { success: true, id: r.id };
-  } catch (e) { return { success: false, error: e }; }
-}
-
-// ── Storage upload ──
-async function uploadToStorage(file, path) {
-  try {
-    const ref  = _storage.ref(path);
-    const snap = await ref.put(file);
-    const url  = await snap.ref.getDownloadURL();
-    return { success: true, url };
-  } catch (e) { return { success: false, error: e }; }
-}
-
-// ── Withdrawal ──
-async function saveWithdrawalRequest(uid, upiId, amount, userInfo) {
-  try {
-    await _db.collection('withdrawals').add({
-      userId: uid, upiId, amount: parseFloat(amount),
-      userInfo, status: 'pending', createdAt: _serverTS()
-    });
-    return { success: true };
-  } catch { return { success: false }; }
-}
-
-// ── Weekly Subscription record ──
-async function saveWeeklySubRecord(uid, paymentId) {
-  const nextBill = new Date();
-  nextBill.setDate(nextBill.getDate() + 7);
-  try {
-    await _db.collection('subscriptions').doc(uid).set({
-      userId:      uid,
-      pkg:         'weekly',
-      paymentId,
-      startedAt:   _serverTS(),
-      nextBillAt:  firebase.firestore.Timestamp.fromDate(nextBill),
-      active:      true,
-      failCount:   0
-    });
-    return { success: true };
-  } catch { return { success: false }; }
-}
-
-async function getWeeklySubRecord(uid) {
-  try {
-    const s = await _db.collection('subscriptions').doc(uid).get();
-    return s.exists ? s.data() : null;
-  } catch { return null; }
-}
-
-// ================================================================
-//  ★ THEME
-// ================================================================
-function applyTheme(dark) {
-  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-  localStorage.setItem('sayatkart_theme', dark ? 'dark' : 'light');
-  const btn = $('themeToggleBtn');
-  if (btn) btn.querySelector('.material-icons-round').textContent =
-    dark ? 'light_mode' : 'dark_mode';
+function applyTheme(dark){
+  document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+  localStorage.setItem('sayatkart_theme',dark?'dark':'light');
+  const btn=$('themeToggleBtn');
+  if(btn) btn.querySelector('.material-icons-round').textContent=dark?'light_mode':'dark_mode';
 }
 applyTheme(isDarkMode);
 
-$('themeToggleBtn')?.addEventListener('click', () => {
-  isDarkMode = !isDarkMode;
+$('themeToggleBtn')?.addEventListener('click',()=>{
+  isDarkMode=!isDarkMode;
   applyTheme(isDarkMode);
-  showToast(isDarkMode ? '🌙 Dark Mode On' : '☀️ Light Mode On', 'info');
+  showToast(isDarkMode?'🌙 Dark Mode On':'☀️ Light Mode On','info');
 });
 
 // ================================================================
-//  ★ SECTION NAV
+//  SECTION NAV
 // ================================================================
-function switchSection(name) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('[data-section]').forEach(el =>
-    el.classList.toggle('active', el.dataset.section === name));
-  const sec = $('section-' + name);
-  if (sec) sec.classList.add('active');
+function switchSection(name){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('[data-section]').forEach(el=>el.classList.toggle('active',el.dataset.section===name));
+  const sec=$('section-'+name);
+  if(sec) sec.classList.add('active');
   closeDrawer();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (name === 'orders')    loadOrdersPage();
-  if (name === 'dashboard') loadAuthorDashboard();
-  if (name === 'upgrade')   renderUpgradePage();
-  if (name === 'profile')   refreshProfileUI();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='orders') loadOrdersPage();
+  if(name==='dashboard') loadAuthorDashboard();
+  if(name==='upgrade') renderUpgradePage();
 }
-window.switchSection = switchSection;
+window.switchSection=switchSection;
 
-document.querySelectorAll('[data-section]').forEach(el => {
-  el.addEventListener('click', e => { e.preventDefault(); switchSection(el.dataset.section); });
+document.querySelectorAll('[data-section]').forEach(el=>{
+  el.addEventListener('click',e=>{e.preventDefault();switchSection(el.dataset.section);});
 });
 
 // ================================================================
-//  ★ DRAWER
+//  DRAWER
 // ================================================================
-function openDrawer()  { $('drawer').classList.add('open'); $('overlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
-function closeDrawer() { $('drawer').classList.remove('open'); if (!isCartOpen() && !isModalOpen()) { $('overlay').classList.remove('active'); document.body.style.overflow = ''; } }
-window.closeDrawer = closeDrawer;
+function openDrawer(){$('drawer').classList.add('open');$('overlay').classList.add('active');document.body.style.overflow='hidden';}
+function closeDrawer(){$('drawer').classList.remove('open');if(!isCartOpen()&&!isModalOpen()){$('overlay').classList.remove('active');document.body.style.overflow='';}}
+window.closeDrawer=closeDrawer;
+$('menuBtn')?.addEventListener('click',openDrawer);
+$('drawerClose')?.addEventListener('click',closeDrawer);
+$('overlay')?.addEventListener('click',()=>{closeDrawer();closeCart();closeAllModals();});
+$('drawerLogout')?.addEventListener('click',handleLogout);
+$('drawerLoginBtn')?.addEventListener('click',()=>{switchSection('profile');closeDrawer();});
 
-$('menuBtn')?.addEventListener('click', openDrawer);
-$('drawerClose')?.addEventListener('click', closeDrawer);
-$('overlay')?.addEventListener('click', () => { closeDrawer(); closeCart(); closeAllModals(); });
-$('drawerLogout')?.addEventListener('click', handleLogout);
-$('drawerLoginBtn')?.addEventListener('click', () => { switchSection('profile'); closeDrawer(); });
-
 // ================================================================
-//  ★ SEARCH
+//  SEARCH
 // ================================================================
-function handleSearch(q) {
-  const s = q.trim().toLowerCase();
-  if (!s) { renderProducts(allProducts); return; }
-  renderProducts(allProducts.filter(p =>
-    p.title?.toLowerCase().includes(s) || p.category?.toLowerCase().includes(s)));
+function handleSearch(q){
+  const s=q.trim().toLowerCase();
+  if(!s){renderProducts(allProducts);return;}
+  renderProducts(allProducts.filter(p=>p.title?.toLowerCase().includes(s)||p.category?.toLowerCase().includes(s)));
 }
-$('searchInput')?.addEventListener('input',       e => handleSearch(e.target.value));
-$('mobileSearchInput')?.addEventListener('input', e => handleSearch(e.target.value));
-$('searchClearBtn')?.addEventListener('click',    () => { $('searchInput').value = ''; renderProducts(allProducts); });
-$('searchToggleBtn')?.addEventListener('click',   () => $('mobileSearchBar').classList.toggle('show'));
-$('mobileSearchClose')?.addEventListener('click', () => {
-  $('mobileSearchBar').classList.remove('show');
-  $('mobileSearchInput').value = '';
-  renderProducts(allProducts);
-});
+$('searchInput')?.addEventListener('input',e=>handleSearch(e.target.value));
+$('mobileSearchInput')?.addEventListener('input',e=>handleSearch(e.target.value));
+$('searchClearBtn')?.addEventListener('click',()=>{$('searchInput').value='';renderProducts(allProducts);});
+$('searchToggleBtn')?.addEventListener('click',()=>$('mobileSearchBar').classList.toggle('show'));
+$('mobileSearchClose')?.addEventListener('click',()=>{$('mobileSearchBar').classList.remove('show');$('mobileSearchInput').value='';renderProducts(allProducts);});
 
 // ================================================================
-//  ★ TOAST
+//  TOAST
 // ================================================================
-function showToast(msg, type = 'info', dur = 3200) {
-  const icons = { success: 'check_circle', error: 'error', info: 'info', warning: 'warning' };
-  const t = document.createElement('div');
-  t.className = `toast toast-${type}`;
-  t.innerHTML = `<span class="material-icons-round">${icons[type] || 'info'}</span><span>${msg}</span>`;
+function showToast(msg,type='info',dur=3000){
+  const icons={success:'check_circle',error:'error',info:'info',warning:'warning'};
+  const t=document.createElement('div');
+  t.className=`toast toast-${type}`;
+  t.innerHTML=`<span class="material-icons-round">${icons[type]||'info'}</span><span>${msg}</span>`;
   $('toastContainer')?.appendChild(t);
-  setTimeout(() => { t.classList.add('toast-out'); setTimeout(() => t.remove(), 350); }, dur);
+  setTimeout(()=>{t.classList.add('toast-out');setTimeout(()=>t.remove(),350);},dur);
 }
 
 // ================================================================
-//  ★ LOADING
+//  LOADING
 // ================================================================
-function showLoading(msg = 'Processing...') { $('loadingOverlay').style.display = 'flex'; $('loadingMsg').textContent = msg; }
-function hideLoading()                       { $('loadingOverlay').style.display = 'none'; }
+function showLoading(msg='Processing...'){$('loadingOverlay').style.display='flex';$('loadingMsg').textContent=msg;}
+function hideLoading(){$('loadingOverlay').style.display='none';}
 
 // ================================================================
-//  ★ MODALS
+//  MODALS
 // ================================================================
-function openModal(el)    { el?.classList.add('open'); $('overlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
-function closeModal(el)   { el?.classList.remove('open'); if (!isCartOpen() && !isDrawerOpen()) { $('overlay').classList.remove('active'); document.body.style.overflow = ''; } }
-function closeAllModals() { document.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open')); }
-const isCartOpen   = () => $('cartSidebar')?.classList.contains('open');
-const isDrawerOpen = () => $('drawer')?.classList.contains('open');
-const isModalOpen  = () => !!document.querySelector('.modal.open');
+function openModal(el){el?.classList.add('open');$('overlay').classList.add('active');document.body.style.overflow='hidden';}
+function closeModal(el){el?.classList.remove('open');if(!isCartOpen()&&!isDrawerOpen()){$('overlay').classList.remove('active');document.body.style.overflow='';}}
+function closeAllModals(){document.querySelectorAll('.modal.open').forEach(m=>m.classList.remove('open'));}
+const isCartOpen=()=>$('cartSidebar')?.classList.contains('open');
+const isDrawerOpen=()=>$('drawer')?.classList.contains('open');
+const isModalOpen=()=>!!document.querySelector('.modal.open');
+$('addressModalClose')?.addEventListener('click',()=>closeModal($('addressModal')));
+$('addressModalCancel')?.addEventListener('click',()=>closeModal($('addressModal')));
+$('orderStatusModalClose')?.addEventListener('click',()=>closeModal($('orderStatusModal')));
+$('orderStatusClose2')?.addEventListener('click',()=>closeModal($('orderStatusModal')));
+$('productModalClose')?.addEventListener('click',()=>closeModal($('productModal')));
+$('payModeModalClose')?.addEventListener('click',()=>closeModal($('payModeModal')));
+$('payModeCancel')?.addEventListener('click',()=>closeModal($('payModeModal')));
+$('buyOptionsModalClose')?.addEventListener('click',()=>closeModal($('buyOptionsModal')));
 
-$('addressModalClose')?.addEventListener('click',    () => closeModal($('addressModal')));
-$('addressModalCancel')?.addEventListener('click',   () => closeModal($('addressModal')));
-$('orderStatusModalClose')?.addEventListener('click',() => closeModal($('orderStatusModal')));
-$('orderStatusClose2')?.addEventListener('click',    () => closeModal($('orderStatusModal')));
-$('productModalClose')?.addEventListener('click',    () => closeModal($('productModal')));
-$('payModeModalClose')?.addEventListener('click',    () => closeModal($('payModeModal')));
-$('payModeCancel')?.addEventListener('click',        () => closeModal($('payModeModal')));
-$('buyOptionsModalClose')?.addEventListener('click', () => closeModal($('buyOptionsModal')));
-
 // ================================================================
-//  ★ AUTH
+//  AUTH
 // ================================================================
-_auth.onAuthStateChanged(async user => {
+_auth.onAuthStateChanged(async user=>{
   currentUser = user;
-  if (user) {
+  if(user){
     await saveUserProfile(user);
     userProfile = await getUserProfile(user.uid);
     loadUserEarnings(user.uid);
     loadProfileOrders(user.uid);
-    // ── Weekly subscription auto-check on login
+    // FIX: start weekly subscription checker on every login
     startWeeklySubChecker(user.uid);
   } else {
     stopWeeklySubChecker();
     userProfile = null;
   }
   updateAuthUI(user);
+  // update publish form visibility
+  if($('publishAuthWarning')) $('publishAuthWarning').style.display = user?'none':'flex';
+  if($('publishFormWrap'))    $('publishFormWrap').style.display    = user?'block':'none';
 });
 
-// ── PKG name map (shared globally) ──
-const PKG_NAME = {
-  free:    'Free',
-  weekly:  '⚡ Weekly Pass (₹29/week)',
-  basic:   '📚 Author Basic (₹149)',
-  premium: '👑 Author Premium (₹199)'
-};
-
-function updateAuthUI(user) {
-  const ok   = !!user;
-  const name = user?.displayName || user?.phoneNumber || 'User';
-  const email= user?.email       || user?.phoneNumber || '';
-  const init = (name[0] || 'U').toUpperCase();
-
-  $('drawerUser').style.display      = ok ? 'flex'  : 'none';
-  $('drawerLogout').style.display    = ok ? 'flex'  : 'none';
-  $('drawerLoginBtn').style.display  = ok ? 'none'  : 'flex';
-  $('drawerAvatar').textContent      = init;
-  $('drawerUserName').textContent    = name;
-  $('drawerUserEmail').textContent   = email;
-
-  $('profileLoginPrompt').style.display = ok ? 'none'  : 'block';
-  $('profileLoggedIn').style.display    = ok ? 'flex'  : 'none';
-  $('profileAvatar').textContent        = init;
-  $('profileName').textContent          = name;
-  $('profileEmail').textContent         = email;
-
-  if (user?.photoURL) {
-    [$('drawerAvatar'), $('profileAvatar')].forEach(el => {
-      if (el) el.innerHTML = `<img src="${user.photoURL}" alt="${name}"/>`;
-    });
-  }
-
-  // ── Package badge & card in profile ──
-  const pkg = userProfile?.pkg || 'free';
-  if (ok && pkg !== 'free') {
-    $('profileUpgradeBadge').style.display = 'block';
-    $('profileUpgradeName').textContent    = PKG_NAME[pkg] || pkg;
-    $('profilePkgCard').style.display      = 'block';
-    $('profilePkgName').textContent        = PKG_NAME[pkg] || pkg;
-    // Show expiry info for weekly
-    renderWeeklyExpiryInfo();
-  } else if (ok) {
-    $('profileUpgradeBadge').style.display = 'none';
-    $('profilePkgCard').style.display      = 'block'; // show "Free" card with upgrade CTA
-    $('profilePkgName').textContent        = 'Free Plan';
-  }
-}
-
-// ── Refresh profile UI without re-login ──
-async function refreshProfileUI() {
-  if (!currentUser) return;
-  userProfile = await getUserProfile(currentUser.uid);
-  updateAuthUI(currentUser);
-  renderUpgradePage();
-}
-
-// ── Show weekly next-billing date in profile ──
-async function renderWeeklyExpiryInfo() {
-  if (!currentUser || userProfile?.pkg !== 'weekly') return;
-  try {
-    const sub = await getWeeklySubRecord(currentUser.uid);
-    if (!sub) return;
-    const nextBill = sub.nextBillAt?.toDate?.() || null;
-    const pkgCard  = $('profilePkgCard');
-    if (!pkgCard || !nextBill) return;
-    // Remove old expiry line if exists
-    pkgCard.querySelector('.pkg-expiry-line')?.remove();
-    const line = document.createElement('p');
-    line.className = 'pkg-expiry-line';
-    line.style.cssText = 'font-size:.76rem;color:rgba(255,255,255,.6);margin-top:6px';
-    line.textContent = `⏰ Next billing: ${fmtDate(nextBill)}`;
-    pkgCard.appendChild(line);
-  } catch {}
-}
-
 // ================================================================
-//  ★ WEEKLY AUTO-PAY CHECKER
-//  – Runs every hour while app is open.
-//  – If nextBillAt has passed and sub is still active,
-//    triggers Razorpay auto-charge (client-side reminder flow).
-//  – In production, use a Firebase Cloud Function for true server-side auto-debit.
+//  ★ WEEKLY AUTO-PAY SYSTEM
+//  – Checks on login + every hour while app is open
+//  – If nextBillAt passed → auto-open Razorpay for ₹29 renewal
 // ================================================================
-function startWeeklySubChecker(uid) {
+function startWeeklySubChecker(uid){
   stopWeeklySubChecker();
-  checkAndRenewWeekly(uid); // run immediately on login
-  weeklySubCheckTimer = setInterval(() => checkAndRenewWeekly(uid), 60 * 60 * 1000); // every hour
+  checkAndRenewWeekly(uid);
+  weeklyTimer = setInterval(()=>checkAndRenewWeekly(uid), 60*60*1000);
 }
-function stopWeeklySubChecker() {
-  if (weeklySubCheckTimer) { clearInterval(weeklySubCheckTimer); weeklySubCheckTimer = null; }
+function stopWeeklySubChecker(){
+  if(weeklyTimer){ clearInterval(weeklyTimer); weeklyTimer=null; }
 }
 
-async function checkAndRenewWeekly(uid) {
-  try {
+async function checkAndRenewWeekly(uid){
+  try{
+    if(!uid) return;
     const sub = await getWeeklySubRecord(uid);
-    if (!sub || !sub.active || sub.pkg !== 'weekly') return;
+    if(!sub || !sub.active || sub.pkg!=='weekly') return;
     const now      = new Date();
     const nextBill = sub.nextBillAt?.toDate?.();
-    if (!nextBill || now < nextBill) return; // not yet due
-    // Due! Show renewal notice and trigger payment
-    showToast('⚡ Weekly subscription renewal Underway…', 'info', 5000);
-    await triggerWeeklyRenewal(uid, sub);
-  } catch (e) { console.error('Weekly check error:', e); }
+    if(!nextBill || now < nextBill) return; // not due yet
+    console.log('⚡ Weekly renewal due. Opening Razorpay…');
+    showToast('⚡ সাপ্তাহিক সাবস্ক্রিপশন রিনিউ হচ্ছে…','info',5000);
+    await triggerWeeklyRenewal(uid);
+  }catch(e){ console.error('weeklyCheck error:',e); }
 }
 
-async function triggerWeeklyRenewal(uid, sub) {
-  // Open Razorpay for ₹29 renewal
-  const options = {
-    key:         RAZORPAY_KEY_ID,
-    amount:      29 * 100,
-    currency:    'INR',
-    name:        'SayatKart',
-    description: '⚡ Weekly Pass Renewal – ₹29',
-    prefill:     {
-      name:    currentUser?.displayName || '',
-      email:   currentUser?.email       || '',
-      contact: currentUser?.phoneNumber?.replace('+91', '') || ''
+async function triggerWeeklyRenewal(uid){
+  const options={
+    key:RAZORPAY_KEY_ID, amount:2900, currency:'INR',
+    name:'SayatKart', description:'⚡ Weekly Pass Renewal – ₹29',
+    prefill:{
+      name:   currentUser?.displayName||'',
+      email:  currentUser?.email||'',
+      contact:currentUser?.phoneNumber?.replace('+91','')||''
     },
-    theme:  { color: '#7c3aed' },
-    handler: async res => {
-      // Renewal success – push nextBillAt by 7 days
+    theme:{color:'#7c3aed'},
+    handler: async res=>{
       const nextBill = new Date();
-      nextBill.setDate(nextBill.getDate() + 7);
+      nextBill.setDate(nextBill.getDate()+7);
       await _db.collection('subscriptions').doc(uid).update({
         nextBillAt: firebase.firestore.Timestamp.fromDate(nextBill),
         lastPaymentId: res.razorpay_payment_id,
-        failCount:  0,
-        updatedAt:  _serverTS()
+        failCount:0, updatedAt:_serverTS()
       });
-      // Keep user pkg as weekly
-      await updateUserPkg(uid, 'weekly');
+      await updateUserPkg(uid,'weekly');
+      // log in orders for transparency
+      await _db.collection('orders').add({
+        userId:uid, type:'subscription_renewal', pkg:'weekly',
+        total:29, paymentId:res.razorpay_payment_id,
+        status:'confirmed', createdAt:_serverTS()
+      });
       userProfile = await getUserProfile(uid);
       updateAuthUI(currentUser);
-      renderWeeklyExpiryInfo();
-      showToast('✅ Weekly Pass Successfully renewed! The next bill : is also in 7 days.', 'success', 5000);
-      // Save renewal record in orders for transparency
-      await _db.collection('orders').add({
-        userId:    uid,
-        type:      'subscription_renewal',
-        pkg:       'weekly',
-        total:     29,
-        paymentId: res.razorpay_payment_id,
-        status:    'confirmed',
-        createdAt: _serverTS()
-      });
+      showToast(`✅ Weekly Pass রিনিউ হয়েছে! পরের বিল: ${fmtDate(nextBill)}`,'success',6000);
     },
-    modal: {
-      ondismiss: async () => {
-        // Payment cancelled / failed – increment failCount
+    modal:{
+      ondismiss: async()=>{
         await _db.collection('subscriptions').doc(uid).update({
-          failCount: _increment(1),
-          updatedAt: _serverTS()
+          failCount:_increment(1), updatedAt:_serverTS()
         });
-        const updatedSub = await getWeeklySubRecord(uid);
-        // After 2 failed attempts, downgrade to free
-        if ((updatedSub?.failCount || 0) >= 2) {
-          await updateUserPkg(uid, 'free', { pkgExpiry: null, pkgSubId: null });
-          await _db.collection('subscriptions').doc(uid).update({ active: false });
+        const sub2 = await getWeeklySubRecord(uid);
+        if((sub2?.failCount||0)>=2){
+          await updateUserPkg(uid,'free');
+          await _db.collection('subscriptions').doc(uid).update({active:false});
           userProfile = await getUserProfile(uid);
           updateAuthUI(currentUser);
-          showToast('⚠️ Subscription renewal failed. PKG Free-reverted to.', 'error', 6000);
+          showToast('⚠️ Renewal ব্যর্থ ২ বার। PKG Free-তে ফিরে গেছে।','error',7000);
           loadProducts('all');
         } else {
-          showToast('⚠️ Renewal cancel. Try Again.', 'warning');
+          showToast('⚠️ Weekly renewal বাতিল। আবার চেষ্টা করুন।','warning');
         }
       }
     }
   };
-  try {
+  try{
     const rzp = new window.Razorpay(options);
-    rzp.on('payment.failed', async err => {
-      await _db.collection('subscriptions').doc(uid).update({
-        failCount: _increment(1), updatedAt: _serverTS()
-      });
-      showToast('Renewal payment failed: ' + (err?.error?.description || 'Error'), 'error');
+    rzp.on('payment.failed', err=>{
+      showToast('Renewal failed: '+(err?.error?.description||'Error'),'error');
     });
     rzp.open();
-  } catch (e) { console.error('Renewal Razorpay error:', e); }
+  }catch(e){ console.error('Renewal Razorpay error:',e); }
+}
+
+// ── PKG helpers ──
+function isUpgradedUser(){
+  return !!(userProfile && ['weekly','basic','premium'].includes(userProfile.pkg));
+}
+function hasPurchased(pid){
+  return userProfile?.purchasedItems?.includes(pid)||false;
+}
+function canAccessFree(p){
+  const isDigital = p.category==='ebook'||p.category==='video';
+  if(!isDigital) return false;
+  return (p.accessType==='upgrade' && isUpgradedUser()) || hasPurchased(p.id);
+}
+
+// ── updateAuthUI – FIX: always show pkg card with correct plan ──
+function updateAuthUI(user){
+  const ok    = !!user;
+  const name  = user?.displayName||user?.phoneNumber||'User';
+  const email = user?.email||user?.phoneNumber||'';
+  const init  = (name[0]||'U').toUpperCase();
+
+  // Drawer
+  $('drawerUser').style.display     = ok?'flex':'none';
+  $('drawerLogout').style.display   = ok?'flex':'none';
+  $('drawerLoginBtn').style.display = ok?'none':'flex';
+  $('drawerAvatar').textContent     = init;
+  $('drawerUserName').textContent   = name;
+  $('drawerUserEmail').textContent  = email;
+
+  // Profile section
+  $('profileLoginPrompt').style.display = ok?'none':'block';
+  $('profileLoggedIn').style.display    = ok?'flex':'none';
+  $('profileAvatar').textContent        = init;
+  $('profileName').textContent          = name;
+  $('profileEmail').textContent         = email;
+
+  if(user?.photoURL){
+    [$('drawerAvatar'),$('profileAvatar')].forEach(el=>{
+      if(el) el.innerHTML=`<img src="${user.photoURL}" alt="${name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
+    });
+  }
+
+  // FIX: PKG badge & card – always visible for logged-in users
+  if(ok){
+    const pkg     = userProfile?.pkg||'free';
+    const pkgName = PKG_LABELS[pkg]||'Free Plan';
+    // Badge (only for paid plans)
+    if(pkg!=='free'){
+      $('profileUpgradeBadge').style.display = 'block';
+      $('profileUpgradeName').textContent    = pkgName;
+    } else {
+      $('profileUpgradeBadge').style.display = 'none';
+    }
+    // PKG card always shown
+    $('profilePkgCard').style.display   = 'block';
+    $('profilePkgName').textContent     = pkgName;
+    // Weekly next billing
+    if(pkg==='weekly') renderWeeklyExpiryInfo();
+  }
+}
+
+async function renderWeeklyExpiryInfo(){
+  if(!currentUser || userProfile?.pkg!=='weekly') return;
+  try{
+    const sub      = await getWeeklySubRecord(currentUser.uid);
+    const pkgCard  = $('profilePkgCard');
+    if(!sub||!pkgCard) return;
+    pkgCard.querySelector('.pkg-expiry-line')?.remove();
+    if(sub.nextBillAt){
+      const line = document.createElement('p');
+      line.className  = 'pkg-expiry-line';
+      line.style.cssText='font-size:.76rem;color:rgba(255,255,255,.6);margin-top:6px';
+      line.textContent= `⏰ পরের billing: ${fmtDate(sub.nextBillAt.toDate())}`;
+      pkgCard.appendChild(line);
+    }
+  }catch(e){}
 }
 
 // ── Google Login ──
-$('googleLoginBtn')?.addEventListener('click', async () => {
-  showLoading('Signing in with Google…');
-  try {
+$('googleLoginBtn')?.addEventListener('click',async()=>{
+  showLoading('Google দিয়ে Sign in হচ্ছে…');
+  try{
     const provider = new firebase.auth.GoogleAuthProvider();
     await _auth.signInWithPopup(provider);
-    showToast('✅ Google Through Login successful!', 'success');
+    showToast('✅ Google Login সফল!','success');
     switchSection('profile');
-  } catch (err) {
-    showToast('Google login failed: ' + (err.message || err.code), 'error');
-  } finally { hideLoading(); }
+  }catch(err){
+    showToast('Google login failed: '+(err.message||err.code),'error');
+  }finally{ hideLoading(); }
 });
 
 // ── Phone OTP ──
-async function sendOtp() {
+async function sendOtp(){
   const phone = $('loginPhoneInput')?.value.trim();
-  if (!/^\d{10}$/.test(phone)) { showToast('Valid 10-digit number required.', 'error'); return; }
-  showLoading('OTP Being sent…');
-  try {
-    if (!recaptchaVerifier) {
-      recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-        size: 'invisible', callback: () => {}
-      });
+  if(!/^\d{10}$/.test(phone)){ showToast('Valid 10-digit number required.','error'); return; }
+  showLoading('OTP পাঠানো হচ্ছে…');
+  try{
+    if(!recaptchaVerifier){
+      recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container',
+        {size:'invisible', callback:()=>{}});
     }
-    confirmationResult = await _auth.signInWithPhoneNumber('+91' + phone, recaptchaVerifier);
-    $('otpVerifyWrap').style.display = 'block';
+    confirmationResult = await _auth.signInWithPhoneNumber('+91'+phone, recaptchaVerifier);
+    $('otpVerifyWrap').style.display='block';
     $('otpInputGroup')?.querySelectorAll('.otp-box')[0]?.focus();
-    showToast('OTP has been sent!', 'success');
-  } catch (err) {
-    showToast('OTP failed: ' + (err.message || err.code), 'error');
-    if (recaptchaVerifier) { recaptchaVerifier.clear(); recaptchaVerifier = null; }
-  } finally { hideLoading(); }
+    showToast('OTP পাঠানো হয়েছে!','success');
+  }catch(err){
+    showToast('OTP failed: '+(err.message||err.code),'error');
+    if(recaptchaVerifier){ recaptchaVerifier.clear(); recaptchaVerifier=null; }
+  }finally{ hideLoading(); }
 }
-$('sendOtpBtn')?.addEventListener('click', sendOtp);
-$('resendOtpBtn')?.addEventListener('click', sendOtp);
+$('sendOtpBtn')?.addEventListener('click',sendOtp);
+$('resendOtpBtn')?.addEventListener('click',sendOtp);
 
-$('verifyOtpBtn')?.addEventListener('click', async () => {
+$('verifyOtpBtn')?.addEventListener('click',async()=>{
   const boxes = $('otpInputGroup')?.querySelectorAll('.otp-box');
-  const otp   = Array.from(boxes || []).map(b => b.value).join('');
-  if (otp.length !== 6) { showToast('full 6-digit OTP give it.', 'error'); return; }
-  showLoading('Verifying…');
-  try {
+  const otp   = Array.from(boxes||[]).map(b=>b.value).join('');
+  if(otp.length!==6){ showToast('সম্পূর্ণ 6-digit OTP দিন।','error'); return; }
+  showLoading('OTP verify হচ্ছে…');
+  try{
     await confirmationResult.confirm(otp);
-    showToast('✅ Phone verified!', 'success');
+    showToast('✅ Phone verified!','success');
     switchSection('profile');
-  } catch { showToast('Invalid OTP. Try once more.', 'error'); }
-  finally { hideLoading(); }
+  }catch{ showToast('Invalid OTP। আবার চেষ্টা করুন।','error'); }
+  finally{ hideLoading(); }
 });
 
-document.querySelectorAll('.otp-box').forEach((box, i, arr) => {
-  box.addEventListener('input', e => {
+document.querySelectorAll('.otp-box').forEach((box,i,arr)=>{
+  box.addEventListener('input',e=>{
     e.target.value = e.target.value.slice(-1);
-    e.target.classList.toggle('filled', !!e.target.value);
-    if (e.target.value && arr[i + 1]) arr[i + 1].focus();
+    e.target.classList.toggle('filled',!!e.target.value);
+    if(e.target.value && arr[i+1]) arr[i+1].focus();
   });
-  box.addEventListener('keydown', e => {
-    if (e.key === 'Backspace' && !e.target.value && arr[i - 1]) arr[i - 1].focus();
+  box.addEventListener('keydown',e=>{
+    if(e.key==='Backspace'&&!e.target.value&&arr[i-1]) arr[i-1].focus();
   });
 });
 
-async function handleLogout() {
+async function handleLogout(){
   showLoading('Logging out…');
   stopWeeklySubChecker();
   await _auth.signOut();
-  userProfile = null;
-  cart = []; saveCart();
-  showToast('Logged out.', 'info');
+  userProfile=null; cart=[]; saveCart();
+  showToast('Logged out.','info');
   switchSection('home');
   hideLoading();
 }
-$('logoutBtn')?.addEventListener('click', handleLogout);
+$('logoutBtn')?.addEventListener('click',handleLogout);
 
 // ================================================================
-//  ★ UPGRADE / PKG HELPERS
+//  PRODUCTS
 // ================================================================
-function isUpgradedUser() {
-  return userProfile && ['weekly', 'basic', 'premium'].includes(userProfile.pkg);
-}
-function hasPurchased(productId) {
-  return userProfile?.purchasedItems?.includes(productId) || false;
-}
-// A product is free if:
-// 1. It's digital AND accessType='upgrade' AND user has any active PKG, OR
-// 2. User has directly purchased it
-function canAccessFree(p) {
-  const isDigital = p.category === 'ebook' || p.category === 'video';
-  if (!isDigital) return false;
-  const upgraded  = isUpgradedUser();
-  const purchased = hasPurchased(p.id);
-  return (p.accessType === 'upgrade' && upgraded) || purchased;
-}
-
-// ================================================================
-//  ★ UPGRADE PAGE
-// ================================================================
-function renderUpgradePage() {
-  const pkg = userProfile?.pkg || 'free';
-  const info = $('currentPkgInfo');
-  if (info) {
-    if (pkg !== 'free') {
-      info.style.display = 'block';
-      $('currentPkgName').textContent = PKG_NAME[pkg] || pkg;
-    } else {
-      info.style.display = 'none';
-    }
-  }
-  // Disable already-active pkg button
-  document.querySelectorAll('[data-pkg]').forEach(btn => {
-    const btnPkg = btn.dataset.pkg;
-    if (btnPkg === pkg) {
-      btn.textContent = '✅ Current Plan';
-      btn.disabled = true;
-      btn.style.opacity = '.6';
-      btn.style.cursor  = 'not-allowed';
-    }
-  });
-}
-
-// ── PKG payment (upgrade) ──
-async function startPkgPayment(pkgType, amount) {
-  if (!currentUser) { showToast('Login in first.', 'error'); switchSection('profile'); return; }
-  const pkgNameStr = PKG_NAME[pkgType] || pkgType;
-  const isWeekly   = pkgType === 'weekly';
-  const options = {
-    key:         RAZORPAY_KEY_ID,
-    amount:      Math.round(amount * 100),
-    currency:    'INR',
-    name:        'SayatKart',
-    description: isWeekly ? '⚡ Weekly Pass – ₹29/week Auto-renew' : pkgNameStr,
-    prefill: {
-      name:    currentUser.displayName || '',
-      email:   currentUser.email       || '',
-      contact: currentUser.phoneNumber?.replace('+91', '') || ''
-    },
-    theme: { color: isWeekly ? '#7c3aed' : '#f97316' },
-    handler: async res => {
-      showLoading('Plan activate It is being done…');
-      try {
-        // Save pkg to user
-        await updateUserPkg(currentUser.uid, pkgType);
-        // If weekly, create subscription record
-        if (isWeekly) {
-          await saveWeeklySubRecord(currentUser.uid, res.razorpay_payment_id);
-        }
-        userProfile = await getUserProfile(currentUser.uid);
-        updateAuthUI(currentUser);
-        renderUpgradePage();
-        // Reload products so digital items show "Read Now / Watch Now"
-        loadProducts('all');
-        // Show success
-        $('successPaymentId').textContent = res.razorpay_payment_id;
-        $('successCashbackAmt').textContent = isWeekly ? 'Auto-renews every 7 days!' : 'Lifetime Access!';
-        $('successMsg').textContent = `✅ ${pkgNameStr} Activated! All digital content is now free of charge.`;
-        $('successOverlay').style.display = 'flex';
-        if (isWeekly) startWeeklySubChecker(currentUser.uid);
-      } catch (err) {
-        showToast('Plan save error: ' + err.message, 'error');
-      } finally { hideLoading(); }
-    },
-    modal: { ondismiss: () => showToast('Payment failed.', 'warning') }
-  };
-  try {
-    const rzp = new window.Razorpay(options);
-    rzp.on('payment.failed', err =>
-      showToast('Payment failed: ' + (err?.error?.description || 'Error'), 'error'));
-    rzp.open();
-  } catch (e) { showToast('Razorpay Can you open it?  Key Please check it.', 'error'); console.error(e); }
-}
-
-// Bind pkg buttons
-document.querySelectorAll('[data-pkg]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (!currentUser) { showToast('Login in first.', 'error'); switchSection('profile'); return; }
-    startPkgPayment(btn.dataset.pkg, parseInt(btn.dataset.amount));
-  });
-});
-
-// ================================================================
-//  ★ PRODUCTS
-// ================================================================
-async function loadProducts(cat = 'all') {
-  $('productGrid').innerHTML = Array(6).fill('<div class="product-skeleton"></div>').join('');
-  $('noProductsState').style.display = 'none';
-  allProducts = await fetchProducts(cat);
+async function loadProducts(cat='all'){
+  $('productGrid').innerHTML=Array(6).fill('<div class="product-skeleton"></div>').join('');
+  $('noProductsState').style.display='none';
+  allProducts=await fetchProducts(cat);
   renderProducts(allProducts);
+  // load videos after products
   loadVideoAds();
 }
 
-function renderProducts(products) {
-  $('productGrid').innerHTML = '';
-  if (!products.length) { $('noProductsState').style.display = 'flex'; return; }
-  $('noProductsState').style.display = 'none';
+function isUpgradedUser(){
+  return userProfile && ['weekly','basic','premium'].includes(userProfile.pkg);
+}
+function hasPurchased(productId){
+  return userProfile?.purchasedItems?.includes(productId)||false;
+}
 
-  products.forEach(p => {
-    const disc      = p.originalPrice > p.price ? Math.round((1 - p.price / p.originalPrice) * 100) : 0;
-    const isDigital = p.category === 'ebook' || p.category === 'video';
-    const freeAccess= canAccessFree(p);
+function renderProducts(products){
+  $('productGrid').innerHTML='';
+  if(!products.length){$('noProductsState').style.display='flex';return;}
+  $('noProductsState').style.display='none';
+  products.forEach(p=>{
+    const disc=p.originalPrice>p.price?Math.round((1-p.price/p.originalPrice)*100):0;
+    const isDigital=p.category==='ebook'||p.category==='video';
+    const upgraded=isUpgradedUser();
+    const purchased=hasPurchased(p.id);
+    // digital access: upgraded user gets free if product is 'upgrade' type OR if user purchased it
+    const hasFreeAccess=isDigital&&((p.accessType==='upgrade'&&upgraded)||purchased);
 
-    const card = document.createElement('div');
-    card.className = 'product-card';
-
-    // ── Action buttons ──
-    let actionBtns = '';
-    if (isDigital && freeAccess) {
-      const icon  = p.category === 'ebook' ? 'menu_book'   : 'play_circle';
-      const label = p.category === 'ebook' ? 'Read Now'    : 'Watch Now';
-      const cls   = p.category === 'ebook' ? 'btn-read-now': 'btn-watch-now';
-      actionBtns = `<button class="${cls} digital-access-btn"
-        data-id="${p.id}" data-type="${p.category}"
-        data-url="${esc(p.fileUrl || '')}" data-title="${esc(p.title)}"
-        style="grid-column:span 2">
-        <span class="material-icons-round">${icon}</span> ${label}
-      </button>`;
+    const card=document.createElement('div');
+    card.className='product-card';
+    let actionBtns='';
+    if(isDigital&&hasFreeAccess){
+      const icon=p.category==='ebook'?'menu_book':'play_circle';
+      const label=p.category==='ebook'?'Read Now':'Watch Now';
+      const cls=p.category==='ebook'?'btn-read-now':'btn-watch-now';
+      actionBtns=`<button class="${cls} digital-access-btn" data-id="${p.id}" data-type="${p.category}" data-url="${p.fileUrl||''}" data-title="${esc(p.title)}" style="grid-column:span 2"><span class="material-icons-round">${icon}</span> ${label}</button>`;
     } else {
-      actionBtns = `
-        <button class="btn-add-cart">
-          <span class="material-icons-round">add_shopping_cart</span> Add
-        </button>
-        <button class="btn-buy-now">
-          <span class="material-icons-round">flash_on</span> Buy
-        </button>`;
+      actionBtns=`<button class="btn-add-cart"><span class="material-icons-round">add_shopping_cart</span> Add</button>
+        <button class="btn-buy-now"><span class="material-icons-round">flash_on</span> Buy</button>`;
     }
-
-    // ── Digital badge label ──
-    const digitalBadge = isDigital
-      ? `<span class="discount-badge" style="left:auto;right:8px;background:#7c3aed">
-           ${p.category === 'ebook' ? '📖 E-Book' : '🎬 Video'}
-         </span>`
-      : '';
-
-    // ── Free badge for upgraded users ──
-    const freeBadge = (isDigital && isUpgradedUser() && p.accessType === 'upgrade')
-      ? `<span class="discount-badge" style="top:auto;bottom:8px;left:8px;background:#16a34a">FREE for you</span>`
-      : '';
-
-    card.innerHTML = `
+    card.innerHTML=`
       <div class="product-card-img-wrap">
-        <img src="${p.image || 'https://placehold.co/300x300?text=No+Image'}"
-             alt="${esc(p.title)}" loading="lazy"
-             onerror="this.src='https://placehold.co/300x300?text=Error'"/>
-        ${disc ? `<span class="discount-badge">${disc}% OFF</span>` : ''}
-        ${digitalBadge}
-        ${freeBadge}
+        <img src="${p.image||'https://placehold.co/300x300?text=No+Image'}" alt="${esc(p.title)}" loading="lazy" onerror="this.src='https://placehold.co/300x300?text=Error'"/>
+        ${disc?`<span class="discount-badge">${disc}% OFF`:''}
+        ${isDigital?`<span class="discount-badge" style="left:auto;right:8px;background:#7c3aed">${p.category==='ebook'?'📖 E-Book':'🎬 Video'}</span>`:''}
       </div>
       <div class="product-card-body">
         <p class="product-card-title">${esc(p.title)}</p>
         <div class="product-card-prices">
-          <span class="product-price">
-            ${freeAccess
-              ? '<span style="color:var(--ok);font-size:.78rem;font-weight:800">✅ Free / Purchased</span>'
-              : `₹${fmt(p.price)}`}
-          </span>
-          ${(!freeAccess && p.originalPrice > p.price)
-            ? `<span class="product-original-price">₹${fmt(p.originalPrice)}</span>`
-            : ''}
+          <span class="product-price">${hasFreeAccess?'<span style="color:var(--ok);font-size:.75rem">✅ Purchased</span>':`₹${fmt(p.price)}`}</span>
+          ${(!hasFreeAccess&&p.originalPrice>p.price)?`<span class="product-original-price">₹${fmt(p.originalPrice)}</span>`:''}
         </div>
       </div>
-      <div class="product-card-actions"
-           style="display:grid;grid-template-columns:${isDigital && freeAccess ? '1fr' : '1fr 1fr'}">
+      <div class="product-card-actions" style="display:grid;grid-template-columns:${isDigital&&hasFreeAccess?'1fr':'1fr 1fr'}">
         ${actionBtns}
       </div>`;
-
-    // ── Events ──
-    card.querySelector('.product-card-body')?.addEventListener('click',     () => openProductModal(p));
-    card.querySelector('.product-card-img-wrap')?.addEventListener('click', () => openProductModal(p));
-
-    if (!isDigital || !freeAccess) {
-      card.querySelector('.btn-add-cart')?.addEventListener('click', e => { e.stopPropagation(); addToCart(p); });
-      card.querySelector('.btn-buy-now')?.addEventListener('click',  e => { e.stopPropagation(); handleBuyNow(p); });
+    card.querySelector('.product-card-body')?.addEventListener('click',()=>openProductModal(p));
+    card.querySelector('.product-card-img-wrap')?.addEventListener('click',()=>openProductModal(p));
+    if(!isDigital||!hasFreeAccess){
+      card.querySelector('.btn-add-cart')?.addEventListener('click',e=>{e.stopPropagation();addToCart(p);});
+      card.querySelector('.btn-buy-now')?.addEventListener('click',e=>{e.stopPropagation();handleBuyNow(p);});
     }
-
-    card.querySelector('.digital-access-btn')?.addEventListener('click', e => {
+    card.querySelector('.digital-access-btn')?.addEventListener('click',e=>{
       e.stopPropagation();
-      const btn = e.currentTarget;
-      if (btn.dataset.type === 'ebook') openPdfReader(btn.dataset.url, btn.dataset.title);
-      else openVideoFullscreen(btn.dataset.url, btn.dataset.title);
+      const btn=e.currentTarget;
+      if(btn.dataset.type==='ebook') openPdfReader(btn.dataset.url,btn.dataset.title);
+      else openVideoFullscreen(btn.dataset.url,btn.dataset.title);
     });
-
     $('productGrid').appendChild(card);
   });
 }
 
-// ── Category filter ──
-$('categoryStrip')?.addEventListener('click', e => {
-  const chip = e.target.closest('.category-chip');
-  if (!chip) return;
-  document.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
+$('categoryStrip')?.addEventListener('click',e=>{
+  const chip=e.target.closest('.category-chip');
+  if(!chip)return;
+  document.querySelectorAll('.category-chip').forEach(c=>c.classList.remove('active'));
   chip.classList.add('active');
   loadProducts(chip.dataset.cat);
 });
 
-// ── Product modal ──
-function openProductModal(p) {
-  currentModalProduct = p;
-  const disc       = p.originalPrice > p.price ? Math.round((1 - p.price / p.originalPrice) * 100) : 0;
-  const isDigital  = p.category === 'ebook' || p.category === 'video';
-  const freeAccess = canAccessFree(p);
-
-  $('productModalTitle').textContent = p.title;
-  $('productModalImg').src           = p.image || '';
-  $('productModalImg').alt           = p.title;
-  $('productModalName').textContent  = p.title;
-  $('productModalPrice').innerHTML   = freeAccess
-    ? '<span style="color:var(--ok);font-weight:800">✅ Free / Purchased</span>'
-    : `₹${fmt(p.price)}`;
-  $('productModalOrig').textContent  = p.originalPrice > p.price ? `₹${fmt(p.originalPrice)}` : '';
-  $('productModalDisc').textContent  = disc ? `${disc}% OFF` : '';
-  $('productModalDisc').style.display= disc ? 'inline-flex' : 'none';
-  $('productModalDesc').textContent  = p.description || 'No description available.';
-
-  const actionsEl = $('productModalActions');
-  if (isDigital && freeAccess) {
-    const icon  = p.category === 'ebook' ? 'menu_book'    : 'play_circle';
-    const label = p.category === 'ebook' ? 'Read Now'     : 'Watch Now';
-    const cls   = p.category === 'ebook' ? 'btn-read-now' : 'btn-watch-now';
-    actionsEl.innerHTML = `<button class="${cls}" id="pmAccessBtn" style="grid-column:span 2">
-      <span class="material-icons-round">${icon}</span> ${label}
-    </button>`;
-    $('pmAccessBtn')?.addEventListener('click', () => {
+// Product modal
+function openProductModal(p){
+  currentModalProduct=p;
+  const disc=p.originalPrice>p.price?Math.round((1-p.price/p.originalPrice)*100):0;
+  const isDigital=p.category==='ebook'||p.category==='video';
+  const hasFreeAccess=isDigital&&((p.accessType==='upgrade'&&isUpgradedUser())||hasPurchased(p.id));
+  $('productModalTitle').textContent=p.title;
+  $('productModalImg').src=p.image||'';
+  $('productModalImg').alt=p.title;
+  $('productModalName').textContent=p.title;
+  $('productModalPrice').textContent=hasFreeAccess?'✅ Purchased':`₹${fmt(p.price)}`;
+  $('productModalOrig').textContent=p.originalPrice>p.price?`₹${fmt(p.originalPrice)}`:'';
+  $('productModalDisc').textContent=disc?`${disc}% OFF`:'';
+  $('productModalDisc').style.display=disc?'inline-flex':'none';
+  $('productModalDesc').textContent=p.description||'No description available.';
+  // Update action buttons
+  const actionsEl=$('productModalActions');
+  if(isDigital&&hasFreeAccess){
+    const icon=p.category==='ebook'?'menu_book':'play_circle';
+    const label=p.category==='ebook'?'Read Now':'Watch Now';
+    const cls=p.category==='ebook'?'btn-read-now':'btn-watch-now';
+    actionsEl.innerHTML=`<button class="${cls}" id="pmAccessBtn" style="grid-column:span 2"><span class="material-icons-round">${icon}</span> ${label}</button>`;
+    $('pmAccessBtn')?.addEventListener('click',()=>{
       closeModal($('productModal'));
-      if (p.category === 'ebook') openPdfReader(p.fileUrl || '', p.title);
-      else openVideoFullscreen(p.fileUrl || '', p.title);
+      if(p.category==='ebook') openPdfReader(p.fileUrl||'',p.title);
+      else openVideoFullscreen(p.fileUrl||'',p.title);
     });
   } else {
-    actionsEl.innerHTML = `
-      <button class="btn-outline" id="productModalAddCart">
-        <span class="material-icons-round">add_shopping_cart</span> Add to Cart
-      </button>
-      <button class="btn-primary" id="productModalBuyNow">
-        <span class="material-icons-round">flash_on</span> Buy Now
-      </button>`;
-    $('productModalAddCart')?.addEventListener('click', () => {
-      if (currentModalProduct) { addToCart(currentModalProduct); closeModal($('productModal')); }
-    });
-    $('productModalBuyNow')?.addEventListener('click', () => {
-      if (currentModalProduct) { closeModal($('productModal')); handleBuyNow(currentModalProduct); }
-    });
+    actionsEl.innerHTML=`<button class="btn-outline" id="productModalAddCart"><span class="material-icons-round">add_shopping_cart</span> Add to Cart</button>
+      <button class="btn-primary" id="productModalBuyNow"><span class="material-icons-round">flash_on</span> Buy Now</button>`;
+    $('productModalAddCart')?.addEventListener('click',()=>{if(currentModalProduct){addToCart(currentModalProduct);closeModal($('productModal'));}});
+    $('productModalBuyNow')?.addEventListener('click',()=>{if(currentModalProduct){closeModal($('productModal'));handleBuyNow(currentModalProduct);}});
   }
   openModal($('productModal'));
 }
 
-document.querySelector('.hero-cta')?.addEventListener('click', () =>
-  window.scrollTo({ top: 400, behavior: 'smooth' }));
+document.querySelector('.hero-cta')?.addEventListener('click',()=>window.scrollTo({top:400,behavior:'smooth'}));
 
 // ================================================================
-//  ★ CART
+//  CART
 // ================================================================
-function loadCart() {
-  try { cart = JSON.parse(localStorage.getItem('sayatkart_cart') || '[]'); }
-  catch { cart = []; }
+function loadCart(){
+  try{cart=JSON.parse(localStorage.getItem('sayatkart_cart')||'[]');}catch{cart=[];}
   updateCartBadge();
 }
-function saveCart() { localStorage.setItem('sayatkart_cart', JSON.stringify(cart)); updateCartBadge(); }
-function updateCartBadge() {
-  const c = cart.length;
-  $('cartBadge').textContent = c;
-  $('cartBadge').style.display = c ? 'flex' : 'none';
-  $('cartCountText').textContent = `(${c} item${c !== 1 ? 's' : ''})`;
+function saveCart(){localStorage.setItem('sayatkart_cart',JSON.stringify(cart));updateCartBadge();}
+function updateCartBadge(){
+  const c=cart.length;
+  $('cartBadge').textContent=c;
+  $('cartBadge').style.display=c?'flex':'none';
+  $('cartCountText').textContent=`(${c} item${c!==1?'s':''})`;
 }
-function addToCart(p) {
-  cart.push({
-    id: p.id, title: p.title, price: p.price,
-    originalPrice: p.originalPrice || p.price,
-    image: p.image || '', category: p.category || '',
-    paymentMethod: p.paymentMethod || 'online',
-    accessType:    p.accessType    || 'non'
-  });
-  saveCart(); renderCart();
-  showToast(`"${p.title}" cart-It has been added!`, 'success');
+function addToCart(p){
+  cart.push({id:p.id,title:p.title,price:p.price,originalPrice:p.originalPrice||p.price,image:p.image||'',category:p.category||'',paymentMethod:p.paymentMethod||'online',accessType:p.accessType||'non'});
+  saveCart();renderCart();
+  showToast(`"${p.title}" added!`,'success');
 }
-function removeFromCart(i) { cart.splice(i, 1); saveCart(); renderCart(); }
+function removeFromCart(i){cart.splice(i,1);saveCart();renderCart();}
 
-function renderCart() {
-  $('cartBody').innerHTML = '';
-  if (!cart.length) {
-    $('cartBody').innerHTML = `<div class="empty-cart">
-      <span class="material-icons-round">remove_shopping_cart</span>
-      <p>Your cart is empty!</p>
-      <button class="btn-primary" onclick="switchSection('home');closeCart()">Start Shopping</button>
-    </div>`;
-    $('cartFooter').style.display = 'none';
+function renderCart(){
+  $('cartBody').innerHTML='';
+  if(!cart.length){
+    $('cartBody').innerHTML=`<div class="empty-cart"><span class="material-icons-round">remove_shopping_cart</span><p>Your cart is empty!</p><button class="btn-primary" onclick="switchSection('home');closeCart()">Start Shopping</button></div>`;
+    $('cartFooter').style.display='none';
     return;
   }
-  $('cartFooter').style.display = 'block';
-  cart.forEach((item, idx) => {
-    const el = document.createElement('div');
-    el.className = 'cart-item';
-    el.innerHTML = `
-      <img class="cart-item-img" src="${item.image || 'https://placehold.co/64'}"
-           alt="${esc(item.title)}" onerror="this.src='https://placehold.co/64'"/>
-      <div class="cart-item-info">
-        <p class="cart-item-name">${esc(item.title)}</p>
-        <p class="cart-item-price">₹${fmt(item.price)}</p>
-      </div>
-      <button class="cart-item-remove" title="Remove">
-        <span class="material-icons-round">delete_outline</span>
-      </button>`;
-    el.querySelector('.cart-item-remove').addEventListener('click', () => removeFromCart(idx));
+  $('cartFooter').style.display='block';
+  cart.forEach((item,idx)=>{
+    const el=document.createElement('div');
+    el.className='cart-item';
+    el.innerHTML=`<img class="cart-item-img" src="${item.image||'https://placehold.co/64'}" alt="${esc(item.title)}" onerror="this.src='https://placehold.co/64'"/>
+    <div class="cart-item-info"><p class="cart-item-name">${esc(item.title)}</p><p class="cart-item-price">₹${fmt(item.price)}</p></div>
+    <button class="cart-item-remove" title="Remove"><span class="material-icons-round">delete_outline</span></button>`;
+    el.querySelector('.cart-item-remove').addEventListener('click',()=>removeFromCart(idx));
     $('cartBody').appendChild(el);
   });
-  const sub = cart.reduce((s, i) => s + (i.originalPrice || i.price), 0);
-  const tot = cart.reduce((s, i) => s + i.price, 0);
-  const cb  = Math.round(tot * 5 / 100);
-  $('cartSubtotal').textContent = `₹${fmt(sub)}`;
-  $('cartDiscount').textContent = `-₹${fmt(sub - tot)}`;
-  $('cartTotal').textContent    = `₹${fmt(tot)}`;
-  $('cartCashback').textContent = `+₹${fmt(cb)}`;
-  $('cartAuthWarning').style.display = currentUser ? 'none' : 'flex';
+  const sub=cart.reduce((s,i)=>s+(i.originalPrice||i.price),0);
+  const tot=cart.reduce((s,i)=>s+i.price,0);
+  const disc=sub-tot;
+  const cb=Math.round(tot*5/100);
+  $('cartSubtotal').textContent=`₹${fmt(sub)}`;
+  $('cartDiscount').textContent=`-₹${fmt(disc)}`;
+  $('cartTotal').textContent=`₹${fmt(tot)}`;
+  $('cartCashback').textContent=`+₹${fmt(cb)}`;
+  $('cartAuthWarning').style.display=currentUser?'none':'flex';
 }
 
-function openCart()  { renderCart(); $('cartSidebar').classList.add('open'); $('overlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
-function closeCart() { $('cartSidebar').classList.remove('open'); if (!isDrawerOpen() && !isModalOpen()) { $('overlay').classList.remove('active'); document.body.style.overflow = ''; } }
-window.closeCart = closeCart;
-
-$('cartBtn')?.addEventListener('click', openCart);
-$('cartCloseBtn')?.addEventListener('click', closeCart);
+function openCart(){renderCart();$('cartSidebar').classList.add('open');$('overlay').classList.add('active');document.body.style.overflow='hidden';}
+function closeCart(){$('cartSidebar').classList.remove('open');if(!isDrawerOpen()&&!isModalOpen()){$('overlay').classList.remove('active');document.body.style.overflow='';}}
+window.closeCart=closeCart;
+$('cartBtn')?.addEventListener('click',openCart);
+$('cartCloseBtn')?.addEventListener('click',closeCart);
 
 // ================================================================
-//  ★ CHECKOUT
+//  CHECKOUT with Payment Mode (COD / Online)
 // ================================================================
-$('checkoutBtn')?.addEventListener('click', () => {
-  if (!currentUser) { showToast('⚠️ Login in!', 'error'); $('cartAuthWarning').style.display = 'flex'; return; }
-  closeCart(); initiateCheckout();
+$('checkoutBtn')?.addEventListener('click',()=>{
+  if(!currentUser){showToast('⚠️ Login করুন!','error');$('cartAuthWarning').style.display='flex';return;}
+  closeCart();initiateCheckout();
 });
 
-async function initiateCheckout() {
-  showLoading('Address saving…');
-  let saved = null;
-  try { saved = await getSavedAddress(currentUser.uid); } catch {}
+async function initiateCheckout(){
+  showLoading('Loading address…');
+  let saved=null;
+  try{saved=await getSavedAddress(currentUser.uid);}catch{}
   hideLoading();
-  if (saved) { fillAddr(saved); $('addressModalSubtitle').textContent = 'Saved address। Edit if required.'; }
-  else        { clearAddr();    $('addressModalSubtitle').textContent = 'Delivery address দিন।'; }
-  openModal($('addressModal'));
+  if(saved){fillAddr(saved);$('addressModalSubtitle').textContent='Delivering to saved address. Edit if needed.';}
+  else{clearAddr();$('addressModalSubtitle').textContent='Please enter your delivery address.';}
+  // Check if any item supports COD
+  const hasCod=cart.some(i=>i.paymentMethod==='both');
+  if(hasCod){
+    openModal($('addressModal'));
+  } else {
+    openModal($('addressModal'));
+  }
 }
 
-function fillAddr(a) {
-  $('addrName').value     = a.name     || '';
-  $('addrPhone').value    = a.phone    || '';
-  $('addrStreet').value   = a.street   || '';
-  $('addrArea').value     = a.area     || '';
-  $('addrCity').value     = a.city     || '';
-  $('addrState').value    = a.state    || '';
-  $('addrPin').value      = a.pin      || '';
-  $('addrLandmark').value = a.landmark || '';
+function fillAddr(a){
+  $('addrName').value=a.name||'';$('addrPhone').value=a.phone||'';
+  $('addrStreet').value=a.street||'';$('addrArea').value=a.area||'';
+  $('addrCity').value=a.city||'';$('addrState').value=a.state||'';
+  $('addrPin').value=a.pin||'';$('addrLandmark').value=a.landmark||'';
 }
-function clearAddr() {
-  ['addrName','addrPhone','addrStreet','addrArea','addrCity','addrState','addrPin','addrLandmark']
-    .forEach(id => { const e = $(id); if (e) e.value = ''; });
-}
+function clearAddr(){['addrName','addrPhone','addrStreet','addrArea','addrCity','addrState','addrPin','addrLandmark'].forEach(id=>{const e=$(id);if(e)e.value='';});}
 
-$('addressConfirmBtn')?.addEventListener('click', async () => {
-  const addr = collectAddr(); if (!addr) return;
-  if ($('saveAddressCheck')?.checked) try { await saveDeliveryAddress(currentUser.uid, addr); } catch {}
+$('addressConfirmBtn')?.addEventListener('click',async()=>{
+  const addr=collectAddr();if(!addr)return;
+  if($('saveAddressCheck')?.checked) try{await saveDeliveryAddress(currentUser.uid,addr);}catch{}
   closeModal($('addressModal'));
-  pendingAddr = addr;
-  // Check if any cart item supports COD
-  const hasCod = cart.some(i => i.paymentMethod === 'both');
-  if (hasCod) {
+  pendingAddr=addr;
+  // check if COD available
+  const hasCod=cart.some(i=>i.paymentMethod==='both');
+  if(hasCod){
+    // reset selection
     $('payModeOnline').classList.add('selected');
     $('payModeCod').classList.remove('selected');
     openModal($('payModeModal'));
@@ -1981,746 +2129,773 @@ $('addressConfirmBtn')?.addEventListener('click', async () => {
   }
 });
 
-function collectAddr() {
-  const fs = [
-    { el: $('addrName'),   msg: 'Full name required.' },
-    { el: $('addrPhone'),  msg: 'Valid 10-digit mobile required.', pat: /^\d{10}$/ },
-    { el: $('addrStreet'), msg: 'Street address required.' },
-    { el: $('addrArea'),   msg: 'Area required.' },
-    { el: $('addrCity'),   msg: 'City required.' },
-    { el: $('addrState'),  msg: 'State required.' },
-    { el: $('addrPin'),    msg: 'Valid 6-digit PIN required.', pat: /^\d{6}$/ },
+function collectAddr(){
+  const fs=[
+    {el:$('addrName'),msg:'Full name required.'},
+    {el:$('addrPhone'),msg:'Valid 10-digit mobile required.',pat:/^\d{10}$/},
+    {el:$('addrStreet'),msg:'Street address required.'},
+    {el:$('addrArea'),msg:'Area required.'},
+    {el:$('addrCity'),msg:'City required.'},
+    {el:$('addrState'),msg:'State required.'},
+    {el:$('addrPin'),msg:'Valid 6-digit PIN required.',pat:/^\d{6}$/},
   ];
-  for (const f of fs) {
-    const v = f.el?.value.trim() || '';
-    if (!v || (f.pat && !f.pat.test(v))) { showToast(f.msg, 'error'); f.el?.focus(); return null; }
-  }
-  return {
-    name: $('addrName').value.trim(), phone: $('addrPhone').value.trim(),
-    street: $('addrStreet').value.trim(), area: $('addrArea').value.trim(),
-    city: $('addrCity').value.trim(), state: $('addrState').value.trim(),
-    pin: $('addrPin').value.trim(), landmark: $('addrLandmark').value.trim()
-  };
+  for(const f of fs){const v=f.el?.value.trim()||'';if(!v||(f.pat&&!f.pat.test(v))){showToast(f.msg,'error');f.el?.focus();return null;}}
+  return{name:$('addrName').value.trim(),phone:$('addrPhone').value.trim(),street:$('addrStreet').value.trim(),area:$('addrArea').value.trim(),city:$('addrCity').value.trim(),state:$('addrState').value.trim(),pin:$('addrPin').value.trim(),landmark:$('addrLandmark').value.trim()};
 }
 
-// ── Payment Mode ──
-[$('payModeOnline'), $('payModeCod')].forEach(card => {
-  card?.addEventListener('click', () => {
-    [$('payModeOnline'), $('payModeCod')].forEach(c => c?.classList.remove('selected'));
+// Payment Mode selection
+[$('payModeOnline'),$('payModeCod')].forEach(card=>{
+  card?.addEventListener('click',()=>{
+    [$('payModeOnline'),$('payModeCod')].forEach(c=>c?.classList.remove('selected'));
     card.classList.add('selected');
+    pendingPayMode=card.dataset.mode;
   });
 });
-
-$('payModeConfirm')?.addEventListener('click', async () => {
-  const mode = document.querySelector('.pay-mode-card.selected')?.dataset.mode || 'online';
+pendingPayMode='online';
+$('payModeConfirm')?.addEventListener('click',async()=>{
+  const mode=document.querySelector('.pay-mode-card.selected')?.dataset.mode||'online';
   closeModal($('payModeModal'));
-  if (mode === 'cod') await handleCodOrder(pendingAddr);
-  else startRazorpay(pendingAddr);
+  if(mode==='cod'){
+    await handleCodOrder(pendingAddr);
+  } else {
+    startRazorpay(pendingAddr);
+  }
 });
 
-async function handleCodOrder(addr) {
-  showLoading('COD Order place progress…');
-  const total = cart.reduce((s, i) => s + i.price, 0);
-  const cb    = Math.round(total * 5 / 100);
-  const r = await saveOrder({
-    userId: currentUser.uid,
-    items:  cart.map(i => ({ productId: i.id, title: i.title, price: i.price, image: i.image })),
-    total, cashbackEarned: cb, deliveryAddress: addr,
-    paymentMode: 'cod', paymentId: 'COD-' + Date.now()
-  });
-  hideLoading();
-  if (r.success) {
-    await updateUserEarnings(currentUser.uid, cb);
-    $('successPaymentId').textContent  = 'COD Order';
-    $('successCashbackAmt').textContent= `₹${fmt(cb)}`;
-    $('successMsg').textContent        = 'COD Order Certain! Cash on Delivery (COD).';
-    $('successOverlay').style.display  = 'flex';
-    cart = []; saveCart(); renderCart();
-    loadUserEarnings(currentUser.uid);
-  } else showToast('Order save failed. Try again.', 'error');
-}
-
-// ================================================================
-//  ★ RAZORPAY – PRODUCT PAYMENT
-// ================================================================
-async function startRazorpay(addr) {
-  const total = cart.reduce((s, i) => s + i.price, 0);
-  const options = {
-    key:      RAZORPAY_KEY_ID,
-    amount:   Math.round(total * 100),
-    currency: 'INR',
-    name:     'SayatKart',
-    description: `${cart.length} item(s)`,
-    prefill: {
-      name:    currentUser?.displayName || addr.name,
-      email:   currentUser?.email       || '',
-      contact: currentUser?.phoneNumber?.replace('+91', '') || addr.phone
-    },
-    notes:  { address: `${addr.street}, ${addr.city}` },
-    theme:  { color: '#f97316' },
-    handler: async res => await onPaySuccess(res, addr, total),
-    modal:  { ondismiss: () => showToast('Payment cancelled।', 'warning') }
+async function handleCodOrder(addr){
+  showLoading('COD Order place হচ্ছে…');
+  const total = cart.reduce((s,i)=>s+i.price,0);
+  const cb    = Math.round(total*5/100);
+  const orderData = {
+    userId:          currentUser.uid,
+    items:           cart.map(i=>({
+      productId:i.id||'', title:i.title||'',
+      price:i.price||0, image:i.image||'', category:i.category||''
+    })),
+    total, cashbackEarned:cb,
+    deliveryAddress: addr,
+    paymentMode:     'cod',
+    paymentId:       'COD-'+Date.now()
   };
-  try {
-    const rzp = new window.Razorpay(options);
-    rzp.on('payment.failed', err =>
-      showToast('Payment failed: ' + (err?.error?.description || 'Error'), 'error'));
-    rzp.open();
-  } catch (e) { showToast('Razorpay Cannot open it.', 'error'); console.error(e); }
+  const r = await saveOrder(orderData);
+  hideLoading();
+  if(r.success){
+    await updateUserEarnings(currentUser.uid, cb);
+    $('successPaymentId').textContent   = 'COD Order';
+    $('successCashbackAmt').textContent = `₹${fmt(cb)}`;
+    $('successMsg').textContent         = '✅ COD Order নিশ্চিত! পৌঁছে দেওয়ার সময় টাকা দিন।';
+    $('successOverlay').style.display   = 'flex';
+    cart=[]; saveCart(); renderCart();
+    loadUserEarnings(currentUser.uid);
+    loadProfileOrders(currentUser.uid);
+  } else {
+    showToast(`❌ Order save failed: ${r.error||'Unknown error'}`,'error',8000);
+  }
 }
 
-async function onPaySuccess(res, addr, total) {
-  showLoading('Order Saving…');
-  const cb           = Math.round(total * 5 / 100);
-  const digitalItems = cart.filter(i => i.category === 'ebook' || i.category === 'video');
-  try {
-    const r = await saveOrder({
-      userId: currentUser.uid,
-      items:  cart.map(i => ({
-        productId: i.id, title: i.title, price: i.price,
-        image: i.image, category: i.category
-      })),
-      total, cashbackEarned: cb, deliveryAddress: addr,
-      paymentId: res.razorpay_payment_id,
-      razorpayOrderId: res.razorpay_order_id || null,
-      paymentMode: 'online'
-    });
-    if (r.success) {
+// ================================================================
+//  RAZORPAY
+// ================================================================
+async function startRazorpay(addr){
+  const total=cart.reduce((s,i)=>s+i.price,0);
+  const options={
+    key:RAZORPAY_KEY_ID,amount:Math.round(total*100),currency:'INR',
+    name:'SayatKart',description:`${cart.length} item(s)`,
+    prefill:{name:currentUser?.displayName||addr.name,email:currentUser?.email||'',contact:currentUser?.phoneNumber?.replace('+91','')||addr.phone},
+    notes:{address:`${addr.street}, ${addr.city}`},
+    theme:{color:'#f97316'},
+    handler:async(res)=>await onPaySuccess(res,addr,total),
+    modal:{ondismiss:()=>showToast('Payment cancelled.','warning')}
+  };
+  try{
+    const rzp=new window.Razorpay(options);
+    rzp.on('payment.failed',err=>showToast('Payment failed: '+(err?.error?.description||'Error'),'error'));
+    rzp.open();
+  }catch(e){showToast('Cannot open payment. Check Razorpay key.','error');console.error(e);}
+}
+
+async function onPaySuccess(res,addr,total){
+  showLoading('Order Firestore-এ save হচ্ছে…');
+  const cb           = Math.round(total*5/100);
+  const digitalItems = cart.filter(i=>i.category==='ebook'||i.category==='video');
+  // FIX: build order object carefully – no undefined values
+  const orderData = {
+    userId:       currentUser.uid,
+    items:        cart.map(i=>({
+      productId: i.id||'', title:i.title||'',
+      price:     i.price||0, image:i.image||'',
+      category:  i.category||''
+    })),
+    total:           total,
+    cashbackEarned:  cb,
+    deliveryAddress: addr,
+    paymentId:       res.razorpay_payment_id||'',
+    razorpayOrderId: res.razorpay_order_id||'',
+    paymentMode:     'online'
+  };
+  try{
+    const r = await saveOrder(orderData);
+    if(r.success){
       await updateUserEarnings(currentUser.uid, cb);
-      // Grant digital access for purchased items
-      for (const item of digitalItems) {
+      // grant digital access
+      for(const item of digitalItems){
         await addPurchasedItem(currentUser.uid, item.id);
       }
       userProfile = await getUserProfile(currentUser.uid);
-      $('successPaymentId').textContent  = res.razorpay_payment_id;
-      $('successCashbackAmt').textContent= `₹${fmt(cb)}`;
-      $('successMsg').textContent        = 'Payment successful! SayatKart-Thanks for buying this.';
-      $('successOverlay').style.display  = 'flex';
-      cart = []; saveCart(); renderCart();
+      $('successPaymentId').textContent   = res.razorpay_payment_id;
+      $('successCashbackAmt').textContent = `₹${fmt(cb)}`;
+      $('successMsg').textContent         = '🎉 Payment সফল! SayatKart-এ কেনার জন্য ধন্যবাদ।';
+      $('successOverlay').style.display   = 'flex';
+      cart=[]; saveCart(); renderCart();
       loadUserEarnings(currentUser.uid);
+      loadProfileOrders(currentUser.uid);
       loadProducts('all');
-    } else showToast('The payment was successful, but the order was not placed.', 'warning');
-  } catch { showToast('Order save error. Payment ID: ' + res.razorpay_payment_id, 'warning'); }
-  finally { hideLoading(); }
+    } else {
+      // FIX: show exact error so user knows what happened
+      showToast(`❌ Order save failed: ${r.error||'Unknown'}. Payment ID: ${res.razorpay_payment_id}`,'error',10000);
+      console.error('Order save failed details:', r);
+    }
+  }catch(err){
+    showToast('Order error: '+err.message+'. Payment ID: '+res.razorpay_payment_id,'warning',10000);
+    console.error('onPaySuccess error:',err);
+  }finally{ hideLoading(); }
 }
 
-// ── Buy Now – digital products show options modal ──
-function handleBuyNow(p) {
-  if (!currentUser) { showToast('⚠️ Login Do it to buy!', 'error'); return; }
-  const isDigital = p.category === 'ebook' || p.category === 'video';
-  if (isDigital) {
+// handleBuyNow – shows buy options for digital products
+function handleBuyNow(p){
+  if(!currentUser){showToast('⚠️ Login করুন to buy!','error');return;}
+  const isDigital=p.category==='ebook'||p.category==='video';
+  if(isDigital){
     showDigitalBuyOptions(p);
   } else {
-    cart = [{
-      id: p.id, title: p.title, price: p.price,
-      originalPrice: p.originalPrice || p.price,
-      image: p.image || '', category: p.category || '',
-      paymentMethod: p.paymentMethod || 'online',
-      accessType:    p.accessType    || 'non'
-    }];
-    saveCart(); initiateCheckout();
+    cart=[{id:p.id,title:p.title,price:p.price,originalPrice:p.originalPrice||p.price,image:p.image||'',category:p.category||'',paymentMethod:p.paymentMethod||'online',accessType:p.accessType||'non'}];
+    saveCart();initiateCheckout();
   }
 }
 
-function showDigitalBuyOptions(p) {
-  $('buyOptionsSubtitle').textContent = `"${p.title}" – How do you want to buy?`;
-  const upgraded = isUpgradedUser();
-  $('buyOptionsWrap').innerHTML = `
-    ${!upgraded ? `
-    <div class="buy-option-card" id="buyOpt29">
+function showDigitalBuyOptions(p){
+  $('buyOptionsSubtitle').textContent=`"${p.title}" কিনতে চাই`;
+  const upgraded=isUpgradedUser();
+  $('buyOptionsWrap').innerHTML=`
+    ${!upgraded?`<div class="buy-option-card" id="buyOpt29">
       <div class="buy-option-icon"><span class="material-icons-round">bolt</span></div>
       <div class="buy-option-info">
-        <div class="buy-option-name">⚡ Weekly Pass – ₹29/week</div>
-        <div class="buy-option-desc">All E-Book and Video free. every weekend Auto-renew।</div>
+        <div class="buy-option-name">Weekly Subscription</div>
+        <div class="buy-option-desc">₹29/week – সব Digital Content আনলক হবে, Auto-pay</div>
       </div>
       <div class="buy-option-price">₹29</div>
-    </div>` : ''}
+    </div>`:''}
     <div class="buy-option-card" id="buyOptDirect">
       <div class="buy-option-icon"><span class="material-icons-round">shopping_bag</span></div>
       <div class="buy-option-info">
         <div class="buy-option-name">Direct Purchase</div>
-        <div class="buy-option-desc">Only this ${p.category === 'ebook' ? 'E-Book' : 'Video'} buy</div>
+        <div class="buy-option-desc">শুধু এই ${p.category==='ebook'?'E-Book':'Video'} কিনুন</div>
       </div>
       <div class="buy-option-price">₹${fmt(p.price)}</div>
-    </div>`;
-
-  $('buyOpt29')?.addEventListener('click', () => {
+    </div>
+  `;
+  $('buyOpt29')?.addEventListener('click',()=>{
     closeModal($('buyOptionsModal'));
-    startPkgPayment('weekly', 29);
+    startPkgPayment('weekly',29);
   });
-  $('buyOptDirect')?.addEventListener('click', () => {
+  $('buyOptDirect')?.addEventListener('click',()=>{
     closeModal($('buyOptionsModal'));
-    cart = [{
-      id: p.id, title: p.title, price: p.price,
-      originalPrice: p.originalPrice || p.price,
-      image: p.image || '', category: p.category || '',
-      paymentMethod: 'online', accessType: p.accessType || 'non'
-    }];
-    saveCart(); initiateCheckout();
+    cart=[{id:p.id,title:p.title,price:p.price,originalPrice:p.originalPrice||p.price,image:p.image||'',category:p.category||'',paymentMethod:'online',accessType:p.accessType||'non'}];
+    saveCart();initiateCheckout();
   });
   openModal($('buyOptionsModal'));
 }
 
-$('successDoneBtn')?.addEventListener('click', () => {
-  $('successOverlay').style.display = 'none';
-  switchSection('home');
-});
+$('successDoneBtn')?.addEventListener('click',()=>{$('successOverlay').style.display='none';switchSection('home');});
 
 // ================================================================
-//  ★ PROFILE – EARNINGS
+//  PROFILE – EARNINGS
 // ================================================================
-async function loadUserEarnings(uid) {
-  try {
-    const p = await getUserProfile(uid);
-    const e = p?.totalEarnings || 0;
-    $('earningsAmount').textContent = `₹${fmt(e)}`;
-  } catch {}
+async function loadUserEarnings(uid){
+  try{const p=await getUserProfile(uid);const e=p?.totalEarnings||0;$('earningsAmount').textContent=`₹${fmt(e)}`;}catch{}
 }
 
 // ================================================================
-//  ★ PROFILE – ORDERS (mini list, 3 items)
+//  PROFILE – ORDERS
 // ================================================================
-async function loadProfileOrders(uid) {
-  const list = $('profileOrdersList'); if (!list) return;
-  list.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
-  try {
-    const orders = await getUserOrders(uid);
-    if (!orders.length) {
-      list.innerHTML = '<div class="empty-orders"><span class="material-icons-round">shopping_bag</span><p>No orders found.</p></div>';
-      return;
-    }
-    list.innerHTML = '';
-    orders.slice(0, 3).forEach(o => list.appendChild(buildOrderMiniCard(o)));
-  } catch {
-    list.innerHTML = '<p style="padding:12px;color:var(--tm);font-size:.83rem;">Orders Failed to load.</p>';
-  }
+async function loadProfileOrders(uid){
+  const list=$('profileOrdersList');if(!list)return;
+  list.innerHTML='<div class="loading-spinner"><div class="spinner"></div></div>';
+  try{
+    const orders=await getUserOrders(uid);
+    if(!orders.length){list.innerHTML='<div class="empty-orders"><span class="material-icons-round">shopping_bag</span><p>No orders yet.</p></div>';return;}
+    list.innerHTML='';
+    orders.slice(0,3).forEach(o=>list.appendChild(buildOrderMiniCard(o)));
+  }catch{list.innerHTML='<p style="padding:12px;color:var(--tm);font-size:.83rem;">Could not load orders.</p>';}
 }
 
-function buildOrderMiniCard(order) {
-  const el   = document.createElement('div');
-  el.className = 'order-mini-card';
-  const date = order.createdAt?.toDate ? order.createdAt.toDate() : new Date();
-  const stMap  = { confirmed:'confirmed', shipped:'shipped', out_for_delivery:'out', delivered:'delivered' };
-  const stLabel= { confirmed:'✅ Confirmed', shipped:'🚚 Shipped', out_for_delivery:'🛵 Out for Delivery', delivered:'🏠 Delivered' };
-  el.innerHTML = `
-    <div class="order-mini-top">
-      <span class="order-mini-id">#${order.id.slice(0,8).toUpperCase()}</span>
-      <span class="order-mini-amount">₹${fmt(order.total)}</span>
-    </div>
-    <p class="order-mini-date">${fmtDate(date)}</p>
-    <span class="order-status-pill status-${stMap[order.status] || 'confirmed'}">
-      ${stLabel[order.status] || order.status}
-    </span>`;
-  el.addEventListener('click', () => openOrderStatusModal(order));
+function buildOrderMiniCard(order){
+  const el=document.createElement('div');
+  el.className='order-mini-card';
+  const date=order.createdAt?.toDate?order.createdAt.toDate():new Date();
+  const stMap={confirmed:'confirmed',shipped:'shipped',out_for_delivery:'out',delivered:'delivered'};
+  const stLabel={confirmed:'✅ Confirmed',shipped:'🚚 Shipped',out_for_delivery:'🛵 Out for Delivery',delivered:'🏠 Delivered'};
+  el.innerHTML=`<div class="order-mini-top"><span class="order-mini-id">#${order.id.slice(0,8).toUpperCase()}</span><span class="order-mini-amount">₹${fmt(order.total)}</span></div>
+  <p class="order-mini-date">${fmtDate(date)}</p>
+  <span class="order-status-pill status-${stMap[order.status]||'confirmed'}">${stLabel[order.status]||order.status}</span>`;
+  el.addEventListener('click',()=>openOrderStatusModal(order));
   return el;
 }
 
-$('viewOrdersBtn')?.addEventListener('click', () => switchSection('orders'));
+$('viewOrdersBtn')?.addEventListener('click',()=>switchSection('orders'));
 
 // ================================================================
-//  ★ ORDERS PAGE (full list)
+//  ORDERS PAGE
 // ================================================================
-async function loadOrdersPage() {
-  if (!currentUser) {
-    $('ordersAuthWarning').style.display = 'flex';
-    $('ordersContainer').style.display   = 'none';
-    return;
-  }
-  $('ordersAuthWarning').style.display = 'none';
-  $('ordersContainer').style.display   = 'block';
-  $('ordersFullList').innerHTML = '<div class="loading-spinner"><div class="spinner"></div><p>Loading...</p></div>';
-  try {
-    const orders = await getUserOrders(currentUser.uid);
-    $('ordersFullList').innerHTML = '';
-    if (!orders.length) {
-      $('ordersFullList').innerHTML = `<div class="empty-state">
-        <span class="material-icons-round empty-icon">shopping_bag</span>
-        <p>No orders found.</p>
-        <button class="btn-primary" style="margin-top:16px" onclick="switchSection('home')">
-          <span class="material-icons-round">storefront</span> Shop Now
-        </button>
-      </div>`;
-      return;
-    }
-    orders.forEach(o => $('ordersFullList').appendChild(buildOrderFullCard(o)));
-  } catch {
-    $('ordersFullList').innerHTML = '<p style="padding:20px;color:var(--tm)">Orders লোড হয়নি।</p>';
-  }
+async function loadOrdersPage(){
+  if(!currentUser){$('ordersAuthWarning').style.display='flex';$('ordersContainer').style.display='none';return;}
+  $('ordersAuthWarning').style.display='none';$('ordersContainer').style.display='block';
+  $('ordersFullList').innerHTML='<div class="loading-spinner"><div class="spinner"></div><p>Loading...</p></div>';
+  try{
+    const orders=await getUserOrders(currentUser.uid);
+    $('ordersFullList').innerHTML='';
+    if(!orders.length){$('ordersFullList').innerHTML=`<div class="empty-state"><span class="material-icons-round empty-icon">shopping_bag</span><p>No orders yet.</p><button class="btn-primary" style="margin-top:16px" onclick="switchSection('home')"><span class="material-icons-round">storefront</span> Shop Now</button></div>`;return;}
+    orders.forEach(o=>$('ordersFullList').appendChild(buildOrderFullCard(o)));
+  }catch{$('ordersFullList').innerHTML='<p style="padding:20px;color:var(--tm)">Could not load orders.</p>';}
 }
 
-function buildOrderFullCard(order) {
-  const el   = document.createElement('div');
-  el.className = 'order-full-card';
-  const date = order.createdAt?.toDate ? order.createdAt.toDate() : new Date();
-  const stMap  = { confirmed:'confirmed', shipped:'shipped', out_for_delivery:'out', delivered:'delivered' };
-  const stLabel= { confirmed:'✅ Confirmed', shipped:'🚚 Shipped', out_for_delivery:'🛵 Out for Delivery', delivered:'🏠 Delivered' };
-  const codBadge = order.paymentMode === 'cod'
-    ? '<span style="font-size:.72rem;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:9999px;font-weight:700;margin-left:6px">COD</span>'
-    : '';
-  const subBadge = order.type === 'subscription_renewal'
-    ? '<span style="font-size:.72rem;background:#ede9fe;color:#6d28d9;padding:2px 8px;border-radius:9999px;font-weight:700;margin-left:6px">⚡ Sub Renewal</span>'
-    : '';
-  const items = (order.items || []).map(i =>
-    `<div class="order-item-row">
-      <img src="${i.image || 'https://placehold.co/38'}" alt="${esc(i.title)}"
-           onerror="this.src='https://placehold.co/38'"/>
-      <span class="order-item-name">${esc(i.title)}</span>
-      <span class="order-item-price">₹${fmt(i.price)}</span>
-    </div>`).join('');
-  el.innerHTML = `
-    <div class="order-full-header">
-      <span style="font-size:.76rem;color:var(--tm);font-weight:600">
-        Order #${order.id.slice(0,8).toUpperCase()}${codBadge}${subBadge}
-      </span>
-      <span class="order-status-pill status-${stMap[order.status] || 'confirmed'}">
-        ${stLabel[order.status] || order.status}
-      </span>
-    </div>
-    <div class="order-full-body">
-      <p class="order-full-date">Placed on ${fmtDate(date)}</p>
-      <div class="order-full-items">${items}</div>
-    </div>
-    <div class="order-full-footer">
-      <span class="order-full-amount">₹${fmt(order.total)}</span>
-      <button class="btn-track-order">
-        <span class="material-icons-round">local_shipping</span> Track
-      </button>
-    </div>`;
-  el.querySelector('.btn-track-order')?.addEventListener('click', () => openOrderStatusModal(order));
+function buildOrderFullCard(order){
+  const el=document.createElement('div');
+  el.className='order-full-card';
+  const date=order.createdAt?.toDate?order.createdAt.toDate():new Date();
+  const stMap={confirmed:'confirmed',shipped:'shipped',out_for_delivery:'out',delivered:'delivered'};
+  const stLabel={confirmed:'✅ Confirmed',shipped:'🚚 Shipped',out_for_delivery:'🛵 Out for Delivery',delivered:'🏠 Delivered'};
+  const payBadge=order.paymentMode==='cod'?'<span style="font-size:.72rem;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:9999px;font-weight:700;margin-left:6px">COD</span>':'';
+  const items=(order.items||[]).map(i=>`<div class="order-item-row"><img src="${i.image||'https://placehold.co/38'}" alt="${esc(i.title)}" onerror="this.src='https://placehold.co/38'"/><span class="order-item-name">${esc(i.title)}</span><span class="order-item-price">₹${fmt(i.price)}</span></div>`).join('');
+  el.innerHTML=`<div class="order-full-header"><span class="order-full-id" style="font-size:.76rem;color:var(--tm);font-weight:600">Order #${order.id.slice(0,8).toUpperCase()}${payBadge}</span><span class="order-status-pill status-${stMap[order.status]||'confirmed'}">${stLabel[order.status]||order.status}</span></div>
+  <div class="order-full-body"><p class="order-full-date">Placed on ${fmtDate(date)}</p><div class="order-full-items">${items}</div></div>
+  <div class="order-full-footer"><span class="order-full-amount">₹${fmt(order.total)}</span><button class="btn-track-order" data-id="${order.id}"><span class="material-icons-round">local_shipping</span> Track</button></div>`;
+  el.querySelector('.btn-track-order')?.addEventListener('click',()=>openOrderStatusModal(order));
   return el;
 }
 
 // ================================================================
-//  ★ ORDER STATUS MODAL
+//  ORDER STATUS MODAL
 // ================================================================
-const STEPS    = ['confirmed', 'shipped', 'out_for_delivery', 'delivered'];
-const STEP_IDS = ['step-confirmed', 'step-shipped', 'step-out', 'step-delivered'];
+const STEPS=['confirmed','shipped','out_for_delivery','delivered'];
+const STEP_IDS=['step-confirmed','step-shipped','step-out','step-delivered'];
 
-function openOrderStatusModal(order) {
-  $('statusOrderId').textContent = '#' + order.id.slice(0, 8).toUpperCase();
-  const idx = STEPS.indexOf(order.status || 'confirmed');
-  STEP_IDS.forEach((id, i) => {
-    const s = $(id); if (!s) return;
-    s.classList.remove('done', 'active');
-    if (i < idx) s.classList.add('done');
-    if (i === idx) s.classList.add('active');
+function openOrderStatusModal(order){
+  $('statusOrderId').textContent='#'+order.id.slice(0,8).toUpperCase();
+  const idx=STEPS.indexOf(order.status||'confirmed');
+  STEP_IDS.forEach((id,i)=>{
+    const s=$(id);if(!s)return;
+    s.classList.remove('done','active');
+    if(i<idx)s.classList.add('done');
+    if(i===idx)s.classList.add('active');
   });
-  $('orderDetailsMini').innerHTML = (order.items || []).map(i =>
-    `<div class="order-detail-item">
-      <img src="${i.image || 'https://placehold.co/40'}" alt="${esc(i.title)}"
-           onerror="this.src='https://placehold.co/40'"/>
-      <span>${esc(i.title)}</span>
-      <span style="margin-left:auto;font-weight:700">₹${fmt(i.price)}</span>
-    </div>`).join('');
+  $('orderDetailsMini').innerHTML=(order.items||[]).map(i=>`<div class="order-detail-item"><img src="${i.image||'https://placehold.co/40'}" alt="${esc(i.title)}" onerror="this.src='https://placehold.co/40'"/><span>${esc(i.title)}</span><span style="margin-left:auto;font-weight:700">₹${fmt(i.price)}</span></div>`).join('');
   openModal($('orderStatusModal'));
 }
 
 // ================================================================
-//  ★ WITHDRAWAL
+//  WITHDRAWAL
 // ================================================================
-$('withdrawBtn')?.addEventListener('click', async () => {
-  if (!currentUser) { showToast('⚠️ Login required.', 'error'); return; }
-  const upi    = $('upiId')?.value.trim();
-  const amount = parseFloat($('withdrawAmount')?.value || 0);
-  if (!upi || !/^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{2,}$/.test(upi)) {
-    showToast('Valid UPI ID required (e.g. name@upi)', 'error'); return;
-  }
-  if (!amount || amount < 10) { showToast('Minimum ₹10 withdrawal.', 'error'); return; }
-  let earnings = 0;
-  try { const p = await getUserProfile(currentUser.uid); earnings = p?.totalEarnings || 0; } catch {}
-  if (amount > earnings) { showToast(`Insufficient balance. Available: ₹${fmt(earnings)}`, 'error'); return; }
-  showLoading('Request Has been sent…');
-  const r = await saveWithdrawalRequest(currentUser.uid, upi, amount, {
-    name: currentUser.displayName || '', email: currentUser.email || '', phone: currentUser.phoneNumber || ''
-  });
+$('withdrawBtn')?.addEventListener('click',async()=>{
+  if(!currentUser){showToast('⚠️ Login required.','error');return;}
+  const upi=$('upiId')?.value.trim();
+  const amount=parseFloat($('withdrawAmount')?.value||0);
+  if(!upi||!/^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{2,}$/.test(upi)){showToast('Valid UPI ID required (e.g. name@upi)','error');return;}
+  if(!amount||amount<10){showToast('Minimum ₹10 withdrawal.','error');return;}
+  let earnings=0;
+  try{const p=await getUserProfile(currentUser.uid);earnings=p?.totalEarnings||0;}catch{}
+  if(amount>earnings){showToast(`Insufficient balance. Available: ₹${fmt(earnings)}`,'error');return;}
+  showLoading('Submitting…');
+  const r=await saveWithdrawalRequest(currentUser.uid,upi,amount,{name:currentUser.displayName||'',email:currentUser.email||'',phone:currentUser.phoneNumber||''});
   hideLoading();
-  if (r.success) {
-    $('withdrawalSuccess').style.display = 'flex';
-    $('withdrawalForm').style.display    = 'none';
-    showToast(`₹${fmt(amount)} withdrawal request পাঠানো হয়েছে!`, 'success');
-  } else showToast('Failed. Try again.', 'error');
+  if(r.success){$('withdrawalSuccess').style.display='flex';$('withdrawalForm').style.display='none';showToast(`₹${fmt(amount)} withdrawal requested!`,'success');}
+  else showToast('Failed. Try again.','error');
 });
 
 // ================================================================
-//  ★ VIDEO ADS – Intersection Observer Auto-play
+//  ★ NEW: VIDEO ADS – Intersection Observer Auto-play
 // ================================================================
-async function loadVideoAds() {
-  const videos = await fetchVideos();
-  if (!videos.length) { $('videoAdsSection').style.display = 'none'; return; }
-  $('videoAdsSection').style.display = 'block';
-  const scroll = $('videoAdsScroll');
-  scroll.innerHTML = '';
-
-  videos.forEach(v => {
-    const card = document.createElement('div');
-    card.className = 'video-ad-card';
-    card.innerHTML = `
-      <video src="${v.videoUrl}" muted playsinline preload="none"></video>
-      <div class="video-ad-overlay">
-        <span class="material-icons-round">play_circle</span>
-      </div>
-      <button class="video-ad-mute-btn" title="Toggle mute">
-        <span class="material-icons-round">volume_off</span>
-      </button>`;
-
-    const vid     = card.querySelector('video');
-    const overlay = card.querySelector('.video-ad-overlay');
-    const muteBtn = card.querySelector('.video-ad-mute-btn');
-
-    // Intersection Observer – auto play/pause
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { vid.play().catch(() => {}); overlay.style.display = 'none'; }
-        else                      { vid.pause(); overlay.style.display = 'flex'; }
+async function loadVideoAds(){
+  const videos=await fetchVideos();
+  if(!videos.length){$('videoAdsSection').style.display='none';return;}
+  $('videoAdsSection').style.display='block';
+  const scroll=$('videoAdsScroll');
+  scroll.innerHTML='';
+  videos.forEach(v=>{
+    const card=document.createElement('div');
+    card.className='video-ad-card';
+    card.innerHTML=`
+      <video src="${v.videoUrl}" muted playsinline preload="none" data-vid-id="${v.id}"></video>
+      <div class="video-ad-overlay"><span class="material-icons-round">play_circle</span></div>
+      <button class="video-ad-mute-btn" title="Toggle mute"><span class="material-icons-round">volume_off</span></button>`;
+    const vid=card.querySelector('video');
+    const overlay=card.querySelector('.video-ad-overlay');
+    const muteBtn=card.querySelector('.video-ad-mute-btn');
+    // Intersection Observer for auto-play
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          vid.play().catch(()=>{});
+          overlay.style.display='none';
+        } else {
+          vid.pause();
+          overlay.style.display='flex';
+        }
       });
-    }, { threshold: 0.5 });
+    },{threshold:0.5});
     obs.observe(card);
-
     // Click = fullscreen with sound
-    card.addEventListener('click', e => {
-      if (e.target.closest('.video-ad-mute-btn')) return;
-      openVideoFullscreen(v.videoUrl, v.title || 'Video');
+    card.addEventListener('click',e=>{
+      if(e.target.closest('.video-ad-mute-btn')) return;
+      openVideoFullscreen(v.videoUrl,v.title||'Video');
     });
-
     // Mute toggle
-    muteBtn.addEventListener('click', e => {
+    muteBtn.addEventListener('click',e=>{
       e.stopPropagation();
-      vid.muted = !vid.muted;
-      muteBtn.querySelector('.material-icons-round').textContent =
-        vid.muted ? 'volume_off' : 'volume_up';
+      vid.muted=!vid.muted;
+      muteBtn.querySelector('.material-icons-round').textContent=vid.muted?'volume_off':'volume_up';
     });
-
     scroll.appendChild(card);
   });
 }
 
-function openVideoFullscreen(url, title) {
-  if (!url) { showToast('Video URL Not found.', 'error'); return; }
-  const overlay = document.createElement('div');
-  overlay.style.cssText = 'position:fixed;inset:0;background:#000;z-index:9999;display:flex;flex-direction:column';
-  overlay.innerHTML = `
-    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(0,0,0,.75)">
-      <button id="vidFsClose" style="color:#fff;display:flex;background:none;border:none;cursor:pointer">
-        <span class="material-icons-round">close</span>
-      </button>
+function openVideoFullscreen(url,title){
+  if(!url){showToast('Video URL not found.','error');return;}
+  // Create a fullscreen video player
+  const overlay=document.createElement('div');
+  overlay.style.cssText='position:fixed;inset:0;background:#000;z-index:9999;display:flex;flex-direction:column';
+  overlay.innerHTML=`
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(0,0,0,.7)">
+      <button id="vidFsClose" style="color:#fff;display:flex;background:none;border:none;cursor:pointer"><span class="material-icons-round">close</span></button>
       <span style="color:#fff;font-weight:700;font-size:.95rem;flex:1">${esc(title)}</span>
     </div>
-    <video src="${url}" controls autoplay
-           style="flex:1;width:100%;background:#000;outline:none"
-           oncontextmenu="return false"></video>`;
+    <video src="${url}" controls autoplay style="flex:1;width:100%;background:#000;outline:none"></video>`;
   document.body.appendChild(overlay);
-  overlay.querySelector('#vidFsClose').addEventListener('click', () => overlay.remove());
+  overlay.querySelector('#vidFsClose').addEventListener('click',()=>overlay.remove());
+  // Prevent right click on video
+  overlay.querySelector('video').addEventListener('contextmenu',e=>e.preventDefault());
 }
 
 // ================================================================
-//  ★ PDF READER – Secure (PDF.js)
+//  ★ NEW: PDF READER (PDF.js) – Secure
 // ================================================================
-async function openPdfReader(url, title) {
-  if (!url) { showToast('PDF URL Not found.', 'error'); return; }
-  $('pdfReaderTitle').textContent = title || 'Book';
-  $('pdfReaderOverlay').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  // Security: disable right-click & keyboard shortcuts
-  $('pdfReaderWrap').addEventListener('contextmenu', e => e.preventDefault());
-  document.addEventListener('keydown', blockPdfKeys, true);
-  showLoading('PDF is loading...,');
-  try {
-    currentPdfDoc  = await pdfjsLib.getDocument(url).promise;
-    currentPdfPage = 1;
+if(typeof pdfjsLib!=='undefined'){
+  pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+}
+
+async function openPdfReader(url,title){
+  if(!url){showToast('PDF URL not found.','error');return;}
+  $('pdfReaderTitle').textContent=title||'Book';
+  $('pdfReaderOverlay').style.display='flex';
+  document.body.style.overflow='hidden';
+  // Security: prevent right-click, copy, print
+  const wrap=$('pdfReaderWrap');
+  wrap.addEventListener('contextmenu',e=>e.preventDefault());
+  document.addEventListener('keydown',blockPdfKeys,true);
+  showLoading('Loading PDF…');
+  try{
+    currentPdfDoc=await pdfjsLib.getDocument(url).promise;
+    currentPdfPage=1;
     await renderPdfPage(currentPdfPage);
     updatePdfNav();
-  } catch {
-    showToast('Failed to load PDF document. URL Check it.', 'error');
+  }catch(e){
+    showToast('PDF load failed. Check URL.','error');
     closePdfReader();
-  } finally { hideLoading(); }
+  }finally{hideLoading();}
 }
 
-function blockPdfKeys(e) {
-  if ($('pdfReaderOverlay')?.style.display === 'none') return;
-  if ((e.ctrlKey || e.metaKey) && ['p','s','c','a','u'].includes(e.key.toLowerCase())) {
-    e.preventDefault(); e.stopPropagation();
-    showToast('🔒 Security: This work has not been approved yet.', 'warning');
+function blockPdfKeys(e){
+  if($('pdfReaderOverlay')?.style.display==='none') return;
+  if((e.ctrlKey||e.metaKey)&&['p','s','c','a','u'].includes(e.key.toLowerCase())){
+    e.preventDefault();e.stopPropagation();
+    showToast('🔒 This action is disabled for security.','warning');
   }
 }
 
-async function renderPdfPage(num) {
-  if (!currentPdfDoc) return;
-  const page     = await currentPdfDoc.getPage(num);
-  const canvas   = $('pdfCanvas');
-  const wrap     = $('pdfReaderWrap');
-  const maxW     = wrap.clientWidth - 20;
-  const vpRaw    = page.getViewport({ scale: 1 });
-  const scale    = Math.min(maxW / vpRaw.width, 1.8);
-  const vp       = page.getViewport({ scale });
-  canvas.width   = vp.width;
-  canvas.height  = vp.height;
-  await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+async function renderPdfPage(num){
+  if(!currentPdfDoc)return;
+  const page=await currentPdfDoc.getPage(num);
+  const canvas=$('pdfCanvas');
+  const wrap=$('pdfReaderWrap');
+  const maxW=wrap.clientWidth-20;
+  const viewport=page.getViewport({scale:1});
+  const scale=Math.min(maxW/viewport.width,1.8);
+  const vp=page.getViewport({scale});
+  canvas.width=vp.width;
+  canvas.height=vp.height;
+  const ctx=canvas.getContext('2d');
+  await page.render({canvasContext:ctx,viewport:vp}).promise;
 }
 
-function updatePdfNav() {
-  $('pdfPageInfo').textContent  = `Page ${currentPdfPage} / ${currentPdfDoc?.numPages || 1}`;
-  $('pdfPrevBtn').disabled      = currentPdfPage <= 1;
-  $('pdfNextBtn').disabled      = currentPdfPage >= (currentPdfDoc?.numPages || 1);
+function updatePdfNav(){
+  $('pdfPageInfo').textContent=`Page ${currentPdfPage} / ${currentPdfDoc?.numPages||1}`;
+  $('pdfPrevBtn').disabled=currentPdfPage<=1;
+  $('pdfNextBtn').disabled=currentPdfPage>=(currentPdfDoc?.numPages||1);
 }
 
-$('pdfPrevBtn')?.addEventListener('click', async () => {
-  if (currentPdfPage > 1) { currentPdfPage--; await renderPdfPage(currentPdfPage); updatePdfNav(); }
+$('pdfPrevBtn')?.addEventListener('click',async()=>{
+  if(currentPdfPage>1){currentPdfPage--;await renderPdfPage(currentPdfPage);updatePdfNav();}
 });
-$('pdfNextBtn')?.addEventListener('click', async () => {
-  if (currentPdfDoc && currentPdfPage < currentPdfDoc.numPages) {
-    currentPdfPage++; await renderPdfPage(currentPdfPage); updatePdfNav();
-  }
+$('pdfNextBtn')?.addEventListener('click',async()=>{
+  if(currentPdfDoc&&currentPdfPage<currentPdfDoc.numPages){currentPdfPage++;await renderPdfPage(currentPdfPage);updatePdfNav();}
 });
-$('pdfReaderClose')?.addEventListener('click', closePdfReader);
+$('pdfReaderClose')?.addEventListener('click',closePdfReader);
 
-function closePdfReader() {
-  $('pdfReaderOverlay').style.display = 'none';
-  document.body.style.overflow = '';
-  document.removeEventListener('keydown', blockPdfKeys, true);
-  currentPdfDoc = null; currentPdfPage = 1;
-  const canvas = $('pdfCanvas');
-  if (canvas) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+function closePdfReader(){
+  $('pdfReaderOverlay').style.display='none';
+  document.body.style.overflow='';
+  document.removeEventListener('keydown',blockPdfKeys,true);
+  currentPdfDoc=null;currentPdfPage=1;
+  const canvas=$('pdfCanvas');
+  if(canvas){const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);}
 }
 
 // ================================================================
-//  ★ AUTHOR DASHBOARD
+//  ★ UPGRADE PAGE + PKG PAYMENT
 // ================================================================
-async function loadAuthorDashboard() {
-  if (!currentUser) {
-    $('dashAuthWarning').style.display  = 'flex';
-    $('authorDashboard').style.display  = 'none';
+function renderUpgradePage(){
+  const pkg = userProfile?.pkg||'free';
+  const info = $('currentPkgInfo');
+  if(info){
+    if(pkg!=='free'){
+      info.style.display='block';
+      $('currentPkgName').textContent = PKG_LABELS[pkg]||pkg;
+    } else {
+      info.style.display='none';
+    }
+  }
+  // Mark current plan button as active, disable it
+  document.querySelectorAll('[data-pkg]').forEach(btn=>{
+    const btnPkg = btn.dataset.pkg;
+    if(btnPkg===pkg){
+      btn.innerHTML = `<span class="material-icons-round">verified</span> আপনার Current Plan`;
+      btn.disabled  = true;
+      btn.style.opacity='0.65'; btn.style.cursor='not-allowed';
+    }
+  });
+}
+
+async function startPkgPayment(pkgType, amount){
+  if(!currentUser){ showToast('Login করুন first.','error'); switchSection('profile'); return; }
+  const isWeekly = pkgType==='weekly';
+  const options={
+    key:RAZORPAY_KEY_ID, amount:Math.round(amount*100), currency:'INR',
+    name:'SayatKart',
+    description: isWeekly?'⚡ Weekly Pass ₹29/week Auto-renew':PKG_LABELS[pkgType]||pkgType,
+    prefill:{
+      name:   currentUser.displayName||'',
+      email:  currentUser.email||'',
+      contact:currentUser.phoneNumber?.replace('+91','')||''
+    },
+    theme:{color: isWeekly?'#7c3aed':'#f97316'},
+    handler: async res=>{
+      showLoading('Plan activate করা হচ্ছে…');
+      try{
+        await updateUserPkg(currentUser.uid, pkgType);
+        if(isWeekly) await saveWeeklySubRecord(currentUser.uid, res.razorpay_payment_id);
+        userProfile = await getUserProfile(currentUser.uid);
+        updateAuthUI(currentUser);
+        renderUpgradePage();
+        loadProducts('all');
+        $('successPaymentId').textContent   = res.razorpay_payment_id;
+        $('successCashbackAmt').textContent = isWeekly?'প্রতি সপ্তাহে Auto-renew!':'Lifetime Access!';
+        $('successMsg').textContent = `✅ ${PKG_LABELS[pkgType]} সক্রিয়! সব ডিজিটাল কন্টেন্ট এখন ফ্রি।`;
+        $('successOverlay').style.display='flex';
+        if(isWeekly) startWeeklySubChecker(currentUser.uid);
+      }catch(e){
+        showToast('Plan save error: '+e.message,'error');
+      }finally{ hideLoading(); }
+    },
+    modal:{ondismiss:()=>showToast('Payment বাতিল।','warning')}
+  };
+  try{
+    const rzp = new window.Razorpay(options);
+    rzp.on('payment.failed',err=>showToast('Payment failed: '+(err?.error?.description||''),'error'));
+    rzp.open();
+  }catch(e){ showToast('Razorpay খুলতে পারছে না।','error'); console.error(e); }
+}
+
+// Bind upgrade plan buttons
+document.querySelectorAll('[data-pkg]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    if(!currentUser){ showToast('Login করুন first.','error'); switchSection('profile'); return; }
+    startPkgPayment(btn.dataset.pkg, parseInt(btn.dataset.amount));
+  });
+});
+
+// ================================================================
+//  ★ NEW: AUTHOR DASHBOARD
+// ================================================================
+async function loadAuthorDashboard(){
+  if(!currentUser){
+    $('dashAuthWarning').style.display='flex';
+    $('authorDashboard').style.display='none';
     return;
   }
-  $('dashAuthWarning').style.display  = 'none';
-  $('authorDashboard').style.display  = 'flex';
-  const books = await fetchAuthorBooks(currentUser.uid);
-  $('dashTotalBooks').textContent = books.length;
-  const totalSales    = books.reduce((s, b) => s + (b.salesCount || 0), 0);
-  const totalEarnings = books.reduce((s, b) => s + (b.earnings   || 0), 0);
-  $('dashTotalSales').textContent    = totalSales;
-  $('dashTotalEarnings').textContent = `₹${fmt(totalEarnings)}`;
-  const list = $('dashBooksList');
-  if (!books.length) {
-    list.innerHTML = `<div class="empty-state" style="padding:24px">
-      <span class="material-icons-round empty-icon">menu_book</span>
-      <p>No book has been published yet.</p>
-    </div>`;
-    return;
-  }
-  list.innerHTML = '';
-  books.forEach(b => {
-    const div = document.createElement('div');
-    div.className = 'dash-book-item';
-    div.innerHTML = `
-      <img class="dash-book-cover"
-           src="${b.image || 'https://placehold.co/48x60?text=Book'}"
-           alt="${esc(b.title)}"
-           onerror="this.src='https://placehold.co/48x60?text=Book'"/>
+  $('dashAuthWarning').style.display='none';
+  $('authorDashboard').style.display='flex';
+  const books=await fetchAuthorBooks(currentUser.uid);
+  $('dashTotalBooks').textContent=books.length;
+  let totalSales=0,totalEarnings=0;
+  books.forEach(b=>{totalSales+=b.salesCount||0;totalEarnings+=(b.earnings||0);});
+  $('dashTotalSales').textContent=totalSales;
+  $('dashTotalEarnings').textContent=`₹${fmt(totalEarnings)}`;
+  const list=$('dashBooksList');
+  if(!books.length){list.innerHTML='<div class="empty-state" style="padding:24px"><span class="material-icons-round empty-icon">menu_book</span><p>কোনো বই এখনো প্রকাশিত হয়নি।</p></div>';return;}
+  list.innerHTML='';
+  books.forEach(b=>{
+    const div=document.createElement('div');
+    div.className='dash-book-item';
+    div.innerHTML=`<img class="dash-book-cover" src="${b.image||'https://placehold.co/48x60?text=Book'}" alt="${esc(b.title)}" onerror="this.src='https://placehold.co/48x60?text=Book'"/>
       <div class="dash-book-info">
         <div class="dash-book-title">${esc(b.title)}</div>
-        <div class="dash-book-sales">Sales: ${b.salesCount || 0} &nbsp;|&nbsp; ${b.category || '—'}</div>
+        <div class="dash-book-sales">Sales: ${b.salesCount||0} | Category: ${b.category||'—'}</div>
       </div>
-      <div class="dash-book-earn">₹${fmt(b.earnings || 0)}</div>`;
+      <div class="dash-book-earn">₹${fmt(b.earnings||0)}</div>`;
     list.appendChild(div);
   });
 }
 
 // ================================================================
-//  ★ PUBLISH FORM
+//  ★ PUBLISH with Firebase Storage + Razorpay
+//  FIX: If user already upgraded → skip PKG payment, publish directly
 // ================================================================
-// Show/hide publish form based on auth
-_auth.onAuthStateChanged(user => {
-  if ($('publishAuthWarning')) $('publishAuthWarning').style.display = user ? 'none' : 'flex';
-  if ($('publishFormWrap'))    $('publishFormWrap').style.display    = user ? 'block': 'none';
-});
 
-$('bookSize')?.addEventListener('change', () => {
-  $('customSizeGroup').style.display = $('bookSize').value === 'Custom' ? 'block' : 'none';
+$('bookSize')?.addEventListener('change',()=>{
+  $('customSizeGroup').style.display=$('bookSize').value==='Custom'?'block':'none';
 });
 
 // Publish package picker
-document.querySelectorAll('.pub-pkg-card').forEach(card => {
-  card.addEventListener('click', () => {
-    document.querySelectorAll('.pub-pkg-card').forEach(c => c.classList.remove('selected'));
+document.querySelectorAll('.pub-pkg-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    // FIX: if already upgraded don't change selection, just inform
+    if(isUpgradedUser()){
+      showToast(`✅ আপনি ইতিমধ্যে ${PKG_LABELS[userProfile.pkg]} প্ল্যানে আছেন। পেমেন্টের দরকার নেই।`,'info');
+      return;
+    }
+    document.querySelectorAll('.pub-pkg-card').forEach(c=>c.classList.remove('selected'));
     card.classList.add('selected');
-    $('selectedPublishPkg').value = card.dataset.pkgVal;
+    $('selectedPublishPkg').value=card.dataset.pkgVal;
   });
 });
 
-// PDF file change
-$('bookPDF')?.addEventListener('change', e => {
-  const f = e.target.files?.[0]; if (!f) return;
-  if (f.type !== 'application/pdf') { showToast('Only PDF files accepted.', 'error'); return; }
-  if (f.size > 50 * 1024 * 1024)   { showToast('File must be under 50 MB.', 'error'); return; }
-  $('fileUploadContent').style.display = 'none';
-  $('fileSelectedInfo').style.display  = 'flex';
-  $('fileSelectedName').textContent    = f.name;
+// Hide PKG row if already upgraded
+function updatePublishPkgUI(){
+  const row = $('publishPkgRow');
+  if(!row) return;
+  if(isUpgradedUser()){
+    row.style.display='none';
+    // show info banner
+    let banner = document.getElementById('publishPkgBanner');
+    if(!banner){
+      banner = document.createElement('div');
+      banner.id='publishPkgBanner';
+      banner.style.cssText='background:linear-gradient(135deg,rgba(22,163,74,.12),rgba(22,163,74,.06));border:2px solid #86efac;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;margin-bottom:14px';
+      banner.innerHTML=`<span class="material-icons-round" style="color:#16a34a">verified</span>
+        <div>
+          <strong style="color:#15803d;font-size:.9rem">আপনি ইতিমধ্যে ${PKG_LABELS[userProfile?.pkg]||''} প্ল্যানে আছেন!</strong>
+          <p style="font-size:.78rem;color:#166534;margin-top:2px">কোনো PKG payment লাগবে না। সরাসরি বই Publish করুন।</p>
+        </div>`;
+      row.parentNode.insertBefore(banner, row);
+    }
+  } else {
+    row.style.display='';
+    document.getElementById('publishPkgBanner')?.remove();
+  }
+}
+
+$('bookPDF')?.addEventListener('change',e=>{
+  const f=e.target.files?.[0]; if(!f) return;
+  if(f.type!=='application/pdf'){ showToast('Only PDF files accepted.','error'); return; }
+  if(f.size>50*1024*1024){ showToast('File must be under 50 MB.','error'); return; }
+  $('fileUploadContent').style.display='none';
+  $('fileSelectedInfo').style.display='flex';
+  $('fileSelectedName').textContent=f.name;
 });
-$('fileRemoveBtn')?.addEventListener('click', () => {
-  $('bookPDF').value = '';
-  $('fileUploadContent').style.display = 'block';
-  $('fileSelectedInfo').style.display  = 'none';
+$('fileRemoveBtn')?.addEventListener('click',()=>{
+  $('bookPDF').value='';
+  $('fileUploadContent').style.display='block';
+  $('fileSelectedInfo').style.display='none';
 });
 
-// Cover image preview
-$('bookCover')?.addEventListener('change', e => {
-  const f = e.target.files?.[0]; if (!f) return;
-  if (!f.type.startsWith('image/'))  { showToast('Only image files accepted.', 'error'); return; }
-  if (f.size > 5 * 1024 * 1024)     { showToast('Cover image must be under 5MB.', 'error'); return; }
-  const reader = new FileReader();
-  reader.onload = ev => {
-    $('coverPreview').src = ev.target.result;
+$('bookCover')?.addEventListener('change',e=>{
+  const f=e.target.files?.[0]; if(!f) return;
+  if(!f.type.startsWith('image/')){ showToast('Only image files accepted.','error'); return; }
+  if(f.size>5*1024*1024){ showToast('Cover image must be under 5MB.','error'); return; }
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    $('coverPreview').src=ev.target.result;
     $('coverPreview').classList.add('show');
-    $('coverUploadContent').style.display = 'none';
+    $('coverUploadContent').style.display='none';
   };
   reader.readAsDataURL(f);
 });
 
-// Drag & Drop
-$('fileUploadZone')?.addEventListener('dragover',  e => { e.preventDefault(); $('fileUploadZone').classList.add('dragover'); });
-$('fileUploadZone')?.addEventListener('dragleave', ()  => $('fileUploadZone').classList.remove('dragover'));
-$('fileUploadZone')?.addEventListener('drop', e => {
-  e.preventDefault(); $('fileUploadZone').classList.remove('dragover');
-  const f = e.dataTransfer?.files?.[0];
-  if (f && f.type === 'application/pdf') {
-    $('fileUploadContent').style.display = 'none';
-    $('fileSelectedInfo').style.display  = 'flex';
-    $('fileSelectedName').textContent    = f.name;
+$('fileUploadZone')?.addEventListener('dragover',e=>{e.preventDefault();$('fileUploadZone').classList.add('dragover');});
+$('fileUploadZone')?.addEventListener('dragleave',()=>$('fileUploadZone').classList.remove('dragover'));
+$('fileUploadZone')?.addEventListener('drop',e=>{
+  e.preventDefault();$('fileUploadZone').classList.remove('dragover');
+  const f=e.dataTransfer?.files?.[0];
+  if(f&&f.type==='application/pdf'){
+    $('fileUploadContent').style.display='none';
+    $('fileSelectedInfo').style.display='flex';
+    $('fileSelectedName').textContent=f.name;
   }
 });
 
-// Publish form submit
-$('publishForm')?.addEventListener('submit', async e => {
+$('publishForm')?.addEventListener('submit',async e=>{
   e.preventDefault();
-  if (!currentUser) { $('publishAuthWarning').style.display = 'flex'; showToast('⚠️ Please log in!', 'error'); return; }
+  if(!currentUser){ $('publishAuthWarning').style.display='flex'; showToast('⚠️ Login করুন!','error'); return; }
 
   const title     = $('bookTitle').value.trim();
   const subtitle  = $('bookSubtitle').value.trim();
-  const format    = document.querySelector('input[name="bookFormat"]:checked')?.value || 'Paperback';
+  const format    = document.querySelector('input[name="bookFormat"]:checked')?.value||'Paperback';
   const sizeRaw   = $('bookSize').value;
-  const size      = sizeRaw === 'Custom' ? ($('bookCustomSize').value.trim() || 'Custom') : sizeRaw;
+  const size      = sizeRaw==='Custom'?($('bookCustomSize').value.trim()||'Custom'):sizeRaw;
   const pages     = $('bookPages').value.trim();
   const author    = $('bookAuthor').value.trim();
   const desc      = $('bookDesc').value.trim();
-  const priceVal  = parseFloat($('bookPrice')?.value || 0);
+  const priceVal  = parseFloat($('bookPrice')?.value||0);
   const pdfFile   = $('bookPDF').files?.[0];
   const coverFile = $('bookCover').files?.[0];
-  const selPkg    = $('selectedPublishPkg')?.value || 'basic149';
+  const selPkg    = $('selectedPublishPkg')?.value||'basic149';
 
-  if (!title)                          { showToast('Book title required.', 'error'); $('bookTitle').focus(); return; }
-  if (!size)                           { showToast('Please select a size.', 'error'); $('bookSize').focus(); return; }
-  if (!pages)                          { showToast('Number of pages required.', 'error'); $('bookPages').focus(); return; }
-  if (!author)                         { showToast('Author name required.', 'error'); $('bookAuthor').focus(); return; }
-  if (!pdfFile)                        { showToast('Please upload the PDF.', 'error'); return; }
-  if (!coverFile)                      { showToast('Please upload the cover image.', 'error'); return; }
-  if (!priceVal || priceVal < 1)       { showToast('Valid book price required.', 'error'); return; }
+  if(!title)                    { showToast('Book title required.','error'); $('bookTitle').focus(); return; }
+  if(!size)                     { showToast('Please select a size.','error'); $('bookSize').focus(); return; }
+  if(!pages)                    { showToast('Number of pages required.','error'); $('bookPages').focus(); return; }
+  if(!author)                   { showToast('Author name required.','error'); $('bookAuthor').focus(); return; }
+  if(!pdfFile)                  { showToast('Please upload the PDF.','error'); return; }
+  if(!coverFile)                { showToast('Please upload the cover image.','error'); return; }
+  if(!priceVal||priceVal<1)     { showToast('Valid book price required.','error'); return; }
 
-  const pkgAmountMap = { weekly29: 29, basic149: 149, premium199: 199 };
-  const pkgLabelMap  = { weekly29: 'Weekly', basic149: 'Basic', premium199: 'Premium' };
-  const pkgAmount    = pkgAmountMap[selPkg] || 149;
-  const pkgLabel     = pkgLabelMap[selPkg]  || 'Basic';
+  // ── FIX: if user is already upgraded, skip PKG payment ──
+  if(isUpgradedUser()){
+    await doPublishUpload(null, title, subtitle, format, size, pages, author, desc, priceVal, pdfFile, coverFile, selPkg);
+    return;
+  }
 
-  // ── Pay first, THEN upload & save ──
+  // Not upgraded – collect PKG payment first
+  const pkgAmountMap = {weekly29:29, basic149:149, premium199:199};
+  const pkgLabelMap  = {weekly29:'Weekly', basic149:'Author Basic', premium199:'Author Premium'};
+  const pkgAmount    = pkgAmountMap[selPkg]||149;
+  const pkgLabel     = pkgLabelMap[selPkg]||'Basic';
+
   const rzpOptions = {
-    key:         RAZORPAY_KEY_ID,
-    amount:      pkgAmount * 100,
-    currency:    'INR',
-    name:        'SayatKart Publishing',
-    description: `${pkgLabel} Package – "${title}"`,
-    prefill:     { name: currentUser.displayName || author, email: currentUser.email || '' },
-    theme:       { color: '#f97316' },
-    handler: async res => {
-      showLoading('Firebase Storage-It has been uploaded.…');
-      try {
-        const uid = currentUser.uid;
-        const ts  = Date.now();
-
-        // Upload PDF
-        const pdfPath = `books/${uid}/${ts}_${pdfFile.name}`;
-        const pdfRes  = await uploadToStorage(pdfFile, pdfPath);
-        if (!pdfRes.success) { showToast('PDF upload failed.', 'error'); hideLoading(); return; }
-
-        // Upload Cover
-        const coverPath = `covers/${uid}/${ts}_${coverFile.name}`;
-        const coverRes  = await uploadToStorage(coverFile, coverPath);
-        if (!coverRes.success) { showToast('Cover upload failed.', 'error'); hideLoading(); return; }
-
-        // Firestore save
-        const bookData = {
-          title, subtitle, format, size, pages: parseInt(pages),
-          author, description: desc,
-          price: priceVal, originalPrice: priceVal,
-          category:   format === 'E-book' ? 'ebook' : 'paperback',
-          accessType: selPkg === 'weekly29' ? 'upgrade' : 'non',
-          fileUrl:    pdfRes.url,
-          image:      coverRes.url,
-          authorId:   uid,
-          authorName: author,
-          publishPkg: selPkg,
-          publishPaymentId: res.razorpay_payment_id,
-          salesCount: 0,
-          earnings:   0
-        };
-        const saved = await savePublishedBook(bookData);
-        if (saved.success) {
-          // Upgrade user PKG
-          const pkgMap3 = { basic149: 'basic', premium199: 'premium', weekly29: 'weekly' };
-          const newPkg  = pkgMap3[selPkg] || 'basic';
-          await updateUserPkg(uid, newPkg);
-          if (newPkg === 'weekly') await saveWeeklySubRecord(uid, res.razorpay_payment_id);
-          userProfile = await getUserProfile(uid);
-          updateAuthUI(currentUser);
-          renderUpgradePage();
-          showToast('✅ The book has been published!', 'success');
-          // Reset form
-          $('publishForm').reset();
-          $('fileUploadContent').style.display  = 'block';
-          $('fileSelectedInfo').style.display   = 'none';
-          $('customSizeGroup').style.display    = 'none';
-          $('coverPreview').src                 = '';
-          $('coverPreview').classList.remove('show');
-          $('coverUploadContent').style.display = 'block';
-          document.querySelectorAll('.pub-pkg-card').forEach((c, i) =>
-            c.classList.toggle('selected', i === 1));
-          $('selectedPublishPkg').value = 'basic149';
-          loadProducts('all');
-        } else showToast('Book save failed. Payment ID: ' + res.razorpay_payment_id, 'warning');
-      } catch (err) {
-        showToast('Upload error: ' + err.message, 'error');
-      } finally { hideLoading(); }
+    key:RAZORPAY_KEY_ID, amount:pkgAmount*100, currency:'INR',
+    name:'SayatKart Publishing',
+    description:`${pkgLabel} Package – "${title}"`,
+    prefill:{name:currentUser.displayName||author, email:currentUser.email||''},
+    theme:{color:'#f97316'},
+    handler: async res=>{
+      await doPublishUpload(res.razorpay_payment_id, title, subtitle, format, size, pages, author, desc, priceVal, pdfFile, coverFile, selPkg);
     },
-    modal: { ondismiss: () => showToast('Payment Rejected. Book publish Has not happened।', 'warning') }
+    modal:{ondismiss:()=>showToast('Payment বাতিল। Book publish হয়নি।','warning')}
   };
-  try {
+  try{
     const rzp = new window.Razorpay(rzpOptions);
-    rzp.on('payment.failed', err =>
-      showToast('Payment failed: ' + (err?.error?.description || 'Error'), 'error'));
+    rzp.on('payment.failed',err=>showToast('Payment failed: '+(err?.error?.description||''),'error'));
     rzp.open();
-  } catch (e) { showToast('Razorpay cannot open it.', 'error'); console.error(e); }
+  }catch(e){ showToast('Razorpay খুলতে পারছে না।','error'); console.error(e); }
 });
 
-// ================================================================
-//  ★ UTILITY FUNCTIONS
-// ================================================================
-function fmt(n) {
-  return Number(n || 0).toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-}
-function fmtDate(d) {
-  return new Date(d).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
-}
-function esc(str) {
-  const d = document.createElement('div');
-  d.appendChild(document.createTextNode(str || ''));
-  return d.innerHTML;
+// ── Core publish logic (called after payment OR directly if already upgraded) ──
+async function doPublishUpload(paymentId, title, subtitle, format, size, pages, author, desc, priceVal, pdfFile, coverFile, selPkg){
+  showLoading('Cover image আপলোড হচ্ছে… (0%)');
+  try{
+    const uid = currentUser.uid;
+    const ts  = Date.now();
+
+    // Upload cover image
+    const coverPath = `covers/${uid}/${ts}_${coverFile.name}`;
+    const coverRes  = await uploadToStorage(coverFile, coverPath, pct=>{
+      showLoading(`Cover আপলোড হচ্ছে… (${pct}%)`);
+    });
+    if(!coverRes.success){
+      showToast('Cover upload failed: '+coverRes.error,'error'); hideLoading(); return;
+    }
+
+    // Upload PDF
+    showLoading('PDF আপলোড হচ্ছে… (0%)');
+    const pdfPath = `books/${uid}/${ts}_${pdfFile.name}`;
+    const pdfRes  = await uploadToStorage(pdfFile, pdfPath, pct=>{
+      showLoading(`PDF আপলোড হচ্ছে… (${pct}%)`);
+    });
+    if(!pdfRes.success){
+      showToast('PDF upload failed: '+pdfRes.error,'error'); hideLoading(); return;
+    }
+
+    showLoading('Firestore-এ সেভ হচ্ছে…');
+    // Determine accessType
+    const pkgMap3 = {basic149:'basic', premium199:'premium', weekly29:'weekly'};
+    const newPkg  = isUpgradedUser() ? userProfile.pkg : (pkgMap3[selPkg]||'basic');
+
+    const bookData = {
+      title, subtitle, format, size, pages:parseInt(pages),
+      author, description:desc,
+      price:priceVal, originalPrice:priceVal,
+      category:   format==='E-book'?'ebook':'paperback',
+      // 'upgrade' means upgraded users get it free
+      accessType: ['weekly','basic','premium'].includes(newPkg)?'upgrade':'non',
+      fileUrl:    pdfRes.url,
+      image:      coverRes.url,
+      authorId:   uid,
+      authorName: author,
+      publishPkg: selPkg,
+      publishPaymentId: paymentId||'free-with-upgrade',
+      salesCount: 0,
+      earnings:   0,
+      inStock:    true
+    };
+
+    const saved = await savePublishedBook(bookData);
+    if(!saved.success){
+      showToast('Firestore save failed: '+saved.error,'error'); hideLoading(); return;
+    }
+
+    // Upgrade user PKG only if not already upgraded
+    if(!isUpgradedUser()){
+      await updateUserPkg(uid, newPkg);
+      if(newPkg==='weekly' && paymentId) await saveWeeklySubRecord(uid, paymentId);
+    }
+    userProfile = await getUserProfile(uid);
+    updateAuthUI(currentUser);
+    renderUpgradePage();
+    updatePublishPkgUI();
+
+    showToast('✅ বই সফলভাবে প্রকাশিত হয়েছে!','success');
+    // Reset form
+    $('publishForm').reset();
+    $('fileUploadContent').style.display='block';
+    $('fileSelectedInfo').style.display='none';
+    $('customSizeGroup').style.display='none';
+    $('coverPreview').src=''; $('coverPreview').classList.remove('show');
+    $('coverUploadContent').style.display='block';
+    document.querySelectorAll('.pub-pkg-card').forEach((c,i)=>c.classList.toggle('selected',i===1));
+    $('selectedPublishPkg').value='basic149';
+    loadProducts('all');
+  }catch(err){
+    showToast('Upload error: '+err.message,'error');
+    console.error('doPublishUpload error:',err);
+  }finally{ hideLoading(); }
 }
 
 // ================================================================
-//  ★ INIT
+//  UTILITY
+// ================================================================
+function fmt(n){ return Number(n||0).toLocaleString('en-IN',{minimumFractionDigits:0,maximumFractionDigits:2}); }
+function fmtDate(d){ return new Date(d).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}); }
+function esc(str){ const d=document.createElement('div'); d.appendChild(document.createTextNode(str||'')); return d.innerHTML; }
+
+// ================================================================
+//  INIT
 // ================================================================
 loadCart();
 loadProducts('all');
-console.log('%c🛒 SayatKart v2 Ready – Weekly Auto-Pay Active',
-  'color:#f97316;font-weight:700;font-size:14px');
+// After auth resolves, refresh publish UI
+_auth.onAuthStateChanged(user=>{
+  updatePublishPkgUI();
+});
+console.log('%c🛒 SayatKart v3 – All bugs fixed!','color:#f97316;font-weight:700;font-size:14px');
 </script>
 </body>
 </html>
