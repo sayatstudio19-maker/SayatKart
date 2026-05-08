@@ -1120,7 +1120,7 @@ const firebaseConfig = {
   appId:             "1:721186261827:web:6aac4357fcadf05f703df6",
   measurementId:     "G-FKZZJBMK81"
 };
-const RAZORPAY_KEY_ID = "rzp_test_XXXXXXXXXXXXXXXX"; // 🔴 Replace with your key
+const RAZORPAY_KEY_ID = "rzp_live_SkOEXpqOtkBrwk"; // 🔴 Replace with your key
 const APP_CONFIG = {
   appName:"SayatKart",currencySymbol:"₹",cashbackPercent:5,
   razorpay:{keyId:RAZORPAY_KEY_ID,name:"SayatKart",description:"Order Payment",theme:{color:"#f97316"}}
@@ -1608,34 +1608,70 @@ function addToCart(p){
 }
 function removeFromCart(i){cart.splice(i,1);saveCart();renderCart();}
 
-function renderCart(){
-  $('cartBody').innerHTML='';
-  if(!cart.length){
-    $('cartBody').innerHTML=`<div class="empty-cart"><span class="material-icons-round">remove_shopping_cart</span><p>Your cart is empty!</p><button class="btn-primary" onclick="switchSection('home');closeCart()">Start Shopping</button></div>`;
-    $('cartFooter').style.display='none';
+function renderCart() {
+  const cartBody = $('cartBody');
+  if (!cartBody) return;
+  
+  cartBody.innerHTML = '';
+  
+  if (!cart.length) {
+    cartBody.innerHTML = `<div class="empty-cart">
+      <span class="material-icons-round">remove_shopping_cart</span>
+      <p>Your cart is empty!</p>
+      <button class="btn-primary" onclick="switchSection('home');closeCart()">Start Shopping</button>
+    </div>`;
+    $('cartFooter').style.display = 'none';
     return;
   }
-  $('cartFooter').style.display='block';
-  cart.forEach((item,idx)=>{
-    const el=document.createElement('div');
-    el.className='cart-item';
-    el.innerHTML=`<img class="cart-item-img" src="${item.image||'https://placehold.co/64'}" alt="${esc(item.title)}" onerror="this.src='https://placehold.co/64'"/>
-    <div class="cart-item-info"><p class="cart-item-name">${esc(item.title)}</p><p class="cart-item-price">₹${fmt(item.price)}</p></div>
-    <button class="cart-item-remove" title="Remove"><span class="material-icons-round">delete_outline</span></button>`;
-    el.querySelector('.cart-item-remove').addEventListener('click',()=>removeFromCart(idx));
-    $('cartBody').appendChild(el);
-  });
-  const sub=cart.reduce((s,i)=>s+(i.originalPrice||i.price),0);
-  const tot=cart.reduce((s,i)=>s+i.price,0);
-  const disc=sub-tot;
-  const cb=Math.round(tot*5/100);
-  $('cartSubtotal').textContent=`₹${fmt(sub)}`;
-  $('cartDiscount').textContent=`-₹${fmt(disc)}`;
-  $('cartTotal').textContent=`₹${fmt(tot)}`;
-  $('cartCashback').textContent=`+₹${fmt(cb)}`;
-  $('cartAuthWarning').style.display=currentUser?'none':'flex';
-}
+  
+  $('cartFooter').style.display = 'block';
+  
+  cart.forEach((item, idx) => {
+    // ★ লাইভ ডাটাবেস (allProducts) থেকে লেটেস্ট তথ্য খুঁজে বের করা ★
+    const liveProduct = allProducts.find(p => p.id === item.id);
+    
+    // যদি ডাটাবেসে নাম, দাম বা ছবি পরিবর্তন হয়, তবে সেটি এখানে অটোমেটিক আপডেট হবে
+    const livePrice = liveProduct ? liveProduct.price : item.price;
+    const liveTitle = liveProduct ? liveProduct.title : item.title;
+    const liveImg   = liveProduct ? (liveProduct.image || liveProduct.images?.[0]) : item.image;
 
+    const el = document.createElement('div');
+    el.className = 'cart-item';
+    el.innerHTML = `
+      <img class="cart-item-img" src="${liveImg || 'https://placehold.co/64'}" alt="${esc(liveTitle)}"/>
+      <div class="cart-item-info">
+        <p class="cart-item-name">${esc(liveTitle)}</p>
+        <p class="cart-item-price">₹${fmt(livePrice)}</p>
+      </div>
+      <button class="cart-item-remove" title="Remove">
+        <span class="material-icons-round">delete_outline</span>
+      </button>`;
+    
+    // রিমুভ বাটনের জন্য ইভেন্ট লিসেনার
+    el.querySelector('.cart-item-remove').addEventListener('click', () => removeFromCart(idx));
+    cartBody.appendChild(el);
+  });
+
+  // টোটাল এবং অন্যান্য ক্যালকুলেশনে লাইভ দাম ব্যবহার
+  const tot = cart.reduce((s, item) => {
+    const liveP = allProducts.find(p => p.id === item.id);
+    return s + (liveP ? liveP.price : item.price);
+  }, 0);
+  
+  const sub = cart.reduce((s, item) => {
+    const liveP = allProducts.find(p => p.id === item.id);
+    return s + (liveP ? (liveP.originalPrice || liveP.price) : (item.originalPrice || item.price));
+  }, 0);
+
+  const disc = sub - tot;
+  const cb = Math.round(tot * 5 / 100);
+
+  $('cartSubtotal').textContent = `₹${fmt(sub)}`;
+  $('cartDiscount').textContent = `-₹${fmt(disc)}`;
+  $('cartTotal').textContent = `₹${fmt(tot)}`;
+  $('cartCashback').textContent = `+₹${fmt(cb)}`;
+  $('cartAuthWarning').style.display = currentUser ? 'none' : 'flex';
+}
 function openCart(){renderCart();$('cartSidebar').classList.add('open');$('overlay').classList.add('active');document.body.style.overflow='hidden';}
 function closeCart(){$('cartSidebar').classList.remove('open');if(!isDrawerOpen()&&!isModalOpen()){$('overlay').classList.remove('active');document.body.style.overflow='';}}
 window.openCart=openCart;window.closeCart=closeCart;
