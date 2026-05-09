@@ -31,17 +31,11 @@
   --tf:.15s ease;--tn:.25s ease;--ts:.4s cubic-bezier(.4,0,.2,1);
   --z2:100;--z3:300;--z4:250;--z5:400;--z6:500;
 }
-[data-theme="dark"]{
-  --bg:#0f1117;--card:#1a1d2e;--bnav:#1a1d2e;--bdr:#2d3258;
-  --th:#f1f5f9;--tb:#cbd5e1;--tm:#64748b;
-  --s1:0 1px 3px rgba(0,0,0,.4);--s2:0 2px 8px rgba(0,0,0,.45);--s3:0 4px 18px rgba(0,0,0,.55);
-}
+[data-theme="dark"]{--bg:#0f1117;--card:#1a1d2e;--bnav:#1a1d2e;--bdr:#2d3258;--th:#f1f5f9;--tb:#cbd5e1;--tm:#64748b;--s1:0 1px 3px rgba(0,0,0,.4);--s2:0 2px 8px rgba(0,0,0,.45);--s3:0 4px 18px rgba(0,0,0,.55);}
 [data-theme="dark"] .app-header{background:#12152a}
 [data-theme="dark"] .form-input{background:#12152a;color:#e2e8f0;border-color:#2d3258}
 [data-theme="dark"] .form-input::placeholder{color:#475569}
-[data-theme="dark"] .product-card,[data-theme="dark"] .orders-section,
-[data-theme="dark"] .withdrawal-card,[data-theme="dark"] .profile-card,
-[data-theme="dark"] .login-prompt-card,[data-theme="dark"] .order-full-card{background:#1a1d2e;border-color:#2d3258}
+[data-theme="dark"] .product-card,[data-theme="dark"] .orders-section,[data-theme="dark"] .withdrawal-card,[data-theme="dark"] .profile-card,[data-theme="dark"] .login-prompt-card,[data-theme="dark"] .order-full-card{background:#1a1d2e;border-color:#2d3258}
 [data-theme="dark"] .product-card-img-wrap{background:#12152a}
 [data-theme="dark"] .cart-sidebar,[data-theme="dark"] .cart-item{background:#1a1d2e}
 [data-theme="dark"] .cart-item{border-color:#2d3258}
@@ -62,13 +56,14 @@
 [data-theme="dark"] .success-payment-id{background:#12152a}
 [data-theme="dark"] .theme-card{background:#1a1d2e;border-color:#2d3258}
 [data-theme="dark"] .product-full-screen{background:#0f1117}
-[data-theme="dark"] .product-full-header,.product-full-actions-bar{background:#1a1d2e;border-color:#2d3258}
+[data-theme="dark"] .product-full-header,[data-theme="dark"] .product-full-actions-bar{background:#1a1d2e;border-color:#2d3258}
 [data-theme="dark"] .product-full-info{background:#1a1d2e}
 [data-theme="dark"] .product-full-gallery-thumb{border-color:#2d3258}
 [data-theme="dark"] .product-full-meta-chip{background:#12152a}
 [data-theme="dark"] .admin-wrap{background:#0d1020}
 [data-theme="dark"] .admin-field-group{background:#1a1d2e;border-color:#2d3258}
 [data-theme="dark"] .pt-label{background:#1a1d2e;border-color:#2d3258}
+[data-theme="dark"] .upload-log{background:#0a0d1a;border-color:#2d3258;color:#94a3b8}
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -80,7 +75,6 @@ input,select,textarea{font-family:inherit}
 img{display:block;max-width:100%}
 ul{list-style:none}
 
-/* OVERLAY */
 .overlay{position:fixed;inset:0;background:rgba(10,12,30,.55);backdrop-filter:blur(3px);z-index:var(--z4);opacity:0;visibility:hidden;transition:opacity var(--ts),visibility var(--ts)}
 .overlay.active{opacity:1;visibility:visible}
 
@@ -89,7 +83,6 @@ ul{list-style:none}
 .header-inner{display:flex;align-items:center;gap:10px;height:var(--hh);padding:0 12px}
 .header-menu-btn{width:40px;height:40px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;transition:background var(--tf)}
 .header-menu-btn:hover{background:rgba(255,255,255,.1)}
-/* Brand — pointer events on the wrapper div, NOT a nav link */
 .header-brand{display:flex;align-items:center;gap:6px;flex-shrink:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .header-brand-text{font-family:'Baloo 2',cursive;font-size:1.25rem;font-weight:800;color:#fff;user-select:none;pointer-events:none}
 .header-brand-text span{color:var(--pr)}
@@ -144,12 +137,11 @@ ul{list-style:none}
 .bottom-nav-btn.active{color:var(--pr)}
 .bottom-nav-btn.active::after{width:40px}
 
-/* MAIN / SECTIONS */
+/* SECTIONS */
 .app-main{min-height:calc(100vh - var(--hh) - var(--bnh));padding-bottom:16px}
 .section{display:none}
 .section.active{display:block;animation:fadeIn .3s ease forwards}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-/* Admin section — always hidden from normal flow */
 #section-admin-secret{display:none!important}
 #section-admin-secret.admin-visible{display:block!important;animation:fadeIn .3s ease forwards}
 
@@ -164,13 +156,12 @@ ul{list-style:none}
 .hero-text p{color:rgba(255,255,255,.78);font-size:.88rem;margin-bottom:14px}
 .hero-cta{background:var(--pr);color:#fff;padding:9px 22px;border-radius:var(--rf);font-weight:700;font-size:.9rem;box-shadow:0 4px 14px rgba(249,115,22,.4)}
 
-/* CATEGORY STRIP */
+/* CATEGORY */
 .category-strip{display:flex;gap:8px;padding:12px 14px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .category-strip::-webkit-scrollbar{display:none}
 .category-chip{flex-shrink:0;padding:7px 16px;border-radius:var(--rf);border:2px solid var(--bdr);font-size:.82rem;font-weight:700;background:var(--card);color:var(--tm);transition:all var(--tf);white-space:nowrap;cursor:pointer}
 .category-chip.active{background:var(--pr);border-color:var(--pr);color:#fff}
 
-/* SECTION HEADING */
 .section-heading{display:flex;align-items:baseline;justify-content:space-between;padding:6px 16px 10px}
 .section-title{font-size:1.1rem;font-weight:800}
 .section-subtitle{font-size:.76rem;color:var(--tm)}
@@ -200,7 +191,7 @@ ul{list-style:none}
 .empty-state{text-align:center;padding:48px 24px;color:var(--tm)}
 .empty-state .empty-icon{font-size:52px;margin-bottom:12px;opacity:.4}
 
-/* VIDEO PRODUCT */
+/* VIDEO */
 .video-product .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s;z-index:2;pointer-events:none}
 .video-product.playing .hover-video{opacity:1}
 .video-product.playing>img{opacity:0}
@@ -217,7 +208,7 @@ ul{list-style:none}
 .video-close-btn:hover{background:rgba(255,255,255,.3)}
 #mainVideoPlayer{width:100%;max-height:100vh;outline:none}
 
-/* PDF READER */
+/* PDF */
 .pdf-overlay{position:fixed;inset:0;background:#1a1a2e;z-index:620;display:none;flex-direction:column}
 .pdf-overlay.open{display:flex}
 .pdf-header{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#12152a;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}
@@ -230,7 +221,7 @@ ul{list-style:none}
 .pdf-footer{padding:10px 16px;background:#12152a;display:flex;align-items:center;justify-content:center;gap:10px;border-top:1px solid rgba(255,255,255,.08);flex-shrink:0}
 .pdf-footer span{color:rgba(255,255,255,.5);font-size:.78rem}
 
-/* PRODUCT FULL SCREEN */
+/* PRODUCT FULL */
 .product-full-screen{position:fixed;inset:0;background:var(--bg);z-index:610;display:none;flex-direction:column;overflow-y:auto}
 .product-full-screen.open{display:flex}
 .product-full-header{position:sticky;top:0;display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--card);border-bottom:1px solid var(--bdr);z-index:2;box-shadow:var(--s1)}
@@ -255,7 +246,6 @@ ul{list-style:none}
 .product-full-meta-chip{display:flex;align-items:center;gap:4px;font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:var(--rf);background:#f3f4f6;color:var(--tm)}
 .product-full-meta-chip .material-icons-round{font-size:14px}
 .product-full-actions-bar{position:sticky;bottom:0;padding:14px 16px;background:var(--card);border-top:1px solid var(--bdr);display:flex;flex-direction:column;gap:10px}
-[data-theme="dark"] .product-full-actions-bar{background:#1a1d2e;border-color:#2d3258}
 .pay-badge{display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;padding:8px 14px;border-radius:var(--r1)}
 .pay-badge.both{color:var(--ok);background:var(--ok-b)}
 .pay-badge.online-only{color:var(--inf);background:var(--inf-b)}
@@ -311,10 +301,18 @@ ul{list-style:none}
 .checkbox-label input{accent-color:var(--pr);width:16px;height:16px}
 
 /* UPLOAD PROGRESS */
-.upload-progress{background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r2);padding:14px 16px;margin-top:12px}
-.progress-bar-wrap{height:8px;background:#e5e7eb;border-radius:var(--rf);overflow:hidden;margin:8px 0}
-.progress-bar{height:100%;background:linear-gradient(90deg,var(--pr),#fb923c);border-radius:var(--rf);transition:width .3s}
-.progress-text{font-size:.78rem;color:var(--tm);text-align:center}
+.upload-progress-card{background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r2);padding:14px 16px;margin-top:12px}
+.progress-bar-wrap{height:10px;background:#e5e7eb;border-radius:var(--rf);overflow:hidden;margin:10px 0 6px}
+[data-theme="dark"] .progress-bar-wrap{background:#2d3258}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--pr),#fb923c);border-radius:var(--rf);transition:width .3s ease;min-width:0}
+.progress-pct{font-size:.85rem;font-weight:800;color:var(--pr);text-align:right;margin-bottom:4px}
+.progress-status{font-size:.78rem;color:var(--tm);text-align:center}
+/* Upload log — shows step-by-step */
+.upload-log{background:#f9fafb;border:1.5px solid var(--bdr);border-radius:var(--r1);padding:10px 14px;margin-top:10px;font-size:.75rem;color:var(--tm);max-height:120px;overflow-y:auto;font-family:monospace;line-height:1.6}
+.upload-log-line{display:block;padding:1px 0}
+.upload-log-line.ok{color:var(--ok)}
+.upload-log-line.err{color:var(--er)}
+.upload-log-line.info{color:var(--inf)}
 
 /* PROFILE */
 .profile-login-prompt{padding:16px}
@@ -385,8 +383,9 @@ ul{list-style:none}
 .btn-primary:active{transform:none}
 .btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;border:2px solid var(--pr);color:var(--pr);border-radius:var(--r2);font-weight:700;font-size:.88rem;transition:all var(--tf)}
 .btn-outline:hover{background:var(--pr-g)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
 
-/* CART SIDEBAR */
+/* CART */
 .cart-sidebar{position:fixed;top:0;right:0;bottom:0;width:min(360px,100vw);background:var(--card);z-index:var(--z3);display:flex;flex-direction:column;transform:translateX(100%);transition:transform var(--ts);box-shadow:var(--s4)}
 .cart-sidebar.open{transform:translateX(0)}
 .cart-header{display:flex;align-items:center;justify-content:space-between;padding:16px;background:#f9fafb;border-bottom:1px solid var(--bdr)}
@@ -439,7 +438,7 @@ ul{list-style:none}
 .tracker-label{font-size:.68rem;font-weight:600;color:var(--tm);text-align:center}
 .tracker-step.active .tracker-label,.tracker-step.done .tracker-label{color:var(--th)}
 
-/* ORDERS FULL PAGE */
+/* ORDERS FULL */
 .orders-container{padding:14px}
 .orders-full-list{display:flex;flex-direction:column;gap:12px}
 .order-full-card{background:var(--card);border-radius:var(--r3);overflow:hidden;box-shadow:var(--s2);border:1px solid var(--bdr)}
@@ -463,7 +462,7 @@ ul{list-style:none}
 .pay-method-tag{font-size:.75rem;color:var(--tm);display:flex;align-items:center;gap:4px}
 .pay-method-tag .material-icons-round{font-size:14px}
 
-/* ADMIN PANEL */
+/* ADMIN */
 .admin-wrap{background:var(--bg);min-height:100vh;padding-bottom:30px}
 .admin-hero{background:linear-gradient(135deg,#1a0533,#5b21b6);padding:20px 16px}
 .admin-hero h2{color:#fff;font-size:1.3rem;font-weight:800;display:flex;align-items:center;gap:8px}
@@ -494,6 +493,12 @@ ul{list-style:none}
 .toggle-sw.on::after{transform:translateX(20px)}
 .discount-preview{display:flex;align-items:center;gap:6px;background:rgba(220,38,38,.07);border:1.5px solid #fca5a5;border-radius:var(--r1);padding:8px 14px;font-size:.85rem;color:var(--er);font-weight:700;margin-top:2px}
 .discount-preview .material-icons-round{font-size:18px}
+/* Admin auth notice */
+.admin-auth-notice{display:flex;align-items:center;gap:10px;background:var(--wa-b);border:2px solid #fcd34d;border-left:4px solid var(--wa);border-radius:var(--r2);padding:12px 16px;margin-bottom:16px;font-size:.82rem;color:#78350f}
+.admin-auth-notice .material-icons-round{color:var(--wa);font-size:22px;flex-shrink:0}
+.admin-auth-notice strong{display:block;margin-bottom:2px;font-size:.88rem}
+.admin-auth-ok{display:flex;align-items:center;gap:10px;background:var(--ok-b);border:2px solid #86efac;border-left:4px solid var(--ok);border-radius:var(--r2);padding:12px 16px;margin-bottom:16px;font-size:.82rem;color:#14532d}
+.admin-auth-ok .material-icons-round{color:var(--ok);font-size:22px;flex-shrink:0}
 
 /* SUCCESS */
 .success-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:630;display:none;align-items:center;justify-content:center;padding:20px}
@@ -528,37 +533,18 @@ ul{list-style:none}
 .loading-box p{color:rgba(255,255,255,.85);font-weight:600;font-size:.9rem}
 .inline-spinner{display:flex;flex-direction:column;align-items:center;padding:32px;color:var(--tm);gap:10px}
 .inline-spinner p{font-size:.85rem}
-
-/* MISC */
 #recaptcha-container{display:flex;justify-content:center;margin-top:10px}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:4px}
 :focus-visible{outline:2.5px solid var(--pr);outline-offset:2px;border-radius:4px}
 
-/* RESPONSIVE */
-@media(min-width:540px){
-  .product-grid{grid-template-columns:repeat(3,1fr);gap:12px;padding:0 14px 14px}
-  .modal-content{border-radius:var(--r4);margin:auto}
-  .modal{align-items:center;padding:20px}
-  .product-type-grid{grid-template-columns:repeat(4,1fr)}
-}
-@media(min-width:768px){
-  :root{--hh:64px}
-  .product-grid{grid-template-columns:repeat(4,1fr)}
-  .profile-logged-in{max-width:600px;margin:0 auto}
-}
-@media(max-width:380px){
-  .header-search-wrap{display:none}
-  .header-search-toggle{display:flex}
-  .otp-box{width:38px;height:42px;font-size:1rem}
-  .product-grid{gap:8px;padding:0 8px 8px}
-}
+@media(min-width:540px){.product-grid{grid-template-columns:repeat(3,1fr);gap:12px;padding:0 14px 14px}.modal-content{border-radius:var(--r4);margin:auto}.modal{align-items:center;padding:20px}.product-type-grid{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:768px){:root{--hh:64px}.product-grid{grid-template-columns:repeat(4,1fr)}.profile-logged-in{max-width:600px;margin:0 auto}}
+@media(max-width:380px){.header-search-wrap{display:none}.header-search-toggle{display:flex}.otp-box{width:38px;height:42px;font-size:1rem}.product-grid{gap:8px;padding:0 8px 8px}}
 </style>
 </head>
 <body>
-
-<!-- OVERLAY -->
 <div class="overlay" id="overlay"></div>
 
 <!-- DRAWER -->
@@ -569,10 +555,7 @@ ul{list-style:none}
   </div>
   <div class="drawer-user" id="drawerUser" style="display:none">
     <div class="drawer-avatar" id="drawerAvatar">U</div>
-    <div>
-      <p class="drawer-user-name" id="drawerUserName">User</p>
-      <p class="drawer-user-email" id="drawerUserEmail"></p>
-    </div>
+    <div><p class="drawer-user-name" id="drawerUserName">User</p><p class="drawer-user-email" id="drawerUserEmail"></p></div>
   </div>
   <nav class="drawer-nav">
     <div class="drawer-link active" data-nav="home"><span class="material-icons-round">home</span> Home</div>
@@ -589,7 +572,6 @@ ul{list-style:none}
 <header class="app-header">
   <div class="header-inner">
     <button class="header-menu-btn" id="menuBtn"><span class="material-icons-round">menu</span></button>
-    <!-- Brand: click handled by JS directly, NOT a data-nav element -->
     <div class="header-brand" id="brandArea">
       <span class="header-brand-text">Sayat<span>Kart</span></span>
     </div>
@@ -655,9 +637,7 @@ ul{list-style:none}
     <button class="warn-login-btn" id="ordersLoginBtn">Login →</button>
   </div>
   <div class="orders-container" id="ordersContainer" style="display:none">
-    <div class="orders-full-list" id="ordersFullList">
-      <div class="inline-spinner"><div class="spinner"></div><p>Loading orders…</p></div>
-    </div>
+    <div class="orders-full-list" id="ordersFullList"><div class="inline-spinner"><div class="spinner"></div><p>Loading orders…</p></div></div>
   </div>
 </section>
 
@@ -684,12 +664,8 @@ ul{list-style:none}
         <div id="otpVerifyWrap" style="display:none">
           <p class="otp-sent-msg">✅ OTP sent to your number!</p>
           <div class="otp-input-group" id="otpInputGroup">
-            <input type="number" class="otp-box" maxlength="1"/>
-            <input type="number" class="otp-box" maxlength="1"/>
-            <input type="number" class="otp-box" maxlength="1"/>
-            <input type="number" class="otp-box" maxlength="1"/>
-            <input type="number" class="otp-box" maxlength="1"/>
-            <input type="number" class="otp-box" maxlength="1"/>
+            <input type="number" class="otp-box" maxlength="1"/><input type="number" class="otp-box" maxlength="1"/><input type="number" class="otp-box" maxlength="1"/>
+            <input type="number" class="otp-box" maxlength="1"/><input type="number" class="otp-box" maxlength="1"/><input type="number" class="otp-box" maxlength="1"/>
           </div>
           <button class="btn-primary" id="verifyOtpBtn" style="width:100%;margin-top:12px"><span class="material-icons-round">verified</span> Verify OTP</button>
           <p class="resend-otp-text">Didn't receive? <button class="resend-otp-btn" id="resendOtpBtn">Resend</button></p>
@@ -700,27 +676,17 @@ ul{list-style:none}
   </div>
   <div class="profile-logged-in" id="profileLoggedIn" style="display:none">
     <div class="theme-card">
-      <div class="theme-card-info">
-        <span class="material-icons-round" style="color:var(--pr)">brightness_6</span>
-        <div><p style="font-weight:700;font-size:.9rem;color:var(--th)">Appearance</p><p style="font-size:.78rem;color:var(--tm)">Switch Dark / Light mode</p></div>
-      </div>
+      <div class="theme-card-info"><span class="material-icons-round" style="color:var(--pr)">brightness_6</span><div><p style="font-weight:700;font-size:.9rem;color:var(--th)">Appearance</p><p style="font-size:.78rem;color:var(--tm)">Switch Dark / Light mode</p></div></div>
       <button class="theme-toggle-btn" id="themeToggleBtn"><span class="material-icons-round">dark_mode</span></button>
     </div>
     <div class="profile-card">
       <div class="profile-avatar" id="profileAvatar">U</div>
-      <div class="profile-info">
-        <h3 class="profile-name" id="profileName">User</h3>
-        <p class="profile-email" id="profileEmail"></p>
-      </div>
+      <div class="profile-info"><h3 class="profile-name" id="profileName">User</h3><p class="profile-email" id="profileEmail"></p></div>
       <button class="btn-logout" id="logoutBtn"><span class="material-icons-round">logout</span> Logout</button>
     </div>
     <div class="earnings-card">
       <div class="earnings-icon">💰</div>
-      <div class="earnings-info">
-        <p class="earnings-label">Total Cashback Earned</p>
-        <h2 class="earnings-amount" id="earningsAmount">₹0</h2>
-        <p class="earnings-sub">5% on every successful order</p>
-      </div>
+      <div class="earnings-info"><p class="earnings-label">Total Cashback Earned</p><h2 class="earnings-amount" id="earningsAmount">₹0</h2><p class="earnings-sub">5% on every successful order</p></div>
     </div>
     <div class="orders-section">
       <div class="orders-section-header">
@@ -733,24 +699,16 @@ ul{list-style:none}
       <h3 class="withdrawal-title"><span class="material-icons-round">account_balance_wallet</span> Withdraw Cashback</h3>
       <p class="withdrawal-sub">Enter your UPI ID to request a withdrawal. Minimum ₹10. Processed in 2–3 business days.</p>
       <div id="withdrawalForm">
-        <div class="form-group">
-          <label class="form-label"><span class="material-icons-round">account_balance_wallet</span> UPI ID</label>
-          <input type="text" id="upiId" class="form-input" placeholder="yourname@upi"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label"><span class="material-icons-round">currency_rupee</span> Amount (₹)</label>
-          <input type="number" id="withdrawAmount" class="form-input" placeholder="Minimum ₹10" min="10"/>
-        </div>
+        <div class="form-group"><label class="form-label"><span class="material-icons-round">account_balance_wallet</span> UPI ID</label><input type="text" id="upiId" class="form-input" placeholder="yourname@upi"/></div>
+        <div class="form-group"><label class="form-label"><span class="material-icons-round">currency_rupee</span> Amount (₹)</label><input type="number" id="withdrawAmount" class="form-input" placeholder="Minimum ₹10" min="10"/></div>
         <button class="btn-primary" id="withdrawBtn" style="width:100%"><span class="material-icons-round">send</span> Request Withdrawal</button>
       </div>
-      <div class="withdrawal-success" id="withdrawalSuccess" style="display:none">
-        <span class="material-icons-round">check_circle</span><p>Request submitted! We'll process it soon.</p>
-      </div>
+      <div class="withdrawal-success" id="withdrawalSuccess" style="display:none"><span class="material-icons-round">check_circle</span><p>Request submitted! We'll process it soon.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ADMIN SECTION — hidden by default, JS shows it -->
+<!-- ADMIN SECTION -->
 <section id="section-admin-secret">
   <div class="admin-wrap">
     <div class="admin-hero">
@@ -758,6 +716,16 @@ ul{list-style:none}
       <p>SayatKart Secret — Product Management</p>
     </div>
     <div class="admin-body">
+
+      <!-- Auth status notice -->
+      <div class="admin-auth-notice" id="adminAuthNotice">
+        <span class="material-icons-round">warning_amber</span>
+        <div><strong>Login Required for Upload!</strong> Firebase Storage-এ file upload করতে হলে আগে Profile page-এ গিয়ে login করতে হবে। Login ছাড়া upload কাজ করবে না।</div>
+      </div>
+      <div class="admin-auth-ok" id="adminAuthOk" style="display:none">
+        <span class="material-icons-round">verified_user</span>
+        <div><strong id="adminAuthName">Logged in!</strong> আপনি logged in আছেন। সব upload কাজ করবে।</div>
+      </div>
 
       <div class="admin-sec-title"><span class="material-icons-round">category</span> Product Type</div>
       <div class="admin-field-group">
@@ -771,36 +739,23 @@ ul{list-style:none}
 
       <div class="admin-sec-title"><span class="material-icons-round">info</span> Product Info</div>
       <div class="admin-field-group">
-        <div class="form-group">
-          <label class="form-label"><span class="material-icons-round">title</span> Product Title *</label>
-          <input type="text" id="adminTitle" class="form-input" placeholder="Enter product title"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label"><span class="material-icons-round">description</span> Description</label>
-          <textarea id="adminDesc" class="form-input form-textarea" rows="3" placeholder="Product description…"></textarea>
-        </div>
+        <div class="form-group"><label class="form-label"><span class="material-icons-round">title</span> Product Title *</label><input type="text" id="adminTitle" class="form-input" placeholder="Enter product title"/></div>
+        <div class="form-group"><label class="form-label"><span class="material-icons-round">description</span> Description</label><textarea id="adminDesc" class="form-input form-textarea" rows="3" placeholder="Product description…"></textarea></div>
         <div class="form-group" id="adminCatGroup">
           <label class="form-label"><span class="material-icons-round">label</span> Category *</label>
           <input type="text" id="adminCategory" class="form-input" placeholder="books / electronics / fashion / video…"/>
-          <span style="font-size:.72rem;color:var(--tm);margin-top:4px;display:block">Auto-set to "books" for Ebook/Paperback.</span>
+          <span style="font-size:.72rem;color:var(--tm);margin-top:4px;display:block">Auto-set to "books" for Ebook/Paperback, "video" for Video.</span>
         </div>
       </div>
 
       <div class="admin-sec-title"><span class="material-icons-round">currency_rupee</span> Pricing</div>
       <div class="admin-field-group">
         <div class="form-row">
-          <div class="form-group">
-            <label class="form-label"><span class="material-icons-round">sell</span> MRP (₹) *</label>
-            <input type="number" id="adminMRP" class="form-input" placeholder="0" min="0"/>
-          </div>
-          <div class="form-group">
-            <label class="form-label"><span class="material-icons-round">local_offer</span> Sale Price (₹) *</label>
-            <input type="number" id="adminSalePrice" class="form-input" placeholder="0" min="0"/>
-          </div>
+          <div class="form-group"><label class="form-label"><span class="material-icons-round">sell</span> MRP (₹) *</label><input type="number" id="adminMRP" class="form-input" placeholder="0" min="0"/></div>
+          <div class="form-group"><label class="form-label"><span class="material-icons-round">local_offer</span> Sale Price (₹) *</label><input type="number" id="adminSalePrice" class="form-input" placeholder="0" min="0"/></div>
         </div>
         <div class="discount-preview" id="adminDiscountPreview" style="display:none">
-          <span class="material-icons-round">local_fire_department</span>
-          <span id="adminDiscountText">0% OFF</span>
+          <span class="material-icons-round">local_fire_department</span><span id="adminDiscountText">0% OFF</span>
         </div>
       </div>
 
@@ -827,11 +782,11 @@ ul{list-style:none}
 
       <div class="admin-sec-title"><span class="material-icons-round">image</span> Cover Image(s)</div>
       <div class="admin-field-group">
-        <div class="file-upload-zone">
-          <input type="file" id="adminImages" class="file-input" accept="image/*" multiple/>
+        <div class="file-upload-zone" id="adminImagesZone">
+          <input type="file" id="adminImages" class="file-input" accept="image/jpeg,image/png,image/webp,image/gif" multiple/>
           <span class="material-icons-round file-upload-icon">add_photo_alternate</span>
           <p class="file-upload-text">Click to select images</p>
-          <p class="file-upload-hint">JPG / PNG / WEBP — Multiple allowed</p>
+          <p class="file-upload-hint">JPG / PNG / WEBP — Multiple allowed — Max 10MB each</p>
         </div>
         <div class="img-previews" id="adminImagePreviews"></div>
       </div>
@@ -839,14 +794,19 @@ ul{list-style:none}
       <div id="adminVideoGroup" style="display:none">
         <div class="admin-sec-title"><span class="material-icons-round">videocam</span> Video File</div>
         <div class="admin-field-group">
-          <div class="file-upload-zone">
-            <input type="file" id="adminVideo" class="file-input" accept="video/mp4,video/webm,video/*"/>
+          <div class="file-upload-zone" id="adminVideoZone">
+            <input type="file" id="adminVideo" class="file-input" accept="video/mp4,video/webm,video/quicktime,video/x-msvideo"/>
             <span class="material-icons-round file-upload-icon">movie</span>
             <p class="file-upload-text">Click to select video</p>
-            <p class="file-upload-hint">MP4 / WebM recommended</p>
+            <p class="file-upload-hint">MP4 / WebM recommended — Max 500MB</p>
           </div>
           <div id="adminVideoPreviewWrap" style="display:none">
             <video id="adminVideoPreview" class="video-preview-el" controls></video>
+          </div>
+          <div class="file-selected" id="adminVideoSelected" style="display:none">
+            <span class="material-icons-round" style="color:#7c3aed">movie</span>
+            <span id="adminVideoName">video.mp4</span>
+            <button type="button" id="adminVideoRemove" class="file-remove-btn"><span class="material-icons-round">close</span></button>
           </div>
         </div>
       </div>
@@ -855,10 +815,10 @@ ul{list-style:none}
         <div class="admin-sec-title"><span class="material-icons-round">picture_as_pdf</span> E-Book PDF</div>
         <div class="admin-field-group">
           <div class="file-upload-zone" id="adminPDFZone">
-            <input type="file" id="adminPDF" class="file-input" accept=".pdf,application/pdf"/>
+            <input type="file" id="adminPDF" class="file-input" accept="application/pdf,.pdf"/>
             <span class="material-icons-round file-upload-icon">upload_file</span>
             <p class="file-upload-text">Click to upload PDF</p>
-            <p class="file-upload-hint">PDF only — max 50 MB</p>
+            <p class="file-upload-hint">PDF only — Max 100MB</p>
           </div>
           <div class="file-selected" id="adminPDFSelected" style="display:none">
             <span class="material-icons-round">picture_as_pdf</span>
@@ -868,10 +828,15 @@ ul{list-style:none}
         </div>
       </div>
 
-      <div class="upload-progress" id="adminUploadProgress" style="display:none">
-        <p style="font-size:.85rem;font-weight:700;color:var(--th);margin-bottom:4px">Uploading…</p>
+      <!-- Upload Progress — detailed -->
+      <div class="upload-progress-card" id="adminUploadProgress" style="display:none">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+          <p style="font-size:.85rem;font-weight:700;color:var(--th)" id="adminUploadTitle">Uploading…</p>
+          <span class="progress-pct" id="adminProgressPct">0%</span>
+        </div>
         <div class="progress-bar-wrap"><div class="progress-bar" id="adminProgressBar" style="width:0%"></div></div>
-        <p class="progress-text" id="adminProgressText">Starting…</p>
+        <p class="progress-status" id="adminProgressText">Starting…</p>
+        <div class="upload-log" id="adminUploadLog"></div>
       </div>
 
       <button class="btn-primary" id="adminPublishBtn" style="width:100%;padding:16px;font-size:1rem;margin-top:16px">
@@ -891,7 +856,7 @@ ul{list-style:none}
   <button class="bottom-nav-btn" data-nav="profile"><span class="material-icons-round">person</span><span>Profile</span></button>
 </nav>
 
-<!-- CART SIDEBAR -->
+<!-- CART -->
 <div class="cart-sidebar" id="cartSidebar">
   <div class="cart-header">
     <h3><span class="material-icons-round">shopping_cart</span> My Cart <span id="cartCountText">(0)</span></h3>
@@ -906,25 +871,16 @@ ul{list-style:none}
       <div class="cart-summary-row"><span style="font-size:.78rem">Cashback 5%</span><span class="cashback-text" id="cartCashback">+₹0</span></div>
     </div>
     <div id="cartAuthWarn" style="display:none;margin-bottom:10px">
-      <div class="auth-warning" style="margin:0">
-        <span class="material-icons-round">warning</span>
-        <div><strong>Login to Checkout!</strong><p>Go to Profile and login.</p></div>
-        <button class="warn-login-btn" id="cartLoginBtn">Login →</button>
-      </div>
+      <div class="auth-warning" style="margin:0"><span class="material-icons-round">warning</span><div><strong>Login to Checkout!</strong><p>Go to Profile and login.</p></div><button class="warn-login-btn" id="cartLoginBtn">Login →</button></div>
     </div>
-    <button class="btn-primary" id="checkoutBtn" style="width:100%;padding:13px;font-size:.95rem">
-      <span class="material-icons-round">payment</span> Proceed to Checkout
-    </button>
+    <button class="btn-primary" id="checkoutBtn" style="width:100%;padding:13px;font-size:.95rem"><span class="material-icons-round">payment</span> Proceed to Checkout</button>
   </div>
 </div>
 
 <!-- CHECKOUT MODAL -->
 <div class="modal" id="addressModal">
   <div class="modal-content">
-    <div class="modal-header">
-      <h3><span class="material-icons-round">location_on</span> Delivery &amp; Payment</h3>
-      <button class="modal-close" id="addressModalClose"><span class="material-icons-round">close</span></button>
-    </div>
+    <div class="modal-header"><h3><span class="material-icons-round">location_on</span> Delivery &amp; Payment</h3><button class="modal-close" id="addressModalClose"><span class="material-icons-round">close</span></button></div>
     <div class="modal-body">
       <p class="modal-subtitle" id="addressSubtitle">Enter your delivery address</p>
       <div class="form-group"><label class="form-label">Full Name *</label><input type="text" id="addrName" class="form-input" placeholder="Your full name"/></div>
@@ -943,30 +899,18 @@ ul{list-style:none}
       <hr class="pay-divider"/>
       <p class="pay-section-title"><span class="material-icons-round">payment</span> Payment Method</p>
       <div class="radio-group">
-        <label class="radio-card" id="codOptionWrap">
-          <input type="radio" name="payMethod" value="cod" checked/>
-          <span class="radio-label"><span class="material-icons-round" style="font-size:18px">local_shipping</span> Cash on Delivery</span>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="payMethod" value="online"/>
-          <span class="radio-label"><span class="material-icons-round" style="font-size:18px">credit_card</span> Pay Online</span>
-        </label>
+        <label class="radio-card" id="codOptionWrap"><input type="radio" name="payMethod" value="cod" checked/><span class="radio-label"><span class="material-icons-round" style="font-size:18px">local_shipping</span> Cash on Delivery</span></label>
+        <label class="radio-card"><input type="radio" name="payMethod" value="online"/><span class="radio-label"><span class="material-icons-round" style="font-size:18px">credit_card</span> Pay Online</span></label>
       </div>
     </div>
-    <div class="modal-footer">
-      <button class="btn-outline" id="addressModalCancel">Cancel</button>
-      <button class="btn-primary" id="addressConfirmBtn"><span class="material-icons-round">arrow_forward</span> Confirm</button>
-    </div>
+    <div class="modal-footer"><button class="btn-outline" id="addressModalCancel">Cancel</button><button class="btn-primary" id="addressConfirmBtn"><span class="material-icons-round">arrow_forward</span> Confirm</button></div>
   </div>
 </div>
 
 <!-- ORDER STATUS MODAL -->
 <div class="modal" id="orderStatusModal">
   <div class="modal-content">
-    <div class="modal-header">
-      <h3><span class="material-icons-round">local_shipping</span> Order Tracking</h3>
-      <button class="modal-close" id="orderStatusClose"><span class="material-icons-round">close</span></button>
-    </div>
+    <div class="modal-header"><h3><span class="material-icons-round">local_shipping</span> Order Tracking</h3><button class="modal-close" id="orderStatusClose"><span class="material-icons-round">close</span></button></div>
     <div class="modal-body">
       <p style="font-size:.8rem;color:var(--tm);margin-bottom:4px">Order ID</p>
       <p style="font-weight:700;font-size:.95rem;color:var(--th);margin-bottom:8px" id="statusOrderId">—</p>
@@ -1037,13 +981,10 @@ ul{list-style:none}
   <div class="pdf-pages" id="pdfPages">
     <div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:60px 20px;color:rgba(255,255,255,.6)"><div class="spinner"></div><p>Loading book…</p></div>
   </div>
-  <div class="pdf-footer">
-    <span class="material-icons-round" style="color:rgba(255,255,255,.3);font-size:14px">lock</span>
-    <span>Protected — Reading only. Download disabled.</span>
-  </div>
+  <div class="pdf-footer"><span class="material-icons-round" style="color:rgba(255,255,255,.3);font-size:14px">lock</span><span>Protected — Reading only. Download disabled.</span></div>
 </div>
 
-<!-- SUCCESS OVERLAY -->
+<!-- SUCCESS -->
 <div class="success-overlay" id="successOverlay">
   <div class="success-card">
     <div class="check-icon"><span class="icon-line line-tip"></span><span class="icon-line line-long"></span><div class="icon-fix"></div></div>
@@ -1055,15 +996,10 @@ ul{list-style:none}
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast-container" id="toastContainer"></div>
+<div class="loading-overlay" id="loadingOverlay"><div class="loading-box"><div class="spinner"></div><p id="loadingMsg">Processing…</p></div></div>
 
-<!-- LOADING -->
-<div class="loading-overlay" id="loadingOverlay">
-  <div class="loading-box"><div class="spinner"></div><p id="loadingMsg">Processing…</p></div>
-</div>
-
-<!-- Firebase v9 compat -->
+<!-- Scripts -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -1073,9 +1009,7 @@ ul{list-style:none}
 
 <script>
 'use strict';
-/* ══════════════════════════════════
-   FIREBASE CONFIG
-══════════════════════════════════ */
+/* ═══════ FIREBASE CONFIG ═══════ */
 firebase.initializeApp({
   apiKey:"AIzaSyDgJGxWxWGxszN4mz261wWKoB8kK_gxCIU",
   authDomain:"sayat-kart.firebaseapp.com",
@@ -1091,17 +1025,13 @@ _db.enablePersistence({synchronizeTabs:true}).catch(()=>{});
 const _ts  = () => firebase.firestore.FieldValue.serverTimestamp();
 const _inc = n  => firebase.firestore.FieldValue.increment(n);
 const _au  = (...v) => firebase.firestore.FieldValue.arrayUnion(...v);
-const RAZORPAY_KEY = "rzp_test_XXXXXXXXXXXXXXXX"; // 🔴 Replace
+const RAZORPAY_KEY = "rzp_test_XXXXXXXXXXXXXXXX"; // 🔴 Replace with your key
 
-/* ══════════════════════════════════
-   HELPERS
-══════════════════════════════════ */
+/* ═══════ HELPERS ═══════ */
 const $ = id => document.getElementById(id);
 const fmt = n => Number(n||0).toLocaleString('en-IN',{minimumFractionDigits:0,maximumFractionDigits:2});
 const fmtDate = d => new Date(d).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
 function esc(s){ const d=document.createElement('div'); d.appendChild(document.createTextNode(s||'')); return d.innerHTML; }
-
-// Fix Google Drive share URL → direct view URL
 function fixDriveUrl(url){
   if(!url) return '';
   const m1=url.match(/\/d\/([a-zA-Z0-9_-]+)/);
@@ -1112,9 +1042,20 @@ function fixDriveUrl(url){
 }
 function imgUrl(url){ return fixDriveUrl(url)||'https://placehold.co/300x300?text=Image'; }
 
-/* ══════════════════════════════════
-   FIRESTORE
-══════════════════════════════════ */
+// MIME type map
+const MIME_MAP = {
+  jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png',gif:'image/gif',
+  webp:'image/webp',svg:'image/svg+xml',
+  pdf:'application/pdf',
+  mp4:'video/mp4',webm:'video/webm',mov:'video/quicktime',
+  avi:'video/x-msvideo',mkv:'video/x-matroska'
+};
+function getMime(filename){
+  const ext = filename.split('.').pop().toLowerCase();
+  return MIME_MAP[ext] || 'application/octet-stream';
+}
+
+/* ═══════ FIRESTORE ═══════ */
 async function saveUserProfile(user){
   if(!user) return;
   try{
@@ -1132,7 +1073,6 @@ async function saveOrder(data){
   try{const r=await _db.collection('orders').add({...data,status:'confirmed',createdAt:_ts()});return{success:true,orderId:r.id};}
   catch(e){return{success:false,error:e};}
 }
-// Real-time orders listener
 function listenUserOrders(uid,cb){
   return _db.collection('orders').where('userId','==',uid).orderBy('createdAt','desc').limit(30)
     .onSnapshot(snap=>cb(snap.docs.map(d=>({id:d.id,...d.data()}))),e=>console.error(e));
@@ -1149,25 +1089,20 @@ async function saveWithdrawalRequest(uid,upiId,amount,info){
 async function fetchProducts(cat='all'){
   try{
     const base=_db.collection('products');
-    const q=cat==='all'
-      ?base.where('inStock','==',true).orderBy('createdAt','desc')
-      :base.where('category','==',cat).where('inStock','==',true).orderBy('createdAt','desc');
+    const q=cat==='all'?base.where('inStock','==',true).orderBy('createdAt','desc'):base.where('category','==',cat).where('inStock','==',true).orderBy('createdAt','desc');
     const s=await q.get();
     return s.docs.map(d=>({id:d.id,...d.data()}));
   }catch(e){console.error(e);return[];}
 }
 async function hasUserPurchased(uid,pid){try{const p=await getUserProfile(uid);return(p?.purchasedProducts||[]).includes(pid);}catch{return false;}}
 
-/* ══════════════════════════════════
-   APP STATE
-══════════════════════════════════ */
+/* ═══════ APP STATE ═══════ */
 let currentUser=null,allProducts=[],cart=[],ordersUnsub=null,currentFullProduct=null;
 let recaptchaVerifier=null,confirmationResult=null;
 let isDarkMode=localStorage.getItem('sayatkart_theme')==='dark';
+let activeUploadTask=null; // track current upload for cancel
 
-/* ══════════════════════════════════
-   THEME
-══════════════════════════════════ */
+/* ═══════ THEME ═══════ */
 function applyTheme(dark){
   document.documentElement.setAttribute('data-theme',dark?'dark':'light');
   localStorage.setItem('sayatkart_theme',dark?'dark':'light');
@@ -1177,85 +1112,67 @@ function applyTheme(dark){
 applyTheme(isDarkMode);
 $('themeToggleBtn')?.addEventListener('click',()=>{isDarkMode=!isDarkMode;applyTheme(isDarkMode);showToast(isDarkMode?'🌙 Dark Mode On':'☀️ Light Mode On','info');});
 
-/* ══════════════════════════════════
-   LOADING / TOAST
-══════════════════════════════════ */
+/* ═══════ LOADING / TOAST ═══════ */
 function showLoading(msg='Processing…'){$('loadingMsg').textContent=msg;$('loadingOverlay').classList.add('open');}
 function hideLoading(){$('loadingOverlay').classList.remove('open');}
-function showToast(msg,type='info',dur=3000){
-  const t=document.createElement('div');
-  t.className=`toast ${type}`;t.textContent=msg;
+function showToast(msg,type='info',dur=3500){
+  const t=document.createElement('div');t.className=`toast ${type}`;t.textContent=msg;
   $('toastContainer').appendChild(t);
   setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity .4s';setTimeout(()=>t.remove(),400);},dur);
 }
 
-/* ══════════════════════════════════
-   OVERLAY
-══════════════════════════════════ */
+/* ═══════ OVERLAY ═══════ */
 function checkOverlay(){
-  const anyOpen=$('drawer').classList.contains('open')||$('cartSidebar').classList.contains('open')||!!document.querySelector('.modal.open');
-  if(!anyOpen){$('overlay').classList.remove('active');document.body.style.overflow='';}
+  if(!$('drawer').classList.contains('open')&&!$('cartSidebar').classList.contains('open')&&!document.querySelector('.modal.open')){
+    $('overlay').classList.remove('active');document.body.style.overflow='';
+  }
 }
 $('overlay').addEventListener('click',()=>{closeDrawer();closeCart();closeAllModals();});
 
-/* ══════════════════════════════════
-   SECTION NAVIGATION
-   Admin uses separate system — no data-nav
-══════════════════════════════════ */
+/* ═══════ SECTION NAV ═══════ */
 const SECTIONS=['home','orders','profile'];
 let activeSection='home';
 
 function switchSection(name){
-  // Only normal sections
   if(!SECTIONS.includes(name)) return;
   activeSection=name;
-  SECTIONS.forEach(s=>{
-    const el=$('section-'+s);
-    if(el) el.classList.toggle('active',s===name);
-  });
-  // Hide admin if visible
+  SECTIONS.forEach(s=>{const el=$('section-'+s);if(el)el.classList.toggle('active',s===name);});
   $('section-admin-secret').classList.remove('admin-visible');
-  // Sync nav
-  document.querySelectorAll('[data-nav]').forEach(el=>{
-    el.classList.toggle('active',el.dataset.nav===name);
-  });
+  document.querySelectorAll('[data-nav]').forEach(el=>el.classList.toggle('active',el.dataset.nav===name));
   closeDrawer();
   window.scrollTo({top:0,behavior:'smooth'});
   if(name==='orders') loadOrdersPage();
   if(name==='profile'&&currentUser) loadUserEarnings(currentUser.uid);
 }
 window.switchSection=switchSection;
-
 document.querySelectorAll('[data-nav]').forEach(el=>{
-  el.addEventListener('click',e=>{
-    e.preventDefault();
-    e.stopPropagation();
-    switchSection(el.dataset.nav);
-  });
+  el.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();switchSection(el.dataset.nav);});
 });
 
-/* ══════════════════════════════════
-   ADMIN PANEL — Hidden section
-   Opened ONLY by 10-click password
-══════════════════════════════════ */
+/* ═══════ ADMIN — 10-click brand trigger ═══════ */
 function showAdminPanel(){
-  // Hide all normal sections
-  SECTIONS.forEach(s=>{ const el=$('section-'+s); if(el) el.classList.remove('active'); });
-  // Deactivate nav buttons
+  SECTIONS.forEach(s=>{const el=$('section-'+s);if(el)el.classList.remove('active');});
   document.querySelectorAll('[data-nav]').forEach(el=>el.classList.remove('active'));
-  // Show admin
   $('section-admin-secret').classList.add('admin-visible');
+  updateAdminAuthNotice();
   window.scrollTo({top:0,behavior:'smooth'});
   showToast('✅ Admin Panel Unlocked!','success');
 }
+function updateAdminAuthNotice(){
+  if(currentUser){
+    $('adminAuthNotice').style.display='none';
+    $('adminAuthOk').style.display='flex';
+    $('adminAuthName').textContent=`Logged in as: ${currentUser.displayName||currentUser.email||currentUser.phoneNumber||'User'}`;
+  }else{
+    $('adminAuthNotice').style.display='flex';
+    $('adminAuthOk').style.display='none';
+  }
+}
 
-// Brand area — 10 clicks → password prompt
-// NOTE: brandArea has NO data-nav, so it won't trigger switchSection
 let brandClicks=0,brandTimer=null;
 $('brandArea').addEventListener('click',e=>{
   e.stopPropagation();
-  brandClicks++;
-  clearTimeout(brandTimer);
+  brandClicks++;clearTimeout(brandTimer);
   brandTimer=setTimeout(()=>{brandClicks=0;},3000);
   if(brandClicks>=10){
     brandClicks=0;
@@ -1265,9 +1182,7 @@ $('brandArea').addEventListener('click',e=>{
   }
 });
 
-/* ══════════════════════════════════
-   DRAWER
-══════════════════════════════════ */
+/* ═══════ DRAWER ═══════ */
 function openDrawer(){$('drawer').classList.add('open');$('overlay').classList.add('active');document.body.style.overflow='hidden';}
 function closeDrawer(){$('drawer').classList.remove('open');checkOverlay();}
 $('menuBtn').addEventListener('click',openDrawer);
@@ -1275,42 +1190,24 @@ $('drawerClose').addEventListener('click',closeDrawer);
 $('drawerLogout').addEventListener('click',handleLogout);
 $('drawerLoginBtn').addEventListener('click',()=>{switchSection('profile');closeDrawer();});
 
-/* ══════════════════════════════════
-   SEARCH
-══════════════════════════════════ */
+/* ═══════ SEARCH ═══════ */
 function doSearch(q){
   const s=q.trim().toLowerCase();
   if(!s){renderProducts(allProducts);$('productSectionTitle').textContent='Featured Products';$('productSectionSubtitle').textContent=`${allProducts.length} item(s)`;return;}
-  // Switch to home to show results
-  if(activeSection!=='home'){
-    SECTIONS.forEach(sec=>{const el=$('section-'+sec);if(el)el.classList.toggle('active',sec==='home');});
-    $('section-admin-secret').classList.remove('admin-visible');
-    document.querySelectorAll('[data-nav]').forEach(el=>el.classList.toggle('active',el.dataset.nav==='home'));
-    activeSection='home';
-  }
+  if(activeSection!=='home'){SECTIONS.forEach(sec=>{const el=$('section-'+sec);if(el)el.classList.toggle('active',sec==='home');});$('section-admin-secret').classList.remove('admin-visible');document.querySelectorAll('[data-nav]').forEach(el=>el.classList.toggle('active',el.dataset.nav==='home'));activeSection='home';}
   const found=allProducts.filter(p=>(p.title||'').toLowerCase().includes(s)||(p.category||'').toLowerCase().includes(s)||(p.description||'').toLowerCase().includes(s));
   renderProducts(found);
   $('productSectionTitle').textContent=`Results for "${q}"`;
   $('productSectionSubtitle').textContent=`${found.length} item(s) found`;
 }
-$('searchInput').addEventListener('input',e=>{
-  $('searchClearBtn').style.display=e.target.value?'flex':'none';
-  doSearch(e.target.value);
-});
-$('searchClearBtn').addEventListener('click',()=>{
-  $('searchInput').value='';
-  $('searchClearBtn').style.display='none';
-  renderProducts(allProducts);
-  $('productSectionTitle').textContent='Featured Products';
-});
+$('searchInput').addEventListener('input',e=>{$('searchClearBtn').style.display=e.target.value?'flex':'none';doSearch(e.target.value);});
+$('searchClearBtn').addEventListener('click',()=>{$('searchInput').value='';$('searchClearBtn').style.display='none';renderProducts(allProducts);$('productSectionTitle').textContent='Featured Products';});
 $('searchToggleBtn').addEventListener('click',()=>$('mobileSearchBar').classList.toggle('show'));
 $('mobileSearchInput').addEventListener('input',e=>doSearch(e.target.value));
 $('mobileSearchClose').addEventListener('click',()=>{$('mobileSearchBar').classList.remove('show');$('mobileSearchInput').value='';renderProducts(allProducts);});
 $('heroCtaBtn').addEventListener('click',()=>window.scrollTo({top:400,behavior:'smooth'}));
 
-/* ══════════════════════════════════
-   AUTH
-══════════════════════════════════ */
+/* ═══════ AUTH ═══════ */
 _auth.onAuthStateChanged(async user=>{
   currentUser=user;
   const in_=!!user;
@@ -1324,32 +1221,23 @@ _auth.onAuthStateChanged(async user=>{
     const name=user.displayName||user.phoneNumber||'User';
     const email=user.email||user.phoneNumber||'';
     const photo=user.photoURL||'';
-    $('profileName').textContent=name;
-    $('profileEmail').textContent=email;
-    $('drawerUserName').textContent=name;
-    $('drawerUserEmail').textContent=email;
-    if(photo){
-      $('profileAvatar').innerHTML=`<img src="${photo}" alt="${esc(name)}"/>`;
-      $('drawerAvatar').innerHTML=`<img src="${photo}" alt="${esc(name)}"/>`;
-    }else{
-      $('profileAvatar').textContent=name[0].toUpperCase();
-      $('drawerAvatar').textContent=name[0].toUpperCase();
-    }
+    $('profileName').textContent=name;$('profileEmail').textContent=email;
+    $('drawerUserName').textContent=name;$('drawerUserEmail').textContent=email;
+    if(photo){$('profileAvatar').innerHTML=`<img src="${photo}" alt="${esc(name)}"/>`;$('drawerAvatar').innerHTML=`<img src="${photo}" alt="${esc(name)}"/>`;}
+    else{$('profileAvatar').textContent=name[0].toUpperCase();$('drawerAvatar').textContent=name[0].toUpperCase();}
     loadUserEarnings(user.uid);
     startOrdersListener(user.uid);
   }else{
     if(ordersUnsub){ordersUnsub();ordersUnsub=null;}
   }
+  // Update admin auth notice if admin is open
+  if($('section-admin-secret').classList.contains('admin-visible')) updateAdminAuthNotice();
 });
 
 $('googleLoginBtn').addEventListener('click',async()=>{
   showLoading('Signing in with Google…');
-  try{
-    const prov=new firebase.auth.GoogleAuthProvider();
-    await _auth.signInWithPopup(prov);
-    showToast('✅ Logged in with Google!','success');
-    switchSection('profile');
-  }catch(err){showToast('Google login failed: '+(err.message||err.code),'error');}
+  try{const prov=new firebase.auth.GoogleAuthProvider();await _auth.signInWithPopup(prov);showToast('✅ Logged in with Google!','success');switchSection('profile');}
+  catch(err){showToast('Google login failed: '+(err.message||err.code),'error');}
   finally{hideLoading();}
 });
 
@@ -1360,8 +1248,7 @@ async function sendOtp(){
   try{
     if(!recaptchaVerifier) recaptchaVerifier=new firebase.auth.RecaptchaVerifier('recaptcha-container',{size:'invisible',callback:()=>{}});
     confirmationResult=await _auth.signInWithPhoneNumber('+91'+phone,recaptchaVerifier);
-    $('otpVerifyWrap').style.display='block';
-    $('otpInputGroup').querySelectorAll('.otp-box')[0]?.focus();
+    $('otpVerifyWrap').style.display='block';$('otpInputGroup').querySelectorAll('.otp-box')[0]?.focus();
     showToast('OTP sent!','success');
   }catch(err){
     showToast('OTP failed: '+(err.message||err.code),'error');
@@ -1382,12 +1269,8 @@ $('verifyOtpBtn').addEventListener('click',async()=>{
 });
 
 document.querySelectorAll('.otp-box').forEach((box,i,arr)=>{
-  box.addEventListener('input',e=>{
-    e.target.value=e.target.value.slice(-1);
-    e.target.classList.toggle('filled',!!e.target.value);
-    if(e.target.value&&arr[i+1]) arr[i+1].focus();
-  });
-  box.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!e.target.value&&arr[i-1]) arr[i-1].focus();});
+  box.addEventListener('input',e=>{e.target.value=e.target.value.slice(-1);e.target.classList.toggle('filled',!!e.target.value);if(e.target.value&&arr[i+1])arr[i+1].focus();});
+  box.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!e.target.value&&arr[i-1])arr[i-1].focus();});
 });
 
 async function handleLogout(){
@@ -1395,14 +1278,11 @@ async function handleLogout(){
   if(ordersUnsub){ordersUnsub();ordersUnsub=null;}
   await _auth.signOut();
   showToast('Logged out successfully.','info');
-  switchSection('home');
-  hideLoading();
+  switchSection('home');hideLoading();
 }
 $('logoutBtn').addEventListener('click',handleLogout);
 
-/* ══════════════════════════════════
-   PRODUCTS
-══════════════════════════════════ */
+/* ═══════ PRODUCTS ═══════ */
 async function loadProducts(cat='all'){
   $('productGrid').innerHTML=Array(4).fill('<div class="product-skeleton"></div>').join('');
   $('noProductsState').style.display='none';
@@ -1419,12 +1299,10 @@ function renderProducts(products){
   $('noProductsState').style.display='none';
   products.forEach(p=>{
     const disc=p.originalPrice>p.price?Math.round((1-p.price/p.originalPrice)*100):0;
-    const isVideo=p.productType==='video';
-    const isEbook=p.productType==='ebook';
+    const isVideo=p.productType==='video',isEbook=p.productType==='ebook';
     const rawImg=isVideo?(p.thumbnailUrl||p.image||p.images?.[0]||''):(p.image||p.images?.[0]||p.thumbnailUrl||'');
     const src=imgUrl(rawImg);
-    const card=document.createElement('div');
-    card.className='product-card';
+    const card=document.createElement('div');card.className='product-card';
     card.innerHTML=`
       <div class="product-card-img-wrap${isVideo?' video-product':''}">
         <img src="${src}" alt="${esc(p.title)}" loading="lazy" onerror="this.src='https://placehold.co/300x300?text=Image'"/>
@@ -1443,16 +1321,12 @@ function renderProducts(products){
         <button class="btn-add-cart"><span class="material-icons-round">add_shopping_cart</span> Add</button>
         <button class="btn-buy-now"><span class="material-icons-round">flash_on</span> Buy</button>
       </div>`;
-
     if(isVideo&&p.videoUrl){
-      const wrap=card.querySelector('.video-product');
-      const vid=card.querySelector('.hover-video');
+      const wrap=card.querySelector('.video-product');const vid=card.querySelector('.hover-video');
       if(vid&&wrap){
         wrap.addEventListener('mouseenter',()=>{vid.load();vid.play().catch(()=>{});wrap.classList.add('playing');});
         wrap.addEventListener('mouseleave',()=>{vid.pause();vid.currentTime=0;wrap.classList.remove('playing');});
-        wrap.addEventListener('click',e=>{
-          if(!e.target.closest('.product-card-actions')) openVideoOverlay(p.videoUrl,p.title);
-        });
+        wrap.addEventListener('click',e=>{if(!e.target.closest('.product-card-actions'))openVideoOverlay(p.videoUrl,p.title);});
       }
     }
     card.querySelector('.product-card-body').addEventListener('click',()=>openProductFull(p));
@@ -1466,60 +1340,39 @@ function renderProducts(products){
 $('categoryStrip').addEventListener('click',e=>{
   const chip=e.target.closest('.category-chip');if(!chip)return;
   document.querySelectorAll('.category-chip').forEach(c=>c.classList.remove('active'));
-  chip.classList.add('active');
-  loadProducts(chip.dataset.cat);
+  chip.classList.add('active');loadProducts(chip.dataset.cat);
 });
 
-/* ══════════════════════════════════
-   PRODUCT FULL SCREEN
-══════════════════════════════════ */
+/* ═══════ PRODUCT FULL ═══════ */
 async function openProductFull(p){
   currentFullProduct=p;
   $('productFullHeaderTitle').textContent=p.title;
   const rawImages=p.images&&p.images.length?p.images:[p.image||p.thumbnailUrl||''];
-  const images=rawImages.map(u=>imgUrl(u)).filter(u=>u&&!u.includes('placehold'));
-  if(!images.length) images.push('https://placehold.co/400x400?text=No+Image');
-
-  const mainImg=$('productFullMainImg');
-  mainImg.src=images[0];mainImg.alt=p.title;
-
-  const thumbsEl=$('productFullThumbs');
-  thumbsEl.innerHTML='';
+  const images=rawImages.map(u=>imgUrl(u)).filter(u=>!u.includes('placehold')||rawImages.length===1);
+  if(!images.length)images.push('https://placehold.co/400x400?text=No+Image');
+  const mainImg=$('productFullMainImg');mainImg.src=images[0];mainImg.alt=p.title;
+  const thumbsEl=$('productFullThumbs');thumbsEl.innerHTML='';
   if(images.length>1){
-    images.forEach((url,idx)=>{
-      const img=document.createElement('img');
-      img.className='product-full-gallery-thumb'+(idx===0?' active':'');
-      img.src=url;img.alt='';
-      img.addEventListener('click',()=>{mainImg.src=url;thumbsEl.querySelectorAll('.product-full-gallery-thumb').forEach(t=>t.classList.remove('active'));img.classList.add('active');});
-      thumbsEl.appendChild(img);
-    });
+    images.forEach((url,idx)=>{const img=document.createElement('img');img.className='product-full-gallery-thumb'+(idx===0?' active':'');img.src=url;img.alt='';img.addEventListener('click',()=>{mainImg.src=url;thumbsEl.querySelectorAll('.product-full-gallery-thumb').forEach(t=>t.classList.remove('active'));img.classList.add('active');});thumbsEl.appendChild(img);});
     thumbsEl.style.display='flex';
   }else thumbsEl.style.display='none';
-
   const vidWrap=$('productFullVideoWrap'),vidEl=$('productFullVideo');
-  if(p.productType==='video'&&p.videoUrl){
-    vidWrap.style.display='block';vidEl.src=p.videoUrl;
-    $('productFullGallery').style.display='none';thumbsEl.style.display='none';
-  }else{vidWrap.style.display='none';vidEl.src='';$('productFullGallery').style.display='';}
-
+  if(p.productType==='video'&&p.videoUrl){vidWrap.style.display='block';vidEl.src=p.videoUrl;$('productFullGallery').style.display='none';thumbsEl.style.display='none';}
+  else{vidWrap.style.display='none';vidEl.src='';$('productFullGallery').style.display='';}
   $('productFullCat').innerHTML=`<span class="material-icons-round" style="font-size:12px">label</span> ${p.category||'Product'}`;
   $('productFullTitle').textContent=p.title;
   const disc=p.originalPrice>p.price?Math.round((1-p.price/p.originalPrice)*100):0;
   $('productFullPrice').textContent=`₹${fmt(p.price)}`;
   $('productFullOrig').textContent=p.originalPrice>p.price?`₹${fmt(p.originalPrice)}`:'';
-  $('productFullDisc').textContent=`${disc}% OFF`;
-  $('productFullDisc').style.display=disc?'inline-flex':'none';
+  $('productFullDisc').textContent=`${disc}% OFF`;$('productFullDisc').style.display=disc?'inline-flex':'none';
   $('productFullDesc').textContent=p.description||'No description available.';
-
   const meta=$('productFullMeta');meta.innerHTML='';
   const chip=(icon,text)=>{const c=document.createElement('span');c.className='product-full-meta-chip';c.innerHTML=`<span class="material-icons-round">${icon}</span>${text}`;meta.appendChild(c);};
-  if(p.productType) chip('category',p.productType.charAt(0).toUpperCase()+p.productType.slice(1));
+  if(p.productType)chip('category',p.productType.charAt(0).toUpperCase()+p.productType.slice(1));
   chip(p.inStock!==false?'check_circle':'cancel',p.inStock!==false?'In Stock':'Out of Stock');
-
   $('productFullPayBadge').innerHTML=p.paymentMethod==='online'
     ?`<div class="pay-badge online-only"><span class="material-icons-round" style="font-size:16px">credit_card</span> Online Payment Only (Razorpay)</div>`
     :`<div class="pay-badge both"><span class="material-icons-round" style="font-size:16px">local_shipping</span> COD + Online Payment Available</div>`;
-
   const readBtn=$('productFullReadBtn');readBtn.style.display='none';
   if(p.productType==='ebook'&&p.pdfUrl&&currentUser){
     const bought=await hasUserPurchased(currentUser.uid,p.id);
@@ -1528,9 +1381,7 @@ async function openProductFull(p){
   $('productFullBuyGrid').style.display=p.inStock===false?'none':'grid';
   $('productFullAddCart').onclick=()=>addToCart(p);
   $('productFullBuyNow').onclick=()=>{closeProductFull();handleBuyNow(p);};
-
-  $('productFullScreen').classList.add('open');
-  document.body.style.overflow='hidden';
+  $('productFullScreen').classList.add('open');document.body.style.overflow='hidden';
 }
 function closeProductFull(){
   $('productFullScreen').classList.remove('open');
@@ -1540,16 +1391,10 @@ function closeProductFull(){
 $('productFullBack').addEventListener('click',closeProductFull);
 $('productFullCartBtn').addEventListener('click',()=>{closeProductFull();openCart();});
 
-/* ══════════════════════════════════
-   CART
-══════════════════════════════════ */
+/* ═══════ CART ═══════ */
 function loadCart(){try{cart=JSON.parse(localStorage.getItem('sayatkart_cart')||'[]');}catch{cart=[];}updateCartBadge();}
 function saveCart(){localStorage.setItem('sayatkart_cart',JSON.stringify(cart));updateCartBadge();}
-function updateCartBadge(){
-  const c=cart.length;
-  $('cartBadge').textContent=c;$('cartBadge').style.display=c?'flex':'none';
-  $('cartCountText').textContent=`(${c} item${c!==1?'s':''})`;
-}
+function updateCartBadge(){const c=cart.length;$('cartBadge').textContent=c;$('cartBadge').style.display=c?'flex':'none';$('cartCountText').textContent=`(${c} item${c!==1?'s':''})`;;}
 function addToCart(p){
   cart.push({id:p.id,title:p.title,price:p.price,originalPrice:p.originalPrice||p.price,image:imgUrl(p.image||p.images?.[0]||p.thumbnailUrl||''),paymentMethod:p.paymentMethod||'both',productType:p.productType||'general'});
   saveCart();renderCart();showToast(`"${p.title}" added to cart!`,'success');
@@ -1558,10 +1403,7 @@ function removeFromCart(i){cart.splice(i,1);saveCart();renderCart();}
 
 function renderCart(){
   $('cartBody').innerHTML='';
-  if(!cart.length){
-    $('cartBody').innerHTML=`<div class="empty-cart"><span class="material-icons-round">remove_shopping_cart</span><p>Your cart is empty!</p><button class="btn-primary" onclick="switchSection('home');closeCart()">Start Shopping</button></div>`;
-    $('cartFooter').style.display='none';return;
-  }
+  if(!cart.length){$('cartBody').innerHTML=`<div class="empty-cart"><span class="material-icons-round">remove_shopping_cart</span><p>Your cart is empty!</p><button class="btn-primary" onclick="switchSection('home');closeCart()">Start Shopping</button></div>`;$('cartFooter').style.display='none';return;}
   $('cartFooter').style.display='block';
   cart.forEach((item,idx)=>{
     const el=document.createElement('div');el.className='cart-item';
@@ -1572,28 +1414,19 @@ function renderCart(){
   const sub=cart.reduce((s,i)=>s+(i.originalPrice||i.price),0);
   const tot=cart.reduce((s,i)=>s+i.price,0);
   const cb=Math.round(tot*5/100);
-  $('cartSubtotal').textContent=`₹${fmt(sub)}`;
-  $('cartDiscount').textContent=`-₹${fmt(sub-tot)}`;
-  $('cartTotal').textContent=`₹${fmt(tot)}`;
-  $('cartCashback').textContent=`+₹${fmt(cb)}`;
+  $('cartSubtotal').textContent=`₹${fmt(sub)}`;$('cartDiscount').textContent=`-₹${fmt(sub-tot)}`;$('cartTotal').textContent=`₹${fmt(tot)}`;$('cartCashback').textContent=`+₹${fmt(cb)}`;
   $('cartAuthWarn').style.display=currentUser?'none':'block';
 }
 
 function openCart(){renderCart();$('cartSidebar').classList.add('open');$('overlay').classList.add('active');document.body.style.overflow='hidden';}
 function closeCart(){$('cartSidebar').classList.remove('open');checkOverlay();}
 window.openCart=openCart;window.closeCart=closeCart;
-$('cartBtn').addEventListener('click',openCart);
-$('cartCloseBtn').addEventListener('click',closeCart);
-$('checkoutBtn').addEventListener('click',()=>{
-  if(!currentUser){showToast('⚠️ Please login first!','error');$('cartAuthWarn').style.display='block';return;}
-  closeCart();initiateCheckout();
-});
+$('cartBtn').addEventListener('click',openCart);$('cartCloseBtn').addEventListener('click',closeCart);
+$('checkoutBtn').addEventListener('click',()=>{if(!currentUser){showToast('⚠️ Please login first!','error');$('cartAuthWarn').style.display='block';return;}closeCart();initiateCheckout();});
 $('cartLoginBtn')?.addEventListener('click',()=>{closeCart();switchSection('profile');});
 $('ordersLoginBtn')?.addEventListener('click',()=>switchSection('profile'));
 
-/* ══════════════════════════════════
-   MODALS
-══════════════════════════════════ */
+/* ═══════ MODALS ═══════ */
 function openModal(el){el.classList.add('open');$('overlay').classList.add('active');document.body.style.overflow='hidden';}
 function closeModal(el){el.classList.remove('open');checkOverlay();}
 function closeAllModals(){document.querySelectorAll('.modal.open').forEach(m=>closeModal(m));}
@@ -1602,275 +1435,130 @@ $('addressModalCancel').addEventListener('click',()=>closeModal($('addressModal'
 $('orderStatusClose').addEventListener('click',()=>closeModal($('orderStatusModal')));
 $('orderStatusDone').addEventListener('click',()=>closeModal($('orderStatusModal')));
 
-/* ══════════════════════════════════
-   CHECKOUT
-══════════════════════════════════ */
+/* ═══════ CHECKOUT ═══════ */
 async function initiateCheckout(){
-  showLoading('Loading address…');
-  let saved=null;try{saved=await getSavedAddress(currentUser.uid);}catch{}
-  hideLoading();
-  if(saved) fillAddr(saved);else clearAddr();
-
-  // Online-only check: if ANY cart item is paymentMethod==='online', hide COD
+  showLoading('Loading address…');let saved=null;try{saved=await getSavedAddress(currentUser.uid);}catch{}hideLoading();
+  if(saved)fillAddr(saved);else clearAddr();
   const onlineOnly=cart.some(i=>i.paymentMethod==='online');
   const codWrap=$('codOptionWrap');
-  if(onlineOnly){
-    codWrap.style.display='none';
-    document.querySelector('input[name="payMethod"][value="online"]').checked=true;
-    $('addressSubtitle').textContent='Online payment only for this product.';
-  }else{
-    codWrap.style.display='flex';
-    document.querySelector('input[name="payMethod"][value="cod"]').checked=true;
-    $('addressSubtitle').textContent='Choose delivery address and payment method.';
-  }
+  if(onlineOnly){codWrap.style.display='none';document.querySelector('input[name="payMethod"][value="online"]').checked=true;$('addressSubtitle').textContent='Online payment only for this product.';}
+  else{codWrap.style.display='flex';document.querySelector('input[name="payMethod"][value="cod"]').checked=true;$('addressSubtitle').textContent='Choose delivery address and payment method.';}
   openModal($('addressModal'));
 }
-
-function fillAddr(a){['addrName','addrPhone','addrStreet','addrArea','addrCity','addrState','addrPin','addrLandmark'].forEach(id=>{const el=$(id);if(el)el.value=a[id.replace('addr','').toLowerCase()]||'';});}
+function fillAddr(a){['addrName','addrPhone','addrStreet','addrArea','addrCity','addrState','addrPin','addrLandmark'].forEach(id=>{const k=id.replace('addr','').toLowerCase();const el=$(id);if(el&&a[k])el.value=a[k];});}
 function clearAddr(){['addrName','addrPhone','addrStreet','addrArea','addrCity','addrState','addrPin','addrLandmark'].forEach(id=>{const el=$(id);if(el)el.value='';});}
 function collectAddr(){
-  const fields=[
-    {id:'addrName',key:'name',msg:'Full name required.'},
-    {id:'addrPhone',key:'phone',msg:'Valid 10-digit mobile required.',pat:/^\d{10}$/},
-    {id:'addrStreet',key:'street',msg:'Street address required.'},
-    {id:'addrArea',key:'area',msg:'Area required.'},
-    {id:'addrCity',key:'city',msg:'City required.'},
-    {id:'addrState',key:'state',msg:'State required.'},
-    {id:'addrPin',key:'pin',msg:'Valid 6-digit PIN required.',pat:/^\d{6}$/},
-  ];
+  const fields=[{id:'addrName',key:'name',msg:'Full name required.'},{id:'addrPhone',key:'phone',msg:'Valid 10-digit mobile required.',pat:/^\d{10}$/},{id:'addrStreet',key:'street',msg:'Street address required.'},{id:'addrArea',key:'area',msg:'Area required.'},{id:'addrCity',key:'city',msg:'City required.'},{id:'addrState',key:'state',msg:'State required.'},{id:'addrPin',key:'pin',msg:'Valid 6-digit PIN required.',pat:/^\d{6}$/}];
   const result={};
-  for(const f of fields){
-    const v=($(f.id)?.value||'').trim();
-    if(!v||(f.pat&&!f.pat.test(v))){showToast(f.msg,'error');$(f.id)?.focus();return null;}
-    result[f.key]=v;
-  }
-  result.landmark=$('addrLandmark')?.value.trim()||'';
-  return result;
+  for(const f of fields){const v=($(f.id)?.value||'').trim();if(!v||(f.pat&&!f.pat.test(v))){showToast(f.msg,'error');$(f.id)?.focus();return null;}result[f.key]=v;}
+  result.landmark=$('addrLandmark')?.value.trim()||'';return result;
 }
-
 $('addressConfirmBtn').addEventListener('click',async()=>{
   const addr=collectAddr();if(!addr)return;
-  if($('saveAddrCheck')?.checked) await saveDeliveryAddress(currentUser.uid,addr);
+  if($('saveAddrCheck')?.checked)await saveDeliveryAddress(currentUser.uid,addr);
   const payMethod=document.querySelector('input[name="payMethod"]:checked')?.value||'online';
   closeModal($('addressModal'));
-  if(payMethod==='cod') startCOD(addr);
-  else startRazorpay(addr);
+  if(payMethod==='cod')startCOD(addr);else startRazorpay(addr);
 });
 
-/* ══════════════════════════════════
-   COD ORDER
-══════════════════════════════════ */
+/* ═══════ COD ═══════ */
 async function startCOD(addr){
   showLoading('Placing COD order…');
-  const total=cart.reduce((s,i)=>s+i.price,0);
-  const cb=Math.round(total*5/100);
-  const pid='COD-'+Date.now();
-  const res=await saveOrder({
-    userId:currentUser.uid,
-    items:cart.map(i=>({productId:i.id,title:i.title,price:i.price,image:i.image})),
-    total,cashbackEarned:cb,deliveryAddress:addr,
-    paymentId:pid,paymentMethod:'cod',
-    estimatedDelivery:new Date(Date.now()+7*24*60*60*1000).toISOString()
-  });
-  if(res.success){
-    await updateUserEarnings(currentUser.uid,cb);
-    await addPurchasedProducts(currentUser.uid,cart.map(i=>i.id));
-    showSuccessScreen(pid,cb);
-    cart=[];saveCart();renderCart();loadUserEarnings(currentUser.uid);
-  }else showToast('Order failed. Please try again.','error');
+  const total=cart.reduce((s,i)=>s+i.price,0);const cb=Math.round(total*5/100);const pid='COD-'+Date.now();
+  const res=await saveOrder({userId:currentUser.uid,items:cart.map(i=>({productId:i.id,title:i.title,price:i.price,image:i.image})),total,cashbackEarned:cb,deliveryAddress:addr,paymentId:pid,paymentMethod:'cod',estimatedDelivery:new Date(Date.now()+7*24*60*60*1000).toISOString()});
+  if(res.success){await updateUserEarnings(currentUser.uid,cb);await addPurchasedProducts(currentUser.uid,cart.map(i=>i.id));showSuccessScreen(pid,cb);cart=[];saveCart();renderCart();loadUserEarnings(currentUser.uid);}
+  else showToast('Order failed. Please try again.','error');
   hideLoading();
 }
 
-/* ══════════════════════════════════
-   RAZORPAY
-══════════════════════════════════ */
+/* ═══════ RAZORPAY ═══════ */
 async function startRazorpay(addr){
   const total=cart.reduce((s,i)=>s+i.price,0);
   try{
-    const rzp=new window.Razorpay({
-      key:RAZORPAY_KEY,amount:Math.round(total*100),currency:'INR',
-      name:'SayatKart',description:`${cart.length} item(s)`,
-      prefill:{name:currentUser?.displayName||addr.name,email:currentUser?.email||'',contact:currentUser?.phoneNumber?.replace('+91','')||addr.phone},
-      theme:{color:'#f97316'},
-      handler:async res=>await onRazorpaySuccess(res,addr,total),
-      modal:{ondismiss:()=>showToast('Payment cancelled.','warning')}
-    });
-    rzp.on('payment.failed',e=>showToast('Payment failed: '+(e?.error?.description||'Error'),'error'));
-    rzp.open();
+    const rzp=new window.Razorpay({key:RAZORPAY_KEY,amount:Math.round(total*100),currency:'INR',name:'SayatKart',description:`${cart.length} item(s)`,prefill:{name:currentUser?.displayName||addr.name,email:currentUser?.email||'',contact:currentUser?.phoneNumber?.replace('+91','')||addr.phone},theme:{color:'#f97316'},handler:async res=>await onRazorpaySuccess(res,addr,total),modal:{ondismiss:()=>showToast('Payment cancelled.','warning')}});
+    rzp.on('payment.failed',e=>showToast('Payment failed: '+(e?.error?.description||'Error'),'error'));rzp.open();
   }catch(e){showToast('Cannot open payment gateway. Check Razorpay key.','error');console.error(e);}
 }
-
 async function onRazorpaySuccess(res,addr,total){
-  showLoading('Saving order…');
-  const cb=Math.round(total*5/100);
-  const r=await saveOrder({
-    userId:currentUser.uid,
-    items:cart.map(i=>({productId:i.id,title:i.title,price:i.price,image:i.image})),
-    total,cashbackEarned:cb,deliveryAddress:addr,
-    paymentId:res.razorpay_payment_id,
-    razorpayOrderId:res.razorpay_order_id||null,
-    paymentMethod:'online',
-    estimatedDelivery:new Date(Date.now()+7*24*60*60*1000).toISOString()
-  });
-  if(r.success){
-    await updateUserEarnings(currentUser.uid,cb);
-    await addPurchasedProducts(currentUser.uid,cart.map(i=>i.id));
-    showSuccessScreen(res.razorpay_payment_id,cb);
-    cart=[];saveCart();renderCart();loadUserEarnings(currentUser.uid);
-  }else showToast('Payment ok but save failed. ID: '+res.razorpay_payment_id,'warning');
+  showLoading('Saving order…');const cb=Math.round(total*5/100);
+  const r=await saveOrder({userId:currentUser.uid,items:cart.map(i=>({productId:i.id,title:i.title,price:i.price,image:i.image})),total,cashbackEarned:cb,deliveryAddress:addr,paymentId:res.razorpay_payment_id,razorpayOrderId:res.razorpay_order_id||null,paymentMethod:'online',estimatedDelivery:new Date(Date.now()+7*24*60*60*1000).toISOString()});
+  if(r.success){await updateUserEarnings(currentUser.uid,cb);await addPurchasedProducts(currentUser.uid,cart.map(i=>i.id));showSuccessScreen(res.razorpay_payment_id,cb);cart=[];saveCart();renderCart();loadUserEarnings(currentUser.uid);}
+  else showToast('Payment ok but save failed. ID: '+res.razorpay_payment_id,'warning');
   hideLoading();
 }
-
 function handleBuyNow(p){
   if(!currentUser){showToast('⚠️ Please login to buy!','error');return;}
   cart=[{id:p.id,title:p.title,price:p.price,originalPrice:p.originalPrice||p.price,image:imgUrl(p.image||p.images?.[0]||p.thumbnailUrl||''),paymentMethod:p.paymentMethod||'both',productType:p.productType||'general'}];
   saveCart();initiateCheckout();
 }
-
-function showSuccessScreen(payId,cb){
-  $('successPaymentId').textContent=payId;
-  $('successCashbackAmt').textContent=`₹${fmt(cb)}`;
-  $('successOverlay').classList.add('open');
-}
+function showSuccessScreen(payId,cb){$('successPaymentId').textContent=payId;$('successCashbackAmt').textContent=`₹${fmt(cb)}`;$('successOverlay').classList.add('open');}
 $('successDoneBtn').addEventListener('click',()=>{$('successOverlay').classList.remove('open');switchSection('home');});
 
-/* ══════════════════════════════════
-   PROFILE EARNINGS
-══════════════════════════════════ */
-async function loadUserEarnings(uid){
-  try{const p=await getUserProfile(uid);$('earningsAmount').textContent=`₹${fmt(p?.totalEarnings||0)}`;}catch{}
-}
+/* ═══════ EARNINGS ═══════ */
+async function loadUserEarnings(uid){try{const p=await getUserProfile(uid);$('earningsAmount').textContent=`₹${fmt(p?.totalEarnings||0)}`;}catch{}}
 
-/* ══════════════════════════════════
-   ORDERS — REAL-TIME LISTENER
-══════════════════════════════════ */
+/* ═══════ ORDERS — REAL-TIME ═══════ */
 function startOrdersListener(uid){
   if(ordersUnsub){ordersUnsub();ordersUnsub=null;}
   ordersUnsub=listenUserOrders(uid,orders=>{
     renderProfileOrders(orders.slice(0,3));
-    if($('section-orders').classList.contains('active')) renderOrdersPage(orders);
+    if($('section-orders').classList.contains('active'))renderOrdersPage(orders);
   });
 }
-
 function renderProfileOrders(orders){
   const list=$('profileOrdersList');if(!list)return;
   if(!orders.length){list.innerHTML='<div class="empty-orders"><span class="material-icons-round">shopping_bag</span><p>No orders yet.</p></div>';return;}
-  list.innerHTML='';
-  orders.forEach(o=>list.appendChild(buildOrderMiniCard(o)));
+  list.innerHTML='';orders.forEach(o=>list.appendChild(buildOrderMiniCard(o)));
 }
-
 $('viewOrdersBtn')?.addEventListener('click',()=>switchSection('orders'));
-
 function loadOrdersPage(){
   if(!currentUser){$('ordersAuthWarning').style.display='flex';$('ordersContainer').style.display='none';return;}
   $('ordersAuthWarning').style.display='none';$('ordersContainer').style.display='block';
   $('ordersFullList').innerHTML='<div class="inline-spinner"><div class="spinner"></div><p>Loading orders…</p></div>';
-  // Trigger a one-time fetch + set up listener
   startOrdersListener(currentUser.uid);
 }
-
 function renderOrdersPage(orders){
-  const list=$('ordersFullList');if(!list)return;
-  if(!$('section-orders').classList.contains('active')) return;
+  const list=$('ordersFullList');if(!list||!$('section-orders').classList.contains('active'))return;
   list.innerHTML='';
-  if(!orders.length){
-    list.innerHTML=`<div class="empty-state"><span class="material-icons-round empty-icon">shopping_bag</span><p>No orders yet.</p><button class="btn-primary" style="margin-top:16px" onclick="switchSection('home')"><span class="material-icons-round">storefront</span> Shop Now</button></div>`;
-    return;
-  }
+  if(!orders.length){list.innerHTML=`<div class="empty-state"><span class="material-icons-round empty-icon">shopping_bag</span><p>No orders yet.</p><button class="btn-primary" style="margin-top:16px" onclick="switchSection('home')"><span class="material-icons-round">storefront</span> Shop Now</button></div>`;return;}
   orders.forEach(o=>list.appendChild(buildOrderFullCard(o)));
 }
-
-function statusInfo(s){
-  return{
-    confirmed:{cls:'status-confirmed',lbl:'✅ Confirmed'},
-    shipped:{cls:'status-shipped',lbl:'🚚 Shipped'},
-    out_for_delivery:{cls:'status-out',lbl:'🛵 Out for Delivery'},
-    delivered:{cls:'status-delivered',lbl:'🏠 Delivered'},
-  }[s]||{cls:'status-confirmed',lbl:'✅ Confirmed'};
-}
-
+function statusInfo(s){return({confirmed:{cls:'status-confirmed',lbl:'✅ Confirmed'},shipped:{cls:'status-shipped',lbl:'🚚 Shipped'},out_for_delivery:{cls:'status-out',lbl:'🛵 Out for Delivery'},delivered:{cls:'status-delivered',lbl:'🏠 Delivered'}})[s]||{cls:'status-confirmed',lbl:'✅ Confirmed'};}
 function buildOrderMiniCard(order){
   const el=document.createElement('div');el.className='order-mini-card';
   const date=order.createdAt?.toDate?order.createdAt.toDate():new Date();
   const {cls,lbl}=statusInfo(order.status);
   el.innerHTML=`<div class="order-mini-top"><span class="order-mini-id">#${order.id.slice(0,8).toUpperCase()}</span><span class="order-mini-amount">₹${fmt(order.total)}</span></div><p class="order-mini-date">${fmtDate(date)}</p><span class="status-pill ${cls}">${lbl}</span>`;
-  el.addEventListener('click',()=>openOrderStatusModal(order));
-  return el;
+  el.addEventListener('click',()=>openOrderStatusModal(order));return el;
 }
-
 function buildOrderFullCard(order){
   const el=document.createElement('div');el.className='order-full-card';
   const date=order.createdAt?.toDate?order.createdAt.toDate():new Date();
   const {cls,lbl}=statusInfo(order.status);
-  let delText='';
-  if(order.status==='delivered') delText='🏠 Delivered';
-  else if(order.estimatedDelivery) delText=`Expected by ${fmtDate(new Date(order.estimatedDelivery))}`;
-  else delText=`Expected by ${fmtDate(new Date(date.getTime()+7*24*60*60*1000))}`;
-
+  let delText=order.status==='delivered'?'🏠 Delivered':order.estimatedDelivery?`Expected by ${fmtDate(new Date(order.estimatedDelivery))}`:`Expected by ${fmtDate(new Date(date.getTime()+7*24*60*60*1000))}`;
   const itemsHtml=(order.items||[]).map(i=>`<div class="order-item-row"><img src="${i.image||'https://placehold.co/38'}" alt="${esc(i.title)}" onerror="this.src='https://placehold.co/38'"/><span class="order-item-name">${esc(i.title)}</span><span class="order-item-price">₹${fmt(i.price)}</span></div>`).join('');
-  const payIcon=order.paymentMethod==='cod'?'local_shipping':'credit_card';
-  const payText=order.paymentMethod==='cod'?'Cash on Delivery':'Online Payment';
-
-  el.innerHTML=`
-    <div class="order-full-header">
-      <span style="font-size:.76rem;color:var(--tm);font-weight:600">Order #${order.id.slice(0,8).toUpperCase()}</span>
-      <span class="status-pill ${cls}">${lbl}</span>
-    </div>
-    <div class="order-full-body">
-      <p class="order-full-date">📅 Placed on ${fmtDate(date)}</p>
-      <p class="order-delivery-est"><span class="material-icons-round">local_shipping</span> ${delText}</p>
-      <div class="order-items-list">${itemsHtml}</div>
-    </div>
-    <div class="order-full-footer">
-      <div>
-        <span class="order-full-amount">₹${fmt(order.total)}</span>
-        <div class="pay-method-tag" style="margin-top:3px"><span class="material-icons-round">${payIcon}</span>${payText}</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px">
-        ${order.cashbackEarned?`<span class="cashback-badge"><span class="material-icons-round" style="font-size:13px">stars</span>+₹${fmt(order.cashbackEarned)}</span>`:''}
-        <button class="btn-track"><span class="material-icons-round">local_shipping</span> Track</button>
-      </div>
-    </div>`;
-  el.querySelector('.btn-track').addEventListener('click',()=>openOrderStatusModal(order));
-  return el;
+  el.innerHTML=`<div class="order-full-header"><span style="font-size:.76rem;color:var(--tm);font-weight:600">Order #${order.id.slice(0,8).toUpperCase()}</span><span class="status-pill ${cls}">${lbl}</span></div><div class="order-full-body"><p class="order-full-date">📅 Placed on ${fmtDate(date)}</p><p class="order-delivery-est"><span class="material-icons-round">local_shipping</span> ${delText}</p><div class="order-items-list">${itemsHtml}</div></div><div class="order-full-footer"><div><span class="order-full-amount">₹${fmt(order.total)}</span><div class="pay-method-tag" style="margin-top:3px"><span class="material-icons-round">${order.paymentMethod==='cod'?'local_shipping':'credit_card'}</span>${order.paymentMethod==='cod'?'Cash on Delivery':'Online Payment'}</div></div><div style="display:flex;align-items:center;gap:8px">${order.cashbackEarned?`<span class="cashback-badge"><span class="material-icons-round" style="font-size:13px">stars</span>+₹${fmt(order.cashbackEarned)}</span>`:''}<button class="btn-track"><span class="material-icons-round">local_shipping</span> Track</button></div></div>`;
+  el.querySelector('.btn-track').addEventListener('click',()=>openOrderStatusModal(order));return el;
 }
-
-/* ══════════════════════════════════
-   ORDER STATUS MODAL
-══════════════════════════════════ */
 const STEPS=['confirmed','shipped','out_for_delivery','delivered'];
 const STEP_IDS=['step-confirmed','step-shipped','step-out','step-delivered'];
 function openOrderStatusModal(order){
   $('statusOrderId').textContent='#'+order.id.slice(0,8).toUpperCase();
   const date=order.createdAt?.toDate?order.createdAt.toDate():new Date();
-  let delText='';
-  if(order.status==='delivered') delText='✅ Delivered!';
-  else if(order.estimatedDelivery) delText=`🚚 Expected by ${fmtDate(new Date(order.estimatedDelivery))}`;
-  else delText=`🚚 Expected by ${fmtDate(new Date(date.getTime()+7*24*60*60*1000))}`;
-  $('statusDeliveryEst').textContent=delText;
-
+  $('statusDeliveryEst').textContent=order.status==='delivered'?'✅ Delivered!':order.estimatedDelivery?`🚚 Expected by ${fmtDate(new Date(order.estimatedDelivery))}`:`🚚 Expected by ${fmtDate(new Date(date.getTime()+7*24*60*60*1000))}`;
   const idx=STEPS.indexOf(order.status||'confirmed');
-  STEP_IDS.forEach((id,i)=>{
-    const s=$(id);if(!s)return;
-    s.classList.remove('done','active');
-    if(i<idx) s.classList.add('done');
-    if(i===idx) s.classList.add('active');
-  });
+  STEP_IDS.forEach((id,i)=>{const s=$(id);if(!s)return;s.classList.remove('done','active');if(i<idx)s.classList.add('done');if(i===idx)s.classList.add('active');});
   $('statusItems').innerHTML=(order.items||[]).map(i=>`<div style="display:flex;align-items:center;gap:10px;font-size:.83rem;padding:8px;border-radius:var(--r1);border:1px solid var(--bdr);margin-bottom:6px"><img src="${i.image||'https://placehold.co/40'}" style="width:38px;height:38px;border-radius:var(--r1);object-fit:cover;flex-shrink:0" onerror="this.src='https://placehold.co/40'"/><span style="flex:1;font-weight:600;color:var(--th)">${esc(i.title)}</span><span style="font-weight:800">₹${fmt(i.price)}</span></div>`).join('');
   openModal($('orderStatusModal'));
 }
 
-/* ══════════════════════════════════
-   WITHDRAWAL
-══════════════════════════════════ */
+/* ═══════ WITHDRAWAL ═══════ */
 $('withdrawBtn').addEventListener('click',async()=>{
   if(!currentUser){showToast('⚠️ Login required.','error');return;}
-  const upi=$('upiId')?.value.trim();
-  const amount=parseFloat($('withdrawAmount')?.value||0);
-  if(!upi||!/^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{2,}$/.test(upi)){showToast('Valid UPI ID required (e.g. name@upi)','error');return;}
+  const upi=$('upiId')?.value.trim();const amount=parseFloat($('withdrawAmount')?.value||0);
+  if(!upi||!/^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{2,}$/.test(upi)){showToast('Valid UPI ID required.','error');return;}
   if(!amount||amount<10){showToast('Minimum ₹10 withdrawal.','error');return;}
-  const profile=await getUserProfile(currentUser.uid);
-  const earnings=profile?.totalEarnings||0;
+  const profile=await getUserProfile(currentUser.uid);const earnings=profile?.totalEarnings||0;
   if(amount>earnings){showToast(`Insufficient balance. Available: ₹${fmt(earnings)}`,'error');return;}
   showLoading('Submitting withdrawal…');
   const r=await saveWithdrawalRequest(currentUser.uid,upi,amount,{name:currentUser.displayName||'',email:currentUser.email||'',phone:currentUser.phoneNumber||''});
@@ -1879,61 +1567,187 @@ $('withdrawBtn').addEventListener('click',async()=>{
   else showToast('Request failed. Try again.','error');
 });
 
-/* ══════════════════════════════════
-   VIDEO OVERLAY
-══════════════════════════════════ */
-function openVideoOverlay(url,title){
-  const vid=$('mainVideoPlayer');vid.src=url;$('videoOverlayTitle').textContent=title||'Video';
-  $('videoOverlay').classList.add('open');document.body.style.overflow='hidden';vid.play().catch(()=>{});
-}
+/* ═══════ VIDEO OVERLAY ═══════ */
+function openVideoOverlay(url,title){const vid=$('mainVideoPlayer');vid.src=url;$('videoOverlayTitle').textContent=title||'Video';$('videoOverlay').classList.add('open');document.body.style.overflow='hidden';vid.play().catch(()=>{});}
 function closeVideoOverlay(){const vid=$('mainVideoPlayer');vid.pause();vid.src='';$('videoOverlay').classList.remove('open');document.body.style.overflow='';}
 $('videoOverlayClose').addEventListener('click',closeVideoOverlay);
-$('videoOverlay').addEventListener('click',e=>{if(e.target===$('videoOverlay')) closeVideoOverlay();});
+$('videoOverlay').addEventListener('click',e=>{if(e.target===$('videoOverlay'))closeVideoOverlay();});
 
-/* ══════════════════════════════════
-   PDF READER (pdf.js — download blocked)
-══════════════════════════════════ */
+/* ═══════ PDF READER ═══════ */
 async function openPDFReader(pdfUrl,title){
-  const overlay=$('pdfOverlay');overlay.classList.add('open');
-  $('pdfTitle').textContent=title||'Reading…';$('pdfPageCount').textContent='';
-  document.body.style.overflow='hidden';
-  const pagesEl=$('pdfPages');
-  pagesEl.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:60px 20px;color:rgba(255,255,255,.6)"><div class="spinner"></div><p>Loading book…</p></div>';
+  const overlay=$('pdfOverlay');overlay.classList.add('open');$('pdfTitle').textContent=title||'Reading…';$('pdfPageCount').textContent='';document.body.style.overflow='hidden';
+  const pagesEl=$('pdfPages');pagesEl.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:60px 20px;color:rgba(255,255,255,.6)"><div class="spinner"></div><p>Loading book…</p></div>';
   overlay.oncontextmenu=e=>e.preventDefault();
   const pdfjsLib=window['pdfjs-dist/build/pdf'];
-  if(!pdfjsLib){pagesEl.innerHTML='<p style="color:#f87171;padding:20px">PDF reader unavailable.</p>';return;}
+  if(!pdfjsLib){pagesEl.innerHTML='<p style="color:#f87171;padding:20px">PDF reader unavailable. Please refresh.</p>';return;}
   pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
   try{
-    const resp=await fetch(pdfUrl);
-    const buf=await resp.arrayBuffer();
+    const resp=await fetch(pdfUrl);const buf=await resp.arrayBuffer();
     const pdf=await pdfjsLib.getDocument({data:buf,disableStream:true,disableRange:true}).promise;
     $('pdfPageCount').textContent=`${pdf.numPages} pages`;pagesEl.innerHTML='';
     for(let i=1;i<=pdf.numPages;i++){
-      const page=await pdf.getPage(i);
-      const vp=page.getViewport({scale:window.innerWidth<540?1.1:1.7});
+      const page=await pdf.getPage(i);const vp=page.getViewport({scale:window.innerWidth<540?1.1:1.7});
       const canvas=document.createElement('canvas');canvas.className='pdf-page-canvas';canvas.width=vp.width;canvas.height=vp.height;
       const pn=document.createElement('p');pn.className='pdf-page-num';pn.textContent=`— Page ${i} of ${pdf.numPages} —`;
       pagesEl.appendChild(canvas);pagesEl.appendChild(pn);
       await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;
       canvas.onselectstart=()=>false;canvas.ondragstart=()=>false;
     }
-  }catch(e){
-    console.error(e);
-    pagesEl.innerHTML='<div style="text-align:center;padding:40px;color:#f87171"><span class="material-icons-round" style="font-size:36px;display:block;margin-bottom:12px">error</span><p>Could not load PDF. Please try again.</p></div>';
-  }
+  }catch(e){console.error(e);pagesEl.innerHTML='<div style="text-align:center;padding:40px;color:#f87171"><span class="material-icons-round" style="font-size:36px;display:block;margin-bottom:12px">error</span><p>Could not load PDF. Please try again.</p></div>';}
 }
 function closePDFReader(){$('pdfOverlay').classList.remove('open');document.body.style.overflow='';}
 $('pdfClose').addEventListener('click',closePDFReader);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeVideoOverlay();closePDFReader();closeProductFull();}});
 
-/* ══════════════════════════════════
-   ADMIN PANEL JS
-══════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   ADMIN PANEL — UPLOAD SYSTEM (FIXED)
+   
+   Firebase Storage Rules must be set to:
+   rules_version = '2';
+   service firebase.storage {
+     match /b/{bucket}/o {
+       match /{allPaths=**} {
+         allow read: if true;
+         allow write: if request.auth != null;
+       }
+     }
+   }
+═══════════════════════════════════════════ */
+
+// Upload log helper
+function uploadLog(msg, type='info'){
+  const logEl=$('adminUploadLog');
+  if(!logEl) return;
+  const line=document.createElement('span');
+  line.className=`upload-log-line ${type}`;
+  line.textContent=`[${new Date().toLocaleTimeString()}] ${msg}`;
+  logEl.appendChild(line);
+  logEl.scrollTop=logEl.scrollHeight;
+  console.log(`[Upload ${type.toUpperCase()}] ${msg}`);
+}
+
+// *** FIXED uploadFile — core function ***
+function uploadFile(file, folder, onProgress){
+  return new Promise((resolve, reject)=>{
+    // Validate
+    if(!file || file.size===0){ reject(new Error('Empty or invalid file.')); return; }
+
+    // File size limits
+    const maxSizes={ 'image':15*1024*1024, 'video':500*1024*1024, 'application':100*1024*1024 };
+    const cat=file.type.split('/')[0];
+    const maxSz=maxSizes[cat]||50*1024*1024;
+    if(file.size>maxSz){ reject(new Error(`File too large! Max: ${Math.round(maxSz/1024/1024)}MB, Your file: ${(file.size/1024/1024).toFixed(1)}MB`)); return; }
+
+    // Build storage path
+    const ext=file.name.split('.').pop().toLowerCase();
+    const safeName=`${Date.now()}_${Math.random().toString(36).slice(2,9)}.${ext}`;
+    const fullPath=`${folder}${safeName}`;
+
+    // Correct MIME type
+    const contentType=file.type||MIME_MAP[ext]||'application/octet-stream';
+    const metadata={ contentType, customMetadata:{ originalName:file.name, uploadedBy:currentUser?.uid||'admin' }};
+
+    uploadLog(`Starting upload: ${file.name} (${(file.size/1024/1024).toFixed(2)}MB) → ${fullPath}`);
+
+    try{
+      const storageRef = _storage.ref(fullPath);
+      const task = storageRef.put(file, metadata);
+      activeUploadTask = task;
+
+      task.on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        // Progress
+        (snapshot)=>{
+          const transferred = snapshot.bytesTransferred;
+          const total = snapshot.totalBytes;
+          const pct = total>0 ? Math.round((transferred/total)*100) : 0;
+          if(onProgress) onProgress(pct, transferred, total);
+
+          // Log every 10%
+          if(pct % 10 === 0 && pct > 0){
+            uploadLog(`${pct}% — ${(transferred/1024/1024).toFixed(1)}MB / ${(total/1024/1024).toFixed(1)}MB`, 'info');
+          }
+        },
+        // Error handler — with specific messages
+        (error)=>{
+          activeUploadTask=null;
+          let msg='';
+          switch(error.code){
+            case 'storage/unauthorized':
+              msg='❌ Permission Denied! আপনাকে আগে Profile থেকে Login করতে হবে। Firebase Auth-এ logged in না থাকলে upload হবে না।';
+              break;
+            case 'storage/canceled':
+              msg='Upload cancelled.';
+              break;
+            case 'storage/quota-exceeded':
+              msg='❌ Firebase Storage quota শেষ হয়ে গেছে।';
+              break;
+            case 'storage/invalid-checksum':
+              msg='❌ File corrupted. আবার select করে try করুন।';
+              break;
+            case 'storage/retry-limit-exceeded':
+              msg='❌ Network timeout! Internet connection চেক করুন এবং আবার try করুন।';
+              break;
+            case 'storage/object-not-found':
+              msg='Storage path not found.';
+              break;
+            case 'storage/bucket-not-found':
+              msg='❌ Storage bucket not configured! Firebase Console-এ Storage enable করুন।';
+              break;
+            case 'storage/project-not-found':
+              msg='❌ Firebase project not found.';
+              break;
+            case 'storage/unauthenticated':
+              msg='❌ Unauthenticated! Profile থেকে login করুন।';
+              break;
+            default:
+              msg=`❌ Upload failed (${error.code}): ${error.message}`;
+          }
+          uploadLog(msg, 'err');
+          reject(new Error(msg));
+        },
+        // Completion — retry getDownloadURL up to 3 times
+        async ()=>{
+          activeUploadTask=null;
+          uploadLog(`✅ Upload complete: ${file.name}`, 'ok');
+          let lastErr=null;
+          for(let attempt=1;attempt<=3;attempt++){
+            try{
+              // Use the storageRef directly (more reliable than task.snapshot.ref)
+              const url = await storageRef.getDownloadURL();
+              uploadLog(`✅ Download URL obtained (attempt ${attempt})`, 'ok');
+              resolve(url);
+              return;
+            }catch(urlErr){
+              lastErr=urlErr;
+              uploadLog(`⚠️ GetDownloadURL attempt ${attempt} failed: ${urlErr.message}`, 'err');
+              if(attempt<3) await new Promise(r=>setTimeout(r,2000*attempt));
+            }
+          }
+          reject(new Error('Could not get download URL after 3 attempts: '+(lastErr?.message||'Unknown')));
+        }
+      );
+    }catch(initErr){
+      uploadLog(`❌ Upload init error: ${initErr.message}`, 'err');
+      reject(initErr);
+    }
+  });
+}
+
+// Update overall progress display
+function updateOverallProgress(pct, statusText){
+  const pctClamped = Math.min(100, Math.max(0, pct||0));
+  $('adminProgressBar').style.width=pctClamped+'%';
+  $('adminProgressPct').textContent=pctClamped+'%';
+  if(statusText) $('adminProgressText').textContent=statusText;
+}
+
+// Admin panel — product type switching
 document.querySelectorAll('input[name="adminProductType"]').forEach(r=>{
   r.addEventListener('change',()=>{
     const type=r.value;
-    $('adminPDFGroup').style.display=type==='ebook'?'block':'none';
-    $('adminVideoGroup').style.display=type==='video'?'block':'none';
+    $('adminPDFGroup').style.display   = type==='ebook'?'block':'none';
+    $('adminVideoGroup').style.display = type==='video'?'block':'none';
     const catInput=$('adminCategory');
     if(type==='ebook'||type==='paperback'){catInput.value='books';$('adminCatGroup').style.opacity='.55';}
     else if(type==='video'){catInput.value='video';$('adminCatGroup').style.opacity='.55';}
@@ -1949,9 +1763,9 @@ $('adminInStockToggle').addEventListener('click',()=>{
 });
 
 $('adminImages').addEventListener('change',e=>{
-  const files=Array.from(e.target.files);
-  const prev=$('adminImagePreviews');prev.innerHTML='';
-  files.forEach(f=>{
+  const files=Array.from(e.target.files);const prev=$('adminImagePreviews');prev.innerHTML='';
+  files.forEach((f,idx)=>{
+    if(f.size>15*1024*1024){showToast(`Image ${idx+1} too large (max 15MB)!`,'warning');return;}
     const reader=new FileReader();
     reader.onload=ev=>{
       const wrap=document.createElement('div');wrap.className='img-preview-item';
@@ -1965,15 +1779,22 @@ $('adminImages').addEventListener('change',e=>{
 
 $('adminVideo').addEventListener('change',e=>{
   const f=e.target.files?.[0];if(!f)return;
-  $('adminVideoPreview').src=URL.createObjectURL(f);
-  $('adminVideoPreviewWrap').style.display='block';
+  if(f.size>500*1024*1024){showToast('Video too large! Max 500MB.','error');$('adminVideo').value='';return;}
+  $('adminVideoName').textContent=`${f.name} (${(f.size/1024/1024).toFixed(1)}MB)`;
+  $('adminVideoSelected').style.display='flex';
+  const url=URL.createObjectURL(f);$('adminVideoPreview').src=url;$('adminVideoPreviewWrap').style.display='block';
+});
+$('adminVideoRemove').addEventListener('click',()=>{
+  $('adminVideo').value='';$('adminVideoSelected').style.display='none';
+  $('adminVideoPreview').src='';$('adminVideoPreviewWrap').style.display='none';
 });
 
 $('adminPDF').addEventListener('change',e=>{
   const f=e.target.files?.[0];if(!f)return;
-  if(f.type!=='application/pdf'){showToast('Only PDF files accepted.','error');return;}
-  if(f.size>50*1024*1024){showToast('PDF must be under 50 MB.','error');return;}
-  $('adminPDFName').textContent=f.name;$('adminPDFSelected').style.display='flex';$('adminPDFZone').style.display='none';
+  if(f.type!=='application/pdf'&&!f.name.toLowerCase().endsWith('.pdf')){showToast('Only PDF files accepted.','error');$('adminPDF').value='';return;}
+  if(f.size>100*1024*1024){showToast('PDF too large! Max 100MB.','error');$('adminPDF').value='';return;}
+  $('adminPDFName').textContent=`${f.name} (${(f.size/1024/1024).toFixed(1)}MB)`;
+  $('adminPDFSelected').style.display='flex';$('adminPDFZone').style.display='none';
 });
 $('adminPDFRemove').addEventListener('click',()=>{
   $('adminPDF').value='';$('adminPDFSelected').style.display='none';$('adminPDFZone').style.display='block';
@@ -1988,109 +1809,167 @@ function updateDiscPreview(){
 $('adminMRP').addEventListener('input',updateDiscPreview);
 $('adminSalePrice').addEventListener('input',updateDiscPreview);
 
-// Firebase Storage upload
-function uploadFile(file,folder,onProgress){
-  return new Promise((resolve,reject)=>{
-    const ext=file.name.split('.').pop();
-    const path=`${folder}${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
-    const ref=_storage.ref().child(path);
-    const task=ref.put(file);
-    task.on('state_changed',
-      snap=>{if(onProgress)onProgress(Math.round(snap.bytesTransferred/snap.totalBytes*100));},
-      err=>reject(err),
-      async()=>resolve(await task.snapshot.ref.getDownloadURL())
-    );
-  });
-}
-
+/* PUBLISH BUTTON — main handler */
 $('adminPublishBtn').addEventListener('click',async()=>{
+  const publishBtn=$('adminPublishBtn');
+
+  // *** AUTH CHECK — must be logged in for Storage upload ***
+  if(!currentUser){
+    showToast('❌ আগে Profile থেকে Login করুন! Firebase Auth required.','error',5000);
+    updateAdminAuthNotice();
+    return;
+  }
+
   const type=document.querySelector('input[name="adminProductType"]:checked')?.value||'general';
-  const title=$('adminTitle')?.value.trim();
-  const desc=$('adminDesc')?.value.trim();
+  const title=($('adminTitle')?.value||'').trim();
+  const desc=($('adminDesc')?.value||'').trim();
   const mrp=parseFloat($('adminMRP')?.value||0);
   const sale=parseFloat($('adminSalePrice')?.value||0);
   const payMethod=$('adminPayMethod')?.value||'both';
   const inStock=$('adminInStock')?.value==='true';
-  let category=$('adminCategory')?.value.trim().toLowerCase();
+  let category=($('adminCategory')?.value||'').trim().toLowerCase();
+
+  // Auto category
   if(type==='ebook'||type==='paperback') category='books';
-  if(type==='video'&&!category) category='video';
+  if(type==='video') category='video';
 
-  // Validate
+  // Validations
   if(!title){showToast('Product title is required.','error');$('adminTitle').focus();return;}
-  if(!mrp||!sale){showToast('MRP and Sale Price are required.','error');return;}
-  if(sale>mrp){showToast('Sale price cannot exceed MRP.','error');return;}
+  if(!mrp||mrp<=0){showToast('Valid MRP is required.','error');$('adminMRP').focus();return;}
+  if(!sale||sale<=0){showToast('Valid Sale Price is required.','error');$('adminSalePrice').focus();return;}
+  if(sale>mrp){showToast('Sale price cannot exceed MRP.','error');$('adminSalePrice').focus();return;}
   if(!category){showToast('Category is required.','error');$('adminCategory').focus();return;}
-  const imgFiles=Array.from($('adminImages')?.files||[]);
-  if(!imgFiles.length){showToast('At least one cover image is required.','error');return;}
-  if(type==='ebook'&&!$('adminPDF')?.files?.[0]){showToast('PDF file is required for E-Book.','error');return;}
-  if(type==='video'&&!$('adminVideo')?.files?.[0]){showToast('Video file is required for Video product.','error');return;}
 
-  showLoading('Preparing upload…');
+  // Get file lists fresh (don't cache from preview)
+  const imgFileInput=$('adminImages');
+  const imgFiles=imgFileInput&&imgFileInput.files?Array.from(imgFileInput.files):[];
+
+  if(!imgFiles.length){showToast('At least one cover image is required.','error');return;}
+
+  const pdfFile=$('adminPDF')?.files?.[0]||null;
+  const videoFile=$('adminVideo')?.files?.[0]||null;
+
+  if(type==='ebook'&&!pdfFile){showToast('PDF file is required for E-Book.','error');return;}
+  if(type==='video'&&!videoFile){showToast('Video file is required for Video product.','error');return;}
+
+  // Start upload UI
+  publishBtn.disabled=true;
   $('adminUploadProgress').style.display='block';
-  const bar=$('adminProgressBar'),txt=$('adminProgressText');
-  let done=0;
-  const total=imgFiles.length+(type==='ebook'?1:0)+(type==='video'?1:0);
+  $('adminUploadLog').innerHTML='';
+  $('adminUploadTitle').textContent='Uploading files…';
+  updateOverallProgress(0,'Preparing…');
+  uploadLog(`Starting publish: "${title}" (type: ${type})`, 'info');
+  uploadLog(`Auth user: ${currentUser.email||currentUser.phoneNumber||currentUser.uid}`, 'info');
+
+  const totalSteps = imgFiles.length+(type==='ebook'?1:0)+(type==='video'?1:0)+1; // +1 for Firestore
+  let completedSteps=0;
 
   try{
-    // Upload images
+    // ── STEP 1: Upload images ──
     const imageUrls=[];
-    for(const f of imgFiles){
-      txt.textContent=`Uploading image ${imageUrls.length+1}/${imgFiles.length}…`;
-      const url=await uploadFile(f,'products/images/',pct=>{bar.style.width=Math.round(((done+pct/100)/total)*100)+'%';});
-      imageUrls.push(url);done++;
+    for(let i=0;i<imgFiles.length;i++){
+      const f=imgFiles[i];
+      $('adminUploadTitle').textContent=`Uploading image ${i+1}/${imgFiles.length}…`;
+      uploadLog(`Image ${i+1}: ${f.name}`, 'info');
+      const url=await uploadFile(f,'products/images/',(pct,transferred,total)=>{
+        const stepPct=(completedSteps+pct/100)/totalSteps*100;
+        updateOverallProgress(Math.round(stepPct), `Image ${i+1}/${imgFiles.length}: ${pct}%`);
+      });
+      imageUrls.push(url);
+      completedSteps++;
+      updateOverallProgress(Math.round(completedSteps/totalSteps*100), `Image ${i+1} uploaded ✅`);
     }
 
-    // Upload PDF
+    // ── STEP 2: Upload PDF (ebook) ──
     let pdfUrl=null;
-    if(type==='ebook'){
-      txt.textContent='Uploading PDF…';
-      pdfUrl=await uploadFile($('adminPDF').files[0],'products/pdfs/',pct=>{bar.style.width=Math.round(((done+pct/100)/total)*100)+'%';});
-      done++;
+    if(type==='ebook'&&pdfFile){
+      $('adminUploadTitle').textContent='Uploading PDF…';
+      pdfUrl=await uploadFile(pdfFile,'products/pdfs/',(pct)=>{
+        const stepPct=(completedSteps+pct/100)/totalSteps*100;
+        updateOverallProgress(Math.round(stepPct), `PDF: ${pct}%`);
+      });
+      completedSteps++;
+      updateOverallProgress(Math.round(completedSteps/totalSteps*100), 'PDF uploaded ✅');
     }
 
-    // Upload Video
+    // ── STEP 3: Upload Video ──
     let videoUrl=null;
-    if(type==='video'){
-      txt.textContent='Uploading video…';
-      videoUrl=await uploadFile($('adminVideo').files[0],'products/videos/',pct=>{bar.style.width=Math.round(((done+pct/100)/total)*100)+'%';});
-      done++;
+    if(type==='video'&&videoFile){
+      $('adminUploadTitle').textContent='Uploading video…';
+      videoUrl=await uploadFile(videoFile,'products/videos/',(pct)=>{
+        const stepPct=(completedSteps+pct/100)/totalSteps*100;
+        updateOverallProgress(Math.round(stepPct), `Video: ${pct}%`);
+      });
+      completedSteps++;
+      updateOverallProgress(Math.round(completedSteps/totalSteps*100), 'Video uploaded ✅');
     }
 
-    bar.style.width='100%';txt.textContent='Saving to database…';
+    // ── STEP 4: Save to Firestore ──
+    $('adminUploadTitle').textContent='Saving to database…';
+    updateOverallProgress(95,'Saving to Firestore…');
+    uploadLog('Saving product data to Firestore…', 'info');
+
     const disc=mrp>sale?Math.round((1-sale/mrp)*100):0;
-    await _db.collection('products').add({
-      title,description:desc,price:sale,originalPrice:mrp,discount:disc,
-      category,productType:type,paymentMethod:payMethod,inStock,
-      images:imageUrls,image:imageUrls[0]||'',thumbnailUrl:imageUrls[0]||'',
-      pdfUrl:pdfUrl||null,videoUrl:videoUrl||null,createdAt:_ts()
-    });
+    const productData={
+      title, description:desc,
+      price:sale, originalPrice:mrp, discount:disc,
+      category, productType:type,
+      paymentMethod:payMethod, inStock,
+      images:imageUrls, image:imageUrls[0]||'',
+      thumbnailUrl:imageUrls[0]||'',
+      pdfUrl:pdfUrl||null, videoUrl:videoUrl||null,
+      createdAt:_ts()
+    };
 
-    hideLoading();$('adminUploadProgress').style.display='none';bar.style.width='0%';
-    showToast('✅ Product published successfully!','success');
+    const docRef=await _db.collection('products').add(productData);
+    uploadLog(`✅ Product saved! ID: ${docRef.id}`, 'ok');
+    updateOverallProgress(100,'Published! ✅');
 
-    // Reset form
-    $('adminTitle').value='';$('adminDesc').value='';$('adminMRP').value='';$('adminSalePrice').value='';
+    // Success
+    showToast('✅ Product published successfully!','success',5000);
+    $('adminUploadTitle').textContent='Published successfully! ✅';
+
+    // Reset form — carefully, without triggering radio change events
+    $('adminTitle').value='';$('adminDesc').value='';
+    $('adminMRP').value='';$('adminSalePrice').value='';
     $('adminCategory').value='';$('adminCatGroup').style.opacity='1';
-    $('adminImagePreviews').innerHTML='';$('adminImages').value='';
-    $('adminPDF').value='';$('adminPDFSelected').style.display='none';$('adminPDFZone').style.display='block';
-    $('adminVideo').value='';$('adminVideoPreviewWrap').style.display='none';
+    $('adminImagePreviews').innerHTML='';
+
+    // Clear file inputs safely
+    try{$('adminImages').value='';}catch(e){}
+    try{$('adminPDF').value='';}catch(e){}
+    try{$('adminVideo').value='';}catch(e){}
+
+    $('adminPDFSelected').style.display='none';$('adminPDFZone').style.display='block';
+    $('adminVideoSelected').style.display='none';
+    $('adminVideoPreview').src='';$('adminVideoPreviewWrap').style.display='none';
     $('adminDiscountPreview').style.display='none';
-    $('adminPDFGroup').style.display='none';$('adminVideoGroup').style.display='none';
-    document.querySelector('input[name="adminProductType"][value="general"]').checked=true;
-    loadProducts('all');
-  }catch(e){
-    hideLoading();$('adminUploadProgress').style.display='none';
-    console.error('Publish error:',e);
-    showToast('Upload failed: '+(e.message||'Unknown error'),'error');
+
+    // Reset product type WITHOUT triggering change event (just set checked)
+    const generalRadio=document.querySelector('input[name="adminProductType"][value="general"]');
+    if(generalRadio) generalRadio.checked=true;
+    $('adminPDFGroup').style.display='none';
+    $('adminVideoGroup').style.display='none';
+
+    // Refresh products in background
+    setTimeout(()=>loadProducts('all'), 500);
+
+  }catch(err){
+    uploadLog(`❌ FAILED: ${err.message}`, 'err');
+    $('adminUploadTitle').textContent='Upload Failed ❌';
+    updateOverallProgress(0,'Failed — see log above');
+    showToast(err.message||'Upload failed. Check the log.','error',8000);
+    console.error('Publish error:', err);
+  }finally{
+    publishBtn.disabled=false;
+    activeUploadTask=null;
   }
 });
 
-/* ══════════════════════════════════
-   INIT
-══════════════════════════════════ */
+/* ═══════ INIT ═══════ */
 loadCart();
 loadProducts('all');
-console.log('%c🛒 SayatKart Ready — All systems go!','color:#f97316;font-weight:800;font-size:13px');
+console.log('%c🛒 SayatKart Ready','color:#f97316;font-weight:800;font-size:14px');
 </script>
 </body>
 </html>
