@@ -550,12 +550,20 @@ ul{list-style:none}
 <!-- DRAWER -->
 <aside class="drawer" id="drawer">
   <div class="drawer-header">
-    <div class="drawer-brand"><span style="font-size:26px">🛒</span><span class="brand-name">SayatKart</span></div>
-    <button class="drawer-close" id="drawerClose"><span class="material-icons-round">close</span></button>
-  </div>
-  <div class="drawer-user" id="drawerUser" style="display:none">
-    <div class="drawer-avatar" id="drawerAvatar">U</div>
-    <div><p class="drawer-user-name" id="drawerUserName">User</p><p class="drawer-user-email" id="drawerUserEmail"></p></div>
+    <aside class="drawer" id="drawer">
+  <div class="drawer-header" style="display: flex; align-items: center; justify-content: space-between; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+    
+    <div class="drawer-brand" style="display: flex; align-items: center; gap: 10px;">
+      <img src="https://drive.google.com/uc?export=view&id=1UaPV5VFh4_sc1tXu25BgJTzsz7hD4ahe" 
+           alt="Logo" 
+           style="width: 40px; height: 40px; object-fit: contain; border-radius: 5px;">
+      
+      <span class="brand-name" style="font-family: 'Baloo 2', cursive; font-size: 1.4rem; font-weight: bold; color: #fff;">SayatKart</span>
+    </div>
+
+    <button class="drawer-close" id="drawerClose">
+      <span class="material-icons-round">close</span>
+    </button>
   </div>
   <nav class="drawer-nav">
     <div class="drawer-link active" data-nav="home"><span class="material-icons-round">home</span> Home</div>
@@ -1025,7 +1033,7 @@ _db.enablePersistence({synchronizeTabs:true}).catch(()=>{});
 const _ts  = () => firebase.firestore.FieldValue.serverTimestamp();
 const _inc = n  => firebase.firestore.FieldValue.increment(n);
 const _au  = (...v) => firebase.firestore.FieldValue.arrayUnion(...v);
-const RAZORPAY_KEY = "rzp_test_XXXXXXXXXXXXXXXX"; // 🔴 Replace with your key
+const RAZORPAY_KEY = "rzp_live_SkOEXpqOtkBrwk"; // 🔴 Replace with your key
 
 /* ═══════ HELPERS ═══════ */
 const $ = id => document.getElementById(id);
