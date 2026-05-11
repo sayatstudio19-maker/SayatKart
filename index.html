@@ -968,6 +968,27 @@ ul{list-style:none}
   <hr class="pay-divider"/>
 </div>
 <!-- /physicalAddrFields -->
+    </div> <div class="modal-footer">
+      <button class="btn-primary" id="addressConfirmBtn" style="width:100%">Confirm Order</button>
+    </div>
+  </div> </div> ```
+
+### কেন এটি করবেন?
+* **হোম পেজ থেকে লুকানোর জন্য:** আপনি যখন `style="display: none;"` ব্যবহার করবেন, তখন এটি হোম পেজের নিচে আর ঝুলে থাকবে না।
+* **Buy করার সময় দেখানোর জন্য:** আপনার কোডে থাকা `initiateCheckout()` ফাংশনটি যখন কল হবে, তখন এটি অটোমেটিক স্ক্রিনে ভেসে উঠবে।
+
+### অতিরিক্ত টিপস:
+আপনার কোডের উপরের দিকে **Styles** সেকশনে (CSS) চেক করুন `.modal` এর জন্য কোড আছে কি না। যদি না থাকে, তবে স্টাইল সেকশনে এটি যোগ করুন:
+```css
+.modal {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.6);
+z-index: 2000;
+display: none;
+align-items: center;
+justify-content: center;
+}
 
 <!-- ORDER STATUS MODAL -->
 <div class="modal" id="orderStatusModal">
