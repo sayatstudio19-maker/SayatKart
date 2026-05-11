@@ -887,30 +887,87 @@ ul{list-style:none}
 </div>
 
 <!-- CHECKOUT MODAL -->
-<div class="modal" id="addressModal">
-  <div class="modal-content">
-    <div class="modal-header"><h3><span class="material-icons-round">location_on</span> Delivery &amp; Payment</h3><button class="modal-close" id="addressModalClose"><span class="material-icons-round">close</span></button></div>
-    <div class="modal-body">
-      <p class="modal-subtitle" id="addressSubtitle">Enter your delivery address</p>
-      <div class="form-group"><label class="form-label">Full Name *</label><input type="text" id="addrName" class="form-input" placeholder="Your full name"/></div>
-      <div class="form-group"><label class="form-label">Mobile *</label><input type="tel" id="addrPhone" class="form-input" placeholder="10-digit mobile" maxlength="10"/></div>
-      <div id="physicalAddrFields">
-        <div class="form-group"><label class="form-label">House No., Street *</label><input type="text" id="addrStreet" class="form-input"/></div>
-        <div class="form-group"><label class="form-label">Area / Locality *</label><input type="text" id="addrArea" class="form-input"/></div>
-        <div class="form-row"><div class="form-group"><label class="form-label">City *</label><input type="text" id="addrCity" class="form-input"/></div><div class="form-group"><label class="form-label">State *</label><input type="text" id="addrState" class="form-input"/></div></div>
-        <div class="form-row"><div class="form-group"><label class="form-label">PIN *</label><input type="text" id="addrPin" class="form-input" maxlength="6"/></div><div class="form-group"><label class="form-label">Landmark</label><input type="text" id="addrLandmark" class="form-input"/></div></div>
-        <label class="checkbox-label"><input type="checkbox" id="saveAddrCheck" checked/><span>Save address for future</span></label>
-        <hr class="pay-divider"/>
-      </div>
-      <p class="pay-section-title"><span class="material-icons-round">payment</span> Payment Method</p>
-      <div class="radio-group">
-        <label class="radio-card" id="codOptionWrap"><input type="radio" name="payMethod" value="cod" checked/><span class="radio-label"><span class="material-icons-round" style="font-size:18px">local_shipping</span> Cash on Delivery</span></label>
-        <label class="radio-card"><input type="radio" name="payMethod" value="online"/><span class="radio-label"><span class="material-icons-round" style="font-size:18px">credit_card</span> Pay Online</span></label>
-      </div>
-    </div>
-    <div class="modal-footer"><button class="btn-outline" id="addressModalCancel">Cancel</button><button class="btn-primary" id="addressConfirmBtn"><span class="material-icons-round">arrow_forward</span> Confirm</button></div>
+<!-- ADDRESS SECTION — line 884 এর পরে বসান -->
+<p class="modal-subtitle" id="addressSubtitle">Enter your delivery address</p>
+
+<!-- সবসময় দেখা যাবে — Name ও Mobile -->
+<div class="form-group">
+  <label class="form-label">
+    <span class="material-icons-round">person</span> Full Name *
+  </label>
+  <input type="text" id="addrName" class="form-input" placeholder="Your full name"/>
+</div>
+
+<div class="form-group">
+  <label class="form-label">
+    <span class="material-icons-round">phone</span> Mobile *
+  </label>
+  <div class="phone-input-wrap">
+    <span class="phone-prefix">+91</span>
+    <input type="tel" id="addrPhone" class="form-input phone-input"
+           placeholder="10-digit mobile" maxlength="10"/>
   </div>
 </div>
+
+<!-- Physical address — digital product হলে JS hide করে -->
+<div id="physicalAddrFields">
+
+  <div class="form-group">
+    <label class="form-label">
+      <span class="material-icons-round">home</span> House No., Street *
+    </label>
+    <input type="text" id="addrStreet" class="form-input"
+           placeholder="House no., building, street"/>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">
+      <span class="material-icons-round">location_on</span> Area / Locality *
+    </label>
+    <input type="text" id="addrArea" class="form-input"
+           placeholder="Area, colony, locality"/>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">
+        <span class="material-icons-round">location_city</span> City *
+      </label>
+      <input type="text" id="addrCity" class="form-input" placeholder="City"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">
+        <span class="material-icons-round">map</span> State *
+      </label>
+      <input type="text" id="addrState" class="form-input" placeholder="State"/>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">
+        <span class="material-icons-round">pin</span> PIN Code *
+      </label>
+      <input type="text" id="addrPin" class="form-input"
+             placeholder="6-digit PIN" maxlength="6"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">
+        <span class="material-icons-round">signpost</span> Landmark
+      </label>
+      <input type="text" id="addrLandmark" class="form-input"
+             placeholder="Near school, temple…"/>
+    </div>
+  </div>
+
+  <label class="checkbox-label">
+    <input type="checkbox" id="saveAddrCheck" checked/>
+    <span>Save address for future orders</span>
+  </label>
+
+  <hr class="pay-divider"/>
+</div>
+<!-- /physicalAddrFields -->
 
 <!-- ORDER STATUS MODAL -->
 <div class="modal" id="orderStatusModal">
