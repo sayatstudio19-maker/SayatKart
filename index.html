@@ -7,39 +7,48 @@
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="apple-mobile-web-app-title" content="SayatX"/>
-<meta name="description" content="SayatX — Share videos, photos and connect with people."/>
-<meta name="keywords" content="SayatX,video sharing,social media,posts,Bangladesh"/>
+<meta name="apple-mobile-web-app-title" content="SayatStudio"/>
+<meta name="description" content="SayatStudio — Share videos, photos and connect with people."/>
+<meta name="keywords" content="SayatStudio,video sharing,social media,posts,Bangladesh"/>
 <meta name="robots" content="index,follow"/>
-<meta property="og:title" content="SayatX"/>
+<meta property="og:title" content="SayatStudio"/>
 <meta property="og:description" content="Share videos, photos and connect with people."/>
 <meta property="og:type" content="website"/>
 <link rel="canonical" href="https://sayatstudio.in"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SayatX","url":"https://sayatstudio.in","description":"Share videos, photos and connect with people."}</script>
-<title>SayatX</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SayatStudio","url":"https://sayatstudio.in","description":"Share videos, photos and connect with people."}</script>
+<title>SayatStudio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
-<link rel="stylesheet" href="./style.css"/>
+<!-- CSS will be written next -->
+<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
+<!-- ═══════════════════════════════════════
+     OVERLAY (shared backdrop)
+═══════════════════════════════════════ -->
 <div class="overlay" id="overlay"></div>
 
+<!-- ═══════════════════════════════════════
+     DRAWER MENU
+═══════════════════════════════════════ -->
 <aside class="drawer" id="drawer" role="navigation" aria-label="Main menu">
 
+  <!-- Drawer header -->
   <div class="drawer-top">
     <div class="drawer-brand">
       <div class="drawer-logo">
-        <span>SX</span>
+        <span>SS</span>
       </div>
-      <span class="drawer-brand-name">SayatX</span>
+      <span class="drawer-brand-name">SayatStudio</span>
     </div>
     <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">
       <span class="material-icons-round">close</span>
     </button>
   </div>
 
+  <!-- Logged-in user profile strip -->
   <div class="drawer-user-strip" id="drawerUserStrip" style="display:none">
     <div class="drawer-user-avatar" id="drawerUserAvatar">
       <img id="drawerUserAvatarImg" src="" alt="" style="display:none"/>
@@ -61,6 +70,7 @@
     </div>
   </div>
 
+  <!-- Nav items -->
   <nav class="drawer-nav">
     <div class="drawer-section-lbl">Explore</div>
 
@@ -173,29 +183,37 @@
       <div class="drawer-item-icon"><span class="material-icons-round">info</span></div>
       <div class="drawer-item-text">
         <span class="drawer-item-label">About</span>
-        <span class="drawer-item-sub">SayatX v1.0</span>
+        <span class="drawer-item-sub">SayatStudio v1.0</span>
       </div>
       <span class="drawer-item-arrow material-icons-round">chevron_right</span>
     </button>
   </nav>
 
+  <!-- Drawer footer -->
   <div class="drawer-footer">
+    <!-- Show when logged out -->
     <button class="drawer-login-btn" id="drawerLoginBtn">
       <span class="material-icons-round">login</span>
       Login / Sign Up
     </button>
+    <!-- Show when logged in -->
     <button class="drawer-logout-btn" id="drawerLogoutBtn" style="display:none">
       <div class="drawer-item-icon"><span class="material-icons-round">logout</span></div>
       <span>Logout</span>
     </button>
-    <p class="drawer-version">SayatX · Made with ❤️</p>
+    <p class="drawer-version">SayatStudio · Made with ❤️</p>
   </div>
 </aside>
 
+<!-- ═══════════════════════════════════════
+     APP HEADER
+═══════════════════════════════════════ -->
 <header class="app-header" id="appHeader">
+  <!-- Safe area spacer (for PWA notch) -->
   <div class="header-safe-area"></div>
 
   <div class="header-inner">
+    <!-- Left: hamburger + brand -->
     <div class="header-left">
       <button class="header-menu-btn" id="menuBtn" aria-label="Open menu">
         <span class="hbr hbr-1"></span>
@@ -204,12 +222,13 @@
       </button>
       <div class="header-brand" id="headerBrand">
         <div class="header-logo">
-          <span>SX</span>
+          <span>SS</span>
         </div>
-        <span class="header-brand-name">SayatX</span>
+        <span class="header-brand-name">SayatStudio</span>
       </div>
     </div>
 
+    <!-- Center: search bar -->
     <div class="header-search-wrap" id="headerSearchWrap">
       <span class="material-icons-round header-search-icon">search</span>
       <input
@@ -225,6 +244,7 @@
       </button>
     </div>
 
+    <!-- Right: notification + mobile search toggle -->
     <div class="header-right">
       <button class="header-icon-btn" id="mobileSearchToggle" aria-label="Search">
         <span class="material-icons-round">search</span>
@@ -236,6 +256,7 @@
     </div>
   </div>
 
+  <!-- Mobile search bar (hidden by default) -->
   <div class="mobile-search-bar" id="mobileSearchBar">
     <span class="material-icons-round mobile-search-icon">search</span>
     <input
@@ -251,10 +272,15 @@
   </div>
 </header>
 
+<!-- ═══════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════ -->
 <main class="app-main">
 
+  <!-- ── SECTION: HOME FEED ── -->
   <section class="app-section active" id="sectionHome">
 
+    <!-- Sponsored / Admin Featured Strip -->
     <div class="featured-strip" id="featuredStrip">
       <div class="featured-strip-header">
         <div class="sponsored-tag">
@@ -267,13 +293,17 @@
         </div>
       </div>
       <div class="featured-scroll" id="featuredScroll">
+        <!-- Featured cards injected by JS -->
+        <!-- Skeleton placeholders -->
         <div class="featured-card featured-skeleton"></div>
         <div class="featured-card featured-skeleton"></div>
         <div class="featured-card featured-skeleton"></div>
       </div>
     </div>
 
+    <!-- Feed posts -->
     <div class="feed-container" id="feedContainer">
+      <!-- Feed skeleton -->
       <div class="feed-skeleton-wrap" id="feedSkeleton">
         <div class="feed-post-skeleton">
           <div class="skel-avatar"></div>
@@ -292,15 +322,18 @@
         </div>
         <div class="skel-media"></div>
       </div>
-      </div>
+      <!-- Real posts appended here by JS -->
+    </div>
 
+    <!-- Search results overlay (inside home) -->
     <div class="search-results-panel" id="searchResultsPanel" style="display:none">
       <div class="search-results-header">
         <span class="material-icons-round">search</span>
         <span id="searchResultsLabel">Results for "..."</span>
       </div>
       <div class="search-results-list" id="searchResultsList">
-        </div>
+        <!-- Search result items injected by JS -->
+      </div>
       <div class="search-no-result" id="searchNoResult" style="display:none">
         <span class="material-icons-round">search_off</span>
         <p>No results found</p>
@@ -311,9 +344,11 @@
 
   </section>
 
+  <!-- ── SECTION: MESSAGES ── -->
   <section class="app-section" id="sectionMessages">
     <div class="messages-container">
 
+      <!-- Messages list view -->
       <div class="messages-list-view" id="messagesListView">
         <div class="messages-top-bar">
           <h2 class="messages-title">Messages</h2>
@@ -325,7 +360,9 @@
           <span class="material-icons-round">search</span>
           <input type="search" class="messages-search-input" id="messagesSearch" placeholder="Search conversations..."/>
         </div>
+        <!-- Conversation list -->
         <div class="conversations-list" id="conversationsList">
+          <!-- Items injected by JS -->
           <div class="conversations-empty" id="conversationsEmpty" style="display:none">
             <span class="material-icons-round">chat_bubble_outline</span>
             <p>No messages yet</p>
@@ -339,7 +376,9 @@
         </div>
       </div>
 
+      <!-- Chat view (opens over list on mobile) -->
       <div class="chat-view" id="chatView" style="display:none">
+        <!-- Chat header -->
         <div class="chat-header">
           <button class="chat-back-btn" id="chatBackBtn" aria-label="Back">
             <span class="material-icons-round">arrow_back</span>
@@ -354,15 +393,20 @@
           <button class="chat-header-icon-btn" id="chatViewProfileBtn" aria-label="View profile">
             <span class="material-icons-round">person</span>
           </button>
+          <!-- Switch to E2EE secure chat -->
           <button class="chat-header-icon-btn chat-e2ee-btn" id="chatOpenE2EEBtn" aria-label="Open secure encrypted chat" title="Secure E2EE Chat">
             <span class="material-icons-round">enhanced_encryption</span>
           </button>
         </div>
 
+        <!-- Messages list -->
         <div class="chat-messages" id="chatMessages">
-          </div>
+          <!-- Messages injected by JS -->
+        </div>
 
+        <!-- Message input -->
         <div class="chat-input-bar">
+          <!-- Media preview in chat -->
           <div class="chat-media-preview" id="chatMediaPreview" style="display:none">
             <img id="chatMediaPreviewImg" src="" alt="" style="display:none"/>
             <video id="chatMediaPreviewVid" src="" style="display:none" muted playsinline></video>
@@ -395,21 +439,25 @@
     </div>
   </section>
 
+  <!-- ── SECTION: PROFILE ── -->
   <section class="app-section" id="sectionProfile">
 
+    <!-- Logged-out: Auth screen -->
     <div class="auth-screen" id="authScreen">
       <div class="auth-card">
         <div class="auth-logo">
-          <div class="auth-logo-icon"><span>SX</span></div>
-          <h1 class="auth-logo-name">SayatX</h1>
+          <div class="auth-logo-icon"><span>SS</span></div>
+          <h1 class="auth-logo-name">SayatStudio</h1>
           <p class="auth-logo-sub">Share your world</p>
         </div>
         <div class="auth-methods">
+          <!-- Google -->
           <button class="btn-google" id="googleLoginBtn">
             <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="18"/>
             Continue with Google
           </button>
           <div class="auth-divider"><span>or</span></div>
+          <!-- Phone -->
           <div class="auth-phone-wrap">
             <div class="phone-input-group">
               <span class="phone-prefix">+91</span>
@@ -420,6 +468,7 @@
               Send OTP
             </button>
           </div>
+          <!-- OTP verify -->
           <div class="otp-wrap" id="otpWrap" style="display:none">
             <p class="otp-label">Enter the 6-digit OTP sent to your number</p>
             <div class="otp-boxes" id="otpBoxes">
@@ -441,18 +490,23 @@
       </div>
     </div>
 
+    <!-- Logged-in: Profile screen -->
     <div class="profile-screen" id="profileScreen" style="display:none">
 
+      <!-- Profile header / cover -->
       <div class="profile-cover" id="profileCover">
         <div class="profile-cover-gradient"></div>
       </div>
 
+      <!-- Profile info section -->
       <div class="profile-info-section">
+        <!-- Avatar with edit button -->
         <div class="profile-avatar-wrap">
           <div class="profile-avatar" id="profileAvatar">
             <img id="profileAvatarImg" src="" alt="" style="display:none"/>
             <span id="profileAvatarLetter">U</span>
           </div>
+          <!-- Edit avatar button (own profile only) -->
           <button class="profile-avatar-edit-btn" id="profileAvatarEditBtn" aria-label="Change profile picture">
             <span class="material-icons-round">photo_camera</span>
           </button>
@@ -479,7 +533,9 @@
         </div>
       </div>
 
+      <!-- Profile action buttons -->
       <div class="profile-actions" id="profileActions">
+        <!-- Own profile actions -->
         <div id="ownProfileActions">
           <button class="btn-outline-profile" id="editProfileBtn">
             <span class="material-icons-round">edit</span>
@@ -488,6 +544,7 @@
         </div>
       </div>
 
+      <!-- Profile menu list -->
       <div class="profile-menu-list">
 
         <div class="profile-menu-section-lbl">Content</div>
@@ -566,12 +623,13 @@
 
   </section>
 
+  <!-- ── SECTION: ADMIN (hidden, unlocked by 10-tap brand) ── -->
   <section class="app-section" id="sectionAdmin" style="display:none!important">
     <div class="admin-wrap">
       <div class="admin-hero">
         <span class="material-icons-round admin-hero-icon">admin_panel_settings</span>
         <h2>Admin Panel</h2>
-        <p>SayatX — Content Management</p>
+        <p>SayatStudio — Content Management</p>
       </div>
       <div class="admin-body" id="adminBody">
 
@@ -584,6 +642,7 @@
           <p id="adminAuthName">Logged in as Admin</p>
         </div>
 
+        <!-- Feature type selector -->
         <div class="admin-section-lbl">
           <span class="material-icons-round">push_pin</span>
           Featured / Sponsored
@@ -650,6 +709,7 @@
           </button>
         </div>
 
+        <!-- Product publisher -->
         <div class="admin-section-lbl">
           <span class="material-icons-round">inventory_2</span>
           Publish Product
@@ -743,6 +803,7 @@
               <button class="admin-file-remove" id="productAudioRemove"><span class="material-icons-round">close</span></button>
             </div>
           </div>
+          <!-- Upload progress -->
           <div class="admin-progress-card" id="adminProgressCard" style="display:none">
             <div class="admin-progress-top">
               <span id="adminProgressTitle">Uploading...</span>
@@ -766,6 +827,9 @@
 
 </main>
 
+<!-- ═══════════════════════════════════════
+     BOTTOM NAVIGATION
+═══════════════════════════════════════ -->
 <nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
   <button class="bnav-btn active" data-bnav="home" id="bnavHome">
     <span class="material-icons-round">home</span>
@@ -785,15 +849,23 @@
   </button>
 </nav>
 
+<!-- ═══════════════════════════════════════
+     FAB — CREATE POST
+═══════════════════════════════════════ -->
 <button class="fab-plus" id="fabPlus" aria-label="Create new post">
   <span class="material-icons-round">add</span>
 </button>
 
+<!-- ═══════════════════════════════════════
+     CREATE POST BOTTOM SHEET
+═══════════════════════════════════════ -->
 <div class="bottom-sheet" id="createPostSheet">
   <div class="bottom-sheet-backdrop" id="createPostBackdrop"></div>
   <div class="bottom-sheet-content">
+    <!-- Handle bar -->
     <div class="sheet-handle-bar"></div>
 
+    <!-- Sheet header -->
     <div class="sheet-header">
       <h3 class="sheet-title">
         <span class="material-icons-round">add_circle</span>
@@ -804,6 +876,7 @@
       </button>
     </div>
 
+    <!-- Post type tabs -->
     <div class="post-type-tabs" id="postTypeTabs">
       <button class="post-type-tab active" data-post-type="text">
         <span class="material-icons-round">notes</span>
@@ -823,18 +896,22 @@
       </button>
     </div>
 
+    <!-- Login prompt (shown if not logged in) -->
     <div class="create-login-prompt" id="createLoginPrompt" style="display:none">
       <span class="material-icons-round">lock</span>
       <p>Login to create posts</p>
       <button class="btn-primary" id="createGoLoginBtn">Login / Sign Up</button>
     </div>
 
+    <!-- Create form (shown if logged in) -->
     <div class="create-form" id="createForm">
+      <!-- User row -->
       <div class="create-user-row">
         <div class="create-form-avatar" id="createFormAvatar">U</div>
         <span class="create-form-username" id="createFormUsername">User</span>
       </div>
 
+      <!-- Text area -->
       <textarea
         class="create-textarea"
         id="createTextarea"
@@ -842,6 +919,7 @@
         rows="3"
       ></textarea>
 
+      <!-- Media upload zone -->
       <div class="create-upload-zone" id="createUploadZone" style="display:none">
         <span class="material-icons-round">cloud_upload</span>
         <p id="createUploadZoneText">Tap to select media</p>
@@ -849,6 +927,7 @@
         <input type="file" id="createMediaInput" class="create-file-input"/>
       </div>
 
+      <!-- Media preview -->
       <div class="create-media-preview" id="createMediaPreview" style="display:none">
         <img id="createPreviewImg" src="" alt="" style="display:none"/>
         <video id="createPreviewVid" src="" muted playsinline style="display:none"></video>
@@ -862,6 +941,7 @@
       </div>
     </div>
 
+    <!-- Sheet footer -->
     <div class="sheet-footer" id="createPostFooter">
       <button class="btn-outline" id="createCancelBtn">Cancel</button>
       <button class="btn-primary" id="createSubmitBtn">
@@ -872,19 +952,28 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     REEL / VIDEO FULLSCREEN PLAYER
+═══════════════════════════════════════ -->
 <div class="reel-overlay" id="reelOverlay">
+  <!-- Top bar -->
   <div class="reel-top-bar">
     <button class="reel-close-btn" id="reelCloseBtn">
       <span class="material-icons-round">close</span>
     </button>
-    <span class="reel-top-title">SayatX</span>
+    <span class="reel-top-title">SayatStudio</span>
     <div style="width:40px"></div>
   </div>
 
+  <!-- Scroll container (snap) -->
   <div class="reel-scroll" id="reelScroll">
-    </div>
+    <!-- Reel items injected by JS -->
+  </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     VIDEO OVERLAY (single video, full screen)
+═══════════════════════════════════════ -->
 <div class="video-overlay" id="videoOverlay">
   <div class="video-overlay-top">
     <button class="video-overlay-close" id="videoOverlayClose">
@@ -901,6 +990,9 @@
   ></video>
 </div>
 
+<!-- ═══════════════════════════════════════
+     AUDIO PLAYER OVERLAY
+═══════════════════════════════════════ -->
 <div class="audio-overlay" id="audioOverlay">
   <div class="audio-overlay-bg" id="audioOverlayBg"></div>
   <div class="audio-overlay-content">
@@ -911,7 +1003,7 @@
       <img id="audioAlbumArtImg" src="" alt=""/>
     </div>
     <p class="audio-title-text" id="audioTitleText">Audio</p>
-    <p class="audio-artist-text" id="audioArtistText">SayatX</p>
+    <p class="audio-artist-text" id="audioArtistText">SayatStudio</p>
     <audio id="audioPlayer" preload="metadata"></audio>
     <div class="audio-seek-wrap">
       <span class="audio-time" id="audioCurrentTime">0:00</span>
@@ -935,6 +1027,9 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     PDF READER OVERLAY
+═══════════════════════════════════════ -->
 <div class="pdf-overlay" id="pdfOverlay">
   <div class="pdf-overlay-header">
     <button class="pdf-close-btn" id="pdfCloseBtn">
@@ -955,6 +1050,9 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     USER PROFILE VIEW (other user's profile)
+═══════════════════════════════════════ -->
 <div class="user-profile-overlay" id="userProfileOverlay">
   <div class="upo-header">
     <button class="upo-back-btn" id="upoBackBtn">
@@ -963,7 +1061,9 @@
     <span class="upo-header-title" id="upoHeaderTitle">Profile</span>
   </div>
   <div class="upo-body">
+    <!-- Cover -->
     <div class="upo-cover" id="upoCover"></div>
+    <!-- Avatar + actions -->
     <div class="upo-avatar-row">
       <div class="upo-avatar" id="upoAvatar">
         <img id="upoAvatarImg" src="" alt="" style="display:none"/>
@@ -979,6 +1079,7 @@
         </button>
       </div>
     </div>
+    <!-- Info -->
     <div class="upo-info">
       <h3 class="upo-display-name" id="upoDisplayName">User</h3>
       <p class="upo-handle" id="upoHandle">@user</p>
@@ -997,11 +1098,16 @@
         </div>
       </div>
     </div>
+    <!-- Posts grid -->
     <div class="upo-posts-grid" id="upoPostsGrid">
-      </div>
+      <!-- Injected by JS -->
+    </div>
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     YOUR POSTS — ANALYTICS OVERLAY
+═══════════════════════════════════════ -->
 <div class="your-posts-overlay" id="yourPostsOverlay">
   <div class="ypo-header">
     <button class="ypo-back-btn" id="ypoBackBtn">
@@ -1010,9 +1116,13 @@
     <h3 class="ypo-title">Your Posts</h3>
   </div>
   <div class="ypo-body" id="ypoBody">
-    </div>
+    <!-- Injected by JS -->
+  </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     COMMENTS BOTTOM SHEET
+═══════════════════════════════════════ -->
 <div class="bottom-sheet" id="commentsSheet">
   <div class="bottom-sheet-backdrop" id="commentsBackdrop"></div>
   <div class="bottom-sheet-content comments-sheet-content">
@@ -1027,7 +1137,8 @@
       </button>
     </div>
     <div class="comments-list" id="commentsList">
-      </div>
+      <!-- Injected by JS -->
+    </div>
     <div class="comments-input-bar">
       <div class="comments-input-avatar" id="commentsInputAvatar">U</div>
       <div class="comments-input-wrap">
@@ -1046,6 +1157,9 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     ORDERS OVERLAY
+═══════════════════════════════════════ -->
 <div class="orders-overlay" id="ordersOverlay">
   <div class="orders-header">
     <button class="orders-back-btn" id="ordersBackBtn">
@@ -1054,9 +1168,13 @@
     <h3>My Orders</h3>
   </div>
   <div class="orders-body" id="ordersBody">
-    </div>
+    <!-- Injected by JS -->
+  </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     CHECKOUT MODAL
+═══════════════════════════════════════ -->
 <div class="modal" id="checkoutModal">
   <div class="modal-backdrop" id="checkoutModalBackdrop"></div>
   <div class="modal-content">
@@ -1136,6 +1254,9 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     ORDER SUCCESS OVERLAY
+═══════════════════════════════════════ -->
 <div class="success-overlay" id="successOverlay">
   <div class="success-card">
     <div class="success-check-wrap">
@@ -1157,8 +1278,13 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     E2EE SECURE CHAT OVERLAY
+     End-to-End Encrypted · ECDH + AES-GCM
+═══════════════════════════════════════ -->
 <div class="e2ee-chat-overlay" id="e2eeChatOverlay" role="dialog" aria-label="Secure chat">
 
+  <!-- Header -->
   <div class="e2ee-header">
     <button class="e2ee-back-btn" id="e2eeBackBtn" aria-label="Back">
       <span class="material-icons-round">arrow_back</span>
@@ -1170,26 +1296,34 @@
         <span id="e2eeHeaderStatus">End-to-End Encrypted</span>
       </div>
     </div>
+    <!-- Lock badge — always visible to confirm E2EE -->
     <div class="e2ee-lock-badge" title="All messages are End-to-End Encrypted">
       <span class="material-icons-round">enhanced_encryption</span>
       E2EE
     </div>
+    <!-- View profile shortcut -->
     <button class="e2ee-header-icon-btn" id="e2eeViewProfileBtn" aria-label="View profile">
       <span class="material-icons-round">person</span>
     </button>
   </div>
 
+  <!-- Key exchange / loading state (shown until ECDH key derivation completes) -->
   <div class="e2ee-key-loading" id="e2eeKeyLoading">
     <span class="material-icons-round">key</span>
     <p>Establishing secure channel...</p>
     <small>Generating encryption keys. This only takes a moment.</small>
   </div>
 
+  <!-- Messages area (hidden until keys ready) -->
   <div class="e2ee-messages" id="e2eeMessages" style="display:none">
-    </div>
+    <!-- Messages injected by JS -->
+    <!-- Empty state shown by JS when no messages -->
+  </div>
 
+  <!-- Input bar (hidden until keys ready) -->
   <div class="e2ee-input-bar" id="e2eeInputBar" style="display:none">
 
+    <!-- Image preview (before sending) -->
     <div class="e2ee-img-preview-wrap" id="e2eeImgPreviewWrap" style="display:none">
       <img id="e2eeImgPreview" src="" alt="Image preview"/>
       <button class="e2ee-img-remove" id="e2eeImgRemove" aria-label="Remove image">
@@ -1197,9 +1331,11 @@
       </button>
     </div>
 
+    <!-- Character counter -->
     <div class="e2ee-char-counter" id="e2eeCharCounter">0 / 256</div>
 
     <div class="e2ee-input-row">
+      <!-- Attach image -->
       <button class="e2ee-attach-btn" id="e2eeAttachBtn" aria-label="Attach image">
         <span class="material-icons-round">add_circle</span>
       </button>
@@ -1211,6 +1347,7 @@
         aria-hidden="true"
       />
 
+      <!-- Text input — strictly 256 chars max -->
       <div class="e2ee-input-wrap">
         <textarea
           class="e2ee-input"
@@ -1225,11 +1362,13 @@
         ></textarea>
       </div>
 
+      <!-- Send button -->
       <button class="e2ee-send-btn" id="e2eeSendBtn" aria-label="Send encrypted message" disabled>
         <span class="material-icons-round">send</span>
       </button>
     </div>
 
+    <!-- Security notice -->
     <p class="e2ee-notice" id="e2eeNotice">
       <span class="material-icons-round">lock</span>
       Messages are encrypted on your device. Nobody else can read them.
@@ -1237,8 +1376,16 @@
   </div>
 
 </div>
+<!-- /E2EE SECURE CHAT OVERLAY -->
+
+<!-- ═══════════════════════════════════════
+     TOAST NOTIFICATIONS
+═══════════════════════════════════════ -->
 <div class="toast-container" id="toastContainer"></div>
 
+<!-- ═══════════════════════════════════════
+     LOADING OVERLAY
+═══════════════════════════════════════ -->
 <div class="loading-overlay" id="loadingOverlay">
   <div class="loading-box">
     <div class="spinner"></div>
@@ -1246,14 +1393,19 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     FIREBASE + LIBS
+═══════════════════════════════════════ -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="./app.js"></script>
-<script src="./e2ee.js"></script>
+<!-- JS will be written next -->
+<script src="app.js"></script>
+<!-- E2EE Chat Module — loaded after app.js -->
+<script src="e2ee.js"></script>
 
 </body>
 </html>
