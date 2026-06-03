@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+<meta name="theme-color" content="#000000"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="SayatX"/>
+<meta name="description" content="SayatX — Share videos, photos and connect with people."/>
+<meta name="keywords" content="SayatX,video sharing,social media,posts,Bangladesh"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:title" content="SayatX"/>
+<meta property="og:description" content="SayatX — Share videos, photos and connect with people."/>
+<meta property="og:type" content="website"/>
+<link rel="canonical" href="https://sayatx.in"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SayatX","url":"https://sayatx.in","description":"Share videos, photos and connect with people."}</script>
+<title>SayatX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<!-- Stylesheet — same folder as index.html -->
+<link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     OVERLAY (shared backdrop)
+═══════════════════════════════════════ -->
+<div class="overlay" id="overlay"></div>
+
+<!-- ═══════════════════════════════════════
+     DRAWER MENU
+═══════════════════════════════════════ -->
+<aside class="drawer" id="drawer" role="navigation" aria-label="Main menu">
+
+  <!-- Drawer header -->
+  <div class="drawer-top">
+    <div class="drawer-brand">
+      <div class="drawer-logo">
+        <span>SS</span>
+      </div>
+      <span class="drawer-brand-name">SayatX</span>
+    </div>
+    <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">
+      <span class="material-icons-round">close</span>
+    </button>
+  </div>
+
+  <!-- Logged-in user profile strip -->
+  <div class="drawer-user-strip" id="drawerUserStrip" style="display:none">
+    <div class="drawer-user-avatar" id="drawerUserAvatar">
+      <img id="drawerUserAvatarImg" src="" alt="" style="display:none"/>
+      <span id="drawerUserAvatarLetter">U</span>
+    </div>
+    <div class="drawer-user-info">
+      <p class="drawer-user-name" id="drawerUserName">User</p>
+      <p class="drawer-user-handle" id="drawerUserHandle">@user</p>
+    </div>
+    <div class="drawer-user-stats">
+      <div class="drawer-stat">
+        <span class="drawer-stat-num" id="drawerPostCount">0</span>
+        <span class="drawer-stat-lbl">Posts</span>
+      </div>
+      <div class="drawer-stat">
+        <span class="drawer-stat-num" id="drawerFollowerCount">0</span>
+        <span class="drawer-stat-lbl">Followers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav items -->
+  <nav class="drawer-nav">
+    <div class="drawer-section-lbl">Explore</div>
+
+    <button class="drawer-item active" data-drawer-nav="home" id="drawerHome">
+      <div class="drawer-item-icon"><span class="material-icons-round">home</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">Home</span>
+        <span class="drawer-item-sub">Your feed</span>
+      </div>
+      <span class="drawer-item-arrow material-icons-round">chevron_right</span>
+    </button>
+
+    <button class="drawer-item" data-drawer-nav="trending">
+      <div class="drawer-item-icon"><span class="material-icons-round">local_fire_department</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">Trending</span>
+        <span class="drawer-item-sub">What's popular</span>
+      </div>
+      <span class="drawer-badge drawer-badge-new">New</span>
+    </button>
+
+    <button class="drawer-item" data-drawer-nav="videos">
+      <div class="drawer-item-icon"><span class="material-icons-round">play_circle</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">Videos</span>
+        <span class="drawer-item-sub">All video posts</span>
+      </div>
+      <span class="drawer-item-arrow material-icons-round">chevron_right</span>
+    </button>
+
+    <button class="drawer-item" data-drawer-nav="photos">
+      <div class="drawer-item-icon"><span class="material-icons-round">photo_library</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">Photos</span>
+        <span class="drawer-item-sub">Photo posts</span>
+      </div>
+      <span class="drawer-item-arrow material-icons-round">chevron_right</span>
+    </button>
+
+    <button class="drawer-item" data-drawer-nav="shop">
+      <div class="drawer-item-icon"><span class="material-icons-round">storefront</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">Shop</span>
+        <span class="drawer-item-sub">Products &amp; deals</span>
+      </div>
+      <span class="drawer-item-arrow material-icons-round">chevron_right</span>
+    </button>
+
+    <div class="drawer-section-lbl">Account</div>
+
+    <button class="drawer-item" data-drawer-nav="notifications" id="drawerNotifBtn">
+      <div class="drawer-item-icon"><span class="material-icons-round">notifications</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">Notifications</span>
+        <span class="drawer-item-sub">Your alerts</span>
+      </div>
+      <span class="drawer-badge drawer-badge-notif" id="drawerNotifBadge" style="display:none">0</span>
+    </button>
+
+    <button class="drawer-item" data-drawer-nav="saved">
+      <div class="drawer-item-icon"><span class="material-icons-round">bookmark</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">Saved</span>
+        <span class="drawer-item-sub">Bookmarked posts</span>
+      </div>
+      <span class="drawer-item-arrow material-icons-round">chevron_right</span>
+    </button>
+
+    <button class="drawer-item" data-drawer-nav="your-posts">
+      <div class="drawer-item-icon"><span class="material-icons-round">bar_chart</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">Your Posts</span>
+        <span class="drawer-item-sub">Analytics &amp; insights</span>
+      </div>
+      <span class="drawer-item-arrow material-icons-round">chevron_right</span>
+    </button>
+
+    <button class="drawer-item" data-drawer-nav="orders">
+      <div class="drawer-item-icon"><span class="material-icons-round">inventory_2</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">My Orders</span>
+        <span class="drawer-item-sub">Order history</span>
+      </div>
+      <span class="drawer-item-arrow material-icons-round">chevron_right</span>
+    </button>
+
+    <div class="drawer-section-lbl">Preferences</div>
+
+    <button class="drawer-item" id="drawerThemeToggle">
+      <div class="drawer-item-icon"><span class="material-icons-round" id="drawerThemeIcon">dark_mode</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">Dark Mode</span>
+        <span class="drawer-item-sub">Switch appearance</span>
+      </div>
+      <div class="drw-switch" id="drwSwitch">
+        <div class="drw-switch-knob"></div>
+      </div>
+    </button>
+
+    <button class="drawer-item" data-drawer-nav="settings">
+      <div class="drawer-item-icon"><span class="material-icons-round">settings</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">Settings</span>
+        <span class="drawer-item-sub">Account &amp; privacy</span>
+      </div>
+      <span class="drawer-item-arrow material-icons-round">chevron_right</span>
+    </button>
+
+    <button class="drawer-item" data-drawer-nav="about">
+      <div class="drawer-item-icon"><span class="material-icons-round">info</span></div>
+      <div class="drawer-item-text">
+        <span class="drawer-item-label">About</span>
+        <span class="drawer-item-sub">SayatX v1.0</span>
+      </div>
+      <span class="drawer-item-arrow material-icons-round">chevron_right</span>
+    </button>
+  </nav>
+
+  <!-- Drawer footer -->
+  <div class="drawer-footer">
+    <!-- Show when logged out -->
+    <button class="drawer-login-btn" id="drawerLoginBtn">
+      <span class="material-icons-round">login</span>
+      Login / Sign Up
+    </button>
+    <!-- Show when logged in -->
+    <button class="drawer-logout-btn" id="drawerLogoutBtn" style="display:none">
+      <div class="drawer-item-icon"><span class="material-icons-round">logout</span></div>
+      <span>Logout</span>
+    </button>
+    <p class="drawer-version">SayatX · Made with ❤️</p>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════════════════
+     APP HEADER
+═══════════════════════════════════════ -->
+<header class="app-header" id="appHeader">
+  <!-- Safe area spacer (for PWA notch) -->
+  <div class="header-safe-area"></div>
+
+  <div class="header-inner">
+    <!-- Left: hamburger + brand -->
+    <div class="header-left">
+      <button class="header-menu-btn" id="menuBtn" aria-label="Open menu">
+        <span class="hbr hbr-1"></span>
+        <span class="hbr hbr-2"></span>
+        <span class="hbr hbr-3"></span>
+      </button>
+      <div class="header-brand" id="headerBrand">
+        <div class="header-logo">
+          <span>SS</span>
+        </div>
+        <span class="header-brand-name">SayatX</span>
+      </div>
+    </div>
+
+    <!-- Center: search bar -->
+    <div class="header-search-wrap" id="headerSearchWrap">
+      <span class="material-icons-round header-search-icon">search</span>
+      <input
+        type="search"
+        class="header-search-input"
+        id="searchInput"
+        placeholder="Search..."
+        autocomplete="off"
+        aria-label="Search"
+      />
+      <button class="header-search-clear" id="searchClearBtn" style="display:none" aria-label="Clear search">
+        <span class="material-icons-round">close</span>
+      </button>
+    </div>
+
+    <!-- Right: notification + mobile search toggle -->
+    <div class="header-right">
+      <button class="header-icon-btn" id="mobileSearchToggle" aria-label="Search">
+        <span class="material-icons-round">search</span>
+      </button>
+      <button class="header-icon-btn" id="notifBtn" aria-label="Notifications">
+        <span class="material-icons-round">notifications</span>
+        <span class="header-notif-dot" id="headerNotifDot" style="display:none"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile search bar (hidden by default) -->
+  <div class="mobile-search-bar" id="mobileSearchBar">
+    <span class="material-icons-round mobile-search-icon">search</span>
+    <input
+      type="search"
+      class="mobile-search-input"
+      id="mobileSearchInput"
+      placeholder="Search posts, videos, people..."
+      autocomplete="off"
+    />
+    <button class="mobile-search-close" id="mobileSearchClose" aria-label="Close search">
+      <span class="material-icons-round">close</span>
+    </button>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════ -->
+<main class="app-main">
+
+  <!-- ── SECTION: HOME FEED ── -->
+  <section class="app-section active" id="sectionHome">
+
+    <!-- Sponsored / Admin Featured Strip -->
+    <div class="featured-strip" id="featuredStrip">
+      <div class="featured-strip-header">
+        <div class="sponsored-tag">
+          <span class="material-icons-round">stars</span>
+          SPONSORED
+        </div>
+        <div class="featured-scroll-hint">
+          <span class="material-icons-round">swipe</span>
+          Scroll to explore
+        </div>
+      </div>
+      <div class="featured-scroll" id="featuredScroll">
+        <!-- Featured cards injected by JS -->
+        <!-- Skeleton placeholders -->
+        <div class="featured-card featured-skeleton"></div>
+        <div class="featured-card featured-skeleton"></div>
+        <div class="featured-card featured-skeleton"></div>
+      </div>
+    </div>
+
+    <!-- Feed posts -->
+    <div class="feed-container" id="feedContainer">
+      <!-- Feed skeleton -->
+      <div class="feed-skeleton-wrap" id="feedSkeleton">
+        <div class="feed-post-skeleton">
+          <div class="skel-avatar"></div>
+          <div class="skel-lines">
+            <div class="skel-line skel-line-short"></div>
+            <div class="skel-line skel-line-long"></div>
+          </div>
+        </div>
+        <div class="skel-media"></div>
+        <div class="feed-post-skeleton" style="margin-top:12px">
+          <div class="skel-avatar"></div>
+          <div class="skel-lines">
+            <div class="skel-line skel-line-short"></div>
+            <div class="skel-line skel-line-long"></div>
+          </div>
+        </div>
+        <div class="skel-media"></div>
+      </div>
+      <!-- Real posts appended here by JS -->
+    </div>
+
+    <!-- Search results overlay (inside home) -->
+    <div class="search-results-panel" id="searchResultsPanel" style="display:none">
+      <div class="search-results-header">
+        <span class="material-icons-round">search</span>
+        <span id="searchResultsLabel">Results for "..."</span>
+      </div>
+      <div class="search-results-list" id="searchResultsList">
+        <!-- Search result items injected by JS -->
+      </div>
+      <div class="search-no-result" id="searchNoResult" style="display:none">
+        <span class="material-icons-round">search_off</span>
+        <p>No results found</p>
+        <small id="searchNoResultMsg">Try a different keyword</small>
+        <div class="search-suggestions" id="searchSuggestions"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── SECTION: MESSAGES ── -->
+  <section class="app-section" id="sectionMessages">
+    <div class="messages-container">
+
+      <!-- Messages list view -->
+      <div class="messages-list-view" id="messagesListView">
+        <div class="messages-top-bar">
+          <h2 class="messages-title">Messages</h2>
+          <button class="messages-new-btn" id="newMessageBtn" aria-label="New message">
+            <span class="material-icons-round">edit</span>
+          </button>
+        </div>
+        <div class="messages-search-wrap">
+          <span class="material-icons-round">search</span>
+          <input type="search" class="messages-search-input" id="messagesSearch" placeholder="Search conversations..."/>
+        </div>
+        <!-- Conversation list -->
+        <div class="conversations-list" id="conversationsList">
+          <!-- Items injected by JS -->
+          <div class="conversations-empty" id="conversationsEmpty" style="display:none">
+            <span class="material-icons-round">chat_bubble_outline</span>
+            <p>No messages yet</p>
+            <small>Follow someone and start a conversation</small>
+          </div>
+          <div class="conversations-login-prompt" id="conversationsLoginPrompt" style="display:none">
+            <span class="material-icons-round">lock</span>
+            <p>Login to see your messages</p>
+            <button class="btn-primary" id="msgLoginBtn">Login</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat view (opens over list on mobile) -->
+      <div class="chat-view" id="chatView" style="display:none">
+        <!-- Chat header -->
+        <div class="chat-header">
+          <button class="chat-back-btn" id="chatBackBtn" aria-label="Back">
+            <span class="material-icons-round">arrow_back</span>
+          </button>
+          <div class="chat-header-user" id="chatHeaderUser">
+            <div class="chat-header-avatar" id="chatHeaderAvatar">U</div>
+            <div class="chat-header-info">
+              <p class="chat-header-name" id="chatHeaderName">User</p>
+              <p class="chat-header-status" id="chatHeaderStatus">Online</p>
+            </div>
+          </div>
+          <button class="chat-header-icon-btn" id="chatViewProfileBtn" aria-label="View profile">
+            <span class="material-icons-round">person</span>
+          </button>
+          <!-- Switch to E2EE secure chat -->
+          <button class="chat-header-icon-btn chat-e2ee-btn" id="chatOpenE2EEBtn" aria-label="Open secure encrypted chat" title="Secure E2EE Chat">
+            <span class="material-icons-round">enhanced_encryption</span>
+          </button>
+        </div>
+
+        <!-- Messages list -->
+        <div class="chat-messages" id="chatMessages">
+          <!-- Messages injected by JS -->
+        </div>
+
+        <!-- Message input -->
+        <div class="chat-input-bar">
+          <!-- Media preview in chat -->
+          <div class="chat-media-preview" id="chatMediaPreview" style="display:none">
+            <img id="chatMediaPreviewImg" src="" alt="" style="display:none"/>
+            <video id="chatMediaPreviewVid" src="" style="display:none" muted playsinline></video>
+            <button class="chat-media-remove" id="chatMediaRemove">
+              <span class="material-icons-round">close</span>
+            </button>
+          </div>
+          <div class="chat-input-row">
+            <button class="chat-attach-btn" id="chatAttachBtn" aria-label="Attach media">
+              <span class="material-icons-round">add_circle</span>
+            </button>
+            <input type="file" id="chatFileInput" accept="image/*,video/*" style="display:none"/>
+            <div class="chat-input-wrap">
+              <textarea
+                class="chat-input"
+                id="chatInput"
+                placeholder="Message..."
+                rows="1"
+                maxlength="256"
+                aria-label="Type a message"
+              ></textarea>
+            </div>
+            <button class="chat-send-btn" id="chatSendBtn" aria-label="Send message">
+              <span class="material-icons-round">send</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SECTION: PROFILE ── -->
+  <section class="app-section" id="sectionProfile">
+
+    <!-- Logged-out: Auth screen -->
+    <div class="auth-screen" id="authScreen">
+      <div class="auth-card">
+        <div class="auth-logo">
+          <div class="auth-logo-icon"><span>SS</span></div>
+          <h1 class="auth-logo-name">SayatX</h1>
+          <p class="auth-logo-sub">Share your world</p>
+        </div>
+        <div class="auth-methods">
+          <!-- Google -->
+          <button class="btn-google" id="googleLoginBtn">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="18"/>
+            Continue with Google
+          </button>
+          <div class="auth-divider"><span>or</span></div>
+          <!-- Phone -->
+          <div class="auth-phone-wrap">
+            <div class="phone-input-group">
+              <span class="phone-prefix">+91</span>
+              <input type="tel" id="phoneInput" class="phone-input" placeholder="Mobile number" maxlength="10" inputmode="numeric"/>
+            </div>
+            <button class="btn-primary btn-send-otp" id="sendOtpBtn">
+              <span class="material-icons-round">sms</span>
+              Send OTP
+            </button>
+          </div>
+          <!-- OTP verify -->
+          <div class="otp-wrap" id="otpWrap" style="display:none">
+            <p class="otp-label">Enter the 6-digit OTP sent to your number</p>
+            <div class="otp-boxes" id="otpBoxes">
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+            </div>
+            <button class="btn-primary" id="verifyOtpBtn" style="width:100%">
+              <span class="material-icons-round">verified</span>
+              Verify OTP
+            </button>
+            <p class="otp-resend-text">Didn't receive it? <button class="otp-resend-btn" id="resendOtpBtn">Resend</button></p>
+          </div>
+        </div>
+        <div id="recaptcha-container"></div>
+      </div>
+    </div>
+
+    <!-- Logged-in: Profile screen -->
+    <div class="profile-screen" id="profileScreen" style="display:none">
+
+      <!-- Profile header / cover -->
+      <div class="profile-cover" id="profileCover">
+        <div class="profile-cover-gradient"></div>
+      </div>
+
+      <!-- Profile info section -->
+      <div class="profile-info-section">
+        <!-- Avatar with edit button -->
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar" id="profileAvatar">
+            <img id="profileAvatarImg" src="" alt="" style="display:none"/>
+            <span id="profileAvatarLetter">U</span>
+          </div>
+          <!-- Edit avatar button (own profile only) -->
+          <button class="profile-avatar-edit-btn" id="profileAvatarEditBtn" aria-label="Change profile picture">
+            <span class="material-icons-round">photo_camera</span>
+          </button>
+          <input type="file" id="avatarFileInput" accept="image/jpeg,image/png,image/webp" style="display:none"/>
+        </div>
+
+        <div class="profile-details">
+          <h2 class="profile-display-name" id="profileDisplayName">User</h2>
+          <p class="profile-handle" id="profileHandle">@user</p>
+          <div class="profile-stats-row">
+            <div class="profile-stat">
+              <span class="profile-stat-num" id="profilePostCount">0</span>
+              <span class="profile-stat-lbl">Posts</span>
+            </div>
+            <div class="profile-stat">
+              <span class="profile-stat-num" id="profileFollowerCount">0</span>
+              <span class="profile-stat-lbl">Followers</span>
+            </div>
+            <div class="profile-stat">
+              <span class="profile-stat-num" id="profileFollowingCount">0</span>
+              <span class="profile-stat-lbl">Following</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile action buttons -->
+      <div class="profile-actions" id="profileActions">
+        <!-- Own profile actions -->
+        <div id="ownProfileActions">
+          <button class="btn-outline-profile" id="editProfileBtn">
+            <span class="material-icons-round">edit</span>
+            Edit Profile
+          </button>
+        </div>
+      </div>
+
+      <!-- Profile menu list -->
+      <div class="profile-menu-list">
+
+        <div class="profile-menu-section-lbl">Content</div>
+
+        <button class="profile-menu-item" id="menuYourPosts">
+          <div class="profile-menu-icon"><span class="material-icons-round">grid_on</span></div>
+          <div class="profile-menu-text">
+            <span class="profile-menu-label">Your Posts</span>
+            <span class="profile-menu-sub">View all your posts &amp; analytics</span>
+          </div>
+          <span class="material-icons-round profile-menu-arrow">chevron_right</span>
+        </button>
+
+        <button class="profile-menu-item" id="menuLikedPosts">
+          <div class="profile-menu-icon"><span class="material-icons-round">favorite</span></div>
+          <div class="profile-menu-text">
+            <span class="profile-menu-label">Liked Posts</span>
+            <span class="profile-menu-sub">Posts you've liked</span>
+          </div>
+          <span class="material-icons-round profile-menu-arrow">chevron_right</span>
+        </button>
+
+        <button class="profile-menu-item" id="menuSaved">
+          <div class="profile-menu-icon"><span class="material-icons-round">bookmark</span></div>
+          <div class="profile-menu-text">
+            <span class="profile-menu-label">Saved</span>
+            <span class="profile-menu-sub">Bookmarked content</span>
+          </div>
+          <span class="material-icons-round profile-menu-arrow">chevron_right</span>
+        </button>
+
+        <div class="profile-menu-section-lbl">Shopping</div>
+
+        <button class="profile-menu-item" id="menuOrders">
+          <div class="profile-menu-icon"><span class="material-icons-round">inventory_2</span></div>
+          <div class="profile-menu-text">
+            <span class="profile-menu-label">My Orders</span>
+            <span class="profile-menu-sub">Order history &amp; digital content</span>
+          </div>
+          <span class="material-icons-round profile-menu-arrow">chevron_right</span>
+        </button>
+
+
+
+        <div class="profile-menu-section-lbl">Account</div>
+
+        <button class="profile-menu-item" id="menuTheme">
+          <div class="profile-menu-icon"><span class="material-icons-round" id="profileThemeIcon">dark_mode</span></div>
+          <div class="profile-menu-text">
+            <span class="profile-menu-label">Dark Mode</span>
+            <span class="profile-menu-sub">Switch appearance</span>
+          </div>
+          <div class="drw-switch" id="profileDarkSwitch">
+            <div class="drw-switch-knob"></div>
+          </div>
+        </button>
+
+        <button class="profile-menu-item" id="menuSettings">
+          <div class="profile-menu-icon"><span class="material-icons-round">settings</span></div>
+          <div class="profile-menu-text">
+            <span class="profile-menu-label">Settings</span>
+            <span class="profile-menu-sub">Privacy &amp; account</span>
+          </div>
+          <span class="material-icons-round profile-menu-arrow">chevron_right</span>
+        </button>
+
+        <button class="profile-menu-item profile-menu-logout" id="profileLogoutBtn">
+          <div class="profile-menu-icon profile-menu-icon-danger"><span class="material-icons-round">logout</span></div>
+          <div class="profile-menu-text">
+            <span class="profile-menu-label profile-menu-label-danger">Logout</span>
+          </div>
+        </button>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── SECTION: ADMIN (hidden, unlocked by 10-tap brand) ── -->
+  <section class="app-section" id="sectionAdmin" style="display:none!important">
+    <div class="admin-wrap">
+      <div class="admin-hero">
+        <span class="material-icons-round admin-hero-icon">admin_panel_settings</span>
+        <h2>Admin Panel</h2>
+        <p>SayatX — Content Management</p>
+      </div>
+      <div class="admin-body" id="adminBody">
+
+        <div class="admin-auth-notice" id="adminAuthNotice">
+          <span class="material-icons-round">warning_amber</span>
+          <p>Login required to publish content.</p>
+        </div>
+        <div class="admin-auth-ok" id="adminAuthOk" style="display:none">
+          <span class="material-icons-round">verified_user</span>
+          <p id="adminAuthName">Logged in as Admin</p>
+        </div>
+
+        <!-- Feature type selector -->
+        <div class="admin-section-lbl">
+          <span class="material-icons-round">push_pin</span>
+          Featured / Sponsored
+        </div>
+        <div class="admin-field-group">
+          <p class="admin-field-hint">Upload a video or image to pin it as Sponsored content. It always appears at the top of the feed.</p>
+          <div class="admin-pt-grid">
+            <label class="admin-pt-card">
+              <input type="radio" name="adminFeaturedType" value="video" checked/>
+              <span class="admin-pt-label">
+                <span class="material-icons-round">videocam</span>
+                Video
+              </span>
+            </label>
+            <label class="admin-pt-card">
+              <input type="radio" name="adminFeaturedType" value="image"/>
+              <span class="admin-pt-label">
+                <span class="material-icons-round">image</span>
+                Image
+              </span>
+            </label>
+            <label class="admin-pt-card">
+              <input type="radio" name="adminFeaturedType" value="audio"/>
+              <span class="admin-pt-label">
+                <span class="material-icons-round">headphones</span>
+                Audio
+              </span>
+            </label>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Title *</label>
+            <input type="text" class="admin-input" id="featuredTitle" placeholder="Featured content title"/>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Thumbnail / Cover Image *</label>
+            <div class="admin-upload-zone" id="featuredThumbZone">
+              <input type="file" id="featuredThumbInput" accept="image/*" class="admin-file-input"/>
+              <span class="material-icons-round">add_photo_alternate</span>
+              <p>Select thumbnail image</p>
+            </div>
+            <div class="admin-file-selected" id="featuredThumbSelected" style="display:none">
+              <span class="material-icons-round">image</span>
+              <span id="featuredThumbName">image.jpg</span>
+              <button class="admin-file-remove" id="featuredThumbRemove"><span class="material-icons-round">close</span></button>
+            </div>
+          </div>
+          <div class="admin-field" id="featuredMediaField">
+            <label class="admin-label">Media File (Video/Audio) *</label>
+            <div class="admin-upload-zone" id="featuredMediaZone">
+              <input type="file" id="featuredMediaInput" accept="video/*,audio/*" class="admin-file-input"/>
+              <span class="material-icons-round">cloud_upload</span>
+              <p>Select video or audio file</p>
+              <small>Max 5GB</small>
+            </div>
+            <div class="admin-file-selected" id="featuredMediaSelected" style="display:none">
+              <span class="material-icons-round">movie</span>
+              <span id="featuredMediaName">video.mp4</span>
+              <button class="admin-file-remove" id="featuredMediaRemove"><span class="material-icons-round">close</span></button>
+            </div>
+          </div>
+          <button class="btn-primary admin-submit-btn" id="publishFeaturedBtn">
+            <span class="material-icons-round">push_pin</span>
+            Pin as Featured
+          </button>
+        </div>
+
+        <!-- Product publisher -->
+        <div class="admin-section-lbl">
+          <span class="material-icons-round">inventory_2</span>
+          Publish Product
+        </div>
+        <div class="admin-field-group">
+          <div class="admin-field">
+            <label class="admin-label">Product Type</label>
+            <div class="admin-pt-grid">
+              <label class="admin-pt-card">
+                <input type="radio" name="adminProductType" value="general" checked/>
+                <span class="admin-pt-label"><span class="material-icons-round">inventory_2</span>General</span>
+              </label>
+              <label class="admin-pt-card">
+                <input type="radio" name="adminProductType" value="ebook"/>
+                <span class="admin-pt-label"><span class="material-icons-round">tablet_android</span>E-Book</span>
+              </label>
+              <label class="admin-pt-card">
+                <input type="radio" name="adminProductType" value="audio"/>
+                <span class="admin-pt-label"><span class="material-icons-round">headphones</span>Audio</span>
+              </label>
+              <label class="admin-pt-card">
+                <input type="radio" name="adminProductType" value="paperback"/>
+                <span class="admin-pt-label"><span class="material-icons-round">menu_book</span>Paperback</span>
+              </label>
+            </div>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Title *</label>
+            <input type="text" class="admin-input" id="productTitle" placeholder="Product title"/>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Description</label>
+            <textarea class="admin-input admin-textarea" id="productDesc" rows="3" placeholder="Product description..."></textarea>
+          </div>
+          <div class="admin-field-row">
+            <div class="admin-field">
+              <label class="admin-label">MRP (₹) *</label>
+              <input type="number" class="admin-input" id="productMRP" placeholder="0" min="0"/>
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Sale Price (₹) *</label>
+              <input type="number" class="admin-input" id="productSalePrice" placeholder="0" min="0"/>
+            </div>
+          </div>
+          <div class="admin-discount-preview" id="adminDiscountPreview" style="display:none">
+            <span class="material-icons-round">local_fire_department</span>
+            <span id="adminDiscountText">0% OFF</span>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Payment Method</label>
+            <select class="admin-input admin-select" id="productPayMethod">
+              <option value="both">Both (COD + Online)</option>
+              <option value="online">Online Only</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Cover Images *</label>
+            <div class="admin-upload-zone">
+              <input type="file" id="productImages" accept="image/*" multiple class="admin-file-input"/>
+              <span class="material-icons-round">add_photo_alternate</span>
+              <p>Select cover image(s)</p>
+              <small>Multiple allowed</small>
+            </div>
+            <div class="admin-img-previews" id="adminImgPreviews"></div>
+          </div>
+          <div class="admin-field" id="productPDFField" style="display:none">
+            <label class="admin-label">PDF File *</label>
+            <div class="admin-upload-zone" id="productPDFZone">
+              <input type="file" id="productPDF" accept="application/pdf" class="admin-file-input"/>
+              <span class="material-icons-round">upload_file</span>
+              <p>Upload PDF file</p>
+              <small>Max 100MB</small>
+            </div>
+            <div class="admin-file-selected" id="productPDFSelected" style="display:none">
+              <span class="material-icons-round">picture_as_pdf</span>
+              <span id="productPDFName">file.pdf</span>
+              <button class="admin-file-remove" id="productPDFRemove"><span class="material-icons-round">close</span></button>
+            </div>
+          </div>
+          <div class="admin-field" id="productAudioField" style="display:none">
+            <label class="admin-label">Audio File *</label>
+            <div class="admin-upload-zone" id="productAudioZone">
+              <input type="file" id="productAudio" accept="audio/*" class="admin-file-input"/>
+              <span class="material-icons-round">audio_file</span>
+              <p>Upload audio file</p>
+              <small>Max 5GB</small>
+            </div>
+            <div class="admin-file-selected" id="productAudioSelected" style="display:none">
+              <span class="material-icons-round">headphones</span>
+              <span id="productAudioName">audio.mp3</span>
+              <button class="admin-file-remove" id="productAudioRemove"><span class="material-icons-round">close</span></button>
+            </div>
+          </div>
+          <!-- Upload progress -->
+          <div class="admin-progress-card" id="adminProgressCard" style="display:none">
+            <div class="admin-progress-top">
+              <span id="adminProgressTitle">Uploading...</span>
+              <span id="adminProgressPct">0%</span>
+            </div>
+            <div class="admin-progress-bar-wrap">
+              <div class="admin-progress-bar" id="adminProgressBar" style="width:0%"></div>
+            </div>
+            <p class="admin-progress-status" id="adminProgressStatus">Preparing...</p>
+            <div class="admin-upload-log" id="adminUploadLog"></div>
+          </div>
+          <button class="btn-primary admin-submit-btn" id="publishProductBtn">
+            <span class="material-icons-round">cloud_upload</span>
+            Publish Product
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════
+     BOTTOM NAVIGATION
+═══════════════════════════════════════ -->
+<nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
+  <button class="bnav-btn active" data-bnav="home" id="bnavHome">
+    <span class="material-icons-round">home</span>
+    <span class="bnav-label">Home</span>
+    <span class="bnav-indicator"></span>
+  </button>
+  <button class="bnav-btn" data-bnav="messages" id="bnavMessages">
+    <span class="material-icons-round">chat</span>
+    <span class="bnav-label">Messages</span>
+    <span class="bnav-indicator"></span>
+    <span class="bnav-badge" id="bnavMsgBadge" style="display:none">0</span>
+  </button>
+  <button class="bnav-btn" data-bnav="profile" id="bnavProfile">
+    <span class="material-icons-round">person</span>
+    <span class="bnav-label">Profile</span>
+    <span class="bnav-indicator"></span>
+  </button>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     FAB — CREATE POST
+═══════════════════════════════════════ -->
+<button class="fab-plus" id="fabPlus" aria-label="Create new post">
+  <span class="material-icons-round">add</span>
+</button>
+
+<!-- ═══════════════════════════════════════
+     CREATE POST BOTTOM SHEET
+═══════════════════════════════════════ -->
+<div class="bottom-sheet" id="createPostSheet">
+  <div class="bottom-sheet-backdrop" id="createPostBackdrop"></div>
+  <div class="bottom-sheet-content">
+    <!-- Handle bar -->
+    <div class="sheet-handle-bar"></div>
+
+    <!-- Sheet header -->
+    <div class="sheet-header">
+      <h3 class="sheet-title">
+        <span class="material-icons-round">add_circle</span>
+        New Post
+      </h3>
+      <button class="sheet-close-btn" id="createPostClose">
+        <span class="material-icons-round">close</span>
+      </button>
+    </div>
+
+    <!-- Post type tabs -->
+    <div class="post-type-tabs" id="postTypeTabs">
+      <button class="post-type-tab active" data-post-type="text">
+        <span class="material-icons-round">notes</span>
+        Text
+      </button>
+      <button class="post-type-tab" data-post-type="photo">
+        <span class="material-icons-round">photo_camera</span>
+        Photo
+      </button>
+      <button class="post-type-tab" data-post-type="video">
+        <span class="material-icons-round">videocam</span>
+        Video
+      </button>
+      <button class="post-type-tab" data-post-type="audio">
+        <span class="material-icons-round">headphones</span>
+        Audio
+      </button>
+    </div>
+
+    <!-- Login prompt (shown if not logged in) -->
+    <div class="create-login-prompt" id="createLoginPrompt" style="display:none">
+      <span class="material-icons-round">lock</span>
+      <p>Login to create posts</p>
+      <button class="btn-primary" id="createGoLoginBtn">Login / Sign Up</button>
+    </div>
+
+    <!-- Create form (shown if logged in) -->
+    <div class="create-form" id="createForm">
+      <!-- User row -->
+      <div class="create-user-row">
+        <div class="create-form-avatar" id="createFormAvatar">U</div>
+        <span class="create-form-username" id="createFormUsername">User</span>
+      </div>
+
+      <!-- Text area -->
+      <textarea
+        class="create-textarea"
+        id="createTextarea"
+        placeholder="What's on your mind?"
+        rows="3"
+      ></textarea>
+
+      <!-- Media upload zone -->
+      <div class="create-upload-zone" id="createUploadZone" style="display:none">
+        <span class="material-icons-round">cloud_upload</span>
+        <p id="createUploadZoneText">Tap to select media</p>
+        <small id="createUploadZoneHint">Video/Audio: max 5GB · Photo: max 20MB</small>
+        <input type="file" id="createMediaInput" class="create-file-input"/>
+      </div>
+
+      <!-- Media preview -->
+      <div class="create-media-preview" id="createMediaPreview" style="display:none">
+        <img id="createPreviewImg" src="" alt="" style="display:none"/>
+        <video id="createPreviewVid" src="" muted playsinline style="display:none"></video>
+        <div class="create-audio-preview" id="createAudioPreview" style="display:none">
+          <span class="material-icons-round">headphones</span>
+          <span id="createAudioFileName">audio.mp3</span>
+        </div>
+        <button class="create-media-remove-btn" id="createMediaRemoveBtn">
+          <span class="material-icons-round">close</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sheet footer -->
+    <div class="sheet-footer" id="createPostFooter">
+      <button class="btn-outline" id="createCancelBtn">Cancel</button>
+      <button class="btn-primary" id="createSubmitBtn">
+        <span class="material-icons-round">send</span>
+        Post
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     REEL / VIDEO FULLSCREEN PLAYER
+═══════════════════════════════════════ -->
+<div class="reel-overlay" id="reelOverlay">
+  <!-- Top bar -->
+  <div class="reel-top-bar">
+    <button class="reel-close-btn" id="reelCloseBtn">
+      <span class="material-icons-round">close</span>
+    </button>
+    <span class="reel-top-title">SayatX</span>
+    <div style="width:40px"></div>
+  </div>
+
+  <!-- Scroll container (snap) -->
+  <div class="reel-scroll" id="reelScroll">
+    <!-- Reel items injected by JS -->
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     VIDEO OVERLAY (single video, full screen)
+═══════════════════════════════════════ -->
+<div class="video-overlay" id="videoOverlay">
+  <div class="video-overlay-top">
+    <button class="video-overlay-close" id="videoOverlayClose">
+      <span class="material-icons-round">arrow_back</span>
+    </button>
+    <span class="video-overlay-title" id="videoOverlayTitle">Video</span>
+  </div>
+  <video
+    class="video-overlay-player"
+    id="videoOverlayPlayer"
+    controls
+    playsinline
+    preload="metadata"
+  ></video>
+</div>
+
+<!-- ═══════════════════════════════════════
+     AUDIO PLAYER OVERLAY
+═══════════════════════════════════════ -->
+<div class="audio-overlay" id="audioOverlay">
+  <div class="audio-overlay-bg" id="audioOverlayBg"></div>
+  <div class="audio-overlay-content">
+    <button class="audio-overlay-close" id="audioOverlayClose">
+      <span class="material-icons-round">keyboard_arrow_down</span>
+    </button>
+    <div class="audio-album-art" id="audioAlbumArt">
+      <img id="audioAlbumArtImg" src="" alt=""/>
+    </div>
+    <p class="audio-title-text" id="audioTitleText">Audio</p>
+    <p class="audio-artist-text" id="audioArtistText">SayatX</p>
+    <audio id="audioPlayer" preload="metadata"></audio>
+    <div class="audio-seek-wrap">
+      <span class="audio-time" id="audioCurrentTime">0:00</span>
+      <div class="audio-seek-bar">
+        <div class="audio-seek-fill" id="audioSeekFill" style="width:0%"></div>
+        <input type="range" class="audio-seek-input" id="audioSeekInput" min="0" max="100" value="0" step="0.1"/>
+      </div>
+      <span class="audio-time" id="audioDuration">0:00</span>
+    </div>
+    <div class="audio-controls">
+      <button class="audio-ctrl-btn" id="audioPrev10">
+        <span class="material-icons-round">replay_10</span>
+      </button>
+      <button class="audio-play-btn" id="audioPlayBtn">
+        <span class="material-icons-round">play_arrow</span>
+      </button>
+      <button class="audio-ctrl-btn" id="audioFwd10">
+        <span class="material-icons-round">forward_10</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PDF READER OVERLAY
+═══════════════════════════════════════ -->
+<div class="pdf-overlay" id="pdfOverlay">
+  <div class="pdf-overlay-header">
+    <button class="pdf-close-btn" id="pdfCloseBtn">
+      <span class="material-icons-round">close</span>
+    </button>
+    <span class="pdf-title" id="pdfTitle">Reading...</span>
+    <span class="pdf-page-count" id="pdfPageCount"></span>
+  </div>
+  <div class="pdf-pages-container" id="pdfPagesContainer">
+    <div class="pdf-loading">
+      <div class="spinner"></div>
+      <p>Loading document...</p>
+    </div>
+  </div>
+  <div class="pdf-footer-bar">
+    <span class="material-icons-round" style="font-size:14px;opacity:.4">lock</span>
+    <span>Protected — Reading only</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     USER PROFILE VIEW (other user's profile)
+═══════════════════════════════════════ -->
+<div class="user-profile-overlay" id="userProfileOverlay">
+  <div class="upo-header">
+    <button class="upo-back-btn" id="upoBackBtn">
+      <span class="material-icons-round">arrow_back</span>
+    </button>
+    <span class="upo-header-title" id="upoHeaderTitle">Profile</span>
+  </div>
+  <div class="upo-body">
+    <!-- Cover -->
+    <div class="upo-cover" id="upoCover"></div>
+    <!-- Avatar + actions -->
+    <div class="upo-avatar-row">
+      <div class="upo-avatar" id="upoAvatar">
+        <img id="upoAvatarImg" src="" alt="" style="display:none"/>
+        <span id="upoAvatarLetter">U</span>
+      </div>
+      <div class="upo-action-btns">
+        <button class="btn-follow-upo" id="upoFollowBtn">
+          <span class="material-icons-round">person_add</span>
+          Follow
+        </button>
+        <button class="btn-message-upo" id="upoMessageBtn">
+          <span class="material-icons-round">chat</span>
+        </button>
+      </div>
+    </div>
+    <!-- Info -->
+    <div class="upo-info">
+      <h3 class="upo-display-name" id="upoDisplayName">User</h3>
+      <p class="upo-handle" id="upoHandle">@user</p>
+      <div class="upo-stats">
+        <div class="upo-stat">
+          <span class="upo-stat-num" id="upoPostCount">0</span>
+          <span class="upo-stat-lbl">Posts</span>
+        </div>
+        <div class="upo-stat">
+          <span class="upo-stat-num" id="upoFollowerCount">0</span>
+          <span class="upo-stat-lbl">Followers</span>
+        </div>
+        <div class="upo-stat">
+          <span class="upo-stat-num" id="upoFollowingCount">0</span>
+          <span class="upo-stat-lbl">Following</span>
+        </div>
+      </div>
+    </div>
+    <!-- Posts grid -->
+    <div class="upo-posts-grid" id="upoPostsGrid">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     YOUR POSTS — ANALYTICS OVERLAY
+═══════════════════════════════════════ -->
+<div class="your-posts-overlay" id="yourPostsOverlay">
+  <div class="ypo-header">
+    <button class="ypo-back-btn" id="ypoBackBtn">
+      <span class="material-icons-round">arrow_back</span>
+    </button>
+    <h3 class="ypo-title">Your Posts</h3>
+  </div>
+  <div class="ypo-body" id="ypoBody">
+    <!-- Injected by JS -->
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     COMMENTS BOTTOM SHEET
+═══════════════════════════════════════ -->
+<div class="bottom-sheet" id="commentsSheet">
+  <div class="bottom-sheet-backdrop" id="commentsBackdrop"></div>
+  <div class="bottom-sheet-content comments-sheet-content">
+    <div class="sheet-handle-bar"></div>
+    <div class="sheet-header">
+      <h3 class="sheet-title">
+        <span class="material-icons-round">comment</span>
+        Comments
+      </h3>
+      <button class="sheet-close-btn" id="commentsClose">
+        <span class="material-icons-round">close</span>
+      </button>
+    </div>
+    <div class="comments-list" id="commentsList">
+      <!-- Injected by JS -->
+    </div>
+    <div class="comments-input-bar">
+      <div class="comments-input-avatar" id="commentsInputAvatar">U</div>
+      <div class="comments-input-wrap">
+        <input
+          type="text"
+          class="comments-input"
+          id="commentsInput"
+          placeholder="Add a comment..."
+          autocomplete="off"
+        />
+      </div>
+      <button class="comments-send-btn" id="commentsSendBtn">
+        <span class="material-icons-round">send</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ORDERS OVERLAY
+═══════════════════════════════════════ -->
+<div class="orders-overlay" id="ordersOverlay">
+  <div class="orders-header">
+    <button class="orders-back-btn" id="ordersBackBtn">
+      <span class="material-icons-round">arrow_back</span>
+    </button>
+    <h3>My Orders</h3>
+  </div>
+  <div class="orders-body" id="ordersBody">
+    <!-- Injected by JS -->
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     CHECKOUT MODAL
+═══════════════════════════════════════ -->
+<div class="modal" id="checkoutModal">
+  <div class="modal-backdrop" id="checkoutModalBackdrop"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>
+        <span class="material-icons-round">location_on</span>
+        Checkout
+      </h3>
+      <button class="modal-close-btn" id="checkoutModalClose">
+        <span class="material-icons-round">close</span>
+      </button>
+    </div>
+    <div class="modal-body" id="checkoutModalBody">
+      <p class="modal-subtitle" id="checkoutSubtitle">Enter delivery address</p>
+      <div id="checkoutAddressFields">
+        <div class="form-field">
+          <label class="form-label">Full Name *</label>
+          <input type="text" class="form-input" id="addrName" placeholder="Your full name"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Mobile *</label>
+          <input type="tel" class="form-input" id="addrPhone" placeholder="10-digit mobile" maxlength="10"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Street Address *</label>
+          <input type="text" class="form-input" id="addrStreet" placeholder="House no, Street"/>
+        </div>
+        <div class="form-row-2">
+          <div class="form-field">
+            <label class="form-label">City *</label>
+            <input type="text" class="form-input" id="addrCity" placeholder="City"/>
+          </div>
+          <div class="form-field">
+            <label class="form-label">PIN Code *</label>
+            <input type="tel" class="form-input" id="addrPin" placeholder="6-digit PIN" maxlength="6"/>
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-field">
+            <label class="form-label">State *</label>
+            <input type="text" class="form-input" id="addrState" placeholder="State"/>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Landmark</label>
+            <input type="text" class="form-input" id="addrLandmark" placeholder="Optional"/>
+          </div>
+        </div>
+      </div>
+      <p class="form-section-title">
+        <span class="material-icons-round">payment</span>
+        Payment Method
+      </p>
+      <div class="payment-options">
+        <label class="payment-option">
+          <input type="radio" name="payMethod" value="cod" id="payCOD" checked/>
+          <span class="payment-option-label">
+            <span class="material-icons-round">local_shipping</span>
+            Cash on Delivery
+          </span>
+        </label>
+        <label class="payment-option" id="payOnlineWrap">
+          <input type="radio" name="payMethod" value="online" id="payOnline"/>
+          <span class="payment-option-label">
+            <span class="material-icons-round">credit_card</span>
+            Pay Online
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-outline" id="checkoutModalCancel">Cancel</button>
+      <button class="btn-primary" id="checkoutConfirmBtn">
+        <span class="material-icons-round">arrow_forward</span>
+        Confirm Order
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ORDER SUCCESS OVERLAY
+═══════════════════════════════════════ -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-card">
+    <div class="success-check-wrap">
+      <div class="success-check-circle">
+        <span class="material-icons-round">check</span>
+      </div>
+    </div>
+    <h2 class="success-title">Order Placed!</h2>
+    <p class="success-msg" id="successMsg">Thank you for your order.</p>
+    <div class="success-payment-id">
+      <span class="material-icons-round">receipt</span>
+      <span id="successPayId">—</span>
+    </div>
+
+    <button class="btn-primary" id="successDoneBtn" style="width:100%">
+      <span class="material-icons-round">home</span>
+      Continue
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     E2EE SECURE CHAT OVERLAY
+     End-to-End Encrypted · ECDH + AES-GCM
+═══════════════════════════════════════ -->
+<div class="e2ee-chat-overlay" id="e2eeChatOverlay" role="dialog" aria-label="Secure chat">
+
+  <!-- Header -->
+  <div class="e2ee-header">
+    <button class="e2ee-back-btn" id="e2eeBackBtn" aria-label="Back">
+      <span class="material-icons-round">arrow_back</span>
+    </button>
+    <div class="e2ee-header-info">
+      <p class="e2ee-header-name" id="e2eeHeaderName">Secure Chat</p>
+      <div class="e2ee-header-status">
+        <span class="material-icons-round">lock</span>
+        <span id="e2eeHeaderStatus">End-to-End Encrypted</span>
+      </div>
+    </div>
+    <!-- Lock badge — always visible to confirm E2EE -->
+    <div class="e2ee-lock-badge" title="All messages are End-to-End Encrypted">
+      <span class="material-icons-round">enhanced_encryption</span>
+      E2EE
+    </div>
+    <!-- View profile shortcut -->
+    <button class="e2ee-header-icon-btn" id="e2eeViewProfileBtn" aria-label="View profile">
+      <span class="material-icons-round">person</span>
+    </button>
+  </div>
+
+  <!-- Key exchange / loading state (shown until ECDH key derivation completes) -->
+  <div class="e2ee-key-loading" id="e2eeKeyLoading">
+    <span class="material-icons-round">key</span>
+    <p>Establishing secure channel...</p>
+    <small>Generating encryption keys. This only takes a moment.</small>
+  </div>
+
+  <!-- Messages area (hidden until keys ready) -->
+  <div class="e2ee-messages" id="e2eeMessages" style="display:none">
+    <!-- Messages injected by JS -->
+    <!-- Empty state shown by JS when no messages -->
+  </div>
+
+  <!-- Input bar (hidden until keys ready) -->
+  <div class="e2ee-input-bar" id="e2eeInputBar" style="display:none">
+
+    <!-- Image preview (before sending) -->
+    <div class="e2ee-img-preview-wrap" id="e2eeImgPreviewWrap" style="display:none">
+      <img id="e2eeImgPreview" src="" alt="Image preview"/>
+      <button class="e2ee-img-remove" id="e2eeImgRemove" aria-label="Remove image">
+        <span class="material-icons-round">close</span>
+      </button>
+    </div>
+
+    <!-- Character counter -->
+    <div class="e2ee-char-counter" id="e2eeCharCounter">0 / 256</div>
+
+    <div class="e2ee-input-row">
+      <!-- Attach image -->
+      <button class="e2ee-attach-btn" id="e2eeAttachBtn" aria-label="Attach image">
+        <span class="material-icons-round">add_circle</span>
+      </button>
+      <input
+        type="file"
+        id="e2eeFileInput"
+        accept="image/jpeg,image/png,image/webp,image/gif"
+        style="display:none"
+        aria-hidden="true"
+      />
+
+      <!-- Text input — strictly 256 chars max -->
+      <div class="e2ee-input-wrap">
+        <textarea
+          class="e2ee-input"
+          id="e2eeInput"
+          placeholder="Send an encrypted message..."
+          maxlength="256"
+          rows="1"
+          aria-label="Type a secure message"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+        ></textarea>
+      </div>
+
+      <!-- Send button -->
+      <button class="e2ee-send-btn" id="e2eeSendBtn" aria-label="Send encrypted message" disabled>
+        <span class="material-icons-round">send</span>
+      </button>
+    </div>
+
+    <!-- Security notice -->
+    <p class="e2ee-notice" id="e2eeNotice">
+      <span class="material-icons-round">lock</span>
+      Messages are encrypted on your device. Nobody else can read them.
+    </p>
+  </div>
+
+</div>
+<!-- /E2EE SECURE CHAT OVERLAY -->
+
+<!-- ═══════════════════════════════════════
+     TOAST NOTIFICATIONS
+═══════════════════════════════════════ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ═══════════════════════════════════════
+     LOADING OVERLAY
+═══════════════════════════════════════ -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <p id="loadingMsg">Processing...</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     LIBRARIES (CDN — works on GitHub Pages)
+═══════════════════════════════════════ -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<!-- App JS — same folder as index.html -->
+<script src="./app.js"></script>
+
+<!-- E2EE Chat Module — loaded after app.js -->
+<script src="./e2ee.js"></script>
+
+</body>
+</html>
