@@ -351,10 +351,14 @@ function doSearch(q) {
 function uploadFile(file, folder, onProgress) {
   return new Promise((resolve, reject) => {
     const path = folder + Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-    const ref  = Storage.ref(path);
+    // 💡 এখানে .ref().child(path) দিয়ে ফিক্স করা হয়েছে, যাতে ফায়ারবেস ইউজারের পারমিশন চিনতে পারে
+    const ref  = Storage.ref().child(path); 
     const task = ref.put(file, { contentType: getMime(file.name) });
     task.on('state_changed',
-      snap => onProgress && onProgress(Math.round(snap.bytesTransferred / snap.totalBytes * 100)),
+      snap => {
+        const pct = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
+        if (onProgress) onProgress(pct);
+      },
       err  => reject(err),
       ()   => task.snapshot.ref.getDownloadURL().then(resolve).catch(reject)
     );
