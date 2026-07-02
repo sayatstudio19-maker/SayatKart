@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"/>
+<title>SayatX</title>
+<meta name="theme-color" content="#f97316"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+:root{--pr:#f97316;--pr-d:#ea6c0a;--pr-g:rgba(249,115,22,.12);--er:#f4212e;--er-b:rgba(244,33,46,.1);--inf:#1d9bf0;--rf:12px;--r2:16px;}
+[data-theme="dark"]{--bg:#000;--bg2:#0a0a0a;--card:#111;--card2:#1a1a1a;--txt:#e7e9ea;--tb:#8899a6;--tm:#71767b;--bdr:#2f3336;--bdr2:#333;}
+[data-theme="light"]{--bg:#f7f9fa;--bg2:#e7e9ea;--card:#fff;--card2:#f7f9fa;--txt:#0f1419;--tb:#536471;--tm:#8899a6;--bdr:#cfd9de;--bdr2:#e1e8ed;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);overscroll-behavior:none;}
+button,input,textarea{font-family:inherit;outline:none;border:none;}
+img{display:block;max-width:100%;}
+
+/* Animations */
+@keyframes brandX{0%{background-position:0%}100%{background-position:200%}}
+.brand-x{background:linear-gradient(90deg,#f97316,#ec4899,#8b5cf6,#06b6d4,#f97316);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:brandX 2.5s linear infinite;font-weight:900;}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes btnPulse{0%,100%{color:#fff}33%{color:#f97316}66%{color:#f4212e}}
+.spin{animation:spin .75s linear infinite;}
+.btn-pulse{animation:btnPulse 2.5s ease-in-out infinite;}
+
+/* Spinner */
+.spinner{width:36px;height:36px;border-radius:50%;border:3.5px solid transparent;border-top-color:#f97316;border-right-color:#ec4899;border-bottom-color:#8b5cf6;animation:spin .75s linear infinite;display:inline-block;flex-shrink:0;}
+
+/* Loading */
+#loadingOverlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+#loadingOverlay.on{display:flex;}
+#loadingMsg{color:#fff;font-size:.9rem;font-weight:700;}
+
+/* Toast */
+#toastContainer{position:fixed;bottom:calc(72px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:9000;display:flex;flex-direction:column;gap:8px;align-items:center;width:90%;max-width:360px;pointer-events:none;}
+.toast{padding:10px 18px;border-radius:99px;font-size:.86rem;font-weight:700;color:#fff;text-align:center;animation:fadeUp .3s ease;backdrop-filter:blur(8px);}
+.toast-success{background:rgba(0,186,124,.92);}
+.toast-error{background:rgba(244,33,46,.92);}
+.toast-info{background:rgba(29,155,240,.92);}
+.toast-warning{background:rgba(249,115,22,.92);}
+
+/* Header */
+#appHeader{
+  position:sticky;top:0;z-index:200;
+  height:calc(56px + env(safe-area-inset-top,0px));
+  padding-top:env(safe-area-inset-top,0px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding-left:12px;padding-right:12px;
+  background:var(--bg);border-bottom:1px solid var(--bdr);
+}
+.header-logo-btn{display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;}
+.logo-circle{width:36px;height:36px;border-radius:10px;overflow:hidden;background:#fff;padding:2px;flex-shrink:0;}
+.logo-circle img{width:100%;height:100%;object-fit:contain;border-radius:8px;display:block;}
+.brand-name{font-family:'Baloo 2',cursive;font-size:1.3rem;line-height:1;}
+.hdr-actions{display:flex;align-items:center;gap:4px;}
+.hdr-btn{width:40px;height:40px;border-radius:50%;background:none;cursor:pointer;color:var(--txt);display:flex;align-items:center;justify-content:center;position:relative;}
+.hdr-btn .material-icons-round{font-size:22px;}
+#notifDot{position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;background:#f4212e;display:none;border:2px solid var(--bg);}
+#searchBar{display:none;position:absolute;top:0;left:0;right:0;height:calc(56px + env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);background:var(--bg);align-items:center;padding:0 12px;gap:10px;z-index:201;border-bottom:1px solid var(--bdr);}
+#searchBar.on{display:flex;}
+#searchInp{flex:1;background:var(--card2);border:1.5px solid var(--bdr2);border-radius:99px;padding:8px 16px;color:var(--txt);font-size:.9rem;}
+
+/* Drawer */
+#drawer{position:fixed;top:0;left:-290px;width:290px;height:100%;z-index:500;background:var(--bg);border-right:1px solid var(--bdr);transition:left .28s ease;overflow-y:auto;padding-top:env(safe-area-inset-top,0px);}
+#drawer.open{left:0;}
+#drawerOverlay{position:fixed;inset:0;z-index:499;background:rgba(0,0,0,.5);display:none;backdrop-filter:blur(2px);}
+#drawerOverlay.on{display:block;}
+.dr-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--bdr);}
+.dr-logo-wrap{display:flex;align-items:center;gap:8px;}
+.dr-logo{width:32px;height:32px;border-radius:9px;overflow:hidden;background:#fff;padding:2px;}
+.dr-logo img{width:100%;height:100%;object-fit:contain;border-radius:7px;display:block;}
+.dr-brand{font-family:'Baloo 2',cursive;font-size:1.1rem;}
+.dr-close-btn{width:34px;height:34px;border-radius:50%;background:var(--card2);border:none;cursor:pointer;color:var(--txt);display:flex;align-items:center;justify-content:center;}
+/* Drawer user strip */
+#drUserStrip{display:none;padding:14px 16px;border-bottom:1px solid var(--bdr);}
+.dr-avatar{width:46px;height:46px;border-radius:50%;background:var(--pr);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.1rem;color:#fff;overflow:hidden;margin-bottom:8px;}
+.dr-avatar img{width:100%;height:100%;object-fit:cover;}
+.dr-name{font-weight:800;font-size:.92rem;color:var(--txt);}
+.dr-handle{font-size:.78rem;color:var(--tm);margin-top:2px;}
+.dr-stats{display:flex;gap:16px;margin-top:10px;}
+.dr-stat{font-size:.8rem;color:var(--tm);}
+.dr-stat b{color:var(--txt);font-weight:800;}
+/* Drawer nav */
+.dr-nav{padding:6px 0;}
+.dr-item{display:flex;align-items:center;gap:12px;padding:12px 18px;cursor:pointer;color:var(--txt);font-size:.88rem;font-weight:600;border-left:3px solid transparent;transition:all .15s;}
+.dr-item:hover,.dr-item.active{background:var(--pr-g);color:var(--pr);border-left-color:var(--pr);}
+.dr-item .material-icons-round{font-size:21px;}
+.dr-divider{height:1px;background:var(--bdr);margin:5px 14px;}
+.dr-notif-badge{background:#f4212e;color:#fff;font-size:.68rem;font-weight:900;padding:1px 6px;border-radius:99px;margin-left:auto;display:none;}
+
+/* Bottom nav */
+#bottomNav{position:fixed;bottom:0;left:0;right:0;z-index:200;height:calc(56px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);background:var(--bg);border-top:1px solid var(--bdr);display:grid;grid-template-columns:repeat(3,1fr);}
+.bnav-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;color:var(--tm);background:none;font-size:.68rem;font-weight:700;}
+.bnav-btn .material-icons-round{font-size:24px;}
+.bnav-btn.active{color:var(--pr);}
+
+/* Main */
+#appMain{padding-top:calc(56px + env(safe-area-inset-top,0px));padding-bottom:calc(56px + env(safe-area-inset-bottom,0px));min-height:100vh;}
+.section{display:none;}
+.section.active{display:block;}
+
+/* FAB */
+#fab{position:fixed;bottom:calc(70px + env(safe-area-inset-bottom,0px));right:16px;z-index:300;width:54px;height:54px;border-radius:50%;background:var(--pr);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(249,115,22,.45);}
+#fab .material-icons-round{font-size:26px;}
+
+/* Feed skeleton */
+#feedSkel{display:none;padding:12px 10px;}
+.skel-post{background:var(--card);border-radius:16px;padding:14px;margin-bottom:10px;border:1px solid var(--bdr);}
+.skel-line{height:11px;background:var(--card2);border-radius:6px;margin-bottom:8px;animation:skel 1.5s ease-in-out infinite;}
+.skel-media{height:180px;background:var(--card2);border-radius:10px;margin-top:10px;animation:skel 1.5s ease-in-out infinite;}
+@keyframes skel{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* Featured strip */
+#featuredStrip{display:none;padding:10px 0 4px;border-bottom:1px solid var(--bdr);}
+.feat-head{display:flex;align-items:center;justify-content:space-between;padding:0 12px 8px;}
+.feat-label{display:flex;align-items:center;gap:5px;font-size:.76rem;font-weight:800;color:var(--pr);}
+#featScroll{display:flex;gap:10px;overflow-x:auto;padding:0 12px 6px;scrollbar-width:none;}
+#featScroll::-webkit-scrollbar{display:none;}
+.feat-card{flex-shrink:0;width:260px;height:170px;border-radius:16px;overflow:hidden;position:relative;cursor:pointer;background:#111;}
+.feat-card img,.feat-card video{width:100%;height:100%;object-fit:cover;display:block;}
+.feat-card-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:10px;}
+.feat-card-tag{color:#fff;font-size:.82rem;font-weight:800;}
+
+/* Feed post card */
+#feedContainer{padding:0;}
+.feed-post{background:var(--card);margin:8px 10px;border-radius:16px;border:1px solid var(--bdr);overflow:hidden;animation:fadeUp .3s ease;box-shadow:0 0 0 1px var(--bdr),0 2px 12px rgba(0,0,0,.2);}
+.feed-post:hover{box-shadow:0 0 0 1px rgba(249,115,22,.4),0 4px 20px rgba(249,115,22,.1);}
+.post-header{display:flex;align-items:center;gap:10px;padding:12px 14px 8px;cursor:pointer;}
+.post-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:.9rem;flex-shrink:0;overflow:hidden;border:2px solid var(--bdr);}
+.post-av img{width:100%;height:100%;object-fit:cover;}
+.post-user-info{flex:1;min-width:0;}
+.post-uname{font-weight:800;font-size:.86rem;color:var(--txt);display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.post-meta{font-size:.72rem;color:var(--tm);margin-top:2px;}
+.post-more{width:32px;height:32px;border-radius:50%;background:none;border:none;cursor:pointer;color:var(--tm);display:flex;align-items:center;justify-content:center;}
+.post-more .material-icons-round{font-size:18px;}
+.badge{font-size:.62rem;font-weight:800;padding:2px 6px;border-radius:6px;letter-spacing:.3px;}
+.bv{background:rgba(139,92,246,.18);color:#8b5cf6;}
+.bp{background:rgba(6,182,212,.18);color:#06b6d4;}
+.ba{background:rgba(236,72,153,.18);color:#ec4899;}
+.bt{background:rgba(249,115,22,.15);color:#f97316;}
+.bprod{background:rgba(34,197,94,.18);color:#22c55e;}
+.trade-badge{background:linear-gradient(90deg,#22c55e,#06b6d4);color:#fff;font-size:.62rem;font-weight:800;padding:2px 7px;border-radius:99px;}
+.post-txt{padding:2px 14px 10px;font-size:.87rem;line-height:1.55;color:var(--txt);white-space:pre-wrap;word-break:break-word;}
+
+/* Video in feed — aspect ratio preserved, no black bars */
+.post-vid-wrap{width:100%;position:relative;background:#000;cursor:pointer;overflow:hidden;}
+.post-vid-wrap.portrait{aspect-ratio:9/16;max-height:72dvh;}
+.post-vid-wrap.portrait video{width:100%;height:100%;object-fit:cover;display:block;}
+.post-vid-wrap.landscape{aspect-ratio:16/9;}
+.post-vid-wrap.landscape video{width:100%;height:100%;object-fit:cover;display:block;}
+.post-vid-wrap.square{aspect-ratio:1/1;}
+.post-vid-wrap.square video{width:100%;height:100%;object-fit:cover;display:block;}
+.post-vid-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.2);}
+.post-vid-play-btn{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.88);display:flex;align-items:center;justify-content:center;}
+.post-vid-play-btn .material-icons-round{font-size:28px;color:#000;}
+.vid-buf{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;display:none;pointer-events:none;}
+.vid-buf.on{display:block;}
+.vid-buf .spinner{width:32px;height:32px;}
+.vid-seek-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.7);color:#fff;padding:7px 14px;border-radius:99px;font-size:.88rem;font-weight:700;pointer-events:none;z-index:6;opacity:0;transition:opacity .2s;white-space:nowrap;}
+.vid-seek-hint.on{opacity:1;}
+/* Photo — natural ratio */
+.post-photo{width:100%;height:auto;display:block;cursor:pointer;}
+/* Audio card */
+.post-audio{display:flex;align-items:center;gap:12px;margin:0 14px 10px;padding:12px;background:var(--card2);border-radius:14px;cursor:pointer;border:1px solid var(--bdr);}
+.audio-thumb{width:50px;height:50px;border-radius:10px;object-fit:cover;flex-shrink:0;}
+.audio-play-ic{width:44px;height:44px;border-radius:50%;background:var(--pr);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;}
+.audio-info{flex:1;min-width:0;}
+.audio-title{font-weight:700;font-size:.83rem;color:var(--txt);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.audio-badge{font-size:.64rem;font-weight:800;padding:2px 7px;border-radius:99px;background:rgba(236,72,153,.15);color:#ec4899;flex-shrink:0;}
+/* Post footer */
+.post-footer{display:flex;align-items:center;padding:6px 8px 8px;}
+.pf-btn{display:flex;align-items:center;gap:5px;padding:7px 9px;border-radius:99px;background:none;cursor:pointer;color:var(--tm);font-size:.78rem;font-weight:700;border:none;transition:background .15s;}
+.pf-btn:hover{background:var(--card2);}
+.pf-btn .material-icons-round{font-size:18px;}
+.pf-btn.liked{color:#f4212e;}
+.pf-btn.liked .material-icons-round{color:#f4212e;}
+.pf-spacer{flex:1;}
+.post-views{display:flex;align-items:center;gap:3px;font-size:.74rem;color:var(--tm);padding:0 6px;}
+.post-views .material-icons-round{font-size:14px;}
+/* Quick follow */
+.qfbtn{font-size:.72rem;font-weight:800;padding:4px 11px;border-radius:99px;border:1.5px solid var(--txt);background:transparent;color:var(--txt);cursor:pointer;white-space:nowrap;flex-shrink:0;}
+.qfbtn.following{border-color:var(--bdr2);color:var(--tm);}
+/* Product */
+.post-product{background:var(--card2);margin:0 14px 10px;border-radius:14px;overflow:hidden;border:1px solid var(--bdr);}
+.prod-img-wrap{position:relative;}
+.prod-img{width:100%;height:200px;object-fit:cover;cursor:pointer;}
+.prod-disc-badge{position:absolute;top:10px;right:10px;background:#f4212e;color:#fff;font-size:.7rem;font-weight:800;padding:3px 9px;border-radius:99px;}
+.prod-body{padding:10px 12px;}
+.prod-name{font-weight:800;font-size:.88rem;color:var(--txt);margin-bottom:5px;}
+.prod-prices{display:flex;align-items:center;gap:8px;}
+.prod-price{font-size:1.05rem;font-weight:900;color:var(--pr);}
+.prod-orig{font-size:.8rem;color:var(--tm);text-decoration:line-through;}
+.btn-buy{width:100%;margin:8px 0;padding:11px;border-radius:12px;background:var(--pr);color:#fff;font-weight:800;font-size:.87rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;border:none;}
+.feed-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;gap:12px;color:var(--tm);}
+.feed-empty .material-icons-round{font-size:48px;opacity:.3;}
+
+/* AUTH SCREEN */
+#authScreen{min-height:calc(100dvh - 112px);display:flex;align-items:center;justify-content:center;padding:16px;}
+.auth-card{background:var(--card);border:1px solid var(--bdr);border-radius:22px;padding:24px 18px;width:100%;max-width:400px;}
+.auth-logo-wrap{text-align:center;margin-bottom:20px;}
+.auth-logo{width:64px;height:64px;border-radius:18px;overflow:hidden;margin:0 auto 10px;background:#fff;padding:3px;box-shadow:0 4px 20px rgba(249,115,22,.3);}
+.auth-logo img{width:100%;height:100%;object-fit:contain;border-radius:14px;display:block;}
+.auth-title{font-family:'Baloo 2',cursive;font-size:1.7rem;margin-bottom:3px;display:flex;align-items:center;justify-content:center;gap:2px;}
+.auth-sub{font-size:.82rem;color:var(--tm);}
+.auth-tabs{display:flex;border-bottom:2px solid var(--bdr);margin-bottom:16px;}
+.auth-tab{flex:1;padding:10px;font-weight:800;font-size:.84rem;border:none;background:none;cursor:pointer;border-bottom:2.5px solid transparent;color:var(--tm);margin-bottom:-2px;transition:all .15s;}
+.auth-tab.active{border-bottom-color:var(--pr);color:var(--pr);}
+.phone-row{display:flex;border:1.5px solid var(--bdr2);border-radius:12px;overflow:hidden;background:var(--card2);margin-bottom:10px;}
+.phone-cc{padding:12px;font-weight:700;color:var(--tb);border-right:1.5px solid var(--bdr2);font-size:.88rem;white-space:nowrap;}
+#phoneInput{flex:1;padding:12px;background:none;border:none;outline:none;color:var(--txt);font-size:.9rem;}
+#recaptcha-container{margin-bottom:10px;display:flex;justify-content:center;min-height:78px;}
+.auth-btn{width:100%;padding:13px;background:var(--pr);color:#fff;border-radius:12px;font-size:.88rem;font-weight:800;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:8px;}
+.auth-btn:disabled{opacity:.6;cursor:not-allowed;}
+.auth-btn-ghost{width:100%;padding:10px;background:var(--card2);border:1.5px solid var(--bdr2);border-radius:12px;font-size:.86rem;font-weight:700;color:var(--txt);cursor:pointer;margin-bottom:8px;}
+.auth-btn-link{width:100%;padding:8px;background:none;border:none;color:var(--inf);font-size:.82rem;cursor:pointer;margin-top:2px;}
+.auth-guest-btn{width:100%;padding:11px;background:transparent;border:1.5px dashed var(--bdr2);border-radius:12px;color:var(--tm);font-size:.86rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;margin-top:4px;}
+.auth-guest-btn:hover{border-color:var(--pr);color:var(--pr);}
+.otp-boxes{display:flex;gap:7px;justify-content:center;margin-bottom:12px;}
+.otp-box{width:44px;height:50px;border-radius:10px;border:1.5px solid var(--bdr2);background:var(--card2);text-align:center;font-size:1.3rem;font-weight:800;color:var(--txt);-moz-appearance:textfield;transition:border-color .15s;}
+.otp-box:focus{border-color:var(--pr);}
+.otp-box::-webkit-outer-spin-button,.otp-box::-webkit-inner-spin-button{-webkit-appearance:none;}
+.otp-box.filled{border-color:var(--pr);}
+#otpWrap{display:none;margin-top:12px;}
+.otp-hint{font-size:.8rem;color:var(--tm);text-align:center;margin-bottom:10px;}
+.auth-input{width:100%;padding:12px;border:1.5px solid var(--bdr2);border-radius:12px;background:var(--card2);color:var(--txt);font-size:.9rem;outline:none;margin-bottom:10px;box-sizing:border-box;transition:border-color .15s;}
+.auth-input:focus{border-color:var(--pr);}
+.auth-hint{font-size:.72rem;color:var(--tm);margin-top:8px;text-align:center;line-height:1.5;padding:8px;background:var(--card2);border-radius:8px;}
+#authPanelEmail{display:none;}
+
+/* PROFILE SCREEN */
+#profileScreen{display:none;}
+.profile-wrap{padding:20px 16px 0;}
+.profile-av-wrap{position:relative;display:inline-block;margin-bottom:10px;}
+.profile-av{width:80px;height:80px;border-radius:50%;background:var(--pr);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.6rem;color:#fff;overflow:hidden;border:3px solid var(--pr);}
+.profile-av img{width:100%;height:100%;object-fit:cover;display:none;}
+.profile-av-edit{position:absolute;bottom:0;right:0;width:28px;height:28px;border-radius:50%;background:var(--pr);color:#fff;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.profile-av-edit .material-icons-round{font-size:14px;}
+.profile-name{font-weight:900;font-size:1.1rem;color:var(--txt);margin-top:2px;}
+.profile-handle{font-size:.8rem;color:var(--tm);margin-top:2px;}
+.profile-stats{display:flex;width:100%;margin:12px 0;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);}
+.pstat{flex:1;padding:12px 0;text-align:center;border-right:1px solid var(--bdr);cursor:pointer;}
+.pstat:last-child{border-right:none;}
+.pstat-val{font-weight:900;font-size:1.05rem;color:var(--txt);}
+.pstat-label{font-size:.7rem;color:var(--tm);margin-top:2px;}
+.profile-btns{display:flex;gap:8px;padding:0 0 14px;}
+.pbtn{flex:1;padding:9px;border-radius:12px;font-size:.83rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;}
+.pbtn-edit{background:var(--card2);color:var(--txt);border:1.5px solid var(--bdr2);}
+.pbtn-logout{background:var(--er-b);color:var(--er);border:1.5px solid rgba(244,33,46,.2);}
+.profile-menu{padding:6px 10px;}
+.pmenu-item{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:12px;cursor:pointer;color:var(--txt);font-size:.87rem;font-weight:600;transition:background .15s;}
+.pmenu-item:hover{background:var(--card2);}
+.pmenu-item .material-icons-round{font-size:20px;color:var(--pr);}
+.pmenu-badge{background:#f4212e;color:#fff;font-size:.68rem;font-weight:900;padding:1px 6px;border-radius:99px;margin-left:auto;display:none;}
+
+/* BOTTOM SHEET */
+.b-sheet{position:fixed;inset:0;z-index:600;display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none;}
+.b-sheet.open{pointer-events:all;}
+.b-sheet-bg{position:absolute;inset:0;background:rgba(0,0,0,.6);opacity:0;transition:opacity .3s;}
+.b-sheet.open .b-sheet-bg{opacity:1;}
+.b-sheet-body{position:relative;z-index:1;background:var(--card);border-radius:22px 22px 0 0;max-height:90dvh;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);padding-bottom:env(safe-area-inset-bottom,0px);}
+.b-sheet.open .b-sheet-body{transform:translateY(0);}
+.sheet-handle{width:38px;height:4px;background:var(--bdr2);border-radius:2px;margin:11px auto 7px;}
+.sheet-hdr{display:flex;align-items:center;justify-content:space-between;padding:4px 16px 12px;border-bottom:1px solid var(--bdr);flex-shrink:0;}
+.sheet-title{font-weight:800;font-size:.97rem;color:var(--txt);}
+.sheet-close{width:30px;height:30px;border-radius:50%;background:var(--card2);border:none;cursor:pointer;color:var(--tm);display:flex;align-items:center;justify-content:center;}
+.sheet-body{overflow-y:auto;flex:1;}
+
+/* CREATE POST */
+.create-form-row{display:flex;align-items:center;gap:10px;padding:12px 14px;}
+.create-av{width:38px;height:38px;border-radius:50%;background:var(--pr);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.9rem;color:#fff;overflow:hidden;flex-shrink:0;}
+.create-av img{width:100%;height:100%;object-fit:cover;}
+.create-uname{font-weight:800;font-size:.88rem;color:var(--txt);}
+.post-type-tabs{display:flex;gap:6px;padding:0 14px 10px;overflow-x:auto;scrollbar-width:none;flex-shrink:0;}
+.post-type-tabs::-webkit-scrollbar{display:none;}
+.ptype-tab{padding:6px 13px;border-radius:99px;font-size:.78rem;font-weight:700;border:1.5px solid var(--bdr2);background:none;color:var(--tm);cursor:pointer;white-space:nowrap;}
+.ptype-tab.active{background:var(--pr);color:#fff;border-color:var(--pr);}
+#createTa{width:100%;min-height:80px;background:none;border:none;padding:0 14px 10px;resize:none;font-size:.88rem;color:var(--txt);line-height:1.55;flex-shrink:0;}
+#createTa::placeholder{color:var(--tm);}
+.upload-zone{margin:0 14px 10px;padding:22px;border:2px dashed var(--bdr2);border-radius:14px;background:var(--card2);cursor:pointer;display:none;flex-direction:column;align-items:center;gap:8px;}
+.upload-zone:hover{border-color:var(--pr);}
+.upload-zone .material-icons-round{font-size:30px;color:var(--tm);}
+.uz-text{font-weight:700;font-size:.86rem;color:var(--txt);}
+.uz-hint{font-size:.74rem;color:var(--tm);}
+#mediaPreview{display:none;margin:0 14px 10px;position:relative;}
+#mediaPreview img{width:100%;max-height:280px;object-fit:cover;border-radius:12px;display:none;}
+#mediaPreview video{width:100%;max-height:240px;border-radius:12px;display:none;background:#000;}
+#audioPreviewRow{display:none;align-items:center;gap:12px;padding:12px;background:var(--card2);border-radius:12px;}
+#audioFileName{font-size:.82rem;color:var(--txt);flex:1;font-weight:600;}
+#removeMediaBtn{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:#f4212e;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;}
+/* Thumb section */
+#thumbSection{display:none;margin:0 14px 10px;padding:10px 12px;background:var(--card2);border:1.5px dashed var(--bdr2);border-radius:12px;}
+.thumb-label{font-size:.76rem;font-weight:700;color:var(--tm);display:flex;align-items:center;gap:5px;margin-bottom:8px;}
+#thumbPickBtn{display:flex;align-items:center;gap:7px;padding:8px 13px;background:var(--card);border:1.5px solid var(--bdr2);border-radius:10px;cursor:pointer;color:var(--txt);font-size:.8rem;font-weight:700;border:none;}
+#thumbPreviewWrap{display:none;position:relative;margin-top:8px;display:inline-block;}
+#thumbPreviewImg{width:82px;height:56px;border-radius:8px;object-fit:cover;display:block;}
+#removeThumbBtn{position:absolute;top:-5px;right:-5px;width:18px;height:18px;border-radius:50%;background:#f4212e;border:none;color:#fff;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.create-footer{display:none;padding:10px 14px;border-top:1px solid var(--bdr);display:flex;justify-content:flex-end;gap:8px;flex-shrink:0;}
+#cancelCreateBtn{padding:8px 16px;background:var(--card2);border:1.5px solid var(--bdr2);border-radius:10px;color:var(--txt);font-size:.83rem;font-weight:700;cursor:pointer;}
+#submitCreateBtn{padding:9px 20px;background:var(--pr);color:#fff;border-radius:10px;font-size:.86rem;font-weight:800;border:none;cursor:pointer;}
+#submitCreateBtn:disabled{opacity:.6;cursor:not-allowed;}
+#createLoginPrompt{display:none;flex-direction:column;align-items:center;padding:40px 20px;gap:14px;text-align:center;color:var(--tm);}
+#createLoginPrompt .material-icons-round{font-size:44px;opacity:.3;}
+#goLoginBtn{padding:10px 24px;background:var(--pr);color:#fff;border-radius:99px;font-weight:800;border:none;cursor:pointer;font-size:.87rem;}
+
+/* VTP (video thumb picker) */
+#vtpOv{position:fixed;inset:0;background:#000;z-index:800;display:none;flex-direction:column;}
+.vtp-bar{background:rgba(0,0,0,.9);padding:12px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0;}
+#vtpVid{flex:1;width:100%;object-fit:contain;background:#000;display:block;min-height:0;}
+#vtpSeek{flex:1;accent-color:#f97316;}
+.vtp-time{color:#fff;font-size:.78rem;min-width:36px;}
+.vtp-play-btn{width:34px;height:34px;border-radius:50%;background:var(--pr);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+/* REEL */
+#reelOv{position:fixed;inset:0;z-index:700;background:#000;display:none;flex-direction:column;}
+#reelOv.open{display:flex;}
+#reelScroll{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;overscroll-behavior:contain;}
+#reelScroll::-webkit-scrollbar{display:none;}
+.reel-item{height:100dvh;scroll-snap-align:start;position:relative;overflow:hidden;background:#000;}
+.reel-video{width:100%;height:100%;object-fit:cover;display:block;}
+.reel-grad-t{position:absolute;top:0;left:0;right:0;height:160px;background:linear-gradient(to bottom,rgba(0,0,0,.6),transparent);z-index:2;}
+.reel-grad-b{position:absolute;bottom:0;left:0;right:0;height:220px;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);z-index:2;}
+.reel-top-brand{position:absolute;top:calc(env(safe-area-inset-top,0px)+10px);left:14px;z-index:5;font-family:'Baloo 2',cursive;font-weight:900;font-size:1rem;text-shadow:0 1px 4px rgba(0,0,0,.5);}
+.reel-close-btn{position:absolute;top:calc(env(safe-area-inset-top,0px)+10px);right:14px;z-index:10;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.5);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.reel-close-btn .material-icons-round{color:#fff;font-size:19px;}
+.reel-sides{position:absolute;right:10px;bottom:140px;z-index:5;display:flex;flex-direction:column;gap:16px;align-items:center;}
+.reel-sb{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;color:#fff;}
+.reel-sb .material-icons-round{font-size:27px;}
+.reel-sb-count{font-size:.7rem;font-weight:700;}
+.reel-av-circle{width:40px;height:40px;border-radius:50%;border:2px solid #fff;overflow:hidden;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.9rem;color:#fff;background:var(--pr);}
+.reel-av-circle img{width:100%;height:100%;object-fit:cover;}
+.reel-liked .material-icons-round{color:#f4212e;}
+.reel-saved .material-icons-round{color:#f97316;}
+.reel-info{position:absolute;bottom:70px;left:14px;right:80px;z-index:5;}
+.reel-info-user{display:flex;align-items:center;gap:6px;font-weight:800;color:#fff;font-size:.88rem;cursor:pointer;margin-bottom:5px;}
+.reel-info-txt{font-size:.83rem;color:rgba(255,255,255,.9);line-height:1.4;}
+.reel-seek{position:absolute;bottom:46px;left:14px;right:14px;z-index:5;padding:6px 0;cursor:pointer;}
+.reel-seek-track{height:3px;background:rgba(255,255,255,.3);border-radius:2px;position:relative;}
+.reel-seek-fill{height:100%;background:linear-gradient(90deg,#f97316,#ec4899);border-radius:2px;width:0%;}
+.reel-seek-dot{position:absolute;top:50%;right:-6px;width:13px;height:13px;border-radius:50%;background:#fff;transform:translateY(-50%);}
+.reel-buf{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;display:none;pointer-events:none;}
+.reel-buf.on{display:block;}
+.reel-seek-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.7);color:#fff;padding:7px 14px;border-radius:99px;font-size:.88rem;font-weight:700;pointer-events:none;z-index:6;opacity:0;transition:opacity .2s;white-space:nowrap;}
+.reel-seek-hint.on{opacity:1;}
+
+/* COMMENTS half sheet */
+#cmHalfOv{position:fixed;inset:0;z-index:700;display:none;flex-direction:column;justify-content:flex-end;}
+#cmHalfOv.open{display:flex;}
+.cm-half-bg{position:absolute;inset:0;background:rgba(0,0,0,.4);}
+.cm-half-body{position:relative;z-index:1;background:var(--card);border-radius:20px 20px 0 0;height:55dvh;display:flex;flex-direction:column;padding-bottom:env(safe-area-inset-bottom,0px);}
+.cm-half-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--bdr);flex-shrink:0;}
+#cmHalfList{flex:1;overflow-y:auto;padding:6px 0;}
+.cm-half-input-row{padding:7px 12px;border-top:1px solid var(--bdr);display:flex;gap:8px;align-items:center;flex-shrink:0;}
+.cm-inp-wrap{flex:1;background:var(--card2);border:1px solid var(--bdr2);border-radius:10px;padding:7px 12px;}
+#cmHalfInp{width:100%;background:none;border:none;outline:none;color:var(--txt);font-size:.85rem;}
+.cm-send-btn{width:34px;height:34px;border-radius:50%;background:var(--pr);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+
+/* FULL COMMENTS SHEET */
+#commentsSheet{}
+.comment-item{display:flex;gap:10px;padding:10px 14px;}
+.cm-av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.82rem;color:#fff;flex-shrink:0;overflow:hidden;}
+.cm-av img{width:100%;height:100%;object-fit:cover;}
+.cm-bubble{flex:1;}
+.cm-uname{font-weight:800;font-size:.8rem;color:var(--txt);}
+.cm-time{font-size:.7rem;color:var(--tm);margin-left:8px;}
+.cm-text{font-size:.83rem;color:var(--txt);line-height:1.45;word-break:break-word;}
+.cm-input-row{padding:7px 12px;border-top:1px solid var(--bdr);display:flex;gap:8px;align-items:center;flex-shrink:0;}
+.cm-input-av{width:30px;height:30px;border-radius:50%;background:var(--pr);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.8rem;color:#fff;flex-shrink:0;overflow:hidden;}
+.cm-input-av img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.cm-input-field{flex:1;background:var(--card2);border:1px solid var(--bdr2);border-radius:10px;padding:7px 12px;display:flex;align-items:center;gap:8px;}
+#commentsInput{flex:1;background:none;border:none;outline:none;color:var(--txt);font-size:.85rem;}
+.cm-full-send-btn{width:34px;height:34px;border-radius:50%;background:var(--pr);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+/* MESSAGES */
+#sectionMessages{min-height:calc(100dvh - 112px);}
+.msg-head{padding:14px 16px 8px;border-bottom:1px solid var(--bdr);}
+.msg-head h2{font-size:.97rem;font-weight:900;margin-bottom:10px;}
+.msg-search-wrap{position:relative;}
+.msg-search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--tm);font-size:17px;pointer-events:none;}
+#msgSearch{width:100%;padding:8px 14px 8px 36px;background:var(--card2);border:1.5px solid var(--bdr2);border-radius:99px;color:var(--txt);font-size:.86rem;outline:none;}
+#msgSearch:focus{border-color:var(--pr);}
+#msgsListView{display:flex;flex-direction:column;}
+#msgsLoginPrompt{display:none;flex-direction:column;align-items:center;padding:60px 20px;gap:14px;text-align:center;}
+#convList{}
+.conv-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bdr);cursor:pointer;}
+.conv-item:hover{background:var(--card2);}
+.conv-av{width:48px;height:48px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem;color:#fff;overflow:hidden;}
+.conv-av img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.conv-info{flex:1;min-width:0;}
+.conv-name{font-weight:800;font-size:.88rem;color:var(--txt);}
+.conv-last{font-size:.78rem;color:var(--tm);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px;}
+.conv-last.unread{color:var(--txt);font-weight:700;}
+.conv-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;}
+.conv-time{font-size:.72rem;color:var(--tm);}
+.conv-unread{background:var(--pr);color:#fff;font-size:.68rem;font-weight:900;padding:1px 6px;border-radius:99px;}
+#newMsgBtn{margin:12px 16px;padding:11px;border-radius:12px;background:var(--card2);border:1.5px solid var(--bdr2);color:var(--txt);font-size:.86rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;}
+
+/* CHAT VIEW */
+#chatView{display:none;flex-direction:column;height:calc(100dvh - 56px - 56px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));}
+.chat-hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--bdr);flex-shrink:0;}
+#chatBackBtn{width:36px;height:36px;border-radius:50%;background:none;color:var(--txt);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+#chatHdrAv{width:38px;height:38px;border-radius:50%;background:var(--pr);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.9rem;color:#fff;overflow:hidden;flex-shrink:0;cursor:pointer;}
+#chatHdrAv img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.chat-hdr-info{flex:1;}
+#chatHdrName{font-weight:800;font-size:.9rem;color:var(--txt);}
+#chatHdrStatus{font-size:.72rem;color:#22c55e;}
+#chatMsgs{flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px;}
+.chat-msg{display:flex;gap:8px;max-width:85%;animation:fadeUp .2s ease;}
+.msg-sent{align-self:flex-end;flex-direction:row-reverse;}
+.msg-recv{align-self:flex-start;}
+.msg-av{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.7rem;color:#fff;flex-shrink:0;align-self:flex-end;}
+.msg-bubble{padding:8px 12px;border-radius:16px;font-size:.84rem;line-height:1.45;word-break:break-word;}
+.msg-sent .msg-bubble{background:var(--pr);color:#fff;border-bottom-right-radius:4px;}
+.msg-recv .msg-bubble{background:var(--card2);color:var(--txt);border-bottom-left-radius:4px;}
+.msg-time{font-size:.66rem;color:var(--tm);margin-top:2px;display:flex;align-items:center;gap:3px;}
+.msg-sent .msg-time{justify-content:flex-end;}
+.chat-inp-wrap{padding:8px 12px;border-top:1px solid var(--bdr);flex-shrink:0;}
+#chatMediaPrev{display:none;padding:7px;background:var(--card2);border-radius:9px;margin-bottom:7px;position:relative;}
+#chatMediaPrevImg{max-height:100px;border-radius:7px;display:none;}
+#chatMediaPrevVid{max-height:100px;border-radius:7px;display:none;}
+#removeChatMedia{position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#f4212e;border:none;color:#fff;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;}
+.chat-inp-row{display:flex;gap:8px;align-items:flex-end;}
+#chatAttachBtn{width:36px;height:36px;border-radius:50%;background:var(--card2);color:var(--tm);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;border:1px solid var(--bdr);}
+.chat-inp-field{flex:1;background:var(--card2);border:1.5px solid var(--bdr2);border-radius:18px;padding:8px 12px;}
+#chatInp{width:100%;background:none;border:none;outline:none;color:var(--txt);font-size:.86rem;resize:none;max-height:90px;overflow-y:auto;}
+#chatSendBtn{width:38px;height:38px;border-radius:50%;background:var(--pr);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+#chatSendBtn .material-icons-round{font-size:19px;}
+
+/* OVERLAY (user profile, orders, notifications, etc.) */
+.ov-panel{position:fixed;inset:0;z-index:610;background:var(--bg);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);padding-top:env(safe-area-inset-top,0px);touch-action:pan-y;overscroll-behavior-x:contain;}
+.ov-panel.open{transform:translateX(0);}
+.ov-hdr{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--bdr);flex-shrink:0;}
+.ov-back{width:36px;height:36px;border-radius:50%;background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--txt);flex-shrink:0;}
+.ov-title{font-weight:900;font-size:.97rem;color:var(--txt);flex:1;}
+.ov-body{overflow-y:auto;flex:1;}
+
+/* UPO (user profile overlay) */
+.upo-info{padding:20px 16px 0;text-align:center;}
+.upo-av{width:80px;height:80px;border-radius:50%;background:var(--pr);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.6rem;color:#fff;overflow:hidden;margin:0 auto 10px;border:3px solid var(--pr);cursor:pointer;}
+.upo-av img{width:100%;height:100%;object-fit:cover;display:none;}
+.upo-name{font-weight:900;font-size:1.1rem;color:var(--txt);}
+.upo-handle{font-size:.78rem;color:var(--tm);margin-top:3px;}
+.upo-stats{display:flex;margin:14px 0;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);}
+.upo-stat{flex:1;padding:12px 0;text-align:center;border-right:1px solid var(--bdr);cursor:pointer;}
+.upo-stat:last-child{border-right:none;}
+.upo-stat-val{font-weight:900;font-size:1.05rem;color:var(--txt);}
+.upo-stat-label{font-size:.7rem;color:var(--tm);margin-top:2px;}
+.upo-actions{display:flex;gap:8px;padding:0 16px 14px;}
+.upo-follow-btn{flex:1;padding:9px;border-radius:12px;font-size:.83rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;background:var(--txt);color:var(--bg);border:none;}
+.upo-follow-btn.following{background:transparent;color:var(--txt);border:1.5px solid var(--bdr2);}
+.upo-msg-btn{flex:1;padding:9px;border-radius:12px;font-size:.83rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;background:var(--card2);color:var(--txt);border:1.5px solid var(--bdr2);}
+.upo-posts{padding:10px 0;}
+
+/* FB-style post in profile */
+.fb-post{background:var(--card);padding-bottom:10px;margin-bottom:8px;border-bottom:6px solid var(--card2);}
+.fb-post-hdr{display:flex;align-items:center;gap:10px;padding:12px 14px 10px;}
+.fb-post-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;flex-shrink:0;overflow:hidden;cursor:pointer;}
+.fb-post-av img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.fb-3dot{width:28px;height:28px;border-radius:50%;background:none;border:none;cursor:pointer;color:var(--tm);display:flex;align-items:center;justify-content:center;}
+.fb-photo{width:100%;height:auto;display:block;cursor:pointer;}
+.fb-proc-bar{height:3px;background:linear-gradient(90deg,#f97316,#ec4899);border-radius:2px;transition:width .3s;}
+.fb-del-btn{width:32px;height:32px;border-radius:50%;background:rgba(244,33,46,.1);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#f4212e;flex-shrink:0;}
+
+/* FOLLOW LIST */
+.fl-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bdr);cursor:pointer;}
+.fl-item:hover{background:var(--card2);}
+.fl-av{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:1rem;flex-shrink:0;overflow:hidden;}
+.fl-av img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.fl-name{font-weight:800;font-size:.88rem;color:var(--txt);}
+.fl-handle{font-size:.74rem;color:var(--tm);}
+
+/* AUDIO OVERLAY */
+#audioOv{position:fixed;inset:0;z-index:710;background:var(--bg);display:flex;flex-direction:column;transform:translateY(100%);transition:transform .3s ease;padding-top:env(safe-area-inset-top,0px);}
+#audioOv.open{transform:translateY(0);}
+#audioOvBg{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(60px) brightness(.3);transform:scale(1.2);z-index:0;}
+.audio-content{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:16px;overflow-y:auto;}
+#audioAlbumArt{width:200px;height:200px;border-radius:18px;object-fit:cover;margin:0 auto 20px;box-shadow:0 8px 40px rgba(0,0,0,.6);}
+#audioTitle{font-size:1.1rem;font-weight:900;color:#fff;text-align:center;margin-bottom:4px;}
+#audioArtist{font-size:.82rem;color:rgba(255,255,255,.6);text-align:center;margin-bottom:20px;}
+.audio-seek-wrap{position:relative;margin-bottom:7px;}
+.audio-track{width:100%;height:4px;background:rgba(255,255,255,.25);border-radius:2px;position:relative;}
+#audioFill{height:100%;background:var(--pr);border-radius:2px;pointer-events:none;width:0%;}
+#audioSeek{position:absolute;top:50%;left:0;width:100%;height:100%;opacity:0;cursor:pointer;transform:translateY(-50%);}
+.audio-times{display:flex;justify-content:space-between;font-size:.72rem;color:rgba(255,255,255,.6);}
+.audio-ctrls{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:18px;}
+.audio-ctrl{width:42px;height:42px;border-radius:50%;background:none;border:none;color:rgba(255,255,255,.8);cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.audio-ctrl .material-icons-round{font-size:25px;}
+#audioPlayBtn{width:58px;height:58px;border-radius:50%;background:#fff;color:#000;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.4);}
+#audioPlayBtn .material-icons-round{font-size:30px;}
+
+/* PDF */
+#pdfOv{position:fixed;inset:0;z-index:710;background:var(--bg);display:flex;flex-direction:column;transform:translateY(100%);transition:transform .3s ease;padding-top:env(safe-area-inset-top,0px);}
+#pdfOv.open{transform:translateY(0);}
+#pdfPages{overflow-y:auto;flex:1;padding:12px;}
+.pdf-page-canvas{width:100%;display:block;margin-bottom:8px;border-radius:8px;}
+.pdf-page-num{font-size:.7rem;color:var(--tm);text-align:center;padding:3px 0 7px;}
+.pdf-loading{display:flex;flex-direction:column;align-items:center;padding:40px;gap:12px;color:var(--tm);}
+
+/* VIDEO OVERLAY */
+#videoOv{position:fixed;inset:0;z-index:710;background:#000;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .3s ease;padding-top:env(safe-area-inset-top,0px);}
+#videoOv.open{transform:translateY(0);}
+#videoPlayer{flex:1;width:100%;object-fit:contain;background:#000;}
+
+/* ORDERS */
+.order-card{background:var(--card);border:1px solid var(--bdr);border-radius:16px;margin-bottom:12px;overflow:hidden;}
+.orders-empty{display:flex;flex-direction:column;align-items:center;padding:60px 20px;gap:12px;color:var(--tm);}
+
+/* CHECKOUT */
+#checkoutModal{position:fixed;inset:0;z-index:650;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;}
+#checkoutModal.open{pointer-events:all;}
+#checkoutBg{position:absolute;inset:0;background:rgba(0,0,0,.6);opacity:0;transition:opacity .3s;}
+#checkoutModal.open #checkoutBg{opacity:1;}
+.checkout-body{position:relative;z-index:1;background:var(--card);border-radius:22px 22px 0 0;width:100%;max-width:520px;max-height:88dvh;overflow-y:auto;padding:20px 20px calc(env(safe-area-inset-bottom,0px)+20px);transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);}
+#checkoutModal.open .checkout-body{transform:translateY(0);}
+.co-field{margin-bottom:10px;}
+.co-field label{font-size:.77rem;font-weight:700;color:var(--txt);display:block;margin-bottom:5px;}
+.co-field input{width:100%;padding:11px 13px;border:1.5px solid var(--bdr2);border-radius:12px;background:var(--card2);color:var(--txt);font-size:.88rem;outline:none;}
+.co-field input:focus{border-color:var(--pr);}
+.co-confirm-btn{width:100%;padding:13px;background:var(--pr);color:#fff;border-radius:12px;font-size:.88rem;font-weight:800;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;}
+.co-cancel{width:100%;padding:9px;background:none;border:none;color:var(--tm);font-size:.83rem;cursor:pointer;margin-top:5px;}
+
+/* SUCCESS */
+#successOv{position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.9);display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+#successOv.open{display:flex;}
+.success-icon{font-size:70px;color:#22c55e;margin-bottom:14px;}
+.success-title{font-size:1.35rem;font-weight:900;color:#fff;margin-bottom:7px;}
+.success-msg{font-size:.87rem;color:rgba(255,255,255,.7);text-align:center;margin-bottom:18px;line-height:1.5;}
+.success-payid{font-size:.72rem;color:rgba(255,255,255,.4);font-family:monospace;margin-bottom:22px;}
+#successDoneBtn{padding:12px 32px;background:var(--pr);color:#fff;border-radius:99px;font-weight:800;border:none;cursor:pointer;font-size:.88rem;}
+
+/* ADMIN */
+.admin-card{background:var(--card);border:1px solid var(--bdr);border-radius:16px;padding:16px;margin-bottom:14px;}
+.admin-card h3{font-weight:900;font-size:.93rem;color:var(--txt);margin-bottom:12px;}
+.admin-input{width:100%;padding:10px 12px;border:1.5px solid var(--bdr2);border-radius:10px;background:var(--card2);color:var(--txt);font-size:.86rem;margin-bottom:10px;outline:none;}
+.admin-radio-group{display:flex;gap:10px;margin-bottom:10px;}
+.admin-radio-label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.83rem;color:var(--txt);}
+.admin-uz{border:2px dashed var(--bdr2);border-radius:12px;padding:18px;text-align:center;cursor:pointer;color:var(--tm);font-size:.83rem;margin-bottom:8px;}
+.admin-uz:hover{border-color:var(--pr);}
+.admin-sel{display:none;align-items:center;gap:8px;padding:7px 12px;background:var(--card2);border-radius:10px;margin-bottom:8px;}
+.admin-sel-name{flex:1;font-size:.8rem;color:var(--txt);}
+.admin-rm{background:none;border:none;color:var(--er);cursor:pointer;}
+.admin-btn{width:100%;padding:11px;border-radius:10px;font-size:.87rem;font-weight:800;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--pr);color:#fff;}
+.admin-btn:disabled{opacity:.6;cursor:not-allowed;}
+.admin-disc{display:none;align-items:center;gap:8px;margin-bottom:8px;}
+.admin-prog{display:none;margin-top:10px;}
+.admin-prog-bar-wrap{height:5px;background:var(--bdr);border-radius:3px;overflow:hidden;margin-bottom:5px;}
+#adminProgBar{height:100%;background:linear-gradient(90deg,var(--pr),#ec4899);width:0%;transition:width .3s;}
+.admin-prog-info{display:flex;justify-content:space-between;font-size:.74rem;color:var(--tm);}
+#adminLog{margin-top:7px;max-height:75px;overflow-y:auto;font-size:.7rem;font-family:monospace;display:flex;flex-direction:column;gap:2px;}
+.log-ok{color:#22c55e;}.log-err{color:#f4212e;}.log-inf{color:var(--tm);}
+.admin-img-prevs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.admin-img-prev{position:relative;}
+.admin-img-prev img{width:62px;height:62px;border-radius:8px;object-fit:cover;}
+.admin-img-prev button{position:absolute;top:-4px;right:-4px;width:17px;height:17px;border-radius:50%;background:#f4212e;border:none;color:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;}
+.admin-auth-notice{display:none;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:var(--er-b);color:var(--er);font-size:.82rem;margin-bottom:12px;}
+.admin-auth-ok{display:none;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:rgba(34,197,94,.1);color:#22c55e;font-size:.82rem;margin-bottom:12px;}
+
+/* MISC */
+input[type=file]{display:none;}
+::-webkit-scrollbar{width:3px;height:3px;}
+::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:99px;}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loadingOverlay"><div class="spinner"></div><span id="loadingMsg">Processing...</span></div>
+<div id="toastContainer"></div>
+<audio id="audioEl" preload="none"></audio>
+
+<!-- Hidden inputs -->
+<input type="file" id="avatarInput" accept="image/*"/>
+<input type="file" id="chatFileInput" accept="image/*,video/*"/>
+<input type="file" id="mediaInput"/>
+<input type="file" id="thumbInput" accept="image/*"/>
+
+<!-- DRAWER OVERLAY -->
+<div id="drawerOverlay"></div>
+<aside id="drawer">
+  <div class="dr-head">
+    <div class="dr-logo-wrap">
+      <div class="dr-logo"><img src="https://firebasestorage.googleapis.com/v0/b/sayat-kart.firebasestorage.app/o/products%2FAdobe%20Express%20-%20file.png?alt=media&token=65c25cb1-becd-4fb3-91d1-89f6f6898cd1" alt="SayatX"/></div>
+      <div class="dr-brand"><span style="color:var(--txt)">Sayat</span><span class="brand-x">X</span></div>
+    </div>
+    <button class="dr-close-btn" id="drawerClose"><span class="material-icons-round">close</span></button>
+  </div>
+  <div id="drUserStrip">
+    <div class="dr-avatar" id="drAvatar"><img id="drAvatarImg" src="" alt="" style="display:none"/><span id="drAvatarLetter"></span></div>
+    <div class="dr-name" id="drName"></div>
+    <div class="dr-handle" id="drHandle"></div>
+    <div class="dr-stats"><span class="dr-stat"><b id="drPostCount">0</b> Posts</span><span class="dr-stat"><b id="drFollowerCount">0</b> Followers</span></div>
+  </div>
+  <nav class="dr-nav">
+    <div class="dr-item active" data-nav="home"><span class="material-icons-round">home</span>Home</div>
+    <div class="dr-item" data-nav="trending"><span class="material-icons-round">trending_up</span>Trending</div>
+    <div class="dr-item" data-nav="videos"><span class="material-icons-round">play_circle</span>Videos</div>
+    <div class="dr-item" data-nav="photos"><span class="material-icons-round">photo_library</span>Photos</div>
+    <div class="dr-item" data-nav="shop"><span class="material-icons-round">shopping_bag</span>Shop</div>
+    <div class="dr-divider"></div>
+    <div class="dr-item" data-nav="your-posts"><span class="material-icons-round">grid_on</span>Your Posts</div>
+    <div class="dr-item" id="drNotifItem" data-nav="notifications"><span class="material-icons-round">notifications</span>Notifications<span class="dr-notif-badge" id="drNotifBadge">0</span></div>
+    <div class="dr-item" data-nav="orders"><span class="material-icons-round">inventory_2</span>My Orders</div>
+    <div class="dr-item" data-nav="saved"><span class="material-icons-round">bookmark</span>Saved</div>
+    <div class="dr-item" id="drLiked"><span class="material-icons-round">favorite_border</span>Liked Posts</div>
+    <div class="dr-divider"></div>
+    <div class="dr-item" data-nav="settings"><span class="material-icons-round">settings</span>Settings</div>
+    <div class="dr-item" id="drThemeToggle"><span class="material-icons-round" id="drThemeIcon">light_mode</span>Dark Mode</div>
+    <div class="dr-divider"></div>
+    <button class="dr-item" id="drLoginBtn" style="width:100%;text-align:left;background:none;cursor:pointer;color:var(--pr)"><span class="material-icons-round">login</span>Login</button>
+    <button class="dr-item" id="drLogoutBtn" style="display:none;width:100%;text-align:left;background:none;cursor:pointer;color:var(--er)"><span class="material-icons-round">logout</span>Logout</button>
+  </nav>
+</aside>
+
+<!-- HEADER -->
+<header id="appHeader">
+  <button class="hdr-btn" id="menuBtn"><span class="material-icons-round">menu</span></button>
+  <div class="header-logo-btn" id="brandBtn">
+    <div class="logo-circle"><img src="https://firebasestorage.googleapis.com/v0/b/sayat-kart.firebasestorage.app/o/products%2FAdobe%20Express%20-%20file.png?alt=media&token=65c25cb1-becd-4fb3-91d1-89f6f6898cd1" alt="SayatX"/></div>
+    <div class="brand-name"><span style="color:var(--txt)">Sayat</span><span class="brand-x">X</span></div>
+  </div>
+  <div class="hdr-actions">
+    <button class="hdr-btn" id="searchToggleBtn"><span class="material-icons-round">search</span></button>
+    <button class="hdr-btn" id="notifBtn"><span class="material-icons-round">notifications</span><span id="notifDot"></span></button>
+  </div>
+  <div id="searchBar">
+    <span class="material-icons-round" style="color:var(--tm)">search</span>
+    <input type="search" id="searchInp" placeholder="Search SayatX..." inputmode="search"/>
+    <button style="background:none;border:none;cursor:pointer;color:var(--tm)" id="searchCloseBtn"><span class="material-icons-round">close</span></button>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main id="appMain">
+
+  <!-- HOME -->
+  <section id="sectionHome" class="section active">
+    <!-- Search results panel -->
+    <div id="searchPanel" style="display:none;padding:10px 0;">
+      <div id="searchLabel" style="padding:0 12px 8px;font-size:.86rem;font-weight:800;color:var(--txt);"></div>
+      <div id="searchResults"></div>
+      <div id="searchEmpty" style="display:none;text-align:center;padding:40px;color:var(--tm);">
+        <span class="material-icons-round" style="font-size:38px;opacity:.3;display:block">search_off</span>
+        <p id="searchEmptyMsg"></p>
+      </div>
+    </div>
+    <!-- Featured -->
+    <div id="featuredStrip">
+      <div class="feat-head">
+        <div class="feat-label"><span class="material-icons-round" style="font-size:15px">star</span>SPONSORED</div>
+        <span style="font-size:.72rem;color:var(--tm)">← swipe →</span>
+      </div>
+      <div id="featScroll"></div>
+    </div>
+    <!-- Skeleton -->
+    <div id="feedSkel">
+      <div class="skel-post"><div class="skel-line" style="width:60%"></div><div class="skel-line" style="width:40%"></div><div class="skel-media"></div></div>
+      <div class="skel-post"><div class="skel-line" style="width:70%"></div><div class="skel-media"></div></div>
+    </div>
+    <!-- Feed -->
+    <div id="feedContainer"></div>
+  </section>
+
+  <!-- MESSAGES -->
+  <section id="sectionMessages" class="section">
+    <div id="msgsListView">
+      <div class="msg-head">
+        <h2>Messages</h2>
+        <div class="msg-search-wrap">
+          <span class="material-icons-round msg-search-icon">search</span>
+          <input type="search" id="msgSearch" placeholder="Search users..."/>
+        </div>
+      </div>
+      <div id="msgsLoginPrompt">
+        <span class="material-icons-round" style="font-size:46px;color:var(--tm);opacity:.3">chat_bubble_outline</span>
+        <p style="color:var(--tm);font-size:.88rem">Login to view messages</p>
+        <button id="msgLoginBtn" style="padding:10px 24px;background:var(--pr);color:#fff;border-radius:99px;font-weight:800;border:none;cursor:pointer;">Login</button>
+      </div>
+      <div id="convList"></div>
+      <button id="newMsgBtn"><span class="material-icons-round">person_search</span>Search users to chat</button>
+    </div>
+    <div id="chatView">
+      <div class="chat-hdr">
+        <button id="chatBackBtn"><span class="material-icons-round">arrow_back</span></button>
+        <div id="chatHdrAv"></div>
+        <div class="chat-hdr-info"><div id="chatHdrName"></div><div id="chatHdrStatus">Online</div></div>
+        <button id="chatProfileBtn" style="background:none;border:none;cursor:pointer;color:var(--tm);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center"><span class="material-icons-round" style="font-size:20px">person</span></button>
+      </div>
+      <div id="chatMsgs"></div>
+      <div class="chat-inp-wrap">
+        <div id="chatMediaPrev">
+          <button id="removeChatMedia">✕</button>
+          <img id="chatMediaPrevImg" src="" alt=""/>
+          <video id="chatMediaPrevVid" src="" controls muted></video>
+        </div>
+        <div class="chat-inp-row">
+          <button id="chatAttachBtn"><span class="material-icons-round" style="font-size:19px">attach_file</span></button>
+          <div class="chat-inp-field"><textarea id="chatInp" placeholder="Message..." rows="1"></textarea></div>
+          <button id="chatSendBtn"><span class="material-icons-round">send</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="sectionProfile" class="section">
+    <!-- AUTH -->
+    <div id="authScreen">
+      <div class="auth-card">
+        <div class="auth-logo-wrap">
+          <div class="auth-logo"><img src="https://firebasestorage.googleapis.com/v0/b/sayat-kart.firebasestorage.app/o/products%2FAdobe%20Express%20-%20file.png?alt=media&token=65c25cb1-becd-4fb3-91d1-89f6f6898cd1" alt="SayatX"/></div>
+          <div class="auth-title"><span style="color:var(--txt)">Sayat</span><span class="brand-x">X</span></div>
+          <p class="auth-sub">Login to share your world</p>
+        </div>
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabPhone" onclick="switchAuthTab('phone')">📱 Phone</button>
+          <button class="auth-tab" id="tabEmail" onclick="switchAuthTab('email')">✉️ Email</button>
+        </div>
+        <!-- Phone panel -->
+        <div id="authPanelPhone">
+          <div class="phone-row">
+            <span class="phone-cc">+91</span>
+            <input type="tel" id="phoneInput" placeholder="10-digit mobile" maxlength="10" inputmode="numeric"/>
+          </div>
+          <div id="recaptcha-container"></div>
+          <button class="auth-btn" id="sendOtpBtn"><span class="material-icons-round" style="font-size:17px">sms</span>Send OTP</button>
+          <div id="otpWrap">
+            <p class="otp-hint">Enter the 6-digit OTP sent to your phone</p>
+            <div class="otp-boxes">
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+              <input type="number" class="otp-box" maxlength="1" inputmode="numeric"/>
+            </div>
+            <button class="auth-btn" id="verifyOtpBtn">Verify OTP</button>
+            <button class="auth-btn-ghost" id="resendOtpBtn">Resend OTP</button>
+          </div>
+          <div class="auth-hint">⚠️ Firebase Console এ Phone Auth enable করতে হবে এবং domain whitelist করতে হবে।</div>
+          <button class="auth-guest-btn" id="guestBtn"><span class="material-icons-round" style="font-size:17px">person_outline</span>Continue as Guest</button>
+        </div>
+        <!-- Email panel -->
+        <div id="authPanelEmail">
+          <input type="email" class="auth-input" id="emEmail" placeholder="Email address" autocomplete="email"/>
+          <input type="password" class="auth-input" id="emPass" placeholder="Password (min 6 chars)" autocomplete="current-password"/>
+          <button class="auth-btn" id="emSignInBtn">Sign In</button>
+          <button class="auth-btn-ghost" id="emSignUpBtn">Create Account</button>
+          <button class="auth-btn-link" id="emForgotBtn">Forgot Password?</button>
+          <button class="auth-guest-btn" id="guestBtn2"><span class="material-icons-round" style="font-size:17px">person_outline</span>Continue as Guest</button>
+        </div>
+      </div>
+    </div>
+    <!-- PROFILE SCREEN -->
+    <div id="profileScreen">
+      <div class="profile-wrap">
+        <div class="profile-av-wrap">
+          <div class="profile-av" id="profileAv">
+            <img id="profileAvImg" src="" alt=""/>
+            <span id="profileAvLetter"></span>
+          </div>
+          <button class="profile-av-edit" id="profileAvEditBtn"><span class="material-icons-round">camera_alt</span></button>
+        </div>
+        <div class="profile-name" id="profileName"></div>
+        <div class="profile-handle" id="profileHandle"></div>
+        <div class="profile-stats">
+          <div class="pstat" id="profilePostsStat"><div class="pstat-val" id="profilePostCount">0</div><div class="pstat-label">Posts</div></div>
+          <div class="pstat" id="profileFollowersStat"><div class="pstat-val" id="profileFollowerCount">0</div><div class="pstat-label">Followers</div></div>
+          <div class="pstat" id="profileFollowingStat"><div class="pstat-val" id="profileFollowingCount">0</div><div class="pstat-label">Following</div></div>
+        </div>
+        <div class="profile-btns">
+          <button class="pbtn pbtn-edit" id="editProfileBtn"><span class="material-icons-round" style="font-size:16px">edit</span>Edit Profile</button>
+          <button class="pbtn pbtn-logout" id="logoutBtn"><span class="material-icons-round" style="font-size:16px">logout</span>Logout</button>
+        </div>
+      </div>
+      <div class="profile-menu">
+        <div class="pmenu-item" id="pmTheme"><span class="material-icons-round">palette</span>Theme<span id="pmThemeIcon" class="material-icons-round" style="margin-left:auto;color:var(--tm);font-size:18px">light_mode</span></div>
+        <div class="pmenu-item" id="pmYourPosts"><span class="material-icons-round">grid_on</span>Your Posts</div>
+        <div class="pmenu-item" id="pmSaved"><span class="material-icons-round">bookmark</span>Saved Posts</div>
+        <div class="pmenu-item" id="pmOrders"><span class="material-icons-round">inventory_2</span>My Orders</div>
+        <div class="pmenu-item" id="pmNotif"><span class="material-icons-round">notifications</span>Notifications<span class="pmenu-badge" id="pmNotifBadge">0</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN -->
+  <section id="sectionAdmin" style="display:none;padding:12px 14px;">
+    <div class="admin-auth-notice" id="adminAuthNotice"><span class="material-icons-round">warning</span>Please login first</div>
+    <div class="admin-auth-ok" id="adminAuthOk"><span class="material-icons-round">verified</span><span id="adminAuthName">Admin ready</span></div>
+    <p style="font-size:.72rem;font-weight:800;color:var(--pr);text-transform:uppercase;margin-bottom:10px;">Publish Sponsored Ad</p>
+    <div class="admin-card">
+      <h3>Sponsor Content</h3>
+      <div class="admin-radio-group">
+        <label class="admin-radio-label"><input type="radio" name="featType" value="image" checked/> Image</label>
+        <label class="admin-radio-label"><input type="radio" name="featType" value="video"/> Video</label>
+        <label class="admin-radio-label"><input type="radio" name="featType" value="audio"/> Audio</label>
+      </div>
+      <input class="admin-input" id="featLink" placeholder="Link URL (https://...)"/>
+      <div class="admin-uz" id="featThumbZone" onclick="$('featThumbInput').click()"><span class="material-icons-round">add_photo_alternate</span><p>Image / Thumbnail</p></div>
+      <input type="file" id="featThumbInput" accept="image/*"/>
+      <div class="admin-sel" id="featThumbSel"><span class="material-icons-round" style="color:var(--pr)">image</span><span class="admin-sel-name" id="featThumbName"></span><button class="admin-rm" id="featThumbRm"><span class="material-icons-round">close</span></button></div>
+      <div id="featMediaField" style="display:none">
+        <div class="admin-uz" id="featMediaZone" onclick="$('featMediaInput').click()"><span class="material-icons-round">upload_file</span><p>Video / Audio file</p></div>
+        <input type="file" id="featMediaInput" accept="video/*,audio/*"/>
+        <div class="admin-sel" id="featMediaSel"><span class="material-icons-round" style="color:var(--pr)">movie</span><span class="admin-sel-name" id="featMediaName"></span><button class="admin-rm" id="featMediaRm"><span class="material-icons-round">close</span></button></div>
+      </div>
+      <button class="admin-btn" id="publishFeatBtn" style="margin-top:4px"><span class="material-icons-round">publish</span>Publish Ad</button>
+    </div>
+    <p style="font-size:.72rem;font-weight:800;color:var(--pr);text-transform:uppercase;margin-bottom:10px;">Publish Product</p>
+    <div class="admin-card">
+      <h3>New Product</h3>
+      <div class="admin-radio-group">
+        <label class="admin-radio-label"><input type="radio" name="prodType" value="general" checked/>Physical</label>
+        <label class="admin-radio-label"><input type="radio" name="prodType" value="ebook"/>E-Book</label>
+        <label class="admin-radio-label"><input type="radio" name="prodType" value="audio"/>Audio</label>
+      </div>
+      <input class="admin-input" id="prodTitle" placeholder="Product title"/>
+      <textarea class="admin-input" id="prodDesc" placeholder="Description" rows="2" style="resize:none;"></textarea>
+      <div style="display:flex;gap:8px">
+        <input class="admin-input" id="prodMRP" type="number" placeholder="MRP ₹" style="flex:1;margin-bottom:10px"/>
+        <input class="admin-input" id="prodSale" type="number" placeholder="Sale ₹" style="flex:1;margin-bottom:10px"/>
+      </div>
+      <div class="admin-disc" id="adminDiscPrev"><span class="material-icons-round" style="color:#22c55e;font-size:17px">local_offer</span><span id="adminDiscText" style="font-size:.8rem;color:#22c55e;font-weight:700"></span></div>
+      <div class="admin-uz" onclick="$('prodImages').click()"><span class="material-icons-round">add_photo_alternate</span><p>Product Images (multiple)</p></div>
+      <input type="file" id="prodImages" accept="image/*" multiple/>
+      <div class="admin-img-prevs" id="adminImgPrevs"></div>
+      <div id="prodPDFField" style="display:none">
+        <div class="admin-uz" onclick="$('prodPDF').click()"><span class="material-icons-round">picture_as_pdf</span><p>Upload PDF</p></div>
+        <input type="file" id="prodPDF" accept=".pdf"/>
+        <div class="admin-sel" id="prodPDFSel"><span class="material-icons-round" style="color:#f4212e">picture_as_pdf</span><span class="admin-sel-name" id="prodPDFName"></span><button class="admin-rm" id="prodPDFRm"><span class="material-icons-round">close</span></button></div>
+      </div>
+      <div id="prodAudioField" style="display:none">
+        <div class="admin-uz" onclick="$('prodAudio').click()"><span class="material-icons-round">headphones</span><p>Upload Audio</p></div>
+        <input type="file" id="prodAudio" accept="audio/*"/>
+        <div class="admin-sel" id="prodAudioSel"><span class="material-icons-round" style="color:#ec4899">headphones</span><span class="admin-sel-name" id="prodAudioName"></span><button class="admin-rm" id="prodAudioRm"><span class="material-icons-round">close</span></button></div>
+      </div>
+      <div class="admin-prog" id="adminProg">
+        <div class="admin-prog-bar-wrap"><div id="adminProgBar"></div></div>
+        <div class="admin-prog-info"><span id="adminProgTitle">Uploading...</span><span id="adminProgPct">0%</span></div>
+        <div id="adminLog"></div>
+      </div>
+      <button class="admin-btn" id="publishProdBtn" style="margin-top:8px"><span class="material-icons-round">publish</span>Publish Product</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav id="bottomNav">
+  <button class="bnav-btn active" data-section="home"><span class="material-icons-round">home</span>Home</button>
+  <button class="bnav-btn" data-section="messages"><span class="material-icons-round">chat</span>Messages</button>
+  <button class="bnav-btn" data-section="profile"><span class="material-icons-round">person</span>Profile</button>
+</nav>
+
+<!-- FAB -->
+<button id="fab"><span class="material-icons-round">add</span></button>
+
+<!-- CREATE POST SHEET -->
+<div id="createSheet" class="b-sheet">
+  <div class="b-sheet-bg" id="createSheetBg"></div>
+  <div class="b-sheet-body">
+    <div class="sheet-handle"></div>
+    <div class="sheet-hdr">
+      <span class="sheet-title">New Post</span>
+      <button class="sheet-close btn-pulse" id="createCloseBtn"><span class="material-icons-round">close</span></button>
+    </div>
+    <div id="createLoginPrompt"><span class="material-icons-round">lock</span><p>Login to share posts</p><button id="goLoginBtn">Login Now</button></div>
+    <div id="createForm" style="display:none">
+      <div class="create-form-row"><div class="create-av" id="createAv"></div><div class="create-uname" id="createUname"></div></div>
+      <div class="post-type-tabs">
+        <button class="ptype-tab active" data-type="text">📝 Text</button>
+        <button class="ptype-tab" data-type="photo">📷 Photo</button>
+        <button class="ptype-tab" data-type="video">🎬 Video</button>
+        <button class="ptype-tab" data-type="audio">🎵 Audio</button>
+      </div>
+      <textarea id="createTa" placeholder="What's on your mind?"></textarea>
+      <div class="upload-zone" id="uploadZone" onclick="triggerMediaInput()">
+        <span class="material-icons-round">upload_file</span>
+        <span class="uz-text" id="uzText">Tap to select file</span>
+        <span class="uz-hint" id="uzHint">Max 5GB</span>
+      </div>
+      <div id="mediaPreview">
+        <img id="mediaPreviewImg" alt=""/>
+        <video id="mediaPreviewVid" controls muted></video>
+        <div id="audioPreviewRow"><span class="material-icons-round" style="color:var(--pr);font-size:26px">headphones</span><span id="audioFileName">Audio file</span></div>
+        <button id="removeMediaBtn">✕</button>
+      </div>
+      <div id="thumbSection">
+        <div class="thumb-label"><span class="material-icons-round" style="font-size:14px">image</span>Thumbnail (optional)</div>
+        <button id="thumbPickBtn" type="button"><span class="material-icons-round" style="font-size:15px">video_camera_back</span>&nbsp;Pick thumbnail</button>
+        <div id="thumbPreviewWrap"><img id="thumbPreviewImg" src="" alt=""/><button id="removeThumbBtn">✕</button></div>
+      </div>
+    </div>
+    <div class="create-footer" id="createFooter">
+      <button id="cancelCreateBtn">Cancel</button>
+      <button id="submitCreateBtn">Post</button>
+    </div>
+  </div>
+</div>
+
+<!-- COMMENTS FULL SHEET -->
+<div id="commentsSheet" class="b-sheet">
+  <div class="b-sheet-bg" id="commentsBg"></div>
+  <div class="b-sheet-body" style="max-height:80dvh;">
+    <div class="sheet-handle"></div>
+    <div class="sheet-hdr">
+      <span class="sheet-title">Comments</span>
+      <button class="sheet-close btn-pulse" id="commentsClose"><span class="material-icons-round">close</span></button>
+    </div>
+    <div id="commentsList" class="sheet-body"></div>
+    <div class="cm-input-row">
+      <div class="cm-input-av" id="cmInputAv"></div>
+      <div class="cm-input-field"><input type="text" id="commentsInput" placeholder="Add a comment..." maxlength="500"/><button class="cm-full-send-btn" id="commentsSendBtn"><span class="material-icons-round" style="font-size:16px">send</span></button></div>
+    </div>
+  </div>
+</div>
+
+<!-- REEL OVERLAY -->
+<div id="reelOv">
+  <div id="reelScroll"></div>
+</div>
+
+<!-- COMMENTS HALF (in reel) -->
+<div id="cmHalfOv">
+  <div class="cm-half-bg" id="cmHalfBg"></div>
+  <div class="cm-half-body">
+    <div class="cm-half-hdr">
+      <span style="font-weight:800;font-size:.93rem;color:var(--txt)">Comments</span>
+      <button class="sheet-close btn-pulse" id="cmHalfClose"><span class="material-icons-round" style="font-size:16px">close</span></button>
+    </div>
+    <div id="cmHalfList"></div>
+    <div class="cm-half-input-row">
+      <div class="cm-inp-wrap"><input type="text" id="cmHalfInp" placeholder="Add a comment..." maxlength="500"/></div>
+      <button class="cm-send-btn" id="cmHalfSend"><span class="material-icons-round" style="font-size:16px">send</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- USER PROFILE OVERLAY -->
+<div id="upoPanel" class="ov-panel">
+  <div class="ov-hdr">
+    <button class="ov-back btn-pulse" id="upoBackBtn"><span class="material-icons-round">arrow_back</span></button>
+    <span class="ov-title" id="upoTitle">Profile</span>
+  </div>
+  <div class="ov-body">
+    <div class="upo-info">
+      <div class="upo-av" id="upoAv"><img id="upoAvImg" src="" alt="" style="display:none"/><span id="upoAvLetter"></span></div>
+      <div class="upo-name" id="upoName"></div>
+      <div class="upo-handle" id="upoHandle"></div>
+      <div class="upo-stats">
+        <div class="upo-stat" id="upoPostsStat"><div class="upo-stat-val" id="upoPostCount">0</div><div class="upo-stat-label">Posts</div></div>
+        <div class="upo-stat" id="upoFollowersStat"><div class="upo-stat-val" id="upoFollowerCount">0</div><div class="upo-stat-label">Followers</div></div>
+        <div class="upo-stat" id="upoFollowingStat"><div class="upo-stat-val" id="upoFollowingCount">0</div><div class="upo-stat-label">Following</div></div>
+      </div>
+      <div class="upo-actions">
+        <button id="upoFollowBtn" class="upo-follow-btn"><span class="material-icons-round">person_add</span>Follow</button>
+        <button id="upoMsgBtn" class="upo-msg-btn"><span class="material-icons-round">chat</span>Message</button>
+      </div>
+    </div>
+    <div id="upoPostsGrid" style="padding:10px 0;"></div>
+  </div>
+</div>
+
+<!-- YOUR POSTS OVERLAY -->
+<div id="ypoPanel" class="ov-panel">
+  <div class="ov-hdr">
+    <button class="ov-back btn-pulse" id="ypoBackBtn"><span class="material-icons-round">arrow_back</span></button>
+    <span class="ov-title" id="ypoTitle">Your Posts</span>
+  </div>
+  <div class="ov-body" id="ypoBody"></div>
+</div>
+
+<!-- FOLLOW LIST OVERLAY -->
+<div id="flPanel" class="ov-panel">
+  <div class="ov-hdr">
+    <button class="ov-back btn-pulse" id="flBackBtn"><span class="material-icons-round">arrow_back</span></button>
+    <span class="ov-title" id="flTitle">Followers</span>
+  </div>
+  <div class="ov-body" id="flBody"></div>
+</div>
+
+<!-- NOTIFICATIONS OVERLAY -->
+<div id="notifPanel" class="ov-panel">
+  <div class="ov-hdr">
+    <button class="ov-back btn-pulse" id="notifPanelClose"><span class="material-icons-round">close</span></button>
+    <span class="ov-title">Notifications</span>
+  </div>
+  <div class="ov-body" id="notifBody"></div>
+</div>
+
+<!-- ORDERS OVERLAY -->
+<div id="ordersPanel" class="ov-panel">
+  <div class="ov-hdr">
+    <button class="ov-back btn-pulse" id="ordersBackBtn"><span class="material-icons-round">arrow_back</span></button>
+    <span class="ov-title">My Orders</span>
+  </div>
+  <div class="ov-body" id="ordersBody" style="padding:12px;"></div>
+</div>
+
+<!-- PDF OVERLAY -->
+<div id="pdfOv">
+  <div class="ov-hdr" style="background:var(--bg);border-bottom:1px solid var(--bdr);flex-shrink:0;">
+    <button class="ov-back btn-pulse" id="pdfCloseBtn"><span class="material-icons-round">close</span></button>
+    <span class="ov-title" id="pdfTitle"></span>
+    <span style="font-size:.74rem;color:var(--tm)" id="pdfPageCount"></span>
+  </div>
+  <div id="pdfPages"></div>
+</div>
+
+<!-- AUDIO OVERLAY -->
+<div id="audioOv">
+  <div id="audioOvBg"></div>
+  <div class="ov-hdr" style="position:relative;z-index:1;border-bottom-color:rgba(255,255,255,.1);">
+    <button class="ov-back" id="audioCloseBtn" style="color:#fff"><span class="material-icons-round">keyboard_arrow_down</span></button>
+    <span style="font-weight:800;color:#fff;font-size:.93rem;flex:1;text-align:center;">Now Playing</span>
+  </div>
+  <div class="audio-content">
+    <img id="audioAlbumArt" src="" alt=""/>
+    <div id="audioTitle"></div>
+    <div id="audioArtist"></div>
+    <div class="audio-seek-wrap">
+      <div class="audio-track"><div id="audioFill"></div></div>
+      <input type="range" id="audioSeek" min="0" max="100" value="0" step="0.1"/>
+    </div>
+    <div class="audio-times"><span id="audioCurrentTime">0:00</span><span id="audioDuration">0:00</span></div>
+    <div class="audio-ctrls">
+      <button class="audio-ctrl" id="audioPrev10"><span class="material-icons-round">replay_10</span></button>
+      <button id="audioPlayBtn"><span class="material-icons-round">play_arrow</span></button>
+      <button class="audio-ctrl" id="audioFwd10"><span class="material-icons-round">forward_10</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO OVERLAY -->
+<div id="videoOv">
+  <div style="position:absolute;top:calc(env(safe-area-inset-top,0px)+10px);left:0;right:0;display:flex;align-items:center;padding:0 14px;z-index:2;">
+    <button id="videoCloseBtn" style="width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.5);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-icons-round">close</span></button>
+    <span id="videoOvTitle" style="color:#fff;font-weight:800;font-size:.93rem;flex:1;margin-left:10px;"></span>
+  </div>
+  <video id="videoPlayer" controls playsinline></video>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal">
+  <div id="checkoutBg"></div>
+  <div class="checkout-body">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <h2 style="font-weight:900;font-size:1rem;color:var(--txt)">Complete Purchase</h2>
+      <button id="checkoutCloseBtn" style="background:none;border:none;cursor:pointer;color:var(--tm)"><span class="material-icons-round">close</span></button>
+    </div>
+    <p id="checkoutSub" style="font-size:.82rem;color:var(--tm);margin-bottom:14px;"></p>
+    <div id="checkoutAddrFields">
+      <div class="co-field"><label>Full Name</label><input type="text" id="addrName" placeholder="Your full name"/></div>
+      <div class="co-field"><label>Mobile</label><input type="tel" id="addrPhone" placeholder="10-digit mobile" inputmode="numeric"/></div>
+      <div class="co-field"><label>Street</label><input type="text" id="addrStreet" placeholder="House no, street"/></div>
+      <div class="co-field"><label>City</label><input type="text" id="addrCity" placeholder="City"/></div>
+      <div class="co-field"><label>PIN Code</label><input type="text" id="addrPin" placeholder="6-digit PIN" inputmode="numeric"/></div>
+      <div class="co-field"><label>State</label><input type="text" id="addrState" placeholder="State"/></div>
+    </div>
+    <button class="co-confirm-btn" id="checkoutConfirmBtn"><span class="material-icons-round">lock</span>Pay with Razorpay</button>
+    <button class="co-cancel" id="checkoutCancelBtn">Cancel</button>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div id="successOv">
+  <span class="material-icons-round success-icon">check_circle</span>
+  <div class="success-title">Payment Successful!</div>
+  <div class="success-msg" id="successMsg"></div>
+  <div class="success-payid" id="successPayId"></div>
+  <button id="successDoneBtn">View My Orders</button>
+</div>
+
+<!-- VIDEO THUMB PICKER -->
+<div id="vtpOv">
+  <div class="vtp-bar" style="background:rgba(0,0,0,.9);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+    <button id="vtpCancelBtn" style="color:#fff;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;font-size:.88rem"><span class="material-icons-round btn-pulse">close</span>Cancel</button>
+    <span style="color:#fff;font-weight:800;font-size:.88rem">Pick Thumbnail Frame</span>
+    <button id="vtpUseBtn" style="color:#f97316;background:none;border:none;cursor:pointer;font-weight:800;font-size:.88rem">✔ Use</button>
+  </div>
+  <video id="vtpVid" playsinline muted style="flex:1;width:100%;object-fit:contain;background:#000;display:block;min-height:0;"></video>
+  <div class="vtp-bar">
+    <span class="vtp-time" id="vtpTime">0:00</span>
+    <input type="range" id="vtpSeek" min="0" max="100" value="0" step="0.01" style="flex:1;accent-color:#f97316;"/>
+    <button class="vtp-play-btn" id="vtpPlayBtn"><span class="material-icons-round" style="font-size:17px">play_arrow</span></button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
