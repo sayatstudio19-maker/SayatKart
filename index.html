@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SayatX — Chat & Post</title>
+
+<!-- Fonts: Poppins for display, Inter for UI, Noto Sans Bengali kept for any Bengali user content -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     APP SHELL — single page, screens toggled by JS later via
+     the .active class on each [data-screen] section.
+     ============================================================ -->
+<div id="app">
+
+  <!-- ============================================================
+       SCREEN: AUTH — mandatory before entering the app.
+       Step 1: mobile number  → Step 2: OTP verification →
+       Step 3: name + profile photo (username auto-generated)
+       ============================================================ -->
+  <section class="screen active" id="screen-auth" data-screen="auth">
+    <div class="auth-wrap">
+      <div class="auth-brand">
+        <span class="brand-mark">Sayat<span class="brand-x">X</span></span>
+        <p class="brand-tag">Chat, share, stay connected</p>
+      </div>
+
+      <!-- Step progress dots -->
+      <div class="auth-steps">
+        <span class="auth-step-dot active" data-step="1"></span>
+        <span class="auth-step-dot" data-step="2"></span>
+        <span class="auth-step-dot" data-step="3"></span>
+      </div>
+
+      <!-- STEP 1: Mobile number -->
+      <form class="auth-form" id="step-mobile" data-step="1" onsubmit="return false;">
+        <label class="auth-label">Enter your mobile number</label>
+        <div class="mobile-input-row">
+          <span class="country-code">+91</span>
+          <input type="tel" id="mobile-number" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10" required>
+        </div>
+        <p class="field-hint" id="mobile-error-hint"></p>
+        <button type="submit" class="btn-primary">Send OTP</button>
+        <div id="recaptcha-container"></div>
+      </form>
+
+      <!-- STEP 2: OTP verification -->
+      <form class="auth-form hidden" id="step-otp" data-step="2" onsubmit="return false;">
+        <label class="auth-label">Enter the 6-digit code sent to <span id="otp-mobile-display">your number</span></label>
+        <div class="otp-input-row">
+          <input type="text" maxlength="6" class="otp-digit" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code">
+          <input type="text" maxlength="6" class="otp-digit" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code">
+          <input type="text" maxlength="6" class="otp-digit" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code">
+          <input type="text" maxlength="6" class="otp-digit" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code">
+          <input type="text" maxlength="6" class="otp-digit" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code">
+          <input type="text" maxlength="6" class="otp-digit" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code">
+        </div>
+        <button type="button" class="link-btn" id="resend-otp-btn">Resend code</button>
+        <button type="submit" class="btn-primary">Verify</button>
+      </form>
+
+      <!-- STEP 3: Name + profile photo, username auto-generated -->
+      <form class="auth-form hidden" id="step-profile" data-step="3" onsubmit="return false;">
+        <label class="photo-upload" id="signup-photo-upload">
+          <input type="file" id="signup-photo-input" accept="image/*" hidden>
+          <img src="" alt="" class="photo-preview hidden" id="signup-photo-preview">
+          <span class="photo-upload-placeholder" id="signup-photo-placeholder">+ Add photo</span>
+        </label>
+
+        <label class="auth-label">Your name</label>
+        <input type="text" id="signup-name" placeholder="Full name" required>
+
+        <label class="auth-label">Username</label>
+        <input type="text" id="signup-username" placeholder="auto-generated" readonly>
+        <p class="field-hint">Your username is generated automatically. You can leave it as is.</p>
+
+        <button type="submit" class="btn-primary">Continue to SayatX</button>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SCREEN 1: HOME — all users on the platform, search users,
+       tap to open/start a chat
+       ============================================================ -->
+  <section class="screen" id="screen-home" data-screen="home">
+    <header class="topbar">
+      <span class="topbar-title">Home</span>
+      <button class="icon-btn" id="home-profile-btn" aria-label="My profile">
+        <img src="" alt="" class="avatar-mini" id="home-my-avatar">
+      </button>
+    </header>
+
+    <div class="search-bar">
+      <input type="search" id="home-search-input" placeholder="Search by username...">
+    </div>
+
+    <!-- Results shown while typing in search -->
+    <ul class="user-results hidden" id="home-search-results">
+      <!-- JS will render <li class="user-result-item"> per matched user -->
+    </ul>
+
+    <h3 class="section-label">All Chats</h3>
+    <ul class="chat-list" id="home-chat-list">
+      <!-- Example structure JS will repeat for every conversation -->
+      <li class="chat-item" data-chat-id="">
+        <img src="" alt="" class="avatar">
+        <div class="chat-item-body">
+          <div class="chat-item-top">
+            <span class="chat-item-name">Name</span>
+            <span class="chat-item-time">12:30</span>
+          </div>
+          <div class="chat-item-bottom">
+            <span class="chat-item-preview">Last message...</span>
+            <span class="unread-badge">2</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+
+  <!-- ============================================================
+       SCREEN 2: YOUR CHAT — saved chats (users you "save" from
+       their profile page), with its own search
+       ============================================================ -->
+  <section class="screen" id="screen-yourchat" data-screen="yourchat">
+    <header class="topbar">
+      <span class="topbar-title">Your Chat</span>
+    </header>
+
+    <div class="search-bar">
+      <input type="search" id="saved-search-input" placeholder="Search saved chats...">
+    </div>
+
+    <ul class="chat-list" id="saved-chat-list">
+      <li class="chat-item" data-chat-id="">
+        <img src="" alt="" class="avatar">
+        <div class="chat-item-body">
+          <div class="chat-item-top">
+            <span class="chat-item-name">Saved user</span>
+            <span class="chat-item-time">Yesterday</span>
+          </div>
+          <div class="chat-item-bottom">
+            <span class="chat-item-preview">Last message...</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="empty-state hidden" id="saved-empty-state">
+      <p>No saved chats yet.</p>
+      <p class="empty-sub">Open someone's profile and tap "Save Chat" to see it here.</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SCREEN 3: POST FEED — X-style scrolling feed
+       ============================================================ -->
+  <section class="screen" id="screen-feed" data-screen="feed">
+    <header class="topbar">
+      <span class="topbar-title">Post</span>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="feed-menu-btn" aria-label="More options">⋮</button>
+        <div class="dropdown-menu hidden" id="feed-dropdown">
+          <button class="dropdown-item" id="my-posts-btn">Your Post</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-feed" id="post-feed-list">
+      <!-- Example post card structure, JS will repeat this per post -->
+      <article class="post-card" data-post-id="">
+        <header class="post-card-header">
+          <img src="" alt="" class="avatar">
+          <div class="post-card-user">
+            <span class="post-card-name">Name</span>
+            <span class="post-card-time">2 hours ago</span>
+          </div>
+        </header>
+
+        <h4 class="post-card-title">Post title / link will show here</h4>
+        <img src="" alt="" class="post-card-image">
+
+        <div class="post-card-actions">
+          <button class="post-action like-btn" data-post-id="">
+            <span class="icon">♡</span><span class="count">0</span>
+          </button>
+          <button class="post-action comment-btn" data-post-id="">
+            <span class="icon">💬</span><span class="count">0</span>
+          </button>
+          <button class="post-action share-btn" data-post-id="">
+            <span class="icon">↗</span>
+          </button>
+        </div>
+      </article>
+    </div>
+
+    <!-- Floating "new post" button, X-style -->
+    <button class="fab" id="new-post-fab" aria-label="Create new post">+</button>
+  </section>
+
+
+  <!-- ============================================================
+       SCREEN: CREATE POST — photo + title only, no video
+       ============================================================ -->
+  <section class="screen" id="screen-create-post" data-screen="createpost">
+    <header class="topbar">
+      <button class="icon-btn" id="create-post-back">←</button>
+      <span class="topbar-title">New Post</span>
+      <button class="btn-text" id="create-post-submit">Post</button>
+    </header>
+
+    <div class="create-post-form">
+      <label class="image-upload" id="post-image-upload">
+        <input type="file" id="post-image-input" accept="image/*" hidden>
+        <span class="image-upload-placeholder">+ Add photo</span>
+        <img src="" alt="" class="image-preview hidden" id="post-image-preview">
+      </label>
+
+      <textarea id="post-title-input" class="post-title-input" placeholder="Write a title... (links will be clickable)" rows="3"></textarea>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SCREEN: MY POSTS — grid of the logged-in user's own posts
+       ============================================================ -->
+  <section class="screen" id="screen-my-posts" data-screen="myposts">
+    <header class="topbar">
+      <button class="icon-btn" id="my-posts-back">←</button>
+      <span class="topbar-title">Your Post</span>
+    </header>
+
+    <div class="post-grid" id="my-posts-grid">
+      <div class="post-grid-item" data-post-id="">
+        <img src="" alt="" class="post-grid-image">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SCREEN: USER PROFILE — viewing someone else's profile
+       (opened from search results, post feed, or a chat header)
+       ============================================================ -->
+  <section class="screen" id="screen-profile" data-screen="profile">
+    <header class="topbar">
+      <button class="icon-btn" id="profile-back">←</button>
+      <span class="topbar-title" id="profile-topbar-name">Profile</span>
+    </header>
+
+    <div class="profile-header">
+      <img src="" alt="" class="avatar-large" id="profile-avatar">
+      <h2 class="profile-name" id="profile-name">Name</h2>
+      <p class="profile-username" id="profile-username">@username</p>
+
+      <div class="profile-actions">
+        <button class="btn-primary" id="profile-message-btn">Message</button>
+        <button class="btn-secondary" id="profile-save-chat-btn">Save Chat</button>
+      </div>
+    </div>
+
+    <h3 class="section-label">Posts</h3>
+    <div class="post-grid" id="profile-posts-grid">
+      <div class="post-grid-item" data-post-id="">
+        <img src="" alt="" class="post-grid-image">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SCREEN: CHAT WINDOW — 1:1 conversation
+       ============================================================ -->
+  <section class="screen" id="screen-chat" data-screen="chat">
+    <header class="topbar chat-topbar">
+      <button class="icon-btn" id="chat-back">←</button>
+      <img src="" alt="" class="avatar-mini" id="chat-header-avatar">
+      <span class="topbar-title" id="chat-header-name">Name</span>
+
+      <div class="topbar-actions">
+        <button class="icon-btn" id="chat-menu-btn" aria-label="More options">⋮</button>
+        <div class="dropdown-menu hidden" id="chat-dropdown">
+          <button class="dropdown-item" id="chat-theme-toggle">Dark / Light Mode</button>
+          <button class="dropdown-item" id="chat-lock-toggle">Lock Chat</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Locked-chat gate: shown instead of messages when chat is locked -->
+    <div class="lock-gate hidden" id="chat-lock-gate">
+      <p class="lock-gate-icon">🔒</p>
+      <p class="lock-gate-text">This chat is locked</p>
+      <input type="password" id="lock-gate-password" placeholder="Enter password">
+      <button class="btn-primary" id="lock-gate-submit">Unlock</button>
+    </div>
+
+    <div class="message-list" id="chat-message-list">
+      <!-- Example bubbles: JS will generate these, with tick state -->
+      <div class="message-row received">
+        <div class="message-bubble">
+          <p class="message-text">Hey, how are you?</p>
+          <span class="message-time">12:30</span>
+        </div>
+      </div>
+
+      <div class="message-row sent" data-message-id="">
+        <div class="message-bubble">
+          <img src="" alt="" class="message-image hidden">
+          <video class="message-video hidden" controls></video>
+          <p class="message-text">I'm good, how about you?</p>
+          <span class="message-time">
+            12:31
+            <!-- tick.seen = pink (via CSS class "seen"), tick default = black -->
+            <span class="tick">✓✓</span>
+          </span>
+        </div>
+        <!-- Long-press / right-click reveals this action menu -->
+        <div class="message-action-menu hidden">
+          <button class="action-item" data-action="delete-me">Delete for me</button>
+          <button class="action-item" data-action="delete-everyone">Delete for everyone</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="chat-input-bar">
+      <button class="icon-btn" id="chat-attach-btn" aria-label="Add photo/video">📎</button>
+      <input type="file" id="chat-media-input" accept="image/*,video/*" hidden>
+      <input type="text" id="chat-text-input" placeholder="Type a message...">
+      <button class="icon-btn send-btn" id="chat-send-btn" aria-label="Send">➤</button>
+    </footer>
+
+    <!-- Preview strip shown before sending a photo/video -->
+    <div class="media-preview-bar hidden" id="chat-media-preview">
+      <img src="" alt="" class="hidden" id="chat-media-preview-image">
+      <video class="hidden" id="chat-media-preview-video" controls></video>
+      <button class="btn-text" id="chat-media-cancel">Cancel</button>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SET PASSWORD MODAL — first time locking any chat
+       ============================================================ -->
+  <div class="modal-overlay hidden" id="set-password-modal">
+    <div class="modal-box">
+      <h3>Set a lock password</h3>
+      <p class="modal-question">Who is your favourite person?</p>
+      <input type="text" id="set-password-answer" placeholder="Type your answer (this becomes your password)">
+      <div class="modal-actions">
+        <button class="btn-secondary" id="set-password-cancel">Cancel</button>
+        <button class="btn-primary" id="set-password-confirm">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       BOTTOM NAVIGATION — 3 tabs, persistent across Home/Your
+       Chat/Feed screens (hidden inside chat/profile/post screens)
+       ============================================================ -->
+  <nav class="bottom-nav" id="bottom-nav">
+    <button class="nav-item active" data-target="home">
+      <span class="nav-icon">⌂</span>
+      <span class="nav-label">Home</span>
+    </button>
+    <button class="nav-item" data-target="yourchat">
+      <span class="nav-icon">💬</span>
+      <span class="nav-label">Your Chat</span>
+    </button>
+    <button class="nav-item" data-target="feed">
+      <span class="nav-icon">▦</span>
+      <span class="nav-label">Post</span>
+    </button>
+  </nav>
+
+</div>
+
+<!-- ============================================================
+     FIREBASE — SDK included now, config left empty as requested.
+     Auth/Firestore/Storage logic will be written in the JS step.
+     ============================================================ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script>
+  // TODO: firebase config will be added later
+  const firebaseConfig = {};
+</script>
+
+<!-- JS will be added in the next step -->
+<script src="app.js"></script>
+</body>
+</html>
