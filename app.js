@@ -17,12 +17,12 @@
 
 /* ---------- FIREBASE INIT ---------- */
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDidasKeBJ2KMqXHLCuP41JngvPGKIUp70",
+  authDomain: "sayaya-b71c0.firebaseapp.com",
+  projectId: "sayaya-b71c0",
+  storageBucket: "sayaya-b71c0.firebasestorage.app",
+  messagingSenderId: "526286690702",
+  appId: "1:526286690702:web:3a2b8570ea5d8c10622cdf"
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
