@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============ META / SEO ============ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Create Custom T-Shirts Online | SAYAT</title>
+  <meta name="description" content="Design and order custom-printed T-shirts, hoodies, and oversized tees online. Upload your artwork, preview it live on the product, and get premium print quality delivered across India.">
+  <meta name="theme-color" content="#161B2E">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SAYAT — Design It. Wear It. Make It Yours.">
+  <meta property="og:description" content="Create your own custom apparel with your design, your style, and professional-quality printing.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:site_name" content="SAYAT">
+  <meta property="og:image" content="/assets/og-image.jpg">
+  <meta property="og:url" content="/">
+
+  <!--
+    ============ DESIGN TOKENS (for style.css) ============
+    Palette:  --color-ink:#161B2E  --color-canvas:#F1F2EE  --color-gold:#C89B3C
+              --color-slate:#5B6472  --color-glass: rgba(255,255,255,.62)
+    Type:     Display/headlines — "Fraunces" (serif, warm, editorial)
+              Body/UI          — "Manrope" (geometric sans)
+    Direction: asymmetric hero, workspace-style customizer, one deliberate
+               motion moment — not a stacked identical-card layout.
+  -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Performance hints for later CDN use (Firebase / Fabric.js) -->
+  <link rel="preconnect" href="https://www.gstatic.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <!-- Favicon (inline, no external asset dependency) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23161B2E'/%3E%3Ctext x='50' y='69' font-size='54' font-family='Georgia,serif' font-weight='700' fill='%23C89B3C' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+
+  <!-- Stylesheet (populated in the next build step) -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!--
+    PayU Checkout (Bolt) SDK — official script, per PayU's integration docs
+    it is loaded in <head>. No merchant key or salt lives in this file.
+  -->
+  <script src="https://jssdk.payu.in/bolt/bolt.min.js"></script>
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ============ GLOBAL LOADER ============ -->
+  <div id="globalLoader" class="global-loader hidden" aria-hidden="true">
+    <div class="loader-spinner" aria-hidden="true"></div>
+    <p id="globalLoaderMessage">Loading…</p>
+  </div>
+
+  <!-- ============ TOAST NOTIFICATIONS ============ -->
+  <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header glass-panel" id="siteHeader">
+    <div class="header-inner">
+      <a href="#hero" class="brand" aria-label="SAYAT home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="32" height="32">
+            <rect x="1" y="1" width="38" height="38" rx="10" fill="#161B2E"/>
+            <text x="20" y="28" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#C89B3C" text-anchor="middle">S</text>
+          </svg>
+        </span>
+        <span class="brand-name">SAYAT</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#customizer">Customize</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" id="cartButton" class="icon-btn" aria-haspopup="dialog" aria-controls="miniCartDrawer" aria-label="Open cart, 0 items">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/>
+            <path d="M2.5 3h2l2.2 12.2a2 2 0 002 1.8h8.6a2 2 0 002-1.7L21 8H6"/>
+          </svg>
+          <span id="cartCount" class="cart-count">0</span>
+        </button>
+
+        <button type="button" id="accountButton" class="btn btn--ghost account-btn" aria-haspopup="dialog" aria-controls="authModal">
+          Login
+        </button>
+
+        <button type="button" id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section id="hero" class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1>Design It. Wear It. Make It Yours.</h1>
+          <p class="hero-subhead">Create your own custom apparel with your design, your style, and professional-quality printing.</p>
+          <div class="hero-actions">
+            <button type="button" id="startDesigningBtn" class="btn btn--primary">Start Designing</button>
+            <a href="#how-it-works" class="btn btn--ghost">How It Works</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <span class="floating-deco floating-deco--1"></span>
+          <span class="floating-deco floating-deco--2"></span>
+          <div class="hero-preview-card glass-panel">
+            <svg class="garment-silhouette" viewBox="0 0 64 64" fill="currentColor">
+              <path d="M20 4L8 14l6 8 4-3v37h28V19l4 3 6-8L44 4l-6 5c-2 2-8 2-12 0z"/>
+            </svg>
+            <div class="hero-preview-print-area">
+              <span>PRINT AREA</span>
+            </div>
+            <p class="hero-preview-label">Your Design</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRODUCT CUSTOMIZER ============ -->
+    <section id="customizer" class="customizer">
+      <div class="section-head">
+        <h2>Create Your Design</h2>
+        <p>Upload your artwork and position it perfectly inside the print area.</p>
+      </div>
+
+      <div class="customizer-grid">
+
+        <!-- Canvas workspace -->
+        <div class="customizer-workspace">
+          <div id="canvasContainer" class="canvas-container">
+            <div id="productPreviewLayer" class="product-preview-layer" aria-hidden="true">
+              <svg class="garment-silhouette" viewBox="0 0 64 64" fill="currentColor">
+                <path d="M20 4L8 14l6 8 4-3v37h28V19l4 3 6-8L44 4l-6 5c-2 2-8 2-12 0z"/>
+              </svg>
+            </div>
+            <canvas id="designCanvas" aria-label="Design canvas — drag, resize, and rotate your artwork"></canvas>
+            <div class="print-area-overlay" aria-hidden="true">
+              <span class="print-area-label">PRINT AREA</span>
+            </div>
+          </div>
+
+          <!-- Hidden export canvas: user artwork only, no mockup/overlay -->
+          <canvas id="printExportCanvas" hidden aria-hidden="true"></canvas>
+
+          <div class="info-card info-card--subtle" role="note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/>
+              <circle cx="12" cy="8" r="0.6" fill="currentColor" stroke="none"/>
+            </svg>
+            <p>Keep your design inside the print area for the best printing result.</p>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <aside class="customizer-controls">
+
+          <!-- Product selector -->
+          <div class="control-panel glass-panel" id="productSelector">
+            <h3>Choose Product</h3>
+            <div class="product-cards" id="products" role="radiogroup" aria-label="Choose product">
+              <button type="button" class="product-card is-selected" role="radio" aria-checked="true"
+                      data-product-id="white-tee" data-product-price="499" data-product-name="White T-Shirt">
+                <span class="product-card-thumb product-card-thumb--white" aria-hidden="true">
+                  <svg viewBox="0 0 64 64" fill="currentColor"><path d="M20 4L8 14l6 8 4-3v37h28V19l4 3 6-8L44 4l-6 5c-2 2-8 2-12 0z"/></svg>
+                </span>
+                <span class="product-card-name">White T-Shirt</span>
+                <span class="product-card-price">From ₹499</span>
+              </button>
+
+              <button type="button" class="product-card" role="radio" aria-checked="false"
+                      data-product-id="black-tee" data-product-price="549" data-product-name="Black T-Shirt">
+                <span class="product-card-thumb product-card-thumb--black" aria-hidden="true">
+                  <svg viewBox="0 0 64 64" fill="currentColor"><path d="M20 4L8 14l6 8 4-3v37h28V19l4 3 6-8L44 4l-6 5c-2 2-8 2-12 0z"/></svg>
+                </span>
+                <span class="product-card-name">Black T-Shirt</span>
+                <span class="product-card-price">From ₹549</span>
+              </button>
+
+              <button type="button" class="product-card" role="radio" aria-checked="false"
+                      data-product-id="hoodie" data-product-price="999" data-product-name="Hoodie">
+                <span class="product-card-thumb product-card-thumb--hoodie" aria-hidden="true">
+                  <svg viewBox="0 0 64 64" fill="currentColor"><path d="M20 4L8 14l6 8 4-3v37h28V19l4 3 6-8L44 4l-6 5c-2 2-8 2-12 0z"/></svg>
+                </span>
+                <span class="product-card-name">Hoodie</span>
+                <span class="product-card-price">From ₹999</span>
+              </button>
+
+              <button type="button" class="product-card" role="radio" aria-checked="false"
+                      data-product-id="oversized-tee" data-product-price="699" data-product-name="Oversized T-Shirt">
+                <span class="product-card-thumb product-card-thumb--oversized" aria-hidden="true">
+                  <svg viewBox="0 0 64 64" fill="currentColor"><path d="M20 4L8 14l6 8 4-3v37h28V19l4 3 6-8L44 4l-6 5c-2 2-8 2-12 0z"/></svg>
+                </span>
+                <span class="product-card-name">Oversized T-Shirt</span>
+                <span class="product-card-price">From ₹699</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Upload -->
+          <div class="control-panel glass-panel" id="uploadPanel">
+            <h3>Upload Your Artwork</h3>
+            <p class="control-panel-hint">PNG or JPEG • Recommended 300 DPI</p>
+
+            <label for="imageUpload" class="dropzone" id="dropzone">
+              <input type="file" id="imageUpload" accept="image/png,image/jpeg,image/jpg" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/>
+              </svg>
+              <span class="dropzone-title">Drop your design here</span>
+              <span class="dropzone-sub">or click to upload</span>
+            </label>
+
+            <div id="uploadProgress" class="upload-progress hidden" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="upload-progress-bar"></div>
+            </div>
+          </div>
+
+          <!-- Design controls -->
+          <div class="control-panel glass-panel" id="designControls">
+            <h3>Design Controls</h3>
+            <div class="control-grid">
+              <button type="button" id="rotateLeftBtn" class="control-btn">Rotate Left</button>
+              <button type="button" id="rotateRightBtn" class="control-btn">Rotate Right</button>
+              <button type="button" id="bringForwardBtn" class="control-btn">Bring Forward</button>
+              <button type="button" id="sendBackwardBtn" class="control-btn">Send Backward</button>
+              <button type="button" id="centerHorizontalBtn" class="control-btn">Center Horizontally</button>
+              <button type="button" id="centerVerticalBtn" class="control-btn">Center Vertically</button>
+              <button type="button" id="deleteBtn" class="control-btn control-btn--danger">Delete</button>
+              <button type="button" id="resetBtn" class="control-btn control-btn--danger">Reset Design</button>
+            </div>
+            <div class="control-sliders">
+              <div class="slider-field">
+                <label for="scaleSlider">Scale</label>
+                <input type="range" id="scaleSlider" min="10" max="200" value="100" step="1">
+              </div>
+              <div class="slider-field">
+                <label for="rotationSlider">Rotation</label>
+                <input type="range" id="rotationSlider" min="0" max="360" value="0" step="1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Live price -->
+          <div class="price-summary glass-panel" id="priceSummary">
+            <p class="price-summary-label">Your Custom <span id="productName">T-Shirt</span></p>
+            <p class="price-summary-value" id="productPrice">₹499</p>
+            <p class="price-summary-note">Print included</p>
+            <button type="button" id="proceedToCheckoutBtn" class="btn btn--primary btn--block">Proceed to Checkout</button>
+          </div>
+
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ CHECKOUT ============ -->
+    <section id="checkout" class="checkout hidden">
+      <div class="section-head">
+        <h2>Complete Your Order</h2>
+      </div>
+
+      <ol class="checkout-progress" id="checkoutProgress">
+        <li class="is-active" data-step="design"><span>Design</span></li>
+        <li data-step="details"><span>Details</span></li>
+        <li data-step="payment"><span>Payment</span></li>
+        <li data-step="confirmation"><span>Confirmation</span></li>
+      </ol>
+
+      <div class="checkout-grid">
+        <form class="checkout-form" id="customerInfoForm" novalidate>
+
+          <h3>Your Details</h3>
+          <div class="form-field">
+            <label for="customerName">Full Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="customerName" name="customerName" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label for="customerPhone">Phone Number <span aria-hidden="true">*</span></label>
+            <input type="tel" id="customerPhone" name="customerPhone" autocomplete="tel" required>
+          </div>
+          <div class="form-field">
+            <label for="customerEmail">Email Address <span aria-hidden="true">*</span></label>
+            <input type="email" id="customerEmail" name="customerEmail" autocomplete="email" required>
+          </div>
+          <div class="form-field">
+            <label for="customerAddress">Address <span aria-hidden="true">*</span></label>
+            <input type="text" id="customerAddress" name="customerAddress" autocomplete="street-address" required>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="customerCity">City <span aria-hidden="true">*</span></label>
+              <input type="text" id="customerCity" name="customerCity" autocomplete="address-level2" required>
+            </div>
+            <div class="form-field">
+              <label for="customerState">State <span aria-hidden="true">*</span></label>
+              <input type="text" id="customerState" name="customerState" autocomplete="address-level1" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="customerPincode">Pincode <span aria-hidden="true">*</span></label>
+            <input type="text" id="customerPincode" name="customerPincode" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{6}" required>
+          </div>
+
+          <!-- Order add-ons (Qikink-style, priced automatically by app.js) -->
+          <h3>Add-ons</h3>
+          <div class="addon-options" role="group" aria-label="Order add-ons">
+            <label class="addon-card" for="addonGiftPack">
+              <input type="checkbox" id="addonGiftPack" name="addonGiftPack" data-addon-price="50">
+              <span class="addon-card-body">
+                <span class="addon-card-title">Gift Pack</span>
+                <span class="addon-card-desc">Premium gift packaging for your order</span>
+              </span>
+              <span class="addon-card-price">+₹50</span>
+            </label>
+            <label class="addon-card" for="addonWelcomeLetter">
+              <input type="checkbox" id="addonWelcomeLetter" name="addonWelcomeLetter" data-addon-price="50">
+              <span class="addon-card-body">
+                <span class="addon-card-title">Welcome Letter</span>
+                <span class="addon-card-desc">A personalized welcome note included inside</span>
+              </span>
+              <span class="addon-card-price">+₹50</span>
+            </label>
+          </div>
+
+          <!-- Delivery mode -->
+          <h3>Delivery Mode</h3>
+          <div class="delivery-options" role="radiogroup" aria-label="Delivery mode">
+            <label class="delivery-card" for="deliveryStandard">
+              <input type="radio" id="deliveryStandard" name="deliveryMode" value="standard" data-delivery-price="0" checked>
+              <span class="delivery-card-body">
+                <span class="delivery-card-title">Standard</span>
+                <span class="delivery-card-desc">Regular delivery, no extra charge</span>
+              </span>
+              <span class="delivery-card-price">Free</span>
+            </label>
+            <label class="delivery-card" for="deliveryExpress">
+              <input type="radio" id="deliveryExpress" name="deliveryMode" value="express" data-delivery-price="20">
+              <span class="delivery-card-body">
+                <span class="delivery-card-title">Express</span>
+                <span class="delivery-card-desc">Faster dispatch and delivery</span>
+              </span>
+              <span class="delivery-card-price">+₹20</span>
+            </label>
+          </div>
+
+          <!-- Payment method -->
+          <h3>Payment Method</h3>
+          <div class="payment-options" role="radiogroup" aria-label="Payment method">
+            <label class="payment-card" for="paymentPrepaid">
+              <input type="radio" id="paymentPrepaid" name="paymentMethod" value="prepaid" checked>
+              <span class="payment-card-body">
+                <span class="payment-card-title">Prepaid</span>
+                <span class="payment-card-desc">Pay securely online with PayU</span>
+              </span>
+            </label>
+            <label class="payment-card" for="paymentCOD">
+              <input type="radio" id="paymentCOD" name="paymentMethod" value="cod">
+              <span class="payment-card-body">
+                <span class="payment-card-title">Cash on Delivery</span>
+                <span class="payment-card-desc">Pay when your order is delivered</span>
+              </span>
+            </label>
+          </div>
+        </form>
+
+        <!-- Order summary -->
+        <aside class="order-summary glass-panel" id="orderSummary">
+          <h3>Order Summary</h3>
+          <dl class="summary-list">
+            <div class="summary-row"><dt>Product</dt><dd id="summaryProduct">White T-Shirt</dd></div>
+            <div class="summary-row"><dt>Custom Design</dt><dd>1 upload</dd></div>
+            <div class="summary-row"><dt>Quantity</dt><dd id="summaryQuantity">1</dd></div>
+            <div class="summary-row"><dt>Price</dt><dd id="summaryPrice">₹499</dd></div>
+            <div class="summary-row"><dt>Add-ons</dt><dd id="summaryAddons">₹0</dd></div>
+            <div class="summary-row"><dt>Delivery</dt><dd id="summaryShipping">Free</dd></div>
+            <div class="summary-row summary-row--total"><dt>Total</dt><dd id="summaryTotal">₹499</dd></div>
+          </dl>
+          <button type="submit" form="customerInfoForm" id="placeOrderBtn" class="btn btn--primary btn--block">
+            <span id="placeOrderBtnLabel">Place Order</span>
+            <span id="buttonLoader" class="button-loader hidden" aria-hidden="true"></span>
+          </button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section id="how-it-works" class="how-it-works">
+      <div class="section-head"><h2>How It Works</h2></div>
+      <ol class="steps">
+        <li class="step-card glass-panel">
+          <span class="step-number">01</span>
+          <h3>Upload your design</h3>
+          <p>Add your artwork in PNG or JPEG. We'll guide you to the right size for a clean print.</p>
+        </li>
+        <li class="step-card glass-panel">
+          <span class="step-number">02</span>
+          <h3>Customize your product</h3>
+          <p>Position, scale, and rotate your design until it sits exactly right inside the print area.</p>
+        </li>
+        <li class="step-card glass-panel">
+          <span class="step-number">03</span>
+          <h3>Place your order</h3>
+          <p>Choose prepaid or cash on delivery — we print and ship it straight to your door.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ TRUST / SECURITY ============ -->
+    <section id="trust" class="trust">
+      <ul class="trust-grid">
+        <li class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/>
+          </svg>
+          <span>Secure Payment</span>
+        </li>
+        <li class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/>
+          </svg>
+          <span>High Quality Printing</span>
+        </li>
+        <li class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/>
+          </svg>
+          <span>Fast Delivery</span>
+        </li>
+        <li class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/>
+          </svg>
+          <span>Order Tracking</span>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-name">SAYAT</span>
+        <p>Custom apparel, printed to order.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Shop">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#customizer">Products</a></li>
+          <li><a href="#customizer">Start Designing</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Customize">
+        <h4>Customize</h4>
+        <ul>
+          <li><a href="#customizer">Design Studio</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Support">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#" data-policy="contact">Contact</a></li>
+          <li><a href="#" data-policy="order-tracking">Order Tracking</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Policies">
+        <h4>Policies</h4>
+        <ul>
+          <li><a href="#" data-policy="privacy">Privacy Policy</a></li>
+          <li><a href="#" data-policy="terms">Terms &amp; Conditions</a></li>
+          <li><a href="#" data-policy="shipping">Shipping Policy</a></li>
+          <li><a href="#" data-policy="refund">Refund Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 SAYAT. All rights reserved.</p>
+      <button type="button" id="adminAccessBtn" class="footer-admin-link" aria-haspopup="dialog" aria-controls="adminAccessModal">Admin</button>
+    </div>
+  </footer>
+
+  <!-- ============ AUTH MODAL ============ -->
+  <div class="modal-overlay hidden" id="authModalOverlay">
+    <div class="modal glass-panel" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+      <button type="button" class="modal-close" id="closeAuthModal" aria-label="Close">&times;</button>
+      <h2 id="authModalTitle" class="sr-only">Sign in to SAYAT</h2>
+
+      <div class="modal-tabs" role="tablist">
+        <button type="button" role="tab" id="loginTab" class="modal-tab is-active" aria-selected="true" aria-controls="loginForm">Login</button>
+        <button type="button" role="tab" id="signupTab" class="modal-tab" aria-selected="false" aria-controls="signupForm">Create Account</button>
+      </div>
+
+      <button type="button" id="googleLoginBtn" class="btn btn--google btn--block">
+        <span class="google-g" aria-hidden="true">G</span> Continue with Google
+      </button>
+      <div class="modal-divider"><span>or</span></div>
+
+      <form id="loginForm">
+        <div class="form-field">
+          <label for="authEmail">Email</label>
+          <input type="email" id="authEmail" autocomplete="email" required>
+        </div>
+        <div class="form-field">
+          <label for="authPassword">Password</label>
+          <input type="password" id="authPassword" autocomplete="current-password" required>
+        </div>
+        <button type="submit" id="loginBtn" class="btn btn--primary btn--block">Log In</button>
+      </form>
+
+      <form id="signupForm" class="hidden">
+        <div class="form-field">
+          <label for="signupName">Name</label>
+          <input type="text" id="signupName" autocomplete="name" required>
+        </div>
+        <div class="form-field">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" autocomplete="email" required>
+        </div>
+        <div class="form-field">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" autocomplete="new-password" required>
+        </div>
+        <div class="form-field">
+          <label for="signupConfirmPassword">Confirm Password</label>
+          <input type="password" id="signupConfirmPassword" autocomplete="new-password" required>
+        </div>
+        <button type="submit" id="signupBtn" class="btn btn--primary btn--block">Create Account</button>
+      </form>
+
+      <button type="button" id="continueAsGuestBtn" class="btn btn--text btn--block">Continue as Guest</button>
+    </div>
+  </div>
+
+  <!-- ============ ADMIN ACCESS MODAL ============ -->
+  <div class="modal-overlay hidden" id="adminAccessModalOverlay">
+    <div class="modal modal--compact glass-panel" id="adminAccessModal" role="dialog" aria-modal="true" aria-labelledby="adminAccessTitle">
+      <button type="button" class="modal-close" id="closeAdminAccessModal" aria-label="Close">&times;</button>
+      <h2 id="adminAccessTitle">Admin Access</h2>
+      <form id="adminAccessForm">
+        <div class="form-field">
+          <label for="adminPasswordInput">Password</label>
+          <input type="password" id="adminPasswordInput" autocomplete="current-password" required>
+        </div>
+        <p class="form-error hidden" id="adminAccessError" role="alert">Incorrect password.</p>
+        <button type="submit" id="adminUnlockBtn" class="btn btn--primary btn--block">Unlock</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ ADMIN PANEL (product upload) ============ -->
+  <div class="modal-overlay hidden" id="adminPanelOverlay">
+    <div class="modal modal--wide glass-panel" id="adminPanel" role="dialog" aria-modal="true" aria-labelledby="adminPanelTitle">
+      <button type="button" class="modal-close" id="closeAdminPanel" aria-label="Close">&times;</button>
+      <h2 id="adminPanelTitle">Upload Product</h2>
+      <form id="adminProductForm">
+        <div class="form-field">
+          <label for="adminProductName">Product Name</label>
+          <input type="text" id="adminProductName" required>
+        </div>
+        <div class="form-field">
+          <label for="adminProductCategory">Category</label>
+          <select id="adminProductCategory" required>
+            <option value="tshirt">T-Shirt</option>
+            <option value="hoodie">Hoodie</option>
+            <option value="oversized">Oversized T-Shirt</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="adminProductPrice">Base Price (₹)</label>
+          <input type="number" id="adminProductPrice" min="0" step="1" required>
+        </div>
+        <div class="form-field">
+          <label for="adminProductDescription">Description</label>
+          <textarea id="adminProductDescription" rows="3"></textarea>
+        </div>
+        <div class="form-field">
+          <label for="adminProductImages">Product Images</label>
+          <input type="file" id="adminProductImages" accept="image/png,image/jpeg" multiple>
+        </div>
+        <button type="submit" id="adminUploadProductBtn" class="btn btn--primary btn--block">
+          <span>Upload Product</span>
+          <span id="adminUploadProgress" class="upload-progress hidden" aria-hidden="true"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ SUCCESS MODAL ============ -->
+  <div class="modal-overlay hidden" id="successModalOverlay">
+    <div class="modal glass-panel" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successModalTitle">
+      <h2 id="successModalTitle">Order Confirmed 🎉</h2>
+      <p>Your order has been successfully placed.</p>
+      <dl class="success-details">
+        <div class="summary-row"><dt>Order ID</dt><dd id="successOrderId">—</dd></div>
+        <div class="summary-row"><dt>Payment Status</dt><dd id="successPaymentStatus">—</dd></div>
+        <div class="summary-row"><dt>Product</dt><dd id="successProduct">—</dd></div>
+        <div class="summary-row"><dt>Total</dt><dd id="successTotal">—</dd></div>
+      </dl>
+      <div class="modal-actions">
+        <button type="button" id="viewOrderBtn" class="btn btn--ghost">View Order</button>
+        <button type="button" id="continueShoppingBtn" class="btn btn--primary">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MINI CART DRAWER ============ -->
+  <div class="drawer-overlay hidden" id="miniCartOverlay">
+    <aside class="drawer glass-panel" id="miniCartDrawer" role="dialog" aria-modal="true" aria-labelledby="miniCartTitle">
+      <div class="drawer-head">
+        <h2 id="miniCartTitle">Your Cart</h2>
+        <button type="button" id="closeMiniCart" class="modal-close" aria-label="Close cart">&times;</button>
+      </div>
+      <ul class="cart-items" id="cartItems">
+        <!-- populated by app.js -->
+      </ul>
+      <div class="cart-drawer-footer">
+        <button type="button" id="miniCartCheckoutBtn" class="btn btn--primary btn--block">Checkout</button>
+      </div>
+    </aside>
+  </div>
+
+  <!--
+    ============ SCRIPTS ============
+    Fabric.js v6 (current stable, browser build via jsDelivr) — exposes
+    the global `fabric` object that app.js initializes designCanvas with.
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/fabric@6.4.3/dist/index.js"></script>
+
+  <!--
+    Firebase v12 modular SDK (app, auth, firestore, storage) is imported
+    directly inside app.js via ES module imports from the official
+    gstatic CDN, e.g. import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js" —
+    no config or keys live in this file.
+  -->
+  <script type="module" src="./app.js"></script>
+
+</body>
+</html>
