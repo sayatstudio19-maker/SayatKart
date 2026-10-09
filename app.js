@@ -168,7 +168,7 @@ const FIREBASE_CONFIG = {
 
 // Your PayU Client ID (merchant key). Public by design.
 // The Client Secret (salt) must ONLY live in Vercel -> Environment Variables as PAYU_CLIENT_SECRET.
-const PAYU_CLIENT_ID = "PASTE_YOUR_PAYU_CLIENT_ID";
+const PAYU_CLIENT_ID = "TYh3IB";
 
 /* ==========================================================================
    WHICH MODE? Node (Vercel) has no "window"  -> run the server.
