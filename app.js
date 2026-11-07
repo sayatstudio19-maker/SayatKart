@@ -240,14 +240,14 @@
 
 // Firebase console -> Project settings -> Your apps -> Web app -> Config.
 // (Safe to be public. Security comes from the Firestore / Storage rules above.)
-const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyDidasKeBJ2KMqXHLCuP41JngvPGKIUp70",
-  authDomain: "sayaya-b71c0.firebaseapp.com",
-  projectId: "sayaya-b71c0",
-  storageBucket: "sayaya-b71c0.firebasestorage.app",
-  messagingSenderId: "526286690702",
-  appId: "1:526286690702:web:3a2b8570ea5d8c10622cdf",
-  measurementId: "G-8HVWCTQ44F"
+const firebaseConfig = {
+  apiKey: "AIzaSyBaKTle2LWrin03EjWEmuX3IUPJ63OC6Co",
+  authDomain: "satx-19.firebaseapp.com",
+  projectId: "satx-19",
+  storageBucket: "satx-19.firebasestorage.app",
+  messagingSenderId: "115025158741",
+  appId: "1:115025158741:web:dc062ebba3a326c0fdeadc",
+  measurementId: "G-RWZRV1J386"
 };
 
 
