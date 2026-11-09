@@ -257,18 +257,20 @@
 
 // Firebase console -> Project settings -> Your apps -> Web app -> Config.
 // (Safe to be public. Security comes from the Firestore / Storage rules above.)
-const FIREBASE_CONFIG = {
-  apiKey: "PASTE_YOUR_FIREBASE_API_KEY",
-  authDomain: "PASTE_YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  storageBucket: "PASTE_YOUR_STORAGE_BUCKET",
-  messagingSenderId: "PASTE_YOUR_SENDER_ID",
-  appId: "PASTE_YOUR_APP_ID",
+const firebaseConfig = {
+  apiKey: "AIzaSyBaKTle2LWrin03EjWEmuX3IUPJ63OC6Co",
+  authDomain: "satx-19.firebaseapp.com",
+  projectId: "satx-19",
+  storageBucket: "satx-19.firebasestorage.app",
+  messagingSenderId: "115025158741",
+  appId: "1:115025158741:web:dc062ebba3a326c0fdeadc",
+  measurementId: "G-RWZRV1J386"
 };
+
 
 // Your PayU Client ID (merchant key). Public by design.
 // The Client Secret (salt) must ONLY live in Vercel -> Environment Variables as PAYU_CLIENT_SECRET.
-const PAYU_CLIENT_ID = "PASTE_YOUR_PAYU_CLIENT_ID";
+const PAYU_CLIENT_ID = "TYh3IB";
 
 /* ==========================================================================
    WHICH MODE? Node (Vercel) has no "window"  -> run the server.
